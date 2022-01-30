@@ -16,7 +16,7 @@ Este proyecto es un ejemplo basico de un sitio web utilizando **React** con **Ty
 
 <mark>Si tienes instalados node.js y npm, asegurate de actualizarlos antes de intentar construir las imagenes</mark>
 
-Si quieres ejecutar el proyecto necesitarás [git](https://git-scm.com/downloads), [Node.js and npm](https://www.npmjs.com/get-npm) y [Docker](https://docs.docker.com/get-docker/). Asegurate de tenerlos instalados en tu equipo. Descarga el proyecto con `git clone https://github.com/pglez82/asw2122_0`. La manera más rápìda de ejecutar todo es con Docker.
+Si quieres ejecutar el proyecto necesitarás [git](https://git-scm.com/downloads), [Node.js and npm](https://www.npmjs.com/get-npm) y [Docker](https://docs.docker.com/get-docker/). Asegurate de tenerlos instalados en tu equipo. Descarga el proyecto con `git clone hhttps://github.com/Arquisoft/dede_es6a`. La manera más rápìda de ejecutar todo es con Docker.
 
 ```bash
 docker-compose up --build
@@ -47,6 +47,6 @@ Deberias ser capaz de acceder a la aplicación en [http://localhost:3000](http:/
 
 ## Mas información
 Encontrarás más información sobre el repositorio en los otros archivos README:
-- Documentación: https://github.com/pglez82/asw2122_0/tree/master/docs
-- Webapp: https://github.com/pglez82/asw2122_0/tree/master/webapp
-- Restapi: https://github.com/pglez82/asw2122_0/tree/master/restapi
+- Documentación: https://github.com/Arquisoft/dede_es6a/tree/master/docs
+- Webapp: https://github.com/Arquisoft/dede_es6a/tree/master/webapp
+- Restapi: https://github.com/Arquisoft/dede_es6a/tree/master/restapi
