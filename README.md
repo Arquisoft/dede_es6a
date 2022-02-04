@@ -54,5 +54,5 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 ## Miembros del equipo 
 <ul>
  <li>Diego Garcia Quiros - UO276688 </li>
- <li>David Maldonado Álvarez - UO259893 </li>
+ <li>Óscar López González - UO269489 </li>
  </ul>
