@@ -53,7 +53,8 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 
 ## Miembros del equipo 
 <ul>
- <li>Diego Garcia Quiros - UO276688 </li>
+ <li>Diego García Quirós - UO276688 </li>
  <li>Óscar López González - UO269489 </li>
  <li>Daniel Machado Sánchez - UO276257 </li>
- </ul>
+ <li>Juan Mera Menéndez - UO277406 </li>
+</ul>
