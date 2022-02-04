@@ -50,3 +50,8 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Documentación: https://github.com/Arquisoft/dede_es6a/tree/master/docs
 - Webapp: https://github.com/Arquisoft/dede_es6a/tree/master/webapp
 - Restapi: https://github.com/Arquisoft/dede_es6a/tree/master/restapi
+
+## Miembros del equipo 
+<ul>
+ <li>Diego Garcia Quiros - UO276688 </li>
+ </ul>
