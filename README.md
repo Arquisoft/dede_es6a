@@ -57,4 +57,5 @@ Encontrarás más información sobre el repositorio en los otros archivos README
  <li>Óscar López González - UO269489 </li>
  <li>Daniel Machado Sánchez - UO276257 </li>
  <li>Juan Mera Menéndez - UO277406 </li>
+ <li>David Maldonado Álvarez - UO259893 </li>
 </ul>
