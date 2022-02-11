@@ -36,5 +36,7 @@ hacer:
 	
 si tenemos mas vainas meter en el punto 8 que es como un saco
 tomar decisiones de la especializacion de cada miembro del grupo y reflejarlas en acta
+pensar el modelo de datos de dominio para usarlo de base para el inicio del desarrollo tanto del frontend como del backend
+	(postman api para probar el backend)
 	
 	
