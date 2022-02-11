@@ -1,0 +1,39 @@
+
+ UML - documentación (seguir la plantilla de Arc42)
+ 
+Diagrama de despliegue:
+	El nodo computacional de react sera un pc e ira conectado al backend que asu vez se conectara con una BD
+	poner en las conecctions con los protocolos
+Diagramas de secuencia:
+	eje de las y es el timeline y eje de las x son los componentes que participa
+	hacer uno cada miembro del grupo
+	usar plantUML para hacer este diagrama pa que sea mas mantenible (admite css)
+	
+En la web de arc42 hay una sección de ejemplos (ejemplo de tienda de bicis que esta muy bien)
+
+===========================================================================================
+
+restapi que es el backend y webapp seria el frontend la documentacion estaría en docs
+cada carpeta tiene un readme q explica su función
+
+- mirar el readme de la carpeta docs e instalar las cosas
+
+hacer:
+	- 1.1 de introduccion y tal
+	- 1.2 y 1.3 requerimientos objetivos de calidad y stakeholders
+	- 2. restricciones de arquitectura
+	- 3. diagrama de contexto y alcance (libertad total para 3.1)
+	- 4. dejar (creo)
+	- 5. dejar para mas adelante aunq ojear
+	- 6. vista de tiempos de ejecucion 
+	- 7. no se
+	- 8. no se
+	- 9. decisiones de diseño
+	- 10. escenarios de calidad
+	- 11. si documentar
+	- 12. poner cualquier sigla o nombre que usemos en el sistema (como react o solid y tal)
+	- ya me dio por culo seguir
+	
+si tenemos mas vainas meter en el punto 8 que es como un saco
+	
+	
