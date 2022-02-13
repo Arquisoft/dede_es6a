@@ -67,9 +67,54 @@ These stakeholders determine the extent and the level of detail of your work and
 Table with role names, person names, and their expectations with respect to the architecture and its documentation.
 ****
 
-[options="header",cols="1,2,2"]
+
+===1.1 Introducción y objetivos
+	Este proyecto nace con el objetivo principal de construir una tienda online
+	que permita a los usuarios la compra de licores y bebidas espiritosas al 
+	precio mas competitivo.
+	Como objetivos secundarios:
+	- aprendizaje de tecnologias como typescript, react, solid...
+	- mejorar nuestras habilidades sociales y de trabajo en equipo.
+	
+	El principal objetivo es el de agrupar una gran variedad de bebidas alcoholicas
+	de la mejor calidad y al precio mas asequible. De esta forma cualquier persona
+	mayor de edad puede disfrutar de un trago agradable de forma cómoda.
+	
+	Los requisitos funcionales son los típicos de cualquier tienda online común.
+	Principalmente:
+	- Visualizar un catálogo de bebidas clasificado en categorias.
+	- Que los usuarios puedan crear una cuenta e iniciar sesión.
+	- Que los clientes puedan añadir articulos al carrito y realizar la compra.
+	- Permitir a los clientes la gestion de sus datos de usuario.
+
+=== Atributos de calidad
+
+[options="header",cols="1,2"]
 |===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|Atributos|Descripción
+| _Usabilidad_ |  _Es de gran importancia que la aplicación sea entendida con gran
+		facilidad con el objetivo principal de maximizar las ventas._
+| _Disponibilidad_ |  _Tratandose de una tienda es fundamental que los servicios que
+		esta ofrece estén disponibles el mayor tiempo posible._
+| _Seguridad_ |  _La confidencialidad de los datos de nuestro clientes es una prioridad._
+| _Testeabilidad_ |  _De cara al correcto desarrollo y funcionamiento, consideramos 
+		importante tener presente las pruebas en todas las etapas del trabajo y facilitar
+		todo lo posible su construcción y uso._
 |===
+
+=== Stakeholders
+
+[options="header",cols="1,2"]
+|===
+|Role/Nombre|Expectaciones
+| _Profesores_ |  _Interesados en el desarrollo de la funcionalidad, arquitectura y 
+        documentación de la aplicación._
+| _Clientes Potenciales_ |  _A los que va destinado el producto final y para los que
+		van destinados los requisitos funcionales._
+| _Miembros del grupo del desarrollo_ |  _Como estudiantes confiamos en mejorar nuestras
+		habilidades sobre las tecnologías tratadas en este trabajo y obtener un 
+		resultado satisfactorio._
+| _Otros estudiantes_ |  _Esperan una buena aplicación que puedan tomar como ejemplo y
+		obtener información util que pueda ser reutilizada en proximos proyectos._
+|===
+
