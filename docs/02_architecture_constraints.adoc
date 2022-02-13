@@ -22,39 +22,39 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
-| docker |  contenedores docker empleados para el despliegue de la aplicación.
-| solid app |  tecnología fundamental para poder garantizar la confidencialidad 
+| Docker |  Contenedores docker empleados para el despliegue de la aplicación.
+| Solid app |  Tecnología fundamental para poder garantizar la confidencialidad 
 				de los datos manejados de forma que se conforma una red de persistencia
 				descentralizada.
-| typescript |  lenguaje de programacion empleado para la implementación de
+| Typescript |  Lenguaje de programacion empleado para la implementación de
 				la lógica de negocio del sistema.
-| react |  es la libreria que sera utilizada para la construcción del front-end
+| React |  Es la libreria que sera utilizada para la construcción del front-end
 				del sistema.
 |===
 
-=== 2.2 Organizacion
+=== 2.2 Organización
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
-| tiempo / planificación |  el sistema debe de cumplir con los requisitos funcionales
-				planteados antes de la ultima entrega de la asginatura. Asi como cumplir con
+| Tiempo / planificación |  El sistema debe de cumplir con los requisitos funcionales
+				planteados antes de la última entrega de la asignatura. Asi como cumplir con
 				las entregas parciales solicitadas.
-| control de versiones git |  como decision impuesta se debe utilizar control de
+| Control de versiones git |  Como decisión impuesta se debe utilizar control de
 				versiones con git para gestionar el desarrollo del proyecto.
-| equipo fijo |  el equipo es impuesto por la organizacion de la asignatura, tanto
+| Equipo fijo |  El equipo es impuesto por la organizacion de la asignatura, tanto
 				su tamaño como sus integrantes.
 |===
 
-=== 2.3 políticas
+=== 2.3 Políticas
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
-| ley orgánica de protección de datos |  a nivel de cumplimiento de la
+| Ley orgánica de protección de datos |  A nivel de cumplimiento de la
 				legislación española debemos tener especial cuidado en el trato de
 				los datos sensibles de los usuarios de nuestra aplicación.
-| idioma | se empleará el idioma castellano tanto en la documentación como
+| Idioma | Se empleará el idioma castellano tanto en la documentación como
 				en la implementación de la aplicación aunque se podrá internacionalizar
 				en un futuro.
-| arc42 |  como decisión impuesta debemos seguir esta plantilla para la realización
+| Arc42 |  Como decisión impuesta debemos seguir esta plantilla para la realización
 				de esta documentación.
 |===
