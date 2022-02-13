@@ -26,13 +26,13 @@ hacer:
 	- 4. dejar (creo)
 	- 5. dejar para mas adelante aunq ojear
 	- 6. vista de tiempos de ejecucion 
-	- 7. no se
-	- 8. no se
+	- 7. no me dio tiempo
+	- 8. no me dio tiempo
 	- 9. decisiones de diseño
 	- 10. escenarios de calidad
 	- 11. si documentar
 	- 12. poner cualquier sigla o nombre que usemos en el sistema (como react o solid y tal)
-	- ya me dio por culo seguir
+	- ...
 	
 si tenemos mas vainas meter en el punto 8 que es como un saco
 tomar decisiones de la especializacion de cada miembro del grupo y reflejarlas en acta
