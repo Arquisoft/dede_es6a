@@ -68,7 +68,7 @@ Table with role names, person names, and their expectations with respect to the 
 ****
 
 
-===1.1 Introducción y objetivos
+=== 1.1 Introducción y objetivos
 	Este proyecto nace con el objetivo principal de construir una tienda online
 	que permita a los usuarios la compra de licores y bebidas espiritosas al 
 	precio mas competitivo.
