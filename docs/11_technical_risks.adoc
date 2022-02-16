@@ -16,6 +16,7 @@ aprovechando la gran cantidad de recursos existentes en Internet
 
 |===
 
+
 Por otra parte, consideramos la _deuda técnica_ como algo inevitable en nuestro proyecto. Por falta de conocimiento o por llegar apurados a un plazo puede que no siempre desarrollemos software óptimo. Para evitar que esto nos lastre en el futuro:
 
 * Volveremos frecuentemente sobre nuestro código, refactorizándolo siempre que sea necesario.
