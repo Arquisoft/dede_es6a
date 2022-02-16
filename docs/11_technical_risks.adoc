@@ -1,5 +1,21 @@
 [[section-technical-risks]]
-== Risks and Technical Debts
+== Riesgos y deuda técnica
+
+Por una parte, entenderemos *riesgos* como aquellas circunstancias potenciales negativas que aún no han ocurrido. A continuación indicamos los riesgos identificados, así como medidas propuestas para paliarlos o mitigarlos.
+
+[options="header",cols="1,2"]
+|===
+| Riesgo | Medida propuesta
+| Uno o más miembros del equipo podrían abandonar la asignatura |  Asignaremos varias personas a cada tarea, especialmente a las que resultan críticas
+| Carecemos de experiencia en las tecnologías incluídas en las restricciones |  De forma paralela a desarrollar la documentación, realizaremos acciones formativas
+                                                                                aprovechando la gran cantidad de recursos existentes en Internet
+| La entrega es en mayo de 2022 y puede que no lleguemos a tiempo |  Celebraremos reuniones semanales donde analizar el estado actual del proyecto y ajustaremos el volumen de trabajo conforme a ello
+|===
+
+Por otra parte, consideramos la *deuda técnica* como algo inevitable en nuestro proyecto. Por falta de conocimiento
+por llegar apurados a un plazo puede que no siempre desarrollemos software óptimo. Para evitar que esto nos lastre en el futuro:
+* Volveremos frecuentemente sobre nuestro código, refactorizándolo siempre que sea necesario.
+* Llevaremos a cabo revisiones de código entre miembros del equipo por medio de la funcionalidad de _pull requests_ de Github.
 
 
 [role="arc42help"]
