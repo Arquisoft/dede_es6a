@@ -24,3 +24,15 @@ Various options:
 * more detailed in form of separate sections per decision
 * ADR (architecture decision record) for every important decision
 ****
+
+**Decisiones Tomadas**
+
+* El idioma de la documentación será el castellano, pues es el lenguaje nativo de los miembros del equipo y nos
+resultará más claro y comprensible en este idioma.
+
+* Uso de la bilbioteca Boostrap para la elaboración de las hojas de estilo de tal forma que nuestra aplicación resulte 
+más atractiva visualmente para los usuarios.
+
+* Dado que nuestro proyecto será creado junto al proyecto Solid, algunos de nuestros datose serán almacenados en los 
+Solid Pods. Junto a esto, la base de datos que utilizaremos será relacional debido a la familizarización de los miembros del equipo con este modelo. Aún está
+por decidir la base de datos concreta a utilizar.

@@ -61,3 +61,17 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 .Form
 Tabular or free form text.
 ****
+
+=== Escenarios de calidad
+
+[options="header",cols="1,2,2"]
+|===
+|Atributos de Calidad|Escenarios de Calidad|Prioridad
+| Usabilidad | Los usuarios deben saber manejarse por la aplicación fácilmente con el objetivo
+de que comprar cualquier tipo de producto sea una tarea fácil y rápida | Alta
+| Privacidad | El objetivo principal que desemaos alcanzar es la protección de los datos de usuarios finales para así se llevar a cabo la descentralización de datos personales y con ello mejorar el nivel de privacidad de los usuarios. | Alta
+| Testeabilidad | Realización de pruebas unitarias, pruebas de aceptación y de carga para comprobar el correcto funcionamiento de la aplicación| Media
+| Robustez | La aplicación debe ser robusta para que los productos mantengan sus características únicas| Media
+| Rendimiento | El tiempo en que un usuario tarda en realziar alguna petición no los consideramos tan importante como pueden ser otros atributos. Aún así, 
+si creemos que debemos proporcionar un rendimiento aceptable para que al usuario no le resulte largo y desaprovechado el tiempo que esté en nuestra aplicación | Baja
+|===
