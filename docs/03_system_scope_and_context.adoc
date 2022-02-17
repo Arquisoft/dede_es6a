@@ -1,20 +1,24 @@
-
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-
 [role="arc42help"]
 ****
+****
 
-:imagesdir: images/
 
 == Propuesta de Óscar
+
+[role="arc42help"]
+
+****
+****
 
 === Business Context
 
 [role="arc42help"]
 ****
 
+:imagesdir: images/
 image::diagrama-contexto-negocio-oscar.png[]
 
 
@@ -27,6 +31,6 @@ image::diagrama-contexto-negocio-oscar.png[]
 
 Por hacer, aún no tenemos la información necesaria.
 
-****
 
 ****
+
