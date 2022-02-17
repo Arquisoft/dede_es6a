@@ -21,6 +21,17 @@
 :imagesdir: images/
 image::diagrama-contexto-negocio-oscar.png[]
 
+.GPS
+
+El sistema debe calcular los costes de envío utilizando la distancia existente entre el centro de distribución y la dirección donde el usuario desea recibir el producto. Para ello, necesitaremos una herramienta que sea capaz de calcular dicha distancia.
+
+.Pago
+
+El sistema debe incluir una plataforma de pago (ficticia en nuestro caso) que permita llevar a cabo la compra de los productos deseados.
+
+.Envío
+
+El sistema utilizará una API que permitirá al usuario escoger entre diferentes portadores.
 
 ****
 
