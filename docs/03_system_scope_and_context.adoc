@@ -21,10 +21,7 @@
 :imagesdir: images/
 image::diagrama-contexto-negocio-oscar.png[]
 
-{empty} +
-{empty} +
-{empty} +
-{empty} +
+
 
 
 [discrete]
