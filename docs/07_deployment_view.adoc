@@ -5,6 +5,9 @@
 
 === Infrastructure Level 1
 
+:imagesdir: images/
+image::diagrama de despliegue.png[]
+
 Motivation::
 
 El objetivo de esta estructura de despliegue es conseguir un sistema descentralizado. Con las premisas 
