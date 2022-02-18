@@ -23,9 +23,12 @@ Potentially more columns in case you need translations.
 
 ****
 
-[options="header"]
 |===
-| Term         | Definition
-| <Term-1>     | <definition-1>
-| <Term-2>     | <definition-2>
+| Término         | Definición
+| Solid    | Proyecto de descentralización de datos en la web que permiten al 
+usuario final decidir dónde se van a almacenar sus datos mejorando así la 
+privacidad.
+| TypeScript    | Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript, que esencialmente añade tipos estáticos y objetos basados en clases.
+| React    | Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.
+| Stakeholder    | Entidad que afecta, es afectado o puede contribuir al sistema y su arquitectura, entendiendose entidad como persona, organizacion, empresa, etc.
 |===
