@@ -3,84 +3,37 @@
 
 == Deployment View
 
-[role="arc42help"]
-****
-.Content
-The deployment view describes:
-
- 1. the technical infrastructure used to execute your system, with infrastructure elements like geographical locations, environments, computers, processors, channels and net topologies as well as other infrastructure elements and
-
-2. the mapping of (software) building blocks to that infrastructure elements.
-
-Often systems are executed in different environments, e.g. development environment, test environment, production environment. In such cases you should document all relevant environments.
-
-Especially document the deployment view when your software is executed as distributed system with more then one computer, processor, server or container or when you design and construct your own hardware processors and chips.
-
-From a software perspective it is sufficient to capture those elements of the infrastructure that are needed to show the deployment of your building blocks. Hardware architects can go beyond that and describe the infrastructure to any level of detail they need to capture.
-
-.Motivation
-Software does not run without hardware.
-This underlying infrastructure can and will influence your system and/or some
-cross-cutting concepts. Therefore, you need to know the infrastructure.
-
-.Form
-
-Maybe the highest level deployment diagram is already contained in section 3.2. as
-technical context with your own infrastructure as ONE black box. In this section you will
-zoom into this black box using additional deployment diagrams:
-
-* UML offers deployment diagrams to express that view. Use it, probably with nested diagrams,
-when your infrastructure is more complex.
-* When your (hardware) stakeholders prefer other kinds of diagrams rather than the deployment diagram, let them use any kind that is able to show nodes and channels of the infrastructure.
-****
-
 === Infrastructure Level 1
 
-[role="arc42help"]
-****
-Describe (usually in a combination of diagrams, tables, and text):
-
-*  the distribution of your system to multiple locations, environments, computers, processors, .. as well as the physical connections between them
-*  important justification or motivation for this deployment structure
-* Quality and/or performance features of the infrastructure
-*  the mapping of software artifacts to elements of the infrastructure
-
-For multiple environments or alternative deployments please copy that section of arc42 for all relevant environments.
-****
-
-_**<Overview Diagram>**_
+:imagesdir: images/
+image::diagrama de despliegue.png[]
 
 Motivation::
 
-_<explanation in text form>_
+El objetivo de esta estructura de despliegue es conseguir un sistema descentralizado. Con las premisas 
+de almacenar los mínimos datos de los usuarios, la privacidad de dicha información asi como la seguridad
+de la misma.
 
 Quality and/or Performance Features::
 
-_<explanation in text form>_
+Al tratarse de una tienda online, es nuestra prioridad producir un front-end que cuente con las
+caracteristicas de una aplicación usable.Además de un back-end que cumpla con los requisitos de calidad
+propuestos, asi como un minimo de rendimiento.
+Con el objetivo de desarrollar el condigo mas limpio y eficiente posible usaremos codecov. Se trata 
+de un software que permite monitorizar el codigo que esta siendo ejecutado en las pruebas y el que no.
+Asi se puede comprabar que elementos son los menos testeados para ponerle solución y mejorar la calidad
+del código.
 
 Mapping of Building Blocks to Infrastructure::
-_<description of the mapping>_
-
-
-=== Infrastructure Level 2
-
-[role="arc42help"]
-****
-Here you can include the internal structure of (some) infrastructure elements from level 1.
-
-Please copy the structure from level 1 for each selected element.
-****
-
-==== _<Infrastructure Element 1>_
-
-_<diagram + explanation>_
-
-==== _<Infrastructure Element 2>_
-
-_<diagram + explanation>_
-
-...
-
-==== _<Infrastructure Element n>_
-
-_<diagram + explanation>_
+[options="header",cols="1,2"]
+|===
+|Atributos|Descripción
+| _devices_ |  _son los dispositivos desde los que los    usuarios pueden acceder a nuestra aplicación. Al tratarse
+		de una aplicación web, los dispositivos podran ser cualquiera que pueda navegar por internet._
+| _browsers_ |  _software que emplean los usuarios para visualizar el contenido de nuestra aplicación web.
+		Deberá ser compatibles con los mas utilizados (Chrome, Firefox, Safari, Microsoft edge)._
+| _web server_ |  _es el servidor que dará host a nuestra aplicación web._
+| _Base de datos_ |  _es la base de datos en la que persistiremos los datos de nuestra aplicación._
+| _SOLID_ |  _Donde almacenaremos (de forma segura) los datos de los usuarios en PODs._
+| _PODs_ |  _contendrá los datos de cada usuario concreto de forma que exitira un POD por usuario._
+|===
