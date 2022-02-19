@@ -2,6 +2,7 @@
 == Conceptos transversales
 [role="arc42help"]
 
+
 === Modelo de dominio
 ****
 

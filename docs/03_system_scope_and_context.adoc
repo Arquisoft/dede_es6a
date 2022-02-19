@@ -39,7 +39,7 @@ Canal de comunicación entre el usuario y el sistema. El sistema muestra al usua
 
 ****
 
-=== Technical Context
+=== 3.2 Technical Context
 
 ****
 
