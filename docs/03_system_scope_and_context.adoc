@@ -1,7 +1,7 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-=== 3.1 Business Context
+===  Business Context
 
 [role="arc42help"]
 ****
