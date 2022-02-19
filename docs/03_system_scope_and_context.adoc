@@ -1,7 +1,7 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-=== 2.1 Business Context
+=== 3.1 Business Context
 
 [role="arc42help"]
 ****
@@ -39,7 +39,7 @@ Canal de comunicación entre el usuario y el sistema. El sistema muestra al usua
 
 ****
 
-=== 2.2 Technical Context
+=== 3.2 Technical Context
 
 ****
 
