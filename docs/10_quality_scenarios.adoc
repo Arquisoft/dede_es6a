@@ -1,5 +1,5 @@
 [[section-quality-scenarios]]
-== Quality Requirements
+== Requerimientos de Calidad
 
 
 [role="arc42help"]

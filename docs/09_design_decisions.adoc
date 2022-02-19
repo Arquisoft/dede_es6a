@@ -1,3 +1,4 @@
+[[section-design-decisions]]
 == Decisiones de diseño
 
 

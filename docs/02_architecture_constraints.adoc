@@ -1,7 +1,7 @@
 [[section-architecture-constraints]]
 == Requisitos de arquitectura
 
-2.1 Restricciones técnicas::
+=== Restricciones técnicas
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
@@ -15,7 +15,7 @@
 				del sistema._
 |===
 
-2.2 Organización::
+=== Organización
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
@@ -28,7 +28,7 @@
 				su tamaño como sus integrantes._
 |===
 
-2.3 Políticas::
+=== Políticas
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
