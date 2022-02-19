@@ -9,4 +9,7 @@ privacidad.
 | TypeScript    | Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript, que esencialmente añade tipos estáticos y objetos basados en clases.
 | React    | Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.
 | Stakeholder    | Entidad que afecta, es afectado o puede contribuir al sistema y su arquitectura, entendiendose entidad como persona, organizacion, empresa, etc.
+| MongoDB    | Sistema de base de datos NoSQL, orientado a documentos y de código abierto.MongoDB guarda estructuras de datos BSON (una especificación similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida.
+| Docker    | Conjunto de plataformas que utilizan la virtualización para entregar software en paquetes denominados contenedores.
+| Node.js    | Entorno de tiempo de ejecución JavaScript de código abierto que ejecuta código JavaScript fuera de un navegador web.
 |===
