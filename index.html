@@ -442,12 +442,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introducción">1. Introducción</a></li>
+<li><a href="#_introducción">1. Introducción</a>
+<ul class="sectlevel2">
+<li><a href="#_introducción_y_objetivos">1.1. Introducción y objetivos</a></li>
+<li><a href="#_atributos_de_calidad">1.2. Atributos de calidad</a></li>
+<li><a href="#_stakeholders">1.3. Stakeholders</a></li>
+</ul>
+</li>
 <li><a href="#section-architecture-constraints">2. Requisitos de arquitectura</a></li>
 <li><a href="#section-system-scope-and-context">3. System Scope and Context</a>
 <ul class="sectlevel2">
-<li><a href="#_3_1_business_context">3.1. 3.1 Business Context</a></li>
-<li><a href="#_3_2_technical_context">3.2. 3.2 Technical Context</a></li>
+<li><a href="#_business_context">3.1. Business Context</a></li>
+<li><a href="#_technical_context">3.2. Technical Context</a></li>
 </ul>
 </li>
 <li><a href="#section-solution-strategy">4. Solution Strategy</a></li>
@@ -459,38 +465,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a></li>
-<li><a href="#_propuesta_de_óscar">7. Propuesta de Óscar</a>
+<li><a href="#section-deployment-view">7. Deployment View</a>
 <ul class="sectlevel2">
-<li><a href="#_runtime_scenario_1">7.1. &lt;Runtime Scenario 1&gt;</a></li>
-<li><a href="#_runtime_scenario_2">7.2. &lt;Runtime Scenario 2&gt;</a></li>
-<li><a href="#">7.3. &#8230;&#8203;</a></li>
-<li><a href="#_runtime_scenario_n">7.4. &lt;Runtime Scenario n&gt;</a></li>
+<li><a href="#_infrastructure_level_1">7.1. Infrastructure Level 1</a></li>
 </ul>
 </li>
-<li><a href="#section-deployment-view">8. Deployment View</a>
+<li><a href="#section-concepts">8. Conceptos transversales</a>
 <ul class="sectlevel2">
-<li><a href="#_infrastructure_level_1">8.1. Infrastructure Level 1</a></li>
+<li><a href="#_8_1_modelo_de_dominio">8.1. 8.1 Modelo de dominio</a></li>
+<li><a href="#_8_2_experiencia_de_usuario">8.2. 8.2 Experiencia de usuario</a></li>
+<li><a href="#_8_3_internacionalización">8.3. 8.3 Internacionalización</a></li>
+<li><a href="#_8_4_seguridad_y_privacidad">8.4. 8.4 Seguridad y Privacidad</a></li>
+<li><a href="#_8_5_pruebas">8.5. 8.5 Pruebas</a></li>
 </ul>
 </li>
-<li><a href="#section-concepts">9. Conceptos transversales</a>
+<li><a href="#section-design-decisions">9. Decisiones de diseño</a></li>
+<li><a href="#section-quality-scenarios">10. Quality Requirements</a>
 <ul class="sectlevel2">
-<li><a href="#_8_1_modelo_de_dominio">9.1. 8.1 Modelo de dominio</a></li>
-<li><a href="#_8_2_experiencia_de_usuario">9.2. 8.2 Experiencia de usuario</a></li>
-<li><a href="#_8_3_internacionalización">9.3. 8.3 Internacionalización</a></li>
-<li><a href="#_8_4_seguridad_y_privacidad">9.4. 8.4 Seguridad y Privacidad</a></li>
-<li><a href="#_8_5_pruebas">9.5. 8.5 Pruebas</a></li>
+<li><a href="#_quality_tree">10.1. Quality Tree</a></li>
+<li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
+<li><a href="#_escenarios_de_calidad">10.3. Escenarios de calidad</a></li>
 </ul>
 </li>
-<li><a href="#_decisiones_de_diseño">10. Decisiones de diseño</a></li>
-<li><a href="#section-quality-scenarios">11. Quality Requirements</a>
-<ul class="sectlevel2">
-<li><a href="#_quality_tree">11.1. Quality Tree</a></li>
-<li><a href="#_quality_scenarios">11.2. Quality Scenarios</a></li>
-<li><a href="#_escenarios_de_calidad">11.3. Escenarios de calidad</a></li>
-</ul>
-</li>
-<li><a href="#section-technical-risks">12. 11. Riesgos y deuda técnica</a></li>
-<li><a href="#section-glossary">13. Glossary</a></li>
+<li><a href="#section-technical-risks">11. 11. Riesgos y deuda técnica</a></li>
+<li><a href="#section-glossary">12. Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -533,48 +531,31 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <div class="sect1">
 <h2 id="_introducción">1. Introducción</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">1.1 Introducción y objetivos</dt>
-<dd>
-<p>Este proyecto nace con el objetivo principal de construir una tienda online
+<div class="sect2">
+<h3 id="_introducción_y_objetivos">1.1. Introducción y objetivos</h3>
+<div class="literalblock">
+<div class="content">
+<pre>Este proyecto nace con el objetivo principal de construir una tienda online
 que permita a los usuarios la compra de licores y bebidas espiritosas al
 precio mas competitivo.
-Como objetivos secundarios:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>aprendizaje de tecnologias como typescript, react, solid&#8230;&#8203;</p>
-</li>
-<li>
-<p>mejorar nuestras habilidades sociales y de trabajo en equipo.
+Como objetivos secundarios:
+- aprendizaje de tecnologias como typescript, react, solid...
+- mejorar nuestras habilidades sociales y de trabajo en equipo.
 El principal objetivo es el de agrupar una gran variedad de bebidas alcoholicas
 de la mejor calidad y al precio mas asequible. De esta forma cualquier persona
 mayor de edad puede disfrutar de un trago agradable de forma cómoda.
 Los requisitos funcionales son los típicos de cualquier tienda online común.
-Principalmente:</p>
-</li>
-<li>
-<p>El sistema simulara una tienda online en la que los usuarios podran seleccionar y encargar bebidas alcoholicas.</p>
-</li>
-<li>
-<p>El sistema calculará los costes de envio en función de las caracteristicas del mismo.</p>
-</li>
-<li>
-<p>El sistema mostrará los costes finales y permitirá al usuario finalizar su compra</p>
-</li>
-<li>
-<p>El usuario podrá visualizar sus pedidos.</p>
-</li>
-<li>
-<p>El usuario podrá visualizar un catálogo de bebidas clasificadas en categorias.</p>
-</li>
-</ul>
+Principalmente:
+- El sistema simulara una tienda online en la que los usuarios podran seleccionar y encargar bebidas alcoholicas.
+- El sistema calculará los costes de envio en función de las caracteristicas del mismo.
+- El sistema mostrará los costes finales y permitirá al usuario finalizar su compra
+- El usuario podrá visualizar sus pedidos.
+- El usuario podrá visualizar un catálogo de bebidas clasificadas en categorias.</pre>
 </div>
-</dd>
-<dt class="hdlist1">Atributos de calidad</dt>
-</dl>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_atributos_de_calidad">1.2. Atributos de calidad</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -609,11 +590,9 @@ Principalmente:</p>
 </tr>
 </tbody>
 </table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Stakeholders</dt>
-</dl>
 </div>
+<div class="sect2">
+<h3 id="_stakeholders">1.3. Stakeholders</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -652,12 +631,13 @@ Principalmente:</p>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="section-architecture-constraints">2. Requisitos de arquitectura</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">2.1 Restricciones técnicas</dt>
+<dt class="hdlist1">==== Restricciones técnicas</dt>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -696,7 +676,7 @@ Principalmente:</p>
 </table>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">2.2 Organización</dt>
+<dt class="hdlist1">== Organización</dt>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -731,7 +711,7 @@ Principalmente:</p>
 </table>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">2.3 Políticas</dt>
+<dt class="hdlist1">== Políticas</dt>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -772,7 +752,7 @@ Principalmente:</p>
 <h2 id="section-system-scope-and-context">3. System Scope and Context</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_3_1_business_context">3.1. 3.1 Business Context</h3>
+<h3 id="_business_context">3.1. Business Context</h3>
 <div class="sidebarblock arc42help">
 <div class="content">
 <div class="imageblock">
@@ -804,7 +784,7 @@ Principalmente:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_3_2_technical_context">3.2. 3.2 Technical Context</h3>
+<h3 id="_technical_context">3.2. Technical Context</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1164,131 +1144,19 @@ part of arc42 for additional levels.</p>
 <div class="sect1">
 <h2 id="section-runtime-view">6. Runtime View</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_propuesta_de_óscar">7. Propuesta de Óscar</h2>
-<div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="imageblock">
+<div class="imageblock arc42help">
 <div class="content">
 <img src="./images/diagrama-secuencia-oscar.png" alt="diagrama secuencia oscar">
 </div>
 </div>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>important use cases or features: how do building blocks execute them?</p>
-</li>
-<li>
-<p>interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?</p>
-</li>
-<li>
-<p>operation and administration: launch, start-up, stop</p>
-</li>
-<li>
-<p>error and exception scenarios</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their <strong>architectural relevance</strong>. It is <strong>not</strong> important to describe a large number of scenarios. You should rather document a representative selection.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>There are many notations for describing scenarios, e.g.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>numbered list of steps (in natural language)</p>
-</li>
-<li>
-<p>activity diagrams or flow charts</p>
-</li>
-<li>
-<p>sequence diagrams</p>
-</li>
-<li>
-<p>BPMN or EPCs (event process chains)</p>
-</li>
-<li>
-<p>state machines</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_runtime_scenario_1">7.1. &lt;Runtime Scenario 1&gt;</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
-</li>
-<li>
-<p><em>&lt;insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.&gt;</em></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>It is possible to use a sequence diagram:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -&gt; Bob: Authentication Request
-Bob --&gt; Alice: Authentication Response
-Alice  --&gt; Pod: Store route
-Alice -&gt; Bob: Another authentication Request
-Alice &lt;-- Bob: another authentication Response</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_runtime_scenario_2">7.2. &lt;Runtime Scenario 2&gt;</h3>
-
-</div>
-<div class="sect2">
-<h3 id="">7.3. &#8230;&#8203;</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_runtime_scenario_n">7.4. &lt;Runtime Scenario n&gt;</h3>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="section-deployment-view">8. Deployment View</h2>
+<h2 id="section-deployment-view">7. Deployment View</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_infrastructure_level_1">8.1. Infrastructure Level 1</h3>
+<h3 id="_infrastructure_level_1">7.1. Infrastructure Level 1</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/diagrama%20de%20despliegue.png" alt="diagrama de despliegue">
@@ -1360,10 +1228,10 @@ del código.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-concepts">9. Conceptos transversales</h2>
+<h2 id="section-concepts">8. Conceptos transversales</h2>
 <div class="sectionbody">
 <div class="sect2 arc42help">
-<h3 id="_8_1_modelo_de_dominio">9.1. 8.1 Modelo de dominio</h3>
+<h3 id="_8_1_modelo_de_dominio">8.1. 8.1 Modelo de dominio</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1382,7 +1250,7 @@ del código.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_2_experiencia_de_usuario">9.2. 8.2 Experiencia de usuario</h3>
+<h3 id="_8_2_experiencia_de_usuario">8.2. 8.2 Experiencia de usuario</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1392,7 +1260,7 @@ del código.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_3_internacionalización">9.3. 8.3 Internacionalización</h3>
+<h3 id="_8_3_internacionalización">8.3. 8.3 Internacionalización</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1402,7 +1270,7 @@ del código.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_4_seguridad_y_privacidad">9.4. 8.4 Seguridad y Privacidad</h3>
+<h3 id="_8_4_seguridad_y_privacidad">8.4. 8.4 Seguridad y Privacidad</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1415,7 +1283,7 @@ del código.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_5_pruebas">9.5. 8.5 Pruebas</h3>
+<h3 id="_8_5_pruebas">8.5. 8.5 Pruebas</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1428,7 +1296,7 @@ del código.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_decisiones_de_diseño">10. Decisiones de diseño</h2>
+<h2 id="section-design-decisions">9. Decisiones de diseño</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1451,7 +1319,7 @@ por decidir la base de datos concreta a utilizar.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-quality-scenarios">11. Quality Requirements</h2>
+<h2 id="section-quality-scenarios">10. Quality Requirements</h2>
 <div class="sectionbody">
 <div class="sidebarblock arc42help">
 <div class="content">
@@ -1472,7 +1340,7 @@ concrete and measurable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quality_tree">11.1. Quality Tree</h3>
+<h3 id="_quality_tree">10.1. Quality Tree</h3>
 <div class="sidebarblock arc42help">
 <div class="content">
 <div class="paragraph">
@@ -1504,7 +1372,7 @@ concrete and measurable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quality_scenarios">11.2. Quality Scenarios</h3>
+<h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
 <div class="sidebarblock arc42help">
 <div class="content">
 <div class="paragraph">
@@ -1545,7 +1413,7 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_escenarios_de_calidad">11.3. Escenarios de calidad</h3>
+<h3 id="_escenarios_de_calidad">10.3. Escenarios de calidad</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -1594,7 +1462,7 @@ si creemos que debemos proporcionar un rendimiento aceptable para que al usuario
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-technical-risks">12. 11. Riesgos y deuda técnica</h2>
+<h2 id="section-technical-risks">11. 11. Riesgos y deuda técnica</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Por una parte, entenderemos <em>riesgos</em> como aquellas circunstancias potenciales negativas que aún no han ocurrido. A continuación indicamos los riesgos identificados, así como medidas propuestas para paliarlos o mitigarlos.</p>
@@ -1643,7 +1511,7 @@ aprovechando la gran cantidad de recursos existentes en Internet</p></td>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-glossary">13. Glossary</h2>
+<h2 id="section-glossary">12. Glossary</h2>
 <div class="sectionbody">
 <div class="sidebarblock arc42help">
 <div class="content">
