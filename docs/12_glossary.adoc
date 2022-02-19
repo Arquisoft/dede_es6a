@@ -9,4 +9,7 @@ privacidad.
 | TypeScript    | Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript, que esencialmente añade tipos estáticos y objetos basados en clases.
 | React    | Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.
 | Stakeholder    | Entidad que afecta, es afectado o puede contribuir al sistema y su arquitectura, entendiendose entidad como persona, organizacion, empresa, etc.
+| POD    | Los pods, personal online data stores, son como servidores web personales seguros para tus datos.
+
+Puedes almacenar cualquier tipo de información en un Pod de Solid, utilizando formatos y protocolos de datos estándar, abiertos e interoperables. Además, controlas el acceso a los datos de tu Pod y decides con quién quieres compartir qué datos. Puedes revocar el acceso en cualquier momento.
 |===
