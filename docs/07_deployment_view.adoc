@@ -3,18 +3,18 @@
 
 == Deployment View
 
-=== Infrastructure Level 1
+=== Infrastructura Level 1
 
 :imagesdir: images/
 image::diagrama de despliegue.png[]
 
-Motivation::
+=== Objetivo
 
 El objetivo de esta estructura de despliegue es conseguir un sistema descentralizado. Con las premisas 
 de almacenar los mínimos datos de los usuarios, la privacidad de dicha información asi como la seguridad
 de la misma.
 
-Quality and/or Performance Features::
+=== Calidad y/o Características de Actuación
 
 Al tratarse de una tienda online, es nuestra prioridad producir un front-end que cuente con las
 caracteristicas de una aplicación usable.Además de un back-end que cumpla con los requisitos de calidad
@@ -24,7 +24,7 @@ de un software que permite monitorizar el codigo que esta siendo ejecutado en la
 Asi se puede comprabar que elementos son los menos testeados para ponerle solución y mejorar la calidad
 del código.
 
-Mapping of Building Blocks to Infrastructure::
+=== Mapeo de bloques de construcción para infraestructura
 [options="header",cols="1,2"]
 |===
 |Atributos|Descripción

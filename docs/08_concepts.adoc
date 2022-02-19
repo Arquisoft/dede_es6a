@@ -1,67 +1,46 @@
 [[section-concepts]]
-== Cross-cutting Concepts
-
-
+== Conceptos transversales
 [role="arc42help"]
-****
-.Content
-This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
 
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
+=== Modelo de dominio
 ****
 
+El usuario tendrá una lista de licores donde este podrá seleccionar los que desee, meterlos en un carrito y posteriormente acceder a la compra.
 
-=== Domain model
+Una vez se acceda a la compra, el sistema calculará automaticamente los costes de envío utilizando la dirección del usuario, que se encontrará en su POD, y los costes de envío en relacion de la distancia del centro de distribución a la dirección del cliente.
 
-image:UmlDiagram.png["Example UML Diagram"]
+El sistema mostrará el precio final y cuando el usuario acepte se registrará la venta y su envío.
 
+Además la aplicación permitirá que los usuarios vean los pedidos realizados que tienen.
 
+****
 
-=== _<Concept 2>_
+=== Experiencia de usuario
+****
 
-_<explanation>_
+La aplicación sigue una interfaz simple y minimalista con la idea de que sea fácil e intuitiva de usar para los usuarios.
 
-...
+****
 
-=== _<Concept n>_
+=== Internacionalización
+****
 
-_<explanation>_
+La aplicación principalmente esta realizada en español aunque en un futuro se podría ampliar a más idiomas.
+
+****
+
+=== Seguridad y Privacidad
+****
+
+La seguridad y la privacidad es un objetivo muy importante de la aplicación. Se trata de tener una aplicación descentralizada gracias al uso de los PODs donde se almacenan los datos de los usuarios de forma privada y estos son los propietarios de sus propios datos y ellos mismos deciden a quién dar acceso.
+
+Además de en los PODs también vamos a tener datos guardados en una base de datos MongoDB.
+
+****
+
+=== Pruebas
+****
+
+A medida de que la aplicación esté en funcionamiento y según se vaya actualizando vamos a realizar pruebas exhaustivas para asegurarnos de que todo esta funcionando correctamente.
+
+****
