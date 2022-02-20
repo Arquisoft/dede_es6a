@@ -2,11 +2,7 @@
 == Runtime View
 
 
-//== Propuesta de Óscar
-
-[role="arc42help"]
-
 :imagesdir: images/
-image::diagrama-secuencia-oscar.png[]
+image::diagrama-secuencia.png[]
 
 Esta versión es una primera aproximación, en el futuro se volverá más realista en cuanto avancemos en el proyecto.
