@@ -1,17 +1,23 @@
 [[section-technical-risks]]
-== Risks and Technical Debts
+== Riesgos y deuda técnica
+
+Por una parte, entenderemos _riesgos_ como aquellas circunstancias potenciales negativas que aún no han ocurrido. A continuación indicamos los riesgos identificados, así como medidas propuestas para paliarlos o mitigarlos.
+
+[options="header",cols="1,2"]
+|===
+| Riesgo | Medida propuesta
+
+| Uno o más miembros del equipo podrían abandonar la asignatura |  Asignaremos varias personas a cada tarea, especialmente a las que resultan críticas
+
+| Carecemos de experiencia en las tecnologías incluídas en las restricciones |  De forma paralela a desarrollar la documentación, realizaremos acciones formativas
+aprovechando la gran cantidad de recursos existentes en Internet
+
+| La entrega es en mayo de 2022 y puede que no lleguemos a tiempo |  Celebraremos reuniones semanales donde analizar el estado actual del proyecto y ajustaremos el volumen de trabajo conforme a ello
+
+|===
 
 
-[role="arc42help"]
-****
-.Contents
-A list of identified technical risks or technical debts, ordered by priority
+Por otra parte, consideramos la _deuda técnica_ como algo inevitable en nuestro proyecto. Por falta de conocimiento o por llegar apurados a un plazo puede que no siempre desarrollemos software óptimo. Para evitar que esto nos lastre en el futuro:
 
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
-
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
-
-.Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
-****
+* Volveremos frecuentemente sobre nuestro código, refactorizándolo siempre que sea necesario.
+* Llevaremos a cabo revisiones de código entre miembros del equipo por medio de la funcionalidad de _pull requests_ de Github.

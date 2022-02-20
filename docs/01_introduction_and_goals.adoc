@@ -1,75 +1,53 @@
-[[section-introduction-and-goals]]
-== Introduction and Goals
 
-[role="arc42help"]
-****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+== Introducción
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
-****
+=== Introducción y objetivos
 
-=== Requirements Overview
+	Este proyecto nace con el objetivo principal de construir una tienda online
+	que permita a los usuarios la compra de licores y bebidas espiritosas al 
+	precio mas competitivo.
+	Como objetivos secundarios:
+	- aprendizaje de tecnologias como typescript, react, solid...
+	- mejorar nuestras habilidades sociales y de trabajo en equipo.
+	El principal objetivo es el de agrupar una gran variedad de bebidas alcoholicas
+	de la mejor calidad y al precio mas asequible. De esta forma cualquier persona
+	mayor de edad puede disfrutar de un trago agradable de forma cómoda.
+	Los requisitos funcionales son los típicos de cualquier tienda online común.
+	Principalmente:
+	- El sistema simulara una tienda online en la que los usuarios podran seleccionar y encargar bebidas alcoholicas.
+	- El sistema calculará los costes de envio en función de las caracteristicas del mismo.
+	- El sistema mostrará los costes finales y permitirá al usuario finalizar su compra
+	- El usuario podrá visualizar sus pedidos.
+	- El usuario podrá visualizar un catálogo de bebidas clasificadas en categorias.
 
-[role="arc42help"]
-****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+=== Atributos de calidad
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
-
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
-
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
-****
-
-=== Quality Goals
-
-[role="arc42help"]
-****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
-
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
-
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
-****
+[options="header",cols="1,2"]
+|===
+|Atributos|Descripción
+| _Usabilidad_ |  _Es de gran importancia que la aplicación sea entendida con gran
+		facilidad con el objetivo principal de maximizar las ventas._
+| _Disponibilidad_ |  _Tratandose de una tienda es fundamental que los servicios que
+		esta ofrece estén disponibles el mayor tiempo posible._
+| _Seguridad_ |  _La confidencialidad de los datos de nuestro clientes es una prioridad._
+| _Testeabilidad_ |  _De cara al correcto desarrollo y funcionamiento, consideramos 
+		importante tener presente las pruebas en todas las etapas del trabajo y facilitar
+		todo lo posible su construcción y uso._
+|===
 
 === Stakeholders
 
-[role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
-
-[options="header",cols="1,2,2"]
+[options="header",cols="1,2"]
 |===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|Role/Nombre|Expectaciones
+| _Profesores_ |  _Interesados en el desarrollo de la funcionalidad, arquitectura y 
+        documentación de la aplicación._
+| _Clientes Potenciales_ |  _A los que va destinado el producto final y para los que
+		van destinados los requisitos funcionales._
+| _Miembros del grupo del desarrollo_ |  _Como estudiantes confiamos en mejorar nuestras
+		habilidades sobre las tecnologías tratadas en este trabajo y obtener un 
+		resultado satisfactorio._
+| _Otros estudiantes_ |  _Esperan una buena aplicación que puedan tomar como ejemplo y
+		obtener información util que pueda ser reutilizada en proximos proyectos._
 |===
+

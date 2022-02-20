@@ -1,19 +1,43 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+== Requisitos de arquitectura
 
+=== Restricciones técnicas
+[options="header",cols="1,2"]
+|===
+|Restricción|Explicación
+| _Docker_ |  _Contenedores docker empleados para el despliegue de la aplicación._
+| _Solid app_ |  _Tecnología fundamental para poder garantizar la confidencialidad 
+				de los datos manejados de forma que se conforma una red de persistencia
+				descentralizada._
+| _Typescript_ |  _Lenguaje de programacion empleado para la implementación de
+				la lógica de negocio del sistema._
+| _React_ |  _Es la librería que sera utilizada para la construcción del front-end
+				del sistema._
+|===
 
-[role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+=== Organización
+[options="header",cols="1,2"]
+|===
+|Restricción|Explicación
+| _Tiempo / planificación_ |  _El sistema debe de cumplir con los requisitos funcionales
+				planteados antes de la última entrega de la asignatura. Asi como cumplir con
+				las entregas parciales solicitadas._
+| _Control de versiones git_ |  _Como decisión impuesta se debe utilizar control de
+				versiones con git para gestionar el desarrollo del proyecto._
+| _Equipo fijo_ |  _El equipo es impuesto por la organización de la asignatura, tanto
+				su tamaño como sus integrantes._
+|===
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
+=== Políticas
+[options="header",cols="1,2"]
+|===
+|Restricción|Explicación
+| _Ley orgánica de protección de datos_ |  _A nivel de cumplimiento de la
+				legislación española debemos tener especial cuidado en el trato de
+				los datos sensibles de los usuarios de nuestra aplicación._
+| _Idioma_ | Se empleará el idioma castellano tanto en la documentación como
+				en la implementación de la aplicación aunque se podrá internacionalizar
+				en un futuro._
+| _Arc42_ |  _Como decisión impuesta debemos seguir esta plantilla para la realización
+				de esta documentación._
+|===
