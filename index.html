@@ -459,7 +459,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-system-scope-and-context">3. System Scope and Context</a>
 <ul class="sectlevel2">
 <li><a href="#_business_context">3.1. Business Context</a></li>
-<li><a href="#_3_2_technical_context">3.2. 3.2 Technical Context</a></li>
+<li><a href="#_technical_context">3.2. Technical Context</a></li>
 </ul>
 </li>
 <li><a href="#section-solution-strategy">4. Solution Strategy</a></li>
@@ -756,11 +756,9 @@ Principalmente:
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_business_context">3.1. Business Context</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="imageblock">
 <div class="content">
-<img src="./images/diagrama-contexto-negocio-oscar.png" alt="diagrama contexto negocio oscar">
+<img src="./images/diagrama-contexto-negocio.png" alt="diagrama contexto negocio">
 </div>
 </div>
 <h5 id="_gps" class="discrete">GPS</h5>
@@ -784,19 +782,13 @@ Principalmente:
 <p>Canal de comunicación entre el usuario y el sistema. El sistema muestra al usuario los productos disponibles que poduede seleccionar y encargar a comprar.</p>
 </div>
 </div>
-</div>
-</div>
 <div class="sect2">
-<h3 id="_3_2_technical_context">3.2. 3.2 Technical Context</h3>
-<div class="sidebarblock">
-<div class="content">
+<h3 id="_technical_context">3.2. Technical Context</h3>
 <div class="paragraph">
 <p>La aplicación se basa en un sistema descentralizado para la cual se usó  la tecnología SOLID que permite garantizar la confidencialidad de los datos manejados de forma que se conforma una red de persistencia descentralizada. Cada usuario es propietario de su información personal la cual se gestionará mediante un SOLID POD. De esta manera es el propio usuario el que decide qué datos son públicos o privados y con quien los comparte. Por temas de eficiencia algunos de los datos se guardarán en una base de datos, en este caso MongoDB.</p>
 </div>
 <div class="paragraph">
 <p>La aplicación esta implementada utilizando el framework React, que es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página, y Typescript, que es un superconjunto de JavaScript, que esencialmente añade tipos estáticos y objetos basados en clases.</p>
-</div>
-</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1147,9 +1139,9 @@ part of arc42 for additional levels.</p>
 <div class="sect1">
 <h2 id="section-runtime-view">6. Runtime View</h2>
 <div class="sectionbody">
-<div class="imageblock arc42help">
+<div class="imageblock">
 <div class="content">
-<img src="./images/diagrama-secuencia-oscar.png" alt="diagrama secuencia oscar">
+<img src="./images/diagrama-secuencia.png" alt="diagrama secuencia">
 </div>
 </div>
 <div class="paragraph">
@@ -1541,6 +1533,10 @@ privacidad.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Los pods, personal online data stores, son como servidores web personales seguros para tus datos.
 Puedes almacenar cualquier tipo de información en un Pod de Solid, utilizando formatos y protocolos de datos estándar, abiertos e interoperables. Además, controlas el acceso a los datos de tu Pod y decides con quién quieres compartir qué datos. Puedes revocar el acceso en cualquier momento.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bootstrap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework muy popular que facilita el desarrollo web ofreciendo clases predefinidas en CSS y JavaScript.</p></td>
 </tr>
 </tbody>
 </table>
