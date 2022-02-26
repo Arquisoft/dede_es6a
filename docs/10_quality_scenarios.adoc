@@ -54,8 +54,7 @@ Tabular or free form text.
 [options="header",cols="1,2,2"]
 |===
 |Atributos de Calidad|Escenarios de Calidad|Prioridad
-| Usabilidad | Los usuarios deben saber manejarse por la aplicación fácilmente con el objetivo
-de que comprar cualquier tipo de producto sea una tarea fácil y rápida | Alta
+| Usabilidad | Los usuarios deben saber manejarse por la aplicación fácilmente con el objetivo de que comprar cualquier tipo de producto sea una tarea fácil y rápida. A pesar de esto, no necesitamos que sea muy elevado ya que se trata de un proyecto universitario, no va a ser usado por personas ajenas. | Baja
 | Privacidad | El objetivo principal que desemaos alcanzar es la protección de los datos de usuarios finales para así se llevar a cabo la descentralización de datos personales y con ello mejorar el nivel de privacidad de los usuarios. | Alta
 | Testeabilidad | Realización de pruebas unitarias, pruebas de aceptación y de carga para comprobar el correcto funcionamiento de la aplicación| Media
 | Robustez | La aplicación debe ser robusta para que los productos mantengan sus características únicas| Media
