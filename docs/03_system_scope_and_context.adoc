@@ -1,16 +1,12 @@
 [[section-system-scope-and-context]]
+
 == System Scope and Context
 
 ===  Business Context
 
-[role="arc42help"]
-****
 
 :imagesdir: images/
-image::diagrama-contexto-negocio-oscar.png[]
-
-
-
+image::diagrama-contexto-negocio.png[]
 
 [discrete]
 ===== GPS
@@ -37,14 +33,10 @@ El usuario elige que productos quiere comprar de la tienda. Ademas proporciona a
 
 Canal de comunicación entre el usuario y el sistema. El sistema muestra al usuario los productos disponibles que poduede seleccionar y encargar a comprar.
 
-****
 
-=== 3.2 Technical Context
+=== Technical Context
 
-****
 
 La aplicación se basa en un sistema descentralizado para la cual se usó  la tecnología SOLID que permite garantizar la confidencialidad de los datos manejados de forma que se conforma una red de persistencia descentralizada. Cada usuario es propietario de su información personal la cual se gestionará mediante un SOLID POD. De esta manera es el propio usuario el que decide qué datos son públicos o privados y con quien los comparte. Por temas de eficiencia algunos de los datos se guardarán en una base de datos, en este caso MongoDB.
 
 La aplicación esta implementada utilizando el framework React, que es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página, y Typescript, que es un superconjunto de JavaScript, que esencialmente añade tipos estáticos y objetos basados en clases.
-
-****

@@ -1,5 +1,5 @@
 [[section-glossary]]
-== Glossary
+== Glosario
 
 |===
 | Término         | Definición
@@ -12,4 +12,7 @@ privacidad.
 | MongoDB    | Sistema de base de datos NoSQL, orientado a documentos y de código abierto.MongoDB guarda estructuras de datos BSON (una especificación similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida.
 | Docker    | Conjunto de plataformas que utilizan la virtualización para entregar software en paquetes denominados contenedores.
 | Node.js    | Entorno de tiempo de ejecución JavaScript de código abierto que ejecuta código JavaScript fuera de un navegador web.
+| POD    | Los pods, personal online data stores, son como servidores web personales seguros para tus datos.
+Puedes almacenar cualquier tipo de información en un Pod de Solid, utilizando formatos y protocolos de datos estándar, abiertos e interoperables. Además, controlas el acceso a los datos de tu Pod y decides con quién quieres compartir qué datos. Puedes revocar el acceso en cualquier momento.
+| Bootstrap    | Framework muy popular que facilita el desarrollo web ofreciendo clases predefinidas en CSS y JavaScript.
 |===
