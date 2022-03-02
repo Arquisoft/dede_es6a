@@ -3,6 +3,7 @@ import cors from 'cors';
 import bp from 'body-parser';
 import promBundle from 'express-prom-bundle';
 import api from "./controllers/api"; 
+import 'reflect-metadata';
 
 const app: Application = express();
 const port: number = 5000;

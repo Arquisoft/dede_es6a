@@ -1,8 +1,11 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import { userInfo } from 'os';
+import { Container } from 'typedi';
+import BotellaService from "../services/products";
 
 const api:Router = express.Router()
+const productService : BotellaService  = Container.get(BotellaService);
 
 interface User {
     name: string;
@@ -31,6 +34,13 @@ api.post(
     let user: User = {name:name,email:email}
     users.push(user);
     return res.sendStatus(200);
+  }
+);
+
+api.get(
+  "/catalogo",
+  async (req: Request, res: Response): Promise<Response> => {
+      return res.status(200).send(productService.findById('1'));
   }
 );
 
