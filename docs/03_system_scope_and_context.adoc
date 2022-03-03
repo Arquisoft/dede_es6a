@@ -8,9 +8,11 @@
 :imagesdir: images/
 image::diagrama-contexto-negocio.png[]
 
+==== Leyenda:
+
 [discrete]
 ===== DeDe
-Canal de comunicación entre el usuario y el sistema. El sistema muestra al usuario los productos disponibles que poduede seleccionar y encargar a comprar.
+Canal de comunicación entre el usuario y el sistema. El sistema muestra al usuario los productos disponibles que puede comprar.
 
 [discrete]
 ===== Pod de Solid
