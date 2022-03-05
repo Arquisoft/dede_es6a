@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
+import {ProductType} from './../types';
 
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
     name: {type: String, required: true},
     marca: String,
-    precio: Number,
+    precio: {type: Number, require:true},
     categoria: {type: String, required: true},
     descripcion: {type: String}
 });
-const Product = mongoose.model('product', productSchema);
+const Product:mongoose.Model<ProductType> = mongoose.model('product', productSchema);
 export default Product; 
