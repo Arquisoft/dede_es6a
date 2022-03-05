@@ -1,7 +1,7 @@
 [[section-architecture-constraints]]
 == Requisitos de arquitectura
 
-2.1 Restricciones técnicas::
+=== Restricciones técnicas
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
@@ -15,20 +15,21 @@
 				del sistema._
 |===
 
-2.2 Organización::
+=== Organización
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
 | _Tiempo / planificación_ |  _El sistema debe de cumplir con los requisitos funcionales
 				planteados antes de la última entrega de la asignatura. Asi como cumplir con
 				las entregas parciales solicitadas._
-| _Control de versiones git_ |  _Como decisión impuesta se debe utilizar control de
+| _Control de versiones_ |  _Como decisión impuesta se debe utilizar control de
 				versiones con git para gestionar el desarrollo del proyecto._
 | _Equipo fijo_ |  _El equipo es impuesto por la organización de la asignatura, tanto
 				su tamaño como sus integrantes._
 |===
 
-2.3 Normas::
+=== Normas
+
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación

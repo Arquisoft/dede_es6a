@@ -1,31 +1,18 @@
 [[section-glossary]]
-== Glossary
+== Glosario
 
-
-
-[role="arc42help"]
-****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
-
-You can also see the glossary as source for translations if you work in multi-language teams.
-
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
-
-.Form
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
-****
-
-[options="header"]
 |===
-| Term         | Definition
-| <Term-1>     | <definition-1>
-| <Term-2>     | <definition-2>
+| Término         | Definición
+| Solid    | Proyecto de descentralización de datos en la web que permiten al 
+usuario final decidir dónde se van a almacenar sus datos mejorando así la 
+privacidad.
+| TypeScript    | Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript, que esencialmente añade tipos estáticos y objetos basados en clases.
+| React    | Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.
+| Stakeholder    | Entidad que afecta, es afectado o puede contribuir al sistema y su arquitectura, entendiendose entidad como persona, organizacion, empresa, etc.
+| MongoDB    | Sistema de base de datos NoSQL, orientado a documentos y de código abierto.MongoDB guarda estructuras de datos BSON (una especificación similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida.
+| Docker    | Conjunto de plataformas que utilizan la virtualización para entregar software en paquetes denominados contenedores.
+| Node.js    | Entorno de tiempo de ejecución JavaScript de código abierto que ejecuta código JavaScript fuera de un navegador web.
+| POD    | Los pods, personal online data stores, son como servidores web personales seguros para tus datos.
+Puedes almacenar cualquier tipo de información en un Pod de Solid, utilizando formatos y protocolos de datos estándar, abiertos e interoperables. Además, controlas el acceso a los datos de tu Pod y decides con quién quieres compartir qué datos. Puedes revocar el acceso en cualquier momento.
+| Bootstrap    | Framework muy popular que facilita el desarrollo web ofreciendo clases predefinidas en CSS y JavaScript.
 |===
