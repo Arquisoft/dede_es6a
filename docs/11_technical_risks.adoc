@@ -1,5 +1,5 @@
 [[section-technical-risks]]
-== 11. Riesgos y deuda técnica
+== Riesgos y deuda técnica
 
 Por una parte, entenderemos _riesgos_ como aquellas circunstancias potenciales negativas que aún no han ocurrido. A continuación indicamos los riesgos identificados, así como medidas propuestas para paliarlos o mitigarlos.
 

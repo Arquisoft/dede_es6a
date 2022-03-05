@@ -1,0 +1,12 @@
+@startuml
+actor Usuario
+Usuario -> DeDe: solicitarLogIn()
+database Pod
+DeDe -> Pod: consultarAccesoDatos()
+DeDe <- Pod: permitirAccesoDatos()
+DeDe -> Pod: comprobarDatos()
+database MongoDB
+DeDe -> MongoDB: comprobarCredencialesValidos()
+DeDe <- MongoDB: permitirAcceso() / denegarAcceso()
+Usuario <- DeDe: mostrarResultadoLogIn()
+@enduml

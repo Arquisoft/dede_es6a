@@ -1,7 +1,8 @@
 
 == Introducción
 
-	 1.1 Introducción y objetivos::
+=== Introducción y objetivos
+
 	Este proyecto nace con el objetivo principal de construir una tienda online
 	que permita a los usuarios la compra de licores y bebidas espiritosas al 
 	precio mas competitivo.
@@ -19,7 +20,7 @@
 	- El usuario podrá visualizar sus pedidos.
 	- El usuario podrá visualizar un catálogo de bebidas clasificadas en categorias.
 
-	Atributos de calidad::
+=== Atributos de calidad
 
 [options="header",cols="1,2"]
 |===
@@ -34,7 +35,7 @@
 		todo lo posible su construcción y uso._
 |===
 
-   Stakeholders::
+=== Stakeholders
 
 [options="header",cols="1,2"]
 |===
