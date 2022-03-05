@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import { userInfo } from 'os';
@@ -9,10 +10,18 @@ interface User {
     name: string;
     email: string;
 }
+interface ProductType{
+  nombre:string;
+    marca: string;
+    precio: number;
+    categoria: string;
+    descripcion: string;
+}
+
 
 //This is not a restapi as it mantains state but it is here for
 //simplicity. A database should be used instead.
-let users: Array<User> = [];
+let users: Array<User> = [{name: "paco", email: "paco@uniovi.es"}];
 
 api.get(
     "/users/list",
@@ -36,8 +45,9 @@ api.post(
 );
 
 api.get("/catalogo", async (req: Request, res: Response): Promise<Response>=> {
-  const products =  await Product.find();
-  return res.send(products);
+  var products: Array<ProductType> =  await Product.find();
+  products = [{nombre:'keneveb',marca:'keneveb',precio:4.50,categoria:'vozka',descripcion:'el mejor vozka'}];
+  return res.status(200).send(products);
 });
 
 export default api;

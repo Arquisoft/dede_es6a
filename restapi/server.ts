@@ -12,7 +12,8 @@ app.set('port', process.env.PORT || 5000);
 const databse = require('./database');
 
 const options: cors.CorsOptions = {
-  origin: ['http://localhost:3000/'] 
+  origin: ['http://localhost:3000'],
+  optionsSuccessStatus: 200
 };
 
 const metricsMiddleware:RequestHandler = promBundle({includeMethod: true});
