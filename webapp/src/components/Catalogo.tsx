@@ -12,22 +12,22 @@ type Products = {
     products: Product[];
   }
 
-function Catalogo (props: Products): JSX.Element{
+  export default function Catalogo (props: Products): JSX.Element{
 
     return (
+      <>
+        <h1>Catalogo de productos</h1>
         <List>
-      {props.products.map((prod,i)=>{
-        return (
+        {props.products.map((prod,i)=>{
           <ListItem key={prod.nombre}>
             <ListItemIcon>
               <ContactPageIcon/>
             </ListItemIcon>
             <ListItemText primary={prod.nombre} secondary={prod.marca}/>
           </ListItem>
-        )
-      })}
-      </List>
+          })}
+        </List>
+      </>
     );
 
 }
-export default Catalogo;
