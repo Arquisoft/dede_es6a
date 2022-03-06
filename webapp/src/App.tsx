@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Catalogo from './components/Catalogo';
+import Catalogo from './components/products/Catalogo';
 import MainView from './components/MainView';
 import  {getProducts, getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
@@ -10,6 +10,8 @@ import {
   Route,
 } from "react-router-dom";
 import './App.css';
+import AddProducts from './components/products/addProcuts/AddProducts';
+
 
 function App(): JSX.Element {
 
@@ -37,6 +39,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<MainView />} />
         <Route path="catalogo" element={<Catalogo products={products} />} />
+        <Route path="products/add" element={<AddProducts />} />
       </Routes>
       </BrowserRouter>
     </>

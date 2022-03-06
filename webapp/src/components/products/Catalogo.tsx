@@ -1,7 +1,4 @@
-
-import React, { useState } from 'react';
-import {getProducts} from '../api/api';
-import {Product} from '../shared/shareddtypes';
+import {Product} from '../../shared/shareddtypes';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -18,13 +15,15 @@ type Products = {
       <>
         <h1>Catalogo de productos</h1>
         <List>
-        {props.products.map((prod,i)=>{
-          <ListItem key={prod.nombre}>
-            <ListItemIcon>
-              <ContactPageIcon/>
-            </ListItemIcon>
-            <ListItemText primary={prod.nombre} secondary={prod.marca}/>
-          </ListItem>
+          {props.products.map((prod,i)=>{
+            return (
+              <ListItem key={prod.nombre}>
+                <ListItemIcon>
+                  <ContactPageIcon/>
+                </ListItemIcon>
+                <ListItemText primary={prod.nombre} secondary={prod.precio}/>
+              </ListItem>
+            )
           })}
         </List>
       </>
