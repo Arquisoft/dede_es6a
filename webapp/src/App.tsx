@@ -5,6 +5,7 @@ import UserList from './components/UserList';
 import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import MenuBar from './components/MenuBar/MenuBar';
+import Login from './components/Login/Log';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ export default function App(){
     <main>
       <div className="App">
           <MenuBar />
+       <Login />
       </div>    
     </main>
   );
