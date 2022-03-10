@@ -1,7 +1,6 @@
 import './ConfirmacionEdad.css';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'reactstrap';
-import logo from '../logo.svg';
+import pez from '../images/pez.png';
 
 function ConfirmacionEdad() {
 
@@ -12,12 +11,10 @@ function ConfirmacionEdad() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+                <img src={pez} alt="logo" />
                 <div>
-                    {/* Botón de aceptar */}
-                    <Button color='dark' size='lg' className='m-2' onClick={goToProducts}>Sí</Button>
-                    {/* Botón de rechazar */}
-                    <Button color='dark' size='lg' className='m-2'onClick={leavePage}>No</Button>
+                    <button onClick={goToProducts} className="botonRespuesta">Sí</button>
+                    <button onClick={leavePage} className="botonRespuesta">No</button>
                 </div>
             </header>
         </div>
