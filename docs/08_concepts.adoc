@@ -2,7 +2,8 @@
 == Conceptos transversales
 [role="arc42help"]
 
-=== 8.1 Modelo de dominio
+
+=== Modelo de dominio
 ****
 
 El usuario tendrá una lista de licores donde este podrá seleccionar los que desee, meterlos en un carrito y posteriormente acceder a la compra.
@@ -15,21 +16,21 @@ Además la aplicación permitirá que los usuarios vean los pedidos realizados q
 
 ****
 
-=== 8.2 Experiencia de usuario
+=== Experiencia de usuario
 ****
 
 La aplicación sigue una interfaz simple y minimalista con la idea de que sea fácil e intuitiva de usar para los usuarios.
 
 ****
 
-=== 8.3 Internacionalización
+=== Internacionalización
 ****
 
 La aplicación principalmente esta realizada en español aunque en un futuro se podría ampliar a más idiomas.
 
 ****
 
-=== 8.4 Seguridad y Privacidad
+=== Seguridad y Privacidad
 ****
 
 La seguridad y la privacidad es un objetivo muy importante de la aplicación. Se trata de tener una aplicación descentralizada gracias al uso de los PODs donde se almacenan los datos de los usuarios de forma privada y estos son los propietarios de sus propios datos y ellos mismos deciden a quién dar acceso.
@@ -38,7 +39,7 @@ Además de en los PODs también vamos a tener datos guardados en una base de dat
 
 ****
 
-=== 8.5 Pruebas
+=== Pruebas
 ****
 
 A medida de que la aplicación esté en funcionamiento y según se vaya actualizando vamos a realizar pruebas exhaustivas para asegurarnos de que todo esta funcionando correctamente.
