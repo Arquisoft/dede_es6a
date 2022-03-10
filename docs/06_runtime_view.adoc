@@ -1,8 +1,14 @@
 [[section-runtime-view]]
 == Runtime View
 
+Esta versión es una primera aproximación, en el futuro se volverá más realista en cuanto avancemos en el proyecto
+
+
+=== Autentificación del usuario
 
 :imagesdir: images/
-image::diagrama-secuencia.png[]
+image::diagrama-secuencia-log-in.png[]
 
-Esta versión es una primera aproximación, en el futuro se volverá más realista en cuanto avancemos en el proyecto.
+=== Añadir productos al carrito
+image::diagrama-secuencia-añadir-carrito.png[]
+
