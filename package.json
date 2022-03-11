@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@solid/react": "^1.10.0"
+  }
+}

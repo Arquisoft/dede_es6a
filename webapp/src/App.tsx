@@ -5,9 +5,14 @@ import UserList from './components/UserList';
 import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import MenuBar from './components/MenuBar/MenuBar';
-import Login from './components/Login/Log';
+import Register from './components/Register/FormRegister';
+import Login from './components/loginApp/FormLogin';
+import FormRegister from './components/Register/FormRegister';
+//import { BrowserRouter, Route } from "react-router-dom";
+//import { LoggedIn, LoggedOut } from "@solid/react";    Más adelante 
 
 import './App.css';
+
 
 export default function App(){
     
@@ -24,8 +29,8 @@ export default function App(){
   return (
     <main>
       <div className="App">
-          <MenuBar />
-       <Login />
+        <Login />
+        <FormRegister />
       </div>    
     </main>
   );
