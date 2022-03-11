@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import Inicio from './components/Inicio';
 import Catalogo from './components/Catalogo';
-
 import  {getProducts, getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import {Product} from './shared/shareddtypes';
@@ -34,7 +33,7 @@ function App(): JSX.Element {
 
   return (
     <>
-   
+
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Inicio />} />

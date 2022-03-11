@@ -8,30 +8,28 @@
 :imagesdir: images/
 image::diagrama-contexto-negocio.png[]
 
-[discrete]
-===== GPS
-
-El sistema debe calcular los costes de envío utilizando la distancia existente entre el centro de distribución y la dirección donde el usuario desea recibir el producto. Para ello, necesitaremos una herramienta que sea capaz de calcular dicha distancia.
-
-[discrete]
-===== Pago
-
-El sistema debe incluir una plataforma de pago (ficticia en nuestro caso) que permita llevar a cabo la compra de los productos deseados.
-
-[discrete]
-===== Envío
-
-El sistema utilizará una API que permitirá al usuario escoger entre diferentes portadores.
-
-[discrete]
-===== Usuario
-
-El usuario elige que productos quiere comprar de la tienda. Ademas proporciona a la aplicacion su ubicación además de sus datos.
+==== Leyenda:
 
 [discrete]
 ===== DeDe
+Canal de comunicación entre el usuario y el sistema. El sistema muestra al usuario los productos disponibles que puede comprar.
 
-Canal de comunicación entre el usuario y el sistema. El sistema muestra al usuario los productos disponibles que poduede seleccionar y encargar a comprar.
+[discrete]
+===== Pod de Solid
+El usuario contará con su propio Pod, donde almacenará su información personal. DeDe, con permiso del usuario, accederá a la misma para conocer sus datos personales.
+
+[discrete]
+===== Base de datos MongoDB
+La base de datos MongoDB contendrá el catálogo de productos que ofrece DeDe.
+
+[discrete]
+===== Plataforma de pago
+El sistema incluye una plataforma de pago (ficticia en nuestro caso) que permite llevar a cabo la compra de los productos deseados.
+
+[discrete]
+===== API envío
+El sistema utilizará una API que permitirá al usuario escoger entre diferentes portadores.
+
 
 
 === Technical Context

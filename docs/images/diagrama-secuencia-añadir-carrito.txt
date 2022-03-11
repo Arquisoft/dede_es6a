@@ -1,0 +1,12 @@
+@startuml
+actor Usuario
+Usuario -> DeDe: verProductos()
+database MongoDB
+DeDe -> MongoDB: solicitarProductos()
+DeDe <- MongoDB: devolverProductos()
+Usuario <- DeDe: mostrarProductos()
+loop
+Usuario -> DeDe: añadirACarrito()
+DeDe -> DeDe: añadirACarrito()
+end
+@enduml

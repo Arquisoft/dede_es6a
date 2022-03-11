@@ -28,7 +28,8 @@
 				su tamaño como sus integrantes._
 |===
 
-=== Políticas
+=== Normas
+
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
