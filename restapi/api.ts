@@ -1,38 +1,49 @@
-import { Console } from 'console';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
-import { userInfo } from 'os';
 import Product from './models/Product';
-import {User, ProductType} from './types';
+import User from './models/User';
+import {ProductType, UserType} from './types';
 
+const api:Router = express.Router();
+const bcrypt:any = require('bcryptjs');
 
-const api:Router = express.Router()
-
-//This is not a restapi as it mantains state but it is here for
-//simplicity. A database should be used instead.
-let users: Array<User> = [{name: "paco", email: "paco@uniovi.es"}];
-
-api.get(
-    "/users/list",
-    async (req: Request, res: Response): Promise<Response> => {
-        return res.status(200).send(users);
-    }
-);
-
+// añadir usuarios a la BD
 api.post(
   "/users/add",[
     check('name').isLength({ min: 1 }).trim().escape(),
     check('email').isEmail().normalizeEmail(),
+    check('password','invalid pasword').isLength({ min: 6 }),
+    check('confirmPassword', 'invalid password').isLength({ min: 6 })
+    .custom((value,{req}) => {
+        if (value !== req.body.confirmPassword) {
+            // error si las contraseñas no coinciden
+            throw new Error("Passwords don't match");
+        } else {
+            return value;
+        }
+    })
   ],
   async (req: Request, res: Response): Promise<Response> => {
     let name = req.body.name; 
     let email = req.body.email;
-    let user: User = {name:name,email:email}
-    users.push(user);
+    let password = req.body.password;
+    
+    var salt = bcrypt.genSaltSync(10);
+    var hash:String = bcrypt.hashSync(password, salt);
+
+    const user = new User(
+      {
+        'name' : name,
+        'email': email,
+        'password': hash
+      }
+    );
+    await user.save();
     return res.sendStatus(200);
   }
 );
 
+// añadir productos a la BD
 api.post("/products/add",[
   check('nombre').isLength({min: 1}).trim().escape(),
   check('precio').exists().bail().if((value:number) => {value >= 0.0}),
@@ -55,9 +66,15 @@ async (req: Request, res: Response):Promise<Response> =>{
   return res.sendStatus(200);
 });
 
-api.get("/catalogo", async (req: Request, res: Response): Promise<Response>=> {
-  var products: Array<ProductType> =  await Product.find();
-  //products = [{nombre:'keneveb',marca:'keneveb',precio:4.50,categoria:'vozka',descripcion:'el mejor vozka'}];
+// sacar productos de la BD
+// parametro filter para filtrar productos por el atributo categoria
+api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Response>=> {
+  const filter = req.params.filter;
+  if(filter === 'all'){
+    var products: Array<ProductType> =  await Product.find();
+  }else{
+    var products: Array<ProductType> =  await Product.find({'categoria': filter});
+  }
   return res.status(200).send(products);
 });
 

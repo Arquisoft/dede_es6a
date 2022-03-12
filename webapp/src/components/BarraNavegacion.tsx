@@ -11,7 +11,7 @@ class BarraNavegacion extends Component {
                 <Navbar color="dark" dark expand="md" light>
 
                     {/* Nombre de la empresa y logo */}
-                    <NavbarBrand href="/products">
+                    <NavbarBrand href="/catalogo">
                         No Vendo Agua
                         <img
                             alt=""
