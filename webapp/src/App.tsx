@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import AddProducts from './components/products/addProducts/AddProducts';
+import ConfirmacionEdad from './components/ConfirmacionEdad';
 
 function App(): JSX.Element {
 
@@ -14,8 +15,7 @@ function App(): JSX.Element {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="inicio" element={<Inicio />} />
+        <Route path="/" element={<ConfirmacionEdad />} />
         <Route path="catalogo" element={<Catalogo  />} />
         <Route path="products/add" element={<AddProducts />} />
       </Routes>
