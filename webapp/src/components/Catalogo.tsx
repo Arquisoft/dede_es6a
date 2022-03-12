@@ -1,32 +1,31 @@
 
-import React, { useState } from 'react';
 import {getProducts} from '../api/api';
 import {Product} from '../shared/shareddtypes';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import ContactPageIcon from '@mui/icons-material/ContactPage';
+import ListGroup from 'react-bootstrap/ListGroup'
+import { useState, useEffect } from 'react';
+import Producto from './Producto';
+import './catalogo.css';
 
-type Products = {
-    products: Product[];
+function Catalogo (): JSX.Element{
+
+  const [products,setProducts] = useState<Product[]>([]);
+  const refreshProducts = async () => {
+    setProducts(await getProducts());
   }
-
-function Catalogo (props: Products): JSX.Element{
+  useEffect(()=>{ refreshProducts(); }, []);
 
     return (
-        <List>
-      {props.products.map((prod,i)=>{
-        return (
-          <ListItem key={prod.nombre}>
-            <ListItemIcon>
-              <ContactPageIcon/>
-            </ListItemIcon>
-            <ListItemText primary={prod.nombre} secondary={prod.marca}/>
-          </ListItem>
-        )
-      })}
-      </List>
+        <>
+        <h1 >Catálogo de productos</h1>
+        <ListGroup id='listaProductos'>
+            {products.map((producto)=>{   
+                return(
+                  <Producto producto={producto} /> 
+                );
+            })}
+      </ListGroup>
+
+      </>
     );
 
 }
