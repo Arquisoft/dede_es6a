@@ -1,4 +1,5 @@
 import express,{Application} from 'express'; 
+
 //for using an import here we need to configure the tsconfig.json
 //setting the option module to commonjs
 
