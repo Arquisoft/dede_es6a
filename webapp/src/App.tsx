@@ -30,7 +30,6 @@ export default function App(){
     <main>
       <div className="App">
         <Login />
-
       </div>    
     </main>
   );
