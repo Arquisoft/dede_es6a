@@ -1,0 +1,15 @@
+body{
+    background-color: darkgray !important;
+}
+#cards{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(5,0,98,1) 23%, rgba(10,10,126,1) 85%, rgba(0,212,255,1) 100%);
+}
+#participante{
+    padding: 1em;
+    margin: 1em;
+
+}
