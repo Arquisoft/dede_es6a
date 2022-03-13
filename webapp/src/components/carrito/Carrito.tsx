@@ -48,9 +48,9 @@ export default function(): JSX.Element{
                 return(
                     <ListGroup.Item>
                         Nombre: {carrito.producto.nombre}
-                        <Button id="btAñadir" variant="success">+</Button>
+                        <Button id="btAñadir" variant="success" onClick={() => addToCarrito(carrito.producto)}>+</Button>
                         Unidades: {carrito.unidades}
-                        <Button id="btEliminar" variant="danger">-</Button>
+                        <Button id="btEliminar" variant="danger" onClick={() => removeFromCarrito(carrito.producto.id)}>-</Button>
                         Precio = ({carrito.unidades}*{carrito.producto.precio})€
                     </ListGroup.Item>
                 );
