@@ -3,7 +3,7 @@ export type User = {
     email:string;
   }
 
-export type Product = {
+export type ProductType = {
     nombre:string;
     marca: string;
     precio: number;
