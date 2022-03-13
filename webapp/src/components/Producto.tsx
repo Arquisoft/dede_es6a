@@ -3,12 +3,12 @@ import {Product} from '../shared/shareddtypes';
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Carrito from './carrito/Carrito';
+import './catalogo.css';
 
 type Producto = {
     producto: Product;
   }
-
-
 
 function Producto (props: Producto): JSX.Element{
 
@@ -18,12 +18,10 @@ function Producto (props: Producto): JSX.Element{
         precio = props.producto.precio + "0 €";
     } else {
         precio = props.producto.precio + " €";
-    }
-    
+    }    
 
     return (
         <>
-        
         <Card as="div">
             <Card.Img variant="top" src={url} />
             <Card.Body>
@@ -50,3 +48,4 @@ function Producto (props: Producto): JSX.Element{
 
 }
 export default Producto;
+

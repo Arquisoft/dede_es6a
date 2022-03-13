@@ -103,6 +103,9 @@ class BarraNavegacion extends Component {
                             <NavItem>
                                 <NavLink href="/products">Inicia sesión</NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink href="/carrito">Carrito</NavLink>
+                            </NavItem>
                             
                         </Nav>
                     </Collapse>

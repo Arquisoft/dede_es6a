@@ -1,0 +1,99 @@
+  #listaCarrito{
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    margin: 5%;
+    justify-content: space-evenly;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+  }  
+  
+  #cardHeader{
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-weight: bold;
+    line-height:50px;
+  }
+
+  #btAñadir {
+    background-color: #13aa52;
+    border: 1px solid #13aa52;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 10px 25px;
+    text-align: center;
+    width: 50%;
+  }
+
+  #btEliminar {
+    background-color: #ca0202;
+    border: 1px solid #ca0202;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 10px 25px;
+    text-align: center;
+    width: 50%;
+  }
+
+  #btTramitarPedido {
+    background-color: #fffb00;
+    border: 1px solid #fffb00;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 10px 25px;
+    text-align: center;
+    width: 50%;
+    font-weight: bold;
+    margin-left: 25%;
+  }
+
+  h1{
+    margin: auto;
+    width: 100%;
+    color:white;
+    font-size: 70px;
+    padding:24px 32px 32px 32px;
+    font-weight: bold;
+    box-shadow:2px 2px 6px #888;  
+    text-align:center;
+    line-height:150px;
+    background-image:url("../../../public/fondo2.jpg");
+  }
+  
+  h3{
+    margin: auto;
+    width: 100%;
+    color:rgb(0, 0, 0);
+    font-size: 30px;
+    padding:24px 32px 32px 32px;
+    font-weight: bold;
+    
+    text-align:end;
+    line-height:150px;
+  }
