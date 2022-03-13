@@ -1,38 +1,33 @@
 import React, { useState } from "react";
 import { AuthButton, Link, LoggedOut } from "@solid/react";
 import {  LoggedIn } from "@solid/react";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-//import RedirectHook from "./RedirectHook";
-
+import "./FormLogin.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function LoginForm( Login: any, error: any ) {
-  const [details, setDetails] = useState({ email: "", password: "" });
-
-  const submitHandler = (e:any) => {
-    e.preventDefault();
-    Login(details);
-  };
 
   return (
-
-    <Form>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-      <Form.Label>Email address</Form.Label>
-      <Form.Control type="email" placeholder="Enter email" />
-    </Form.Group>
-  
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-      <Form.Label>Password</Form.Label>
-      <Form.Control type="password" placeholder="Password" />
-    </Form.Group>
-    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Check me out" />
-    </Form.Group>
-    <Button variant="primary" type="submit">
-      Submit
-    </Button>
-  </Form>
+      <div className="login-container">
+            <div className="row">
+                <div className="login-form-1">
+                    <h3>Login for Form 1</h3>
+                    <form>
+                        <div className="form-group">
+                            <input type="text" className="form-control" placeholder="Your Email *" value="" />
+                        </div>
+                        <div className="form-group">
+                            <input type="password" className="form-control" placeholder="Your Password *" value="" />
+                        </div>
+                        <div className="form-group">
+                            <input type="submit" className="btnSubmit" value="Login" />
+                        </div>
+                        <div className="form-group">
+                            <a href="#" className="ForgetPwd">Register Now</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import RegistrerForm from "./FormRegister";
-import { Container } from "@material-ui/core";
 //import { toast } from "react-toastify";
 
 export default function Register() {
