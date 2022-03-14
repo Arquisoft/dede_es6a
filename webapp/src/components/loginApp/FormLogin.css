@@ -46,3 +46,19 @@
 .form-group{
     margin-top: 5%;
 }
+
+.formContraseña{
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+    background-color: #fff;
+}
+
+.btnOjo{
+    background-color: #fff;
+    border: none;
+}
+
+.ojo{
+    background-color: #fff;
+    width: 100%;
+}
