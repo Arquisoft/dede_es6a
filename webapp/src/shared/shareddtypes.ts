@@ -12,7 +12,7 @@ export type Product = {
     descripcion: string;
 }
 
-export type Carrito = {
+export type ListaCarrito = {
     producto: Product;
     unidades: number;
 }

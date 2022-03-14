@@ -7,7 +7,12 @@ import Producto from './Producto';
 import './catalogo.css';
 import BarraNavegacion from './BarraNavegacion';
 
-function Catalogo (): JSX.Element{
+type Catalogo = {
+  addToCarrito: (prod: Product) => void;
+}
+
+//function Catalogo (): JSX.Element{
+const Catalogo: React.FC<Catalogo> = ({addToCarrito}) => {
 
   const [products,setProducts] = useState<Product[]>([]);
   const refreshProducts = async () => {
@@ -17,13 +22,12 @@ function Catalogo (): JSX.Element{
 
     return (
         <>
-        <BarraNavegacion />
         <h1 >Catálogo de productos</h1>
         <BarraNavegacion />
         <ListGroup id='listaProductos'>
             {products.map((producto)=>{   
                 return(
-                  <Producto producto={producto} /> 
+                  <Producto props={producto} addToCarrito={addToCarrito}/> 
                 );
             })}
       </ListGroup>
