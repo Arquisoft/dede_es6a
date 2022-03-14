@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import Producto from './Producto';
 import './catalogo.css';
 import BarraNavegacion from './BarraNavegacion';
+import Footer from './Footer';
+
 
 function Catalogo (): JSX.Element{
 
@@ -26,7 +28,8 @@ function Catalogo (): JSX.Element{
                 );
             })}
       </ListGroup>
-
+      <hr></hr>
+      <Footer/>
       </>
     );
 
