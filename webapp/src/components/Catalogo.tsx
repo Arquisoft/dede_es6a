@@ -5,6 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import { useState, useEffect } from 'react';
 import Producto from './Producto';
 import './catalogo.css';
+import BarraNavegacion from './BarraNavegacion';
 
 function Catalogo (): JSX.Element{
 
@@ -17,6 +18,7 @@ function Catalogo (): JSX.Element{
     return (
         <>
         <h1 >Catálogo de productos</h1>
+        <BarraNavegacion />
         <ListGroup id='listaProductos'>
             {products.map((producto)=>{   
                 return(
