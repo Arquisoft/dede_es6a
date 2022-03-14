@@ -39,8 +39,8 @@ export default function(): JSX.Element{
 
     return (
         <>
-        <BarraNavegacion />
         <h1 >Carrito</h1>
+        <BarraNavegacion />
         <Card>
         <Card.Header id="cardHeader">Productos</Card.Header>
         <ListGroup id='listaCarrito'>
