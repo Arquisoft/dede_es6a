@@ -19,6 +19,7 @@ function Catalogo (): JSX.Element{
         <>
         <BarraNavegacion />
         <h1 >Catálogo de productos</h1>
+        <BarraNavegacion />
         <ListGroup id='listaProductos'>
             {products.map((producto)=>{   
                 return(
