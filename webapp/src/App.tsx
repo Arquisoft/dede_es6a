@@ -17,7 +17,7 @@ function App(): JSX.Element {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<ConfirmacionEdad />} />
-        <Route path="catalogo" element={<Catalogo />} />
+        <Route path="/catalogo" element={<Catalogo />} />
         <Route path="products/add" element={<AddProducts />} />
         <Route path="aboutus" element={<AboutUs />} />
       </Routes>

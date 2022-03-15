@@ -6,23 +6,29 @@ import { useState, useEffect } from 'react';
 import Producto from './Producto';
 import './catalogo.css';
 import BarraNavegacion from './BarraNavegacion';
+import { useSearchParams } from 'react-router-dom';
 
 function Catalogo (): JSX.Element{
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  var filter : String = 'all';
+  if(searchParams.get('filter')){
+    filter = searchParams.get('filter') as String;
+  }
   const [products,setProducts] = useState<Product[]>([]);
   const refreshProducts = async () => {
-    setProducts(await getProducts());
+    setProducts(await getProducts(filter));
   }
   useEffect(()=>{ refreshProducts(); }, []);
 
     return (
         <>
+        <h1 >Catálogo de productos</h1>
         <BarraNavegacion />
-        <h1 id='titulo'>Catálogo de productos</h1>
         <ListGroup id='listaProductos'>
             {products.map((producto)=>{   
                 return(
-                  <Producto producto={producto} /> 
+                  <Producto producto={producto} />  
                 );
             })}
       </ListGroup>
