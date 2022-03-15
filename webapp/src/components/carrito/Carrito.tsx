@@ -15,7 +15,7 @@ type Carrito = {
 //export default function(listaCarrito, addToCarrito, removeFromCarrito): JSX.Element{
 const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarrito}) => {
 
-    const GetListaCarrito = () => {
+    function GetListaCarrito(){
         const sessionCart = localStorage.getItem("listaCarrito");
         if (sessionCart)
             listaCarrito= JSON.parse(sessionCart);
