@@ -39,7 +39,6 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
         <>
         <h1 >Carrito</h1>
         <BarraNavegacion />
-        {GetListaCarrito()}
         <Table striped bordered hover id='listaCarrito'>
             <thead>
                 <tr>
@@ -49,6 +48,7 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
                 </tr>
             </thead>
             <tbody>
+            {GetListaCarrito()}
             {listaCarrito.map(carrito => (
                 <tr>
                     <th>{carrito.producto.nombre}</th>
