@@ -21,8 +21,11 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
         <h1 >Carrito</h1>
         <BarraNavegacion />
         <Card>
-        <Card.Header id="cardHeader">Productos</Card.Header>
-        {listaCarrito.length === 0 ? <p>No hay productos en el carrito.</p> : null}
+        {listaCarrito.length === 0 ? <p>No hay productos en el carrito.</p> : <Card.Header id="cardHeader">Productos</Card.Header> }
+        {console.log("Carrito")}
+        {console.log(listaCarrito)}
+        {console.log("Tamaño")}
+        {console.log(listaCarrito.length)}
         <ListGroup id='listaCarrito'>
             {listaCarrito.map(carrito => (   
                 <ListGroup.Item>

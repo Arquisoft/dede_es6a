@@ -23,7 +23,7 @@ function App(): JSX.Element {
     console.log(prod);
     console.log(listaCarrito);
     setListaCarrito(prev => {
-      const estaEnElCarrito = prev.find(item => item.producto.nombre == prod.nombre);
+      const estaEnElCarrito = prev.find(item => item.producto.nombre === prod.nombre);
       console.log(estaEnElCarrito);
       if (estaEnElCarrito) {
         console.log("Ya esta en el carrito y se suma 1");
@@ -47,6 +47,7 @@ function App(): JSX.Element {
           }, [] as ListaCarrito[])
       );
   };
+
 
   return(
     <>
