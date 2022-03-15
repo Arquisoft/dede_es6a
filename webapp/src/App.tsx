@@ -1,6 +1,6 @@
 import Inicio from './components/Inicio';
 import Catalogo from './components/Catalogo';
-import Login from './components/loginApp/FormLogin';
+import Login from "./components/loginApp/FormLogin";
 import Register from './components/Register/FormRegister'
 import {
   BrowserRouter,

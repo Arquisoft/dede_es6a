@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+
+import { useState } from "react";
 import "./FormLogin.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Abierto from "./../../assets/ojo_abierto.png"
-import Cerrado from "./../../assets/ojo_cerrado.png"
-import Botellas from "./../../assets/botellas.png"
+import { Autocomplete} from "@mui/material";
+import Provider from "./Provider";
+import { LoginButton, useSession } from "@inrupt/solid-ui-react";
+import {
+    handleIncomingRedirect, 
+    onSessionRestore
+  } from "@inrupt/solid-client-authn-browser";
+  import { useEffect } from 'react';
+  import { useNavigate } from "react-router-dom";
+  
 
-export default function LoginForm( Login: any, error: any ) {
 
-    const [shown, setShown] = React.useState(false);
-const switchShown = () => setShown(!shown);
-
-const [password, setPassword] = React.useState('');
-const onChange = (currentTarget: any) => {setPassword(currentTarget.value)};
-
+export default function LoginForm() {
+/*
   return (
       <div className="login-container">
             <div className="row">
@@ -24,18 +27,8 @@ const onChange = (currentTarget: any) => {setPassword(currentTarget.value)};
                              placeholder="Nombre de usuario *"/>
                         </div>
                         <div className="form-group">
-                            <div className="formContraseña">
-                                <input 
-                                    type={shown ? 'text' : 'password'} 
-                                    className="form-control"
-                                    placeholder="Contraseña*"  onChange={onChange}
-                                    value={password}/>
-                                <button className="btnOjo" onClick={switchShown}>
-                                    {shown ? 
-                                    <img src={Abierto} className="ojo"/> :
-                                    <img src={Cerrado} className="ojo"/>}
-                                </button>
-                            </div>
+                            <input type="password" className="form-control"
+                                placeholder="Contraseña *"/>
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btnSubmit" 
@@ -48,5 +41,57 @@ const onChange = (currentTarget: any) => {setPassword(currentTarget.value)};
                 </div>
             </div>
         </div>
+  );
+  */
+  const authOptions = {
+    clientName: "DedEx: Decentralized Delivery",
+  };
+
+  const navigate = useNavigate();
+
+  const [oidcIssuer, setOidcIssuer] = useState("https://broker.pod.inrupt.com/");
+
+
+
+  const { session } = useSession();
+
+  onSessionRestore((url) => {
+    if (session.info.isLoggedIn) {
+      navigate(url);
+    }
+  });
+
+  useEffect(() => {
+    handleIncomingRedirect({
+      restorePreviousSession: true
+    }).then(() => {
+      if (session.info.isLoggedIn) {
+        navigate("/profile");
+      }
+    })
+  }, []);
+ return(
+    <>
+            <Autocomplete>
+          disablePortal
+          id="combo-box-providers"
+          options={Provider}
+          renderInput={(params: any) => <div {...params} label="Provider:" />}
+          getOptionLabel={(option: any) => option.displayName}
+          onChange={(e: any, value: any) => {
+            if (value != null)
+              setOidcIssuer(value.url)
+          }}
+        <Autocomplete/>
+            <LoginButton
+              oidcIssuer={oidcIssuer}
+              redirectUrl={window.location.href}
+              authOptions={authOptions}>            </LoginButton>
+
+        <div className="help">
+          Don't have a POD? Get one here: <a id="solidcom" href="https://solidcommunity.com/">Inrupt</a>
+        </div>
+        </div>
+</>
   );
 }
