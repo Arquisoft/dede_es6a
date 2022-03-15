@@ -13,41 +13,54 @@ import Producto from './components/Producto';
 import { ListaCarrito, Product } from './shared/shareddtypes';
 import Carrito from './components/carrito/Carrito';
 
-function App(): JSX.Element {
-//const App = () => {
+const App = () => {
 
-  //const [listaCarrito,setListaCarrito] = useState<ListaCarrito[]>([]);
-  const [listaCarrito,setListaCarrito] = useState([] as ListaCarrito[]);
+  const [listaCarrito,setListaCarrito] = useState<ListaCarrito[]>([]);
 
-  const addToCarrito = (prod: Product) =>{
-    console.log(prod);
-    console.log(listaCarrito);
-    setListaCarrito(prev => {
-      const estaEnElCarrito = prev.find(item => item.producto.nombre === prod.nombre);
-      console.log(estaEnElCarrito);
-      if (estaEnElCarrito) {
-        console.log("Ya esta en el carrito y se suma 1");
-        return prev.map(item => item.producto.nombre === prod.nombre ? {'producto':prod, 'unidades':item.unidades+1 } : item);
-      }
-      console.log("No esta en el carrito y se crea");
-      var c:ListaCarrito = {'producto':prod, 'unidades':1};
-      return [...prev, c];
-    });
-  }; 
+  const cargarCarrito = () => {
+    const sessionCart = localStorage.getItem("listaCarrito");
+    if (sessionCart)
+        setListaCarrito(JSON.parse(sessionCart));
+  }
 
-  const removeFromCarrito = (nombre: string) => {
-      setListaCarrito(prev =>
-          prev.reduce((ack, item) => {
-          if (item.producto.nombre === nombre) {
-              if (item.unidades === 1) return ack;
-              return [...ack, { ...item, amount: item.unidades - 1 }];
-          } else {
-              return [...ack, item];
-          }
-          }, [] as ListaCarrito[])
-      );
+  const addToCarrito = (product: Product) => {
+    cargarCarrito();
+
+    let productosLista = listaCarrito.slice();
+    let encontrado: boolean = false;
+    for(let i=0; i< productosLista.length; i++){
+      if(productosLista[i].producto.nombre === product.nombre){
+        productosLista[i].unidades += 1;
+        encontrado = true;
+      }          
+    }
+    if(!encontrado){
+      var c:ListaCarrito = {'producto':product, 'unidades':1};
+      productosLista.push(c);
+    }
+
+    localStorage.setItem("listaCarrito", JSON.stringify(productosLista));
+    setListaCarrito(productosLista);
   };
 
+  const removeFromCarrito = (product: Product) => {
+    cargarCarrito();
+
+    let productosLista = listaCarrito.slice();
+    let encontrado: boolean = false;
+    for(let i=0; i<= productosLista.length; i++){
+      if(!encontrado)
+        if(productosLista[i].producto.nombre === product.nombre){
+          encontrado = true;
+          productosLista[i].unidades -= 1;
+          if (productosLista[i].unidades === 0)
+            productosLista.splice(i, 1);
+        }
+    }
+
+    localStorage.setItem("listaCarrito", JSON.stringify(productosLista));
+    setListaCarrito(productosLista);
+  }
 
   return(
     <>
