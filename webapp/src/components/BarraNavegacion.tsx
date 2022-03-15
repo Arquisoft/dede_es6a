@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import logo from "../images/vino.png";
 import "./BarraNavegacion.css";
+import carrito from "../images/carrito.png";
 
 class BarraNavegacion extends Component {
 
@@ -11,7 +12,7 @@ class BarraNavegacion extends Component {
                 <Navbar color="dark" dark expand="md" light>
 
                     {/* Nombre de la empresa y logo */}
-                    <NavbarBrand href="/products">
+                    <NavbarBrand href="/catalogo">
                         No Vendo Agua
                         <img
                             alt=""

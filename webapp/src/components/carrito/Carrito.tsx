@@ -43,9 +43,9 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
         <Table striped bordered hover id='listaCarrito'>
             <thead>
                 <tr>
-                <th>Nombre</th>
-                <th>Unidades</th>
-                <th>Precio</th>
+                <th>NOMBRE</th>
+                <th>UNIDADES</th>
+                <th>PRECIO</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,10 +53,9 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
                 <tr>
                     <th>{carrito.producto.nombre}</th>
                     <th><Button id="btAñadir" variant="success" onClick={() => addToCarrito(carrito.producto)}>+</Button>
-                    {carrito.unidades}
+                    {" " + carrito.unidades + " "}
                     <Button id="btEliminar" variant="danger" onClick={() => removeFromCarrito(carrito.producto)}>-</Button></th>
                     <th>{GetPrecio(carrito.unidades, carrito.producto.precio).toFixed(2)}€</th>
-                    {GetListaCarrito()}
                 </tr>
             ))}
             </tbody>

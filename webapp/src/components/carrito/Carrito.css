@@ -43,9 +43,20 @@
     line-height:150px;
   }
 
-table {
-    width: 100%;
- }
+  #listaCarrito {
+    border-radius: 20px;
+    color: black;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 75%;
+    margin-left: 10%;
+    margin-top: 2%;
+  }
+  
  th, td {
     width: 25%;
+    font-weight: bold;
  }
+
+
