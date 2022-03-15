@@ -17,8 +17,9 @@ type NotificationType = {
 
 function EmailForm(props: EmailFormProps): JSX.Element {
 
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [notificationStatus, setNotificationStatus] = useState(false);
   const [notification, setNotification] = useState<NotificationType>({severity:'success',message:''});
@@ -27,7 +28,7 @@ function EmailForm(props: EmailFormProps): JSX.Element {
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let result:boolean = await addUser({name,email});
+    let result:boolean = await addUser({username,email, password});
     if (result){
       setNotificationStatus(true);
       setNotification({ 
@@ -55,7 +56,7 @@ function EmailForm(props: EmailFormProps): JSX.Element {
             label="Name" 
             variant="outlined"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={e => setUsername(e.target.value)}
             sx={{ my: 2 }}
           />
         <TextField
@@ -65,6 +66,15 @@ function EmailForm(props: EmailFormProps): JSX.Element {
           variant="outlined"
           value={email}
           onChange={e => setEmail(e.target.value)}
+          sx={{ my: 2 }}
+        />
+         <TextField
+          required
+          name="password"
+          label="Password" 
+          variant="outlined"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
           sx={{ my: 2 }}
         />
         <Button variant="contained" type="submit" sx={{ my: 2 }}>Accept</Button>

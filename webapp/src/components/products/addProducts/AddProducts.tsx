@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './AddProducts.css';
 import {addProduct} from '../../../api/api';
 import {Product} from '../../../shared/shareddtypes';
+import BarraNavegacion from '../../BarraNavegacion';
 
 export default function(){
 
@@ -29,6 +30,8 @@ export default function(){
     }
 
     return(
+        <>
+        <BarraNavegacion />
         <Form>
             <Form.Group className="mb-3" controlId="formName">
                 <Form.Label>Nombre del producto</Form.Label>
@@ -52,6 +55,6 @@ export default function(){
             </Form.Group>
             <Button variant="primary" type="button" onClick={enviar}>Crear</Button>
         </Form>
-
+        </>
     );
 }

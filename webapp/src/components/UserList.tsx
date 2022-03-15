@@ -21,7 +21,7 @@ function UserList(props: UserListProps): JSX.Element {
             <ListItemIcon>
               <ContactPageIcon/>
             </ListItemIcon>
-            <ListItemText primary={user.name} secondary={user.email}/>
+            <ListItemText primary={user.username} secondary={user.email}/>
           </ListItem>
         )
       })}

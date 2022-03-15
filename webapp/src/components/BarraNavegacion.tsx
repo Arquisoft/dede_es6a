@@ -11,7 +11,7 @@ class BarraNavegacion extends Component {
                 <Navbar color="dark" dark expand="md" light>
 
                     {/* Nombre de la empresa y logo */}
-                    <NavbarBrand href="/products">
+                    <NavbarBrand href="/catalogo">
                         No Vendo Agua
                         <img
                             alt=""
@@ -101,7 +101,7 @@ class BarraNavegacion extends Component {
 
                             {/* Opción para iniciar sesión */}
                             <NavItem>
-                                <NavLink href="/products">Inicia sesión</NavLink>
+                                <NavLink href="/login">Inicia sesión</NavLink>
                             </NavItem>
                             
                         </Nav>

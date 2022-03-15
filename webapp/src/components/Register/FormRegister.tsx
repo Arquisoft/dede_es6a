@@ -1,36 +1,52 @@
 import React, {useState} from "react";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Button from 'react-bootstrap/Button';
+import { addUser } from "./../../api/api";
+import { User } from './../../shared/shareddtypes';
 
-export default function RegistrerForm (props: any) {
-  const [details, setDetails] = useState({email: "", password: "", pod: ""});
-  
+const enviar = () => {
+  const username:HTMLInputElement  = document.querySelector("input[name='username']") as HTMLInputElement;
+  const email: HTMLInputElement = document.querySelector("input[name='email']") as HTMLInputElement;
+  const password: HTMLInputElement = document.querySelector("input[name='password']") as HTMLInputElement;
 
-  const submitHandler = (e:any) => {
-    e.preventDefault();
-    props.addUser(details);
-    
-  };
+  let n:string ='',e:string='',p:string='';  
+  if(username)
+      n = username.value as string;
+  if(email)
+      e = email.value as string;
+  if(password)
+      p = password.value as string;
+  const user:User = {'username':n,'email':e, 'password':p};
+  addUser(user);
+}
+
+export default function RegisterForm () { 
 
     return (
 
-      <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-      </Form.Group>
-    
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+      <div className="login-container">
+            <div className="row">
+                <div className="login-form-1">
+                    <h3>Crear nueva cuenta</h3>
+                    <form>
+                    <div className="form-group">
+                            <input type="text" className="form-control" name='username'
+                                placeholder="Nombre de usuario *"/>
+                        </div>
+                        <div className="form-group">
+                            <input type="email" className="form-control" name='email'
+                             placeholder="Correo (opcional) *"/>
+                        </div>
+                        <div className="form-group">
+                            <input type="password" className="form-control"  name='password'
+                                placeholder="Contraseña *"/>
+                        </div>
+                        <div className="form-group">
+                          <Button href="login" className="btnSubmit"  variant="primary" type="button" onClick={enviar}>Crear usuario</Button>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+        </div>
     );
 }
