@@ -6,13 +6,18 @@ import { useState, useEffect } from 'react';
 import Producto from './Producto';
 import BarraNavegacion from './BarraNavegacion';
 import Footer from './Footer';
-
+import { useSearchParams } from 'react-router-dom';
 
 function Catalogo (): JSX.Element{
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  var filter : String = 'all';
+  if(searchParams.get('filter')){
+    filter = searchParams.get('filter') as String;
+  }
   const [products,setProducts] = useState<Product[]>([]);
   const refreshProducts = async () => {
-    setProducts(await getProducts());
+    setProducts(await getProducts(filter));
   }
   useEffect(()=>{ refreshProducts(); }, []);
 
@@ -23,7 +28,7 @@ function Catalogo (): JSX.Element{
         <ListGroup id='listaProductos' className="listaProductos">
             {products.map((producto)=>{   
                 return(
-                  <Producto producto={producto} /> 
+                  <Producto producto={producto} />  
                 );
             })}
       </ListGroup>
