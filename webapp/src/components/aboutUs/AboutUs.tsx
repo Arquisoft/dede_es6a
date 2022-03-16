@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './aboutUs.css';
+import Developer from './Developer';
 
 export default function(){
 
@@ -11,91 +12,36 @@ export default function(){
             <BarraNavegacion />
             <h1>About us</h1>
             <div id='cards'>
-                <Card id='participante' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="../juan.png" />
-                    <Card.Body>
-                        <Card.Title>Juan Mera Menendez</Card.Title>
-                        <Card.Text>
-                            texto ejemplo :D
-                        </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                        <ListGroupItem>Uo277406@uniovi.es</ListGroupItem>
-                        <ListGroupItem>Universidad de Oviedo</ListGroupItem>
-                    </ListGroup>
-                    <Card.Body>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                </Card>
-                <Card id='participante' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="../diego.png" />
-                    <Card.Body>
-                        <Card.Title>Diego Garcia Quiros</Card.Title>
-                        <Card.Text>
-                            texto ejemplo
-                        </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                        <ListGroupItem>uo@uniovi.es</ListGroupItem>
-                        <ListGroupItem>Universidad de Oviedo</ListGroupItem>
-                    </ListGroup>
-                    <Card.Body>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                </Card>
-                <Card id='participante' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="../perfil-default.jpg" />
-                    <Card.Body>
-                        <Card.Title>Daniel Machado Sanchez</Card.Title>
-                        <Card.Text>
-                            texto ejemplo
-                        </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                        <ListGroupItem>uo@uniovi.es</ListGroupItem>
-                        <ListGroupItem>Universidad de Oviedo</ListGroupItem>
-                    </ListGroup>
-                    <Card.Body>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                </Card>
-                <Card id='participante' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="../perfil-default.jpg" />
-                    <Card.Body>
-                        <Card.Title>David Maldonado Álvarez</Card.Title>
-                        <Card.Text>
-                            texto ejemplo
-                        </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                        <ListGroupItem>uo@uniovi.es</ListGroupItem>
-                        <ListGroupItem>Universidad de Oviedo</ListGroupItem>
-                    </ListGroup>
-                    <Card.Body>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                </Card>
-                <Card id='participante' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="../perfil-default.jpg" />
-                    <Card.Body>
-                        <Card.Title>Oscar</Card.Title>
-                        <Card.Text>
-                            texto ejemplo
-                        </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                        <ListGroupItem>uo@uniovi.es</ListGroupItem>
-                        <ListGroupItem>Universidad de Oviedo</ListGroupItem>
-                    </ListGroup>
-                    <Card.Body>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                </Card>
+                <Developer 
+                    name='Juan Mera Menendez' 
+                    email='Uo277406@uniovi.es' 
+                    img='../juan.png' 
+                    descr='texto ejemplo :D'
+                    />
+                <Developer 
+                    name='Diego Garcia Quiros' 
+                    email='uo@uniovi.es' 
+                    img='../diego.png' 
+                    descr='texto ejemplo'
+                    />
+                <Developer 
+                    name='Daniel Machado Sanchez' 
+                    email='uo@uniovi.es' 
+                    img='../perfil-default.jpg' 
+                    descr='texto ejemplo'
+                    />
+                <Developer 
+                    name='David Maldonado Álvarez' 
+                    email='uo@uniovi.es' 
+                    img='../perfil-default.jpg' 
+                    descr='texto ejemplo'
+                    />    
+                <Developer 
+                    name='Oscar' 
+                    email='uo@uniovi.es' 
+                    img='../perfil-default.jpg' 
+                    descr='texto ejemplo'
+                    />  
             </div>
 
       </>
