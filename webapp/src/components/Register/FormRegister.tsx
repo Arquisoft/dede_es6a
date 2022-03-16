@@ -1,4 +1,7 @@
-import React, {useState} from "react";
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as Yup from 'yup'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
 import { addUser } from "./../../api/api";
@@ -8,45 +11,86 @@ const enviar = () => {
   const username:HTMLInputElement  = document.querySelector("input[name='username']") as HTMLInputElement;
   const email: HTMLInputElement = document.querySelector("input[name='email']") as HTMLInputElement;
   const password: HTMLInputElement = document.querySelector("input[name='password']") as HTMLInputElement;
+  const confirmPassword: HTMLInputElement = document.querySelector("input[name='confirmPwd']") as HTMLInputElement;
+  
+    let n:string ='',e:string='',p:string='', cp:string=''; 
+    if(username)
+        n = username.value as string; 
+    if(password)
+        p = password.value as string;
+    if(confirmPassword)
+        cp = confirmPassword.value as string;
+    if(email)
+        e = email.value as string;
+    if(cp == p && p.length >= 6){
+    const user:User = {'username':n,'email':e, 'password':p};
+    addUser(user);
+    window.location.href = 'login'
+    }
+  }
 
-  let n:string ='',e:string='',p:string='';  
-  if(username)
-      n = username.value as string;
-  if(email)
-      e = email.value as string;
-  if(password)
-      p = password.value as string;
-  const user:User = {'username':n,'email':e, 'password':p};
-  addUser(user);
-}
+export default function FormRegister() {
+  const formSchema = Yup.object().shape({   
+    password: Yup.string()
+      .required('Introduzca una contraseña')
+      .min(6, 'Mínimo 6 caracteres'),
+    confirmPwd: Yup.string()
+      .required('Confirme la contraseña')
+      .oneOf([Yup.ref('password')], 'Las contraseñas no coinciden'),
+  })
+  const formOptions = { resolver: yupResolver(formSchema) }
+  const { register, handleSubmit, formState } = useForm(formOptions)
+  const { errors } = formState
 
-export default function RegisterForm () { 
-
-    return (
-
-      <div className="login-container">
-            <div className="row">
-                <div className="login-form-1">
-                    <h3>Crear nueva cuenta</h3>
-                    <form>
-                    <div className="form-group">
-                            <input type="text" className="form-control" name='username'
-                                placeholder="Nombre de usuario *"/>
-                        </div>
-                        <div className="form-group">
-                            <input type="email" className="form-control" name='email'
-                             placeholder="Correo (opcional) *"/>
-                        </div>
-                        <div className="form-group">
-                            <input type="password" className="form-control"  name='password'
-                                placeholder="Contraseña *"/>
-                        </div>
-                        <div className="form-group">
-                          <Button href="login" className="btnSubmit"  variant="primary" type="button" onClick={enviar}>Crear usuario</Button>
-                        </div>
-                    </form>
+  function onSubmit(data: any) {
+    return false
+  }
+  
+  return (
+    
+    <div className="login-container">
+        <div className="row">
+            <div className="login-form-1">
+            <h3>Crear nueva cuenta</h3>
+            <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-group">
+                    <input type="text" className="form-control" name='username'
+                        placeholder="Nombre de usuario *"/>
                 </div>
-            </div> 
+                <div className="form-group">
+                    <input type="email" className="form-control" name='email'
+                     placeholder="Correo (opcional) *"/>
+                </div>
+            <div className="form-group">
+                <input
+                    type="password"
+                    {...register('password')}
+                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                    name="password"
+                    placeholder="Contraseña *"
+                    
+                />
+            <div className="invalid-feedback">{errors.password?.message}</div>
+            </div>
+        <div className="form-group">
+                <input
+                    type="password"
+                    {...register('confirmPwd')}
+                    className={`form-control ${errors.confirmPwd ? 'is-invalid' : ''}`}
+                    name="confirmPwd"
+                    placeholder="Confirmar Contraseña *"
+                    
+                />
+            <div className="invalid-feedback">{errors.confirmPwd?.message}</div>
+            </div>
+        <div className="mt-3">
+          <button id="btnSubmit" type="submit" onClick={enviar} className="btn btn-primary">
+            Crear Cuenta
+          </button>
         </div>
-    );
+      </form>
+    </div>
+    </div>
+    </div>
+  );
 }
