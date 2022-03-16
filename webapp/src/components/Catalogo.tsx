@@ -11,7 +11,6 @@ type Catalogo = {
   addToCarrito: (prod: Product) => void;
 }
 
-//function Catalogo (): JSX.Element{
 const Catalogo: React.FC<Catalogo> = ({addToCarrito}) => {
 
   const [products,setProducts] = useState<Product[]>([]);

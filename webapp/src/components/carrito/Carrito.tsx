@@ -12,16 +12,12 @@ type Carrito = {
     removeFromCarrito: (prod: Product) => void;
 }
 
-//export default function(listaCarrito, addToCarrito, removeFromCarrito): JSX.Element{
 const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarrito}) => {
 
-    function GetListaCarrito(){
-        const sessionCart = localStorage.getItem("listaCarrito");
-        if (sessionCart)
-            listaCarrito= JSON.parse(sessionCart);
-        console.log("Metodo")
-        console.log(listaCarrito)
-    }
+    const sessionCart = localStorage.getItem("listaCarrito");
+    if (sessionCart)
+        listaCarrito = JSON.parse(sessionCart);
+
 
     function GetPrecio(unidades:number, precio:number): number{
         return unidades*precio;
@@ -48,7 +44,6 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
                 </tr>
             </thead>
             <tbody>
-            {GetListaCarrito()}
             {listaCarrito.map(carrito => (
                 <tr>
                     <th>{carrito.producto.nombre}</th>
