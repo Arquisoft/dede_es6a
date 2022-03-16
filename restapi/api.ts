@@ -5,7 +5,7 @@ import User from './models/User';
 import {ProductType, UserType} from './types';
 
 const api:Router = express.Router();
-const bcrypt:any = require('bcryptjs');
+const bcrypt:any = require('bcrypt');
 
 // añadir usuarios a la BD
 api.post(

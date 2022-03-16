@@ -4,8 +4,8 @@ import {Product} from '../shared/shareddtypes';
 import ListGroup from 'react-bootstrap/ListGroup'
 import { useState, useEffect } from 'react';
 import Producto from './Producto';
-import './catalogo.css';
 import BarraNavegacion from './BarraNavegacion';
+import Footer from './Footer';
 import { useSearchParams } from 'react-router-dom';
 
 function Catalogo (): JSX.Element{
@@ -25,14 +25,15 @@ function Catalogo (): JSX.Element{
         <>
         <h1 >Catálogo de productos</h1>
         <BarraNavegacion />
-        <ListGroup id='listaProductos'>
+        <ListGroup id='listaProductos' className="listaProductos">
             {products.map((producto)=>{   
                 return(
                   <Producto producto={producto} />  
                 );
             })}
       </ListGroup>
-
+      <hr></hr>
+      <Footer/>
       </>
     );
 

@@ -8,6 +8,7 @@ import {
 import './App.css';
 import AddProducts from './components/products/addProducts/AddProducts';
 import ConfirmacionEdad from './components/ConfirmacionEdad';
+import ConfirmacionPago from './components/ConfirmacionPago';
 import AboutUs from './components/aboutUs/AboutUs';
 
 function App(): JSX.Element {
@@ -19,6 +20,7 @@ function App(): JSX.Element {
         <Route path="/" element={<ConfirmacionEdad />} />
         <Route path="/catalogo" element={<Catalogo />} />
         <Route path="products/add" element={<AddProducts />} />
+        <Route path="pago" element={<ConfirmacionPago  />} />
         <Route path="aboutus" element={<AboutUs />} />
       </Routes>
       </BrowserRouter>
