@@ -6,6 +6,35 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
 import { addUser } from "./../../api/api";
 import { User } from './../../shared/shareddtypes';
+import ojoabierto from "./../../assets/ojo_abierto.png"
+import ojocerrado from "./../../assets/ojo_cerrado.png"
+import "./FormRegister.css"
+
+const verContrasena = () => {
+  const element = document.querySelector<HTMLInputElement>("input[name='password']")!    //input
+  const elementImg = document.querySelector<HTMLInputElement>("img[id='imagenPsw']")!
+  if (element.type == 'password'){
+    element.type = 'text';
+    elementImg.src = ojoabierto
+  }
+  else{
+    element.type = 'password';
+    elementImg.src = ojocerrado
+  }
+}
+
+const verConfirmacion = () => {
+  const element = document.querySelector<HTMLInputElement>("input[name='confirmPwd']")!    //input
+  const elementImg = document.querySelector<HTMLInputElement>("img[id='imagenCnf']")!
+  if (element.type == 'password'){
+    element.type = 'text';
+    elementImg.src = ojoabierto
+  }
+  else{
+    element.type = 'password';
+    elementImg.src = ojocerrado
+  }
+}
 
 const enviar = () => {
   const username:HTMLInputElement  = document.querySelector("input[name='username']") as HTMLInputElement;
@@ -62,6 +91,7 @@ export default function FormRegister() {
                      placeholder="Correo (opcional) *"/>
                 </div>
             <div className="form-group">
+            <div className="campo">
                 <input
                     type="password"
                     {...register('password')}
@@ -70,17 +100,25 @@ export default function FormRegister() {
                     placeholder="Contraseña *"
                     
                 />
+                <button className="btnOjo" onClick={verContrasena}>
+                    <img src={ojocerrado} id="imagenPsw"/>
+                </button>
+                </div>
             <div className="invalid-feedback">{errors.password?.message}</div>
             </div>
         <div className="form-group">
+            <div className="campo">
                 <input
                     type="password"
                     {...register('confirmPwd')}
                     className={`form-control ${errors.confirmPwd ? 'is-invalid' : ''}`}
                     name="confirmPwd"
                     placeholder="Confirmar Contraseña *"
-                    
                 />
+                                <button className="btnOjo" onClick={verConfirmacion}>
+                    <img src={ojocerrado} id="imagenCnf"/>
+                </button>
+                </div>
             <div className="invalid-feedback">{errors.confirmPwd?.message}</div>
             </div>
         <div className="mt-3">
