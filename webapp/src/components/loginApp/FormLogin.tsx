@@ -36,10 +36,10 @@ export default function LoginForm() {
                                 placeholder="Contraseña *"/>
                         </div>
                         <div className="form-group">
-                        <a href="catalogo" className="btnSubmit">Iniciar sesion</a>
+                            <a href="catalogo" className="btnSubmit">Iniciar sesión</a>
                         </div>
                         <div className="form-group">
-                            <a href="register" className="ForgetPwd">¡Registrate ahora!</a>
+                            <a href="register" className="ForgetPwd">¡Regístrate ahora!</a>
                         </div>
                     </form>
                 </div>

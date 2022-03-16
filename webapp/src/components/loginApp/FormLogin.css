@@ -41,6 +41,7 @@
     border: none;
     cursor: pointer;
     align-content: center;
+    margin: auto;
 }
 .btnSubmit:hover
 {

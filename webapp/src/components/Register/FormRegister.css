@@ -1,4 +1,4 @@
-.campo {
+#campo {
     display: grid;
     grid-template-columns: 1fr 0.1fr;
 }
@@ -12,9 +12,16 @@
 }
  
 
-.campo img {
+#campo img {
     align-self: center;
     margin: auto;
     width: 80%;
     border: none;
+}
+
+a{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-bottom: -5%;
 }

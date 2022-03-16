@@ -1,4 +1,3 @@
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
@@ -90,8 +89,8 @@ export default function FormRegister() {
                     <input type="email" className="form-control" name='email'
                      placeholder="Correo (opcional) *"/>
                 </div>
-            <div className="form-group">
-            <div className="campo">
+            <div id="campo" className="form-group">
+            
                 <input
                     type="password"
                     {...register('password')}
@@ -103,11 +102,10 @@ export default function FormRegister() {
                 <button className="btnOjo" onClick={verContrasena}>
                     <img src={ojocerrado} id="imagenPsw"/>
                 </button>
-                </div>
             <div className="invalid-feedback">{errors.password?.message}</div>
             </div>
-        <div className="form-group">
-            <div className="campo">
+        <div id="campo"className="form-group">
+          
                 <input
                     type="password"
                     {...register('confirmPwd')}
@@ -118,13 +116,15 @@ export default function FormRegister() {
                                 <button className="btnOjo" onClick={verConfirmacion}>
                     <img src={ojocerrado} id="imagenCnf"/>
                 </button>
-                </div>
+                
             <div className="invalid-feedback">{errors.confirmPwd?.message}</div>
             </div>
         <div className="mt-3">
           <button id="btnSubmit" type="submit" onClick={enviar} className="btn btn-primary">
             Crear Cuenta
+            
           </button>
+          <a href="login">¿Ya tienes una cuenta? ¡Inicia sesión!</a>
         </div>
       </form>
     </div>
