@@ -1,49 +1,141 @@
-.App {
-  text-align: center;
 
+#root{
+  background-color:lightgoldenrodyellow;
 }
 
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+#listaProductos{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+ 
+  justify-content: space-evenly;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#producto{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color:white;
+
+  text-align: center;
+  max-width: 30%;
+  
+
+  padding: 5%;
+
+  margin:1%;
+
+  border: 2px solid #006100;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-
-
-
-
-}
-
-body{
-  background-color:lightgoldenrodyellow;
-
+#imgProducto{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 
 
 
+#bt-Añadir, #formButton {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  width: 50%;
+ 
+}
 
+#precio{
+  background-color:white;
+  border: 1px solid;
+}
+
+
+h1{
+  margin: auto;
+  width: 100%;
+  color:rgb(255, 251, 0);
+  padding:24px 32px 32px 32px;
+  font-weight: bold;
+  box-shadow:2px 2px 6px #888;  
+  text-align:center;
+  line-height:150px;
+  background-image:url("../public/fondo2.jpg");
+}
+
+.footer{
+
+  font-weight: bold;
+  text-align: center;
+  color:black;
+  background-color:fill;
+}
+
+
+
+.preFooter{
+  font-size: 100%;
+}
+
+.nombreAutores{
+  max-width:100%;
+  padding: 0%;
+  margin: 0%;
+}
+
+.contenedorNombreAutores{
+  width:100%;
+  display:grid;
+  padding: 0%;
+  margin: 0%;
+  grid-template-columns:20% 20% 20% 20% 20%;
+}
+
+
+#formPago{
+
+  text-align: center;
+  align-items: center;
+
+}
+
+#tituloPago{
+  text-align: center;
+  font-weight: bold;
+  font-size: 5em;
+  padding-top: 5%;
+}
+
+.inputPago{
+
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 1em;
+  text-align: center;
+  max-width: 50%;
+
+}
+.labelPago{
+  font-size: 1.5em;
+}
+
+#formButton{
+  margin-bottom: 2em;
+}

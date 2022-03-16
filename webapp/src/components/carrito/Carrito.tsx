@@ -18,7 +18,6 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
     if (sessionCart)
         listaCarrito = JSON.parse(sessionCart);
 
-
     function GetPrecio(unidades:number, precio:number): number{
         return unidades*precio;
     }
@@ -30,7 +29,7 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
         });
         return precioTotal;
     }
-
+ 
     return (
         <>
         <h1 >Carrito</h1>
@@ -49,7 +48,7 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
                     <th>{carrito.producto.nombre}</th>
                     <th><Button id="btAñadir" variant="success" onClick={() => addToCarrito(carrito.producto)}>+</Button>
                     {" " + carrito.unidades + " "}
-                    <Button id="btEliminar" variant="danger" onClick={() => removeFromCarrito(carrito.producto)}>-</Button></th>
+                    <Button id="btEliminar" variant="danger" onClick={async () => await removeFromCarrito(carrito.producto)}>-</Button></th>
                     <th>{GetPrecio(carrito.unidades, carrito.producto.precio).toFixed(2)}€</th>
                 </tr>
             ))}

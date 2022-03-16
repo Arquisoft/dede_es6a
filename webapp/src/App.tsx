@@ -12,6 +12,8 @@ import { useState } from 'react';
 import Producto from './components/Producto';
 import { ListaCarrito, Product } from './shared/shareddtypes';
 import Carrito from './components/carrito/Carrito';
+import ConfirmacionPago from './components/ConfirmacionPago';
+import AboutUs from './components/aboutUs/AboutUs';
 
 const App = () => {
 
@@ -70,6 +72,8 @@ const App = () => {
         <Route path="catalogo" element={<Catalogo  addToCarrito={addToCarrito}/>} />
         <Route path="products/add" element={<AddProducts />} />
         <Route path="carrito" element={<Carrito listaCarrito={listaCarrito} addToCarrito={addToCarrito} removeFromCarrito={removeFromCarrito} />} />
+        <Route path="pago" element={<ConfirmacionPago  />} />
+        <Route path="aboutus" element={<AboutUs />} />
       </Routes>
       </BrowserRouter>
     </>
