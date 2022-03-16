@@ -86,7 +86,7 @@
 
 
 
-#bt-Añadir {
+#bt-Añadir, #formButton {
   background-color: #13aa52;
   border: 1px solid #13aa52;
   border-radius: 4px;
@@ -151,3 +151,34 @@ h1{
   grid-template-columns:20% 20% 20% 20% 20%;
 }
 
+
+#formPago{
+
+  text-align: center;
+  align-items: center;
+
+}
+
+#tituloPago{
+  text-align: center;
+  font-weight: bold;
+  font-size: 5em;
+  padding-top: 5%;
+}
+
+.inputPago{
+
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 1em;
+  text-align: center;
+  max-width: 50%;
+
+}
+.labelPago{
+  font-size: 1.5em;
+}
+
+#formButton{
+  margin-bottom: 2em;
+}
