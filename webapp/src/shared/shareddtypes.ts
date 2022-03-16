@@ -4,9 +4,15 @@ export type User = {
   }
 
 export type Product = {
+    id: string;
     nombre:string;
     marca: string;
     precio: number;
     categoria: string;
     descripcion: string;
+}
+
+export type ListaCarrito = {
+    producto: Product;
+    unidades: number;
 }
