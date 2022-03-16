@@ -1,4 +1,8 @@
 
+body{
+  background-color:lightgoldenrodyellow !important;
+}
+
 #listaProductos{
     display: flex;
     flex-direction: row; 
@@ -7,7 +11,7 @@
     justify-content: space-evenly;
   }
   
-  .card{
+  #producto{
     background-color:white;
     text-align: center;
     max-width: 20%;
@@ -17,7 +21,7 @@
     border-radius: 10px;
   }
   
-  .card-img-top{
+  #img-top{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -29,7 +33,7 @@
   
   
   
-  .bt-Añadir {
+  #boton-añadir {
     background-color: #13aa52;
     border: 1px solid #13aa52;
     border-radius: 4px;
@@ -48,7 +52,7 @@
   }
 
   
-  h1{
+  #titulo{
     margin: auto;
     width: 100%;
     color:white;

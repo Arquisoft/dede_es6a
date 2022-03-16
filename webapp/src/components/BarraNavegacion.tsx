@@ -11,7 +11,7 @@ class BarraNavegacion extends Component {
                 <Navbar color="dark" dark expand="md" light>
 
                     {/* Nombre de la empresa y logo */}
-                    <NavbarBrand href="/products">
+                    <NavbarBrand href="/catalogo">
                         No Vendo Agua
                         <img
                             alt=""
@@ -41,16 +41,16 @@ class BarraNavegacion extends Component {
                                     Cervezas
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=rubia">
                                         Rubia
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=roja">
                                         Roja
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=tostada">
                                         Tostada
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=negra">
                                         Negra
                                     </DropdownItem>
                                 </DropdownMenu>
@@ -62,13 +62,13 @@ class BarraNavegacion extends Component {
                                     Vinos
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=tinto">
                                         Tinto
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=blanco">
                                         Blanco
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=rosado">
                                         Rosado
                                     </DropdownItem>
                                 </DropdownMenu>
@@ -80,16 +80,16 @@ class BarraNavegacion extends Component {
                                     Bebidas destiladas
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=ginebra">
                                         Ginebra
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=ron">
                                         Ron
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=whisky">
                                         Whisky
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/catalogo?filter=vodka">
                                         Vodka
                                     </DropdownItem>
                                 </DropdownMenu>
@@ -98,6 +98,13 @@ class BarraNavegacion extends Component {
 
                         {/* Parte derecha de la barra de navegación */}
                         <Nav className="ms-auto" navbar>
+
+                            {/* Opción de about us*/}
+                            <NavItem>
+                                <NavLink href="/aboutus">
+                                    Sobre nosotros
+                                </NavLink>
+                            </NavItem>
 
                             {/* Opción para iniciar sesión */}
                             <NavItem>
