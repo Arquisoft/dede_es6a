@@ -48,6 +48,7 @@ export async function getUsers():Promise<User[]>{
     return response.json();
 }
 
+
 export async function getProducts(filter:String = 'all'):Promise<Product[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/catalogo/'+filter);

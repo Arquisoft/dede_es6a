@@ -29,7 +29,6 @@
 |===
 
 === Normas
-
 [options="header",cols="1,2"]
 |===
 |Restricción|Explicación
