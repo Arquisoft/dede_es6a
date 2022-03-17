@@ -48,7 +48,7 @@ api.post(
 // añadir productos a la BD
 api.post("/products/add",[
   check('nombre').isLength({min: 1}).trim().escape(),
-  check('precio').exists().bail().if((value:number) => {value >= 0.0}),
+  //check('precio').exists().bail().if((value:number) => {value >= 0.0}),
   //check('categoria').exists().bail().isIn(['vozka','ginebra','ron']),
 ],
 async (req: Request, res: Response):Promise<Response> =>{
