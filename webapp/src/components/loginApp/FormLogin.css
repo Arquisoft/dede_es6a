@@ -1,0 +1,75 @@
+/*
+.login{
+    background-image: url('https://wallup.net/wp-content/uploads/2019/09/503855-crown-royal-canadian-whisky-alcohol.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    overflow-y: hidden;
+}
+*/
+.login-container{
+    margin-top: 7%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.row{
+    width: 40%;
+    height: auto;
+    display: inline-block;
+    background-color: #ffffff;
+}
+
+.login-form-1{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+}
+.login-container form{
+    padding: 5%;
+}
+.btnSubmit
+{
+    width: 30%;
+    border-radius: 2rem;
+    padding: 2%;
+    border: none;
+    cursor: pointer;
+    align-content: center;
+    margin: auto;
+}
+.btnSubmit:hover
+{
+    background-color: #3421db !important;
+}
+
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #004186;
+}
+
+.form-group{
+    margin-top: 5%;
+}
+
+.formContraseña{
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+    background-color: #fff;
+}
+
+.btnOjo{
+    background-color: #fff;
+    border: none;
+}
+
+.ojo{
+    background-color: #fff;
+    width: 100%;
+}

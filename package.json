@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4",
+    "mongose": "^0.0.2-security",
+    "react-bootstrap": "^2.2.1",
+    "react-router-dom": "^6.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

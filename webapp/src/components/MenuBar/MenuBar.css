@@ -1,0 +1,6 @@
+.MenuBar{
+  display: grid;
+  grid-template-columns: 0.8fr 6fr 1fr;
+  border-bottom: 1px solid #000;
+}
+

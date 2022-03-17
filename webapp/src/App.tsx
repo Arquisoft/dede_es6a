@@ -1,37 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Container from '@mui/material/Container';
-import EmailForm from './components/EmailForm';
-import Welcome from './components/Welcome';
-import UserList from './components/UserList';
-import  {getUsers} from './api/api';
-import {User} from './shared/shareddtypes';
+import Inicio from './components/Inicio';
+import Catalogo from './components/Catalogo';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import './App.css';
+import AddProducts from './components/products/addProducts/AddProducts';
+import ConfirmacionEdad from './components/ConfirmacionEdad';
+import { useState } from 'react';
+import Producto from './components/Producto';
+import { ListaCarrito, Product } from './shared/shareddtypes';
+import Carrito from './components/carrito/Carrito';
+import ConfirmacionPago from './components/ConfirmacionPago';
+import AboutUs from './components/aboutUs/AboutUs';
+import Login from "./components/loginApp/FormLogin"
+import Register from './components/Register/FormRegister';
 
-function App(): JSX.Element {
+const App = () => {
 
-  const [users,setUsers] = useState<User[]>([]);
+  const [listaCarrito,setListaCarrito] = useState<ListaCarrito[]>([]);
 
-  const refreshUserList = async () => {
-    setUsers(await getUsers());
+  const cargarCarrito = () => {
+    const sessionCart = localStorage.getItem("listaCarrito");
+    if (sessionCart)
+        setListaCarrito(JSON.parse(sessionCart));
   }
 
-  useEffect(()=>{
-    refreshUserList();
-  },[]);
+  const addToCarrito = (product: Product) => {
+    cargarCarrito();
 
-  return (
+    let productosLista = listaCarrito.slice();
+    let encontrado: boolean = false;
+    for(let i=0; i< productosLista.length; i++){
+      if(productosLista[i].producto.nombre === product.nombre){
+        productosLista[i].unidades += 1;
+        encontrado = true;
+      }          
+    }
+    if(!encontrado){
+      var c:ListaCarrito = {'producto':product, 'unidades':1};
+      productosLista.push(c);
+    }
+
+    localStorage.setItem("listaCarrito", JSON.stringify(productosLista));
+    setListaCarrito(productosLista);
+  };
+
+  const removeFromCarrito = (product: Product) => {
+    cargarCarrito();
+
+    let productosLista = listaCarrito.slice();
+    let encontrado: boolean = false;
+    for(let i=0; i<= productosLista.length; i++){
+      if(!encontrado)
+        if(productosLista[i].producto.nombre === product.nombre){
+          encontrado = true;
+          productosLista[i].unidades -= 1;
+          if (productosLista[i].unidades === 0)
+            productosLista.splice(i, 1);
+        }
+    }
+
+    localStorage.setItem("listaCarrito", JSON.stringify(productosLista));
+    setListaCarrito(productosLista);
+  }
+
+  return(
     <>
-      <Container maxWidth="sm">
-        <Welcome message="ASW students"/>
-        <Box component="div" sx={{ py: 2}}>This is a basic example of a React application using Typescript. You can add your email to the list filling the form below.</Box>
-        <EmailForm OnUserListChange={refreshUserList}/>        
-        <UserList users={users}/>
-        <Link href="https://github.com/Arquisoft/dede_es6b">Source code</Link>
-      </Container>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ConfirmacionEdad />} />
+        <Route path="catalogo" element={<Catalogo  addToCarrito={addToCarrito}/>} />
+        <Route path="products/add" element={<AddProducts />} />
+        <Route path="carrito" element={<Carrito listaCarrito={listaCarrito} addToCarrito={addToCarrito} removeFromCarrito={removeFromCarrito} />} />
+        <Route path="pago" element={<ConfirmacionPago  />} />
+        <Route path="aboutus" element={<AboutUs />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Routes>
+      </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
