@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { addUser } from "./../../api/api";
 import { User } from './../../shared/shareddtypes';
+import Register from "./../Register/FormRegister"
+
 
 export default function LoginForm() {
 

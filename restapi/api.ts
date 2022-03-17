@@ -8,6 +8,7 @@ import {ProductType, UserType} from './types';
 const api:Router = express.Router();
 const bcrypt = require('bcrypt');
 
+
 // añadir usuarios a la BD
 api.post(
   "/users/add",[
@@ -48,7 +49,7 @@ api.post(
 api.post("/products/add",[
   check('nombre').isLength({min: 1}).trim().escape(),
   check('precio').exists().bail().if((value:number) => {value >= 0.0}),
-  check('categoria').exists().bail().isIn(['vozka','ginebra','ron']),
+  //check('categoria').exists().bail().isIn(['vozka','ginebra','ron']),
 ],
 async (req: Request, res: Response):Promise<Response> =>{
   let nombre:String = req.body.nombre;
@@ -71,6 +72,7 @@ async (req: Request, res: Response):Promise<Response> =>{
 // parametro filter para filtrar productos por el atributo categoria
 api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Response>=> {
   const filter = req.params.filter;
+  
   if(filter === 'all'){
     var products: Array<ProductType> =  await Product.find();
   }else{

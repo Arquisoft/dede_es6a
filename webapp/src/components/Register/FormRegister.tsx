@@ -124,7 +124,7 @@ export default function FormRegister() {
             Crear Cuenta
             
           </button>
-          <a href="login">¿Ya tienes una cuenta? ¡Inicia sesión!</a>
+          <a className="btnLogin" href="login">¿Ya tienes una cuenta? ¡Inicia sesión!</a>
         </div>
       </form>
     </div>
