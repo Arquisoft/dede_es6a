@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
@@ -5,37 +6,38 @@ import User from './models/User';
 import {ProductType, UserType} from './types';
 
 const api:Router = express.Router();
-const bcrypt:any = require('bcrypt');
+const bcrypt = require('bcrypt');
+
 
 // añadir usuarios a la BD
 api.post(
   "/users/add",[
-    check('name').isLength({ min: 1 }).trim().escape(),
+    check('username').isLength({ min: 1 }).trim().escape(),
     check('email').isEmail().normalizeEmail(),
     check('password','invalid pasword').isLength({ min: 6 }),
     check('confirmPassword', 'invalid password').isLength({ min: 6 })
-    .custom((value,{req}) => {
+    .custom((value: any,req: any) => {
         if (value !== req.body.confirmPassword) {
             // error si las contraseñas no coinciden
             throw new Error("Passwords don't match");
         } else {
             return value;
         }
-    })
+    }
+   )
   ],
   async (req: Request, res: Response): Promise<Response> => {
-    let name = req.body.name; 
+    let username = req.body.username; 
     let email = req.body.email;
     let password = req.body.password;
-    
     var salt = bcrypt.genSaltSync(10);
     var hash:String = bcrypt.hashSync(password, salt);
 
     const user = new User(
       {
-        'name' : name,
+        'username' : username,
         'email': email,
-        'password': hash
+        'password': hash,
       }
     );
     await user.save();

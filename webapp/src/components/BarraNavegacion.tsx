@@ -109,7 +109,7 @@ class BarraNavegacion extends Component {
 
                             {/* Opción para iniciar sesión */}
                             <NavItem>
-                                <NavLink href="/products">Inicia sesión</NavLink>
+                                <NavLink href="/login">Inicia sesión</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="/carrito">
