@@ -2,12 +2,13 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AddProducts.css';
-import {addProduct} from '../../../api/api';
+import {addProduct, isAdmin} from '../../../api/api';
 import {Product} from '../../../shared/shareddtypes';
 import BarraNavegacion from '../../BarraNavegacion';
+import Errorpage from '../../ErrorPage';
 
 export default function(){
-
+    
     const enviar = () => {
         const nombre:HTMLInputElement  = document.querySelector("input[name='name']") as HTMLInputElement;
         const marca: HTMLInputElement = document.querySelector("input[name='brand']") as HTMLInputElement;
@@ -31,7 +32,6 @@ export default function(){
         const product:Product = {'id':i, 'nombre':n,'marca':m,'precio':p,'categoria':c,'descripcion':d};
         addProduct(product);
     }
-
     return(
         <>
         <BarraNavegacion />

@@ -1,13 +1,15 @@
-import { Console } from 'console';
+import { login } from '@inrupt/solid-client-authn-browser';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
 import {ProductType, UserType} from './types';
 
+
 const api:Router = express.Router();
 const bcrypt = require('bcrypt');
-
+const session = require('express-session');
+const crypto = require('crypto');
 
 // añadir usuarios a la BD
 api.post(
@@ -30,8 +32,7 @@ api.post(
     let username = req.body.username; 
     let email = req.body.email;
     let password = req.body.password;
-    var salt = bcrypt.genSaltSync(10);
-    var hash:String = bcrypt.hashSync(password, salt);
+    let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
 
     const user = new User(
       {
@@ -41,7 +42,7 @@ api.post(
       }
     );
     await user.save();
-    return res.sendStatus(200);
+    return res.sendStatus(201);
   }
 );
 
@@ -65,7 +66,7 @@ async (req: Request, res: Response):Promise<Response> =>{
      'descripcion':descripcion}
   );
   await product.save();
-  return res.sendStatus(200);
+  return res.sendStatus(201);
 });
 
 // sacar productos de la BD
@@ -79,6 +80,25 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
     var products: Array<ProductType> =  await Product.find({'categoria': filter});
   }
   return res.status(200).send(products);
+});
+
+api.post("/login", async (req, res): Promise<Response>=> {
+  var username = req.body.username;
+  var password = req.body.password;
+  let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
+  let user:UserType = await User.findOne({"username": username,'password': hash}) as UserType;
+  if(user != null){
+    session.user = user.username;
+    return res.status(200).send(user.username);
+  }else{
+    session.user = null;
+    return res.status(401).send("error");
+  }
+});
+
+api.get('/logout', (req, res) => {
+  session.user = null;
+  res.status(200).send("Usuario desconectado");
 });
 
 export default api;

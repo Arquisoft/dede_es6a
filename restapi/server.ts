@@ -19,6 +19,14 @@ const options: cors.CorsOptions = {
   optionsSuccessStatus: 200
 };
 
+var expressSession = require('express-session');
+app.use(expressSession({
+  secret: 'abcdefg',
+  resave: true,
+  saveUninitialized: true
+}));
+
+
 const metricsMiddleware:RequestHandler = promBundle({includeMethod: true});
 app.use(metricsMiddleware);
 

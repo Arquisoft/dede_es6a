@@ -1,6 +1,4 @@
-import { Console } from 'console';
-import {User} from '../shared/shareddtypes';
-import {Product} from '../shared/shareddtypes';
+import {User, Product} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -12,14 +10,29 @@ export async function addUser(user:User):Promise<boolean>{
            'email':user.email,
            'password':user.password,
           })
-      });
-      console.log(user.username)  
-      console.log(user.password)  
-      console.log(user.email)    
-      if (response.status===200)
+      });  
+      if (response.status===201)
       return true;
     else
       return false;
+}
+
+export async function login(username:string, password:string):Promise<string>{
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/login', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(
+      {
+       'username':username,
+       'password':password
+      })
+  });  
+  if(response.status === 200){
+    return "usuario logeado";
+  }else{
+    return "nombre de usuario o contraseña incorrectos";
+  }
 }
 
 export async function addProduct(product: Product):Promise<boolean>{
@@ -35,7 +48,7 @@ export async function addProduct(product: Product):Promise<boolean>{
         'description':product.descripcion
       })
   });
-  if(response.status===200)
+  if(response.status===201)
     return true;
   else
     return false;
@@ -54,3 +67,4 @@ export async function getProducts(filter:String = 'all'):Promise<Product[]>{
   let response = await fetch(apiEndPoint+'/catalogo/'+filter);
   return response.json();
 }
+
