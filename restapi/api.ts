@@ -92,11 +92,9 @@ api.post("/login", async (req, res): Promise<Response>=> {
   const re = /^[a-zA-Z0-9_]*/;
   if(re.test(username) == false)
     return res.status(401).send("Nombre de usuario no valido");
-  else
-    usernameChecked = username;
 
   let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
-  let user:UserType = await User.findOne({"username": usernameChecked,'password': hash}) as UserType;
+  let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
   if(user != null){
     session.user = user.username;
     return res.status(200).send(user.username);
