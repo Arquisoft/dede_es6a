@@ -1,26 +1,16 @@
 import "./FormLogin.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { addUser } from "./../../api/api";
-import { User } from './../../shared/shareddtypes';
-import Register from "./../Register/FormRegister"
+import {login} from '../../api/api';
 
 
 export default function LoginForm() {
 
-    const enviar = () => {
-        const name:HTMLInputElement  = document.querySelector("input[name='name']") as HTMLInputElement;
-        const email: HTMLInputElement = document.querySelector("input[name='email']") as HTMLInputElement;
-        const password: HTMLInputElement = document.querySelector("input[name='password']") as HTMLInputElement;
-        let n:string ='',e:string='',p:string='';  
-        if(name)
-            n = name.value as string;
-        if(email)
-            e = email.value as string;
-        if(password)
-            p = password.value as string;
-        const user:User = {'username':n,'email':e, 'password':p};
-        addUser(user);
+    const loginButton = async () => {
+        
+        const username  = (document.querySelector("input[name='name']") as HTMLInputElement).value;
+        const password = (document.querySelector("input[name='password']") as HTMLInputElement).value;
+        let res = await login(username, password);
+        alert(res);
     }
 
   return (
@@ -31,13 +21,13 @@ export default function LoginForm() {
                     <form>
                         <div className="form-group">
                             <input type="text" className="form-control"
-                                placeholder="Nombre de usuario *"/>
+                                placeholder="Nombre de usuario *" name="name"/>
                         </div>
                         <div className="form-group">
                             <input type="password" className="form-control"
-                                placeholder="Contraseña *"/>
+                                placeholder="Contraseña *" name="password"/>
                         </div>
-                        <div className="form-group">
+                        <div className="form-group" onClick={loginButton}>
                             <a href="catalogo" className="btnSubmit">Iniciar sesión</a>
                         </div>
                         <div className="form-group">

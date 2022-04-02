@@ -12,10 +12,11 @@ import { useState } from 'react';
 import Producto from './components/Producto';
 import { ListaCarrito, Product } from './shared/shareddtypes';
 import Carrito from './components/carrito/Carrito';
-import ConfirmacionPago from './components/ConfirmacionPago';
 import AboutUs from './components/aboutUs/AboutUs';
 import Login from "./components/loginApp/FormLogin"
 import Register from './components/Register/FormRegister';
+import DatosPedido from './components/pedido/DatosPedido';
+import ConfirmacionPago from './components/pedido/ConfirmacionPago';
 
 const App = () => {
 
@@ -74,7 +75,8 @@ const App = () => {
         <Route path="catalogo" element={<Catalogo  addToCarrito={addToCarrito}/>} />
         <Route path="products/add" element={<AddProducts />} />
         <Route path="carrito" element={<Carrito listaCarrito={listaCarrito} addToCarrito={addToCarrito} removeFromCarrito={removeFromCarrito} />} />
-        <Route path="pago" element={<ConfirmacionPago  />} />
+        <Route path="pedido" element={<DatosPedido listaCarrito={listaCarrito} />} />
+        <Route path="pago" element={<ConfirmacionPago />} />
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />

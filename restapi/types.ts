@@ -12,3 +12,12 @@ export type UserType = {
   email:string;
   pasword:string;
 }
+
+export type PersonalData = {
+  name : string,
+  lastname: string,
+  email: string,
+  city: string,
+  street: string,
+  postalcode: string
+}

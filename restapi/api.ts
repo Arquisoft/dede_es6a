@@ -1,13 +1,15 @@
-import { Console } from 'console';
+import { login } from '@inrupt/solid-client-authn-browser';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
 import {ProductType, UserType} from './types';
 
-const api:Router = express.Router();
-const bcrypt = require('bcrypt');
 
+const api:Router = express.Router();
+const session = require('express-session');
+const crypto = require('crypto');
+const shippo = require('shippo')('shippo_test_e74418daa2156d19e72993d6cc4e4d17bb554ca6');
 
 // añadir usuarios a la BD
 api.post(
@@ -30,8 +32,7 @@ api.post(
     let username = req.body.username; 
     let email = req.body.email;
     let password = req.body.password;
-    var salt = bcrypt.genSaltSync(10);
-    var hash:String = bcrypt.hashSync(password, salt);
+    let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
 
     const user = new User(
       {
@@ -41,7 +42,7 @@ api.post(
       }
     );
     await user.save();
-    return res.sendStatus(200);
+    return res.sendStatus(201);
   }
 );
 
@@ -65,7 +66,7 @@ async (req: Request, res: Response):Promise<Response> =>{
      'descripcion':descripcion}
   );
   await product.save();
-  return res.sendStatus(200);
+  return res.sendStatus(201);
 });
 
 // sacar productos de la BD
@@ -79,6 +80,109 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
     var products: Array<ProductType> =  await Product.find({'categoria': filter});
   }
   return res.status(200).send(products);
+});
+
+api.post("/login", async (req, res): Promise<Response>=> {
+  var username = req.body.username;
+  var password = req.body.password;
+  var usernameChecked:string;
+
+  if(username == "")
+    return res.status(401).send("Nombre de usuario no valido");
+  const re = /^[a-zA-Z0-9_]*/;
+  if(re.test(username) == false)
+    return res.status(401).send("Nombre de usuario no valido");
+
+  let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
+  let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
+  if(user != null){
+    session.user = user.username;
+    return res.status(200).send(user.username);
+  }else{
+    session.user = null;
+    return res.status(401).send("error");
+  }
+});
+
+api.get('/logout', async (req, res) => {
+  session.user = null;
+  res.status(200).send("Usuario desconectado");
+});
+
+api.get('/islogged', async (req, res) =>{
+  if(session.user != null && session.user != "undefined")
+    return res.status(200).send({logged: true})
+  else
+    return res.status(200).send({logged: false})
+});
+
+api.post('/createOrder', async (req, res) =>{
+    var addressFrom  = {
+      "name": "Shawn Ippotle",
+      "street1": "215 Clayton St.",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94117",
+      "country": "US"
+    };
+    var addressTo = {
+        "name": "Mr Hippo",
+        "street1": "Broadway 1",
+        "city": "New York",
+        "state": "NY",
+        "zip": "10007",
+        "country": "US"
+    };
+    var parcel = {
+        "length": "5",
+        "width": "5",
+        "height": "5",
+        "distance_unit": "in",
+        "weight": "2",
+        "mass_unit": "lb"
+    };
+    var addressFrom  = {
+      "name": "Shawn Ippotle",
+      "street1": "215 Clayton St.",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94117",
+      "country": "US"
+  };
+
+  var addressTo = {
+      "name": "Mr Hippo",
+      "street1": "Broadway 1",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10007",
+      "country": "US"
+  };
+
+  var parcel = {
+      "length": "5",
+      "width": "5",
+      "height": "5",
+      "distance_unit": "in",
+      "weight": "2",
+      "mass_unit": "lb"
+  };
+
+  var shipment = {
+    "address_from": addressFrom,
+    "address_to": addressTo,
+    "parcels": [parcel],
+  };
+  shippo.transaction.create({
+    "shipment": shipment,
+    "carrier_account": "b741b99f95e841639b54272834bc478c",
+    "servicelevel_token": "usps_priority"
+    }, function(err:any, transaction:any) {
+      if(err)
+        res.status(500).send(err);
+      else
+        res.status(200).send(transaction);
+    });
 });
 
 export default api;
