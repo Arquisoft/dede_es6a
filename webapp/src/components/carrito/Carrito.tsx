@@ -5,6 +5,7 @@ import './Carrito.css';
 import BarraNavegacion from '../BarraNavegacion';
 import { Button, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
+import React from "react";
 
 type Carrito = {
     listaCarrito: ListaCarrito[];
