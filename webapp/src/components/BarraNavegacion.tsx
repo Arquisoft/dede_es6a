@@ -3,17 +3,21 @@ import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Un
 import logo from "../images/vino.png";
 import "./BarraNavegacion.css";
 import carrito from "../images/carrito.png";
-import {isLogged, logout} from '../api/api';
+import {isLogged, logout, isAdmin} from '../api/api';
 import {isLoggedType} from '../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 
 function BarraNavegacion (): JSX.Element {
 
     const [log,setIsLogged] = useState<isLoggedType>();
+    const [admin,setIsAdmin] = useState<isLoggedType>();
     const refreshIsLogged = async () => {
         setIsLogged(await isLogged());
     }
-    useEffect(()=>{ refreshIsLogged(); }, []);
+    const refreshIsAdmin = async () => {
+        setIsAdmin(await isAdmin());
+    }
+    useEffect(()=>{ refreshIsLogged(); refreshIsAdmin(); }, []);
 
     const check = () => {
         if(log != undefined)
@@ -22,6 +26,24 @@ function BarraNavegacion (): JSX.Element {
             else
                 return(<NavLink href="/login">Inicia sesión</NavLink>);          
     }
+    const adminOptions = () => {
+        if(admin != undefined)
+            if(admin.logged){
+                return(
+                    <UncontrolledDropdown inNavbar nav>
+                            <DropdownToggle caret nav>
+                                Administración
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem href="/products/add">
+                                    Añadir productos
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                );
+            }
+    }
+
     return (
         <div>
             <Navbar color="dark" dark expand="md" light>
@@ -114,6 +136,8 @@ function BarraNavegacion (): JSX.Element {
 
                     {/* Parte derecha de la barra de navegación */}
                     <Nav className="ms-auto" navbar>
+                        {/* Menú desplegable correspondiente a las opciones del administrador*/}
+                        {adminOptions()}
 
                         {/* Opción de about us*/}
                         <NavItem>

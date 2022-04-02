@@ -41,7 +41,8 @@ api.post(
         'password': hash,
       }
     );
-    await user.save();
+    if(username != "admin")
+      await user.save();
     return res.sendStatus(201);
   }
 );
@@ -154,5 +155,12 @@ api.get('/islogged', async (req, res) =>{
       }
   });
 });
+
+api.get('/isadmin', async (req, res) =>{
+  if(session.user != null && session.user == "admin")
+    return res.status(200).send({logged: true})
+  else
+    return res.status(200).send({logged: false})
+  });
 
 export default api;

@@ -79,6 +79,12 @@ export async function isLogged():Promise<isLoggedType>{
   return response.json();
 }
 
+export async function isAdmin():Promise<isLoggedType>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/isadmin');
+  return response.json();
+}
+
 export async function createOrder(order:Order):Promise<JSON>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/createOrder',{
