@@ -1,0 +1,13 @@
+#titulo-resumen{
+    text-align: center;
+}
+#resumen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#productos{
+    gap: 1em;
+    display: flex;
+    margin: 1em;
+}

@@ -3,13 +3,18 @@ import BarraNavegacion from './BarraNavegacion';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
-export default function(){
+
+type ErrorPage = {
+    msg: string;
+}
+
+const ErrorPage: React.FC<ErrorPage> = ({msg}) => {
     
     return(
         <>
         <BarraNavegacion />
         <Alert variant="danger" onClose={() => {document.getElementById('volver')?.click()}} dismissible>
-        <Alert.Heading>Oh vaya! No cuentas con los permisos necesarios para entrar aqui!</Alert.Heading>
+        <Alert.Heading>Oh vaya! {msg}</Alert.Heading>
             <p>
             Te recomendamos que compres larios nuestra mejor ginebra al precio mas competitivo ;D
             </p>
@@ -18,3 +23,4 @@ export default function(){
         </>
     );
 }
+export default ErrorPage;

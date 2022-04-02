@@ -18,6 +18,10 @@ export type ListaCarrito = {
     unidades: number;
 }
 
+export type isLoggedType = {
+    logged: boolean;
+}
+
 export type PersonalData = {
     name : string,
     lastname: string,

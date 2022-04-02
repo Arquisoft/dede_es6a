@@ -1,4 +1,4 @@
-import {User, Product} from '../shared/shareddtypes';
+import {User, Product, isLoggedType} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -35,6 +35,11 @@ export async function login(username:string, password:string):Promise<string>{
   }
 }
 
+export async function logout():Promise<void>{
+    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    await fetch(apiEndPoint+'/logout');
+}
+
 export async function addProduct(product: Product):Promise<boolean>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/products/add',{
@@ -65,6 +70,22 @@ export async function getUsers():Promise<User[]>{
 export async function getProducts(filter:String = 'all'):Promise<Product[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/catalogo/'+filter);
+  return response.json();
+}
+
+export async function isLogged():Promise<isLoggedType>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/islogged');
+  return response.json();
+}
+
+export async function createOrder():Promise<any>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/createOrder',{
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({})
+  });
   return response.json();
 }
 
