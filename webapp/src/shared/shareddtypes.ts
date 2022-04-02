@@ -30,3 +30,13 @@ export type PersonalData = {
     street: string,
     postalcode: string
 }
+
+export type Order = {
+    name: string,
+    lastname: string,
+    email: string,
+    city: string,
+    street: string,
+    zipcode: string
+}
+

@@ -1,4 +1,4 @@
-import {User, Product, isLoggedType} from '../shared/shareddtypes';
+import {User, Product, isLoggedType, Order} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -79,12 +79,19 @@ export async function isLogged():Promise<isLoggedType>{
   return response.json();
 }
 
-export async function createOrder():Promise<any>{
+export async function createOrder(order:Order):Promise<JSON>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/createOrder',{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({})
+    body: JSON.stringify({
+      'name': order.name,
+      'lastname': order.lastname,
+      'email': order.email,
+      'city': order.city,
+      'street': order.street,
+      'zipcode': order.zipcode
+    })
   });
   return response.json();
 }

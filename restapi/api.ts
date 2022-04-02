@@ -9,7 +9,7 @@ import {ProductType, UserType} from './types';
 const api:Router = express.Router();
 const session = require('express-session');
 const crypto = require('crypto');
-const shippo = require('shippo')('shippo_test_e74418daa2156d19e72993d6cc4e4d17bb554ca6');
+const shippo = require('shippo')('shippo_test_54074f336b3c2eb6d295fe272eb3584ee6457e4a');
 
 // añadir usuarios a la BD
 api.post(
@@ -114,33 +114,9 @@ api.get('/islogged', async (req, res) =>{
     return res.status(200).send({logged: true})
   else
     return res.status(200).send({logged: false})
-});
+  });
 
-api.post('/createOrder', async (req, res) =>{
-    var addressFrom  = {
-      "name": "Shawn Ippotle",
-      "street1": "215 Clayton St.",
-      "city": "San Francisco",
-      "state": "CA",
-      "zip": "94117",
-      "country": "US"
-    };
-    var addressTo = {
-        "name": "Mr Hippo",
-        "street1": "Broadway 1",
-        "city": "New York",
-        "state": "NY",
-        "zip": "10007",
-        "country": "US"
-    };
-    var parcel = {
-        "length": "5",
-        "width": "5",
-        "height": "5",
-        "distance_unit": "in",
-        "weight": "2",
-        "mass_unit": "lb"
-    };
+  api.post('/createOrder', async (req, res) =>{
     var addressFrom  = {
       "name": "Shawn Ippotle",
       "street1": "215 Clayton St.",
@@ -149,16 +125,14 @@ api.post('/createOrder', async (req, res) =>{
       "zip": "94117",
       "country": "US"
   };
-
   var addressTo = {
-      "name": "Mr Hippo",
-      "street1": "Broadway 1",
-      "city": "New York",
-      "state": "NY",
-      "zip": "10007",
-      "country": "US"
+      "name": req.body.name,
+      "street1": req.body.street,
+      "city": req.body.city,
+      "state": "ES",
+      "zip": req.body.zipcode,
+      "country": "ES"
   };
-
   var parcel = {
       "length": "5",
       "width": "5",
@@ -167,22 +141,18 @@ api.post('/createOrder', async (req, res) =>{
       "weight": "2",
       "mass_unit": "lb"
   };
-
-  var shipment = {
-    "address_from": addressFrom,
-    "address_to": addressTo,
-    "parcels": [parcel],
-  };
-  shippo.transaction.create({
-    "shipment": shipment,
-    "carrier_account": "b741b99f95e841639b54272834bc478c",
-    "servicelevel_token": "usps_priority"
-    }, function(err:any, transaction:any) {
-      if(err)
-        res.status(500).send(err);
-      else
-        res.status(200).send(transaction);
-    });
+  shippo.shipment.create({
+      "address_from": addressFrom,
+      "address_to": addressTo,
+      "parcels": [parcel],
+      "async": false
+  }, function(err:any, shipment:any){
+      if(err){
+        return res.status(400).send(err);
+      }else{
+        return res.status(200).send(shipment);  
+      }
+  });
 });
 
 export default api;

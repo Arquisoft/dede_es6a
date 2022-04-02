@@ -6,11 +6,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import ConfirmacionPago from './ConfirmacionPago';
 //import {getUserData, setUserData} from '../../api/api';
-import {PersonalData} from '../../shared/shareddtypes';
+import {Order} from '../../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Input } from 'reactstrap';
-import { ListaCarrito } from '../../shared/shareddtypes';
+import { ListaCarrito, Product } from '../../shared/shareddtypes';
 import './DatosPedido.css';
 import ErrorPage from '../ErrorPage';
 import {isLoggedType} from '../../shared/shareddtypes';
@@ -30,6 +30,32 @@ const DatosPedido: React.FC<DatosPedido> = ({listaCarrito}) => {
         setIsLogged(await isLogged());
     }
     useEffect(()=>{ refreshIsLogged(); }, []);
+
+    function getPrecioTotal(): number {
+        let precioTotal: number = 0;
+        listaCarrito.forEach( (elem, i) => {
+            precioTotal += listaCarrito[i].producto.precio * listaCarrito[i].unidades
+        });
+        return precioTotal;
+    }
+
+    const saveData = () => {
+        const nombre:HTMLInputElement  = document.querySelector("input[name='name']") as HTMLInputElement;
+        const apellido: HTMLInputElement = document.querySelector("input[name='lastname']") as HTMLInputElement;
+        const email: HTMLInputElement = document.querySelector("input[name='email']") as HTMLInputElement;
+        const city: HTMLInputElement = document.querySelector("input[name='city']") as HTMLInputElement;
+        const street: HTMLInputElement = document.querySelector("input[name='street']") as HTMLInputElement;
+        const zipcode: HTMLInputElement = document.querySelector("input[name='zipcode']") as HTMLInputElement;
+        let order:Order = {
+            name: nombre.value,
+            lastname: apellido.value,
+            email: email.value,
+            city: city.value,
+            street: street.value,
+            zipcode: zipcode.value
+        }
+        localStorage.setItem("order",  JSON.stringify(order));
+    }
 
     if(log?.logged){
         return (
@@ -54,7 +80,7 @@ const DatosPedido: React.FC<DatosPedido> = ({listaCarrito}) => {
                 <Form.Group controlId="zipcode">
                     <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
                 </Form.Group>
-                <Button id="formButton" type="button" href='/pago'>Siguiente</Button>
+                <Button id="formButton" type="button" href='/pago' onClick={saveData}>Siguiente</Button>
             </Form>
             <div id='resumen'>
                 <h3 id='titulo-resumen'>Resumen de compra</h3>
@@ -65,10 +91,12 @@ const DatosPedido: React.FC<DatosPedido> = ({listaCarrito}) => {
                                 <Card.Img variant="top" src={carrito.producto.nombre+".jpg"} />
                                 <Card.Title>{carrito.producto.nombre}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">Unidades: {" " + carrito.unidades + " "}</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted">Precio total: {" " + carrito.unidades*carrito.producto.precio + " "}</Card.Subtitle>
                             </Card.Body>
                         </Card>
                     ))}
                 </div>
+                <h4 id='titulo-resumen'>Precio del pedido: {getPrecioTotal()}</h4>
             </div>
 
             <Footer/>

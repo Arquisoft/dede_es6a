@@ -76,7 +76,7 @@ const App = () => {
         <Route path="products/add" element={<AddProducts />} />
         <Route path="carrito" element={<Carrito listaCarrito={listaCarrito} addToCarrito={addToCarrito} removeFromCarrito={removeFromCarrito} />} />
         <Route path="pedido" element={<DatosPedido listaCarrito={listaCarrito} />} />
-        <Route path="pago" element={<ConfirmacionPago />} />
+        <Route path="pago" element={<ConfirmacionPago listaCarrito={listaCarrito} />} />
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
