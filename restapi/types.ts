@@ -21,3 +21,19 @@ export type PersonalData = {
   street: string,
   postalcode: string
 }
+
+export type SellType = {
+    nombre: string,
+    quantity: number
+}
+
+export type OrderType = {
+    userEmail: string,
+    idProducts: string[],
+    precio: number
+}
+
+export type ListaCarrito = {
+  producto: ProductType;
+  unidades: number;
+}

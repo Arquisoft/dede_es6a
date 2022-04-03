@@ -1,7 +1,8 @@
 import "./FormLogin.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {login} from '../../api/api';
-
+import {Form } from 'react-bootstrap/';
+import { useState, useEffect } from 'react';
 
 export default function LoginForm() {
 
@@ -9,8 +10,20 @@ export default function LoginForm() {
         
         const username  = (document.querySelector("input[name='name']") as HTMLInputElement).value;
         const password = (document.querySelector("input[name='password']") as HTMLInputElement).value;
-        let res = await login(username, password);
-        alert(res);
+        const url = (document.querySelector("input[name='pod']") as HTMLInputElement).value;
+        let res = await login(username, password, url);
+    }
+
+    const changeProvider = () => {
+        let link: HTMLAnchorElement = document.getElementById('link') as HTMLAnchorElement;
+        let select: HTMLInputElement = document.getElementById('provider') as HTMLInputElement;
+        if(select.value == '2'){
+            link.href = "https://solidcommunity.net";
+            link.text = "SolidCommunity";
+        }else{
+            link.href = "https://inrupt.net";
+            link.text = "Inrupt";
+        }
     }
 
   return (
@@ -32,6 +45,17 @@ export default function LoginForm() {
                         </div>
                         <div className="form-group">
                             <a href="register" className="ForgetPwd">¡Regístrate ahora!</a>
+                        </div>
+                        <br/>
+                        <Form.Select id="provider" onChange={changeProvider} aria-label="Default select example">
+                            <option>Proveedor de solid</option>
+                            <option value="1">Inrupt</option>
+                            <option value="2">SolidCommunity</option>
+                        </Form.Select>
+                        <div className="form-group">
+                            <input type="url" className="form-control"
+                                placeholder="url del pod (opcional)" name="pod"/>
+                            <p>Si no tienes uno lo puedes crear aqui: <a id="link" href="https://inrupt.net">Inrupt</a></p>
                         </div>
                     </form>
                 </div>

@@ -4,7 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import './Carrito.css';
 import BarraNavegacion from '../BarraNavegacion';
 import { Button, Card } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table';
 
 type Carrito = {
     listaCarrito: ListaCarrito[];

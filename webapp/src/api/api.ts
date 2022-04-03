@@ -1,4 +1,4 @@
-import {User, Product, isLoggedType} from '../shared/shareddtypes';
+import {User, Product, isLoggedType, Order, DataOrder} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -17,7 +17,7 @@ export async function addUser(user:User):Promise<boolean>{
       return false;
 }
 
-export async function login(username:string, password:string):Promise<string>{
+export async function login(username:string, password:string, url:string):Promise<string>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/login', {
     method: 'POST',
@@ -25,7 +25,8 @@ export async function login(username:string, password:string):Promise<string>{
     body: JSON.stringify(
       {
        'username':username,
-       'password':password
+       'password':password,
+       'podUrl': url
       })
   });  
   if(response.status === 200){
@@ -79,13 +80,42 @@ export async function isLogged():Promise<isLoggedType>{
   return response.json();
 }
 
-export async function createOrder():Promise<any>{
+export async function isAdmin():Promise<isLoggedType>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/isadmin');
+  return response.json();
+}
+
+export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/createOrder',{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({})
+    body: JSON.stringify({
+      'name': DataOrder.name,
+      'lastname': DataOrder.lastname,
+      'email': DataOrder.email,
+      'city': DataOrder.city,
+      'street': DataOrder.street,
+      'zipcode': DataOrder.zipcode
+    })
   });
   return response.json();
+}
+
+export async function saveOrder(order: Order):Promise<boolean>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/saveOrder',{
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      'carrito': order.carrito,
+      'precio': order.precio
+    })
+  });
+  if(response.status === 200)
+    return true;
+  else
+    return false;
 }
 
