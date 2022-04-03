@@ -31,12 +31,13 @@ const DatosPedido: React.FC<DatosPedido> = ({listaCarrito}) => {
     }
     useEffect(()=>{ refreshIsLogged(); }, []);
 
-    function getPrecioTotal(): number {
+    function getPrecioTotal(): string {
         let precioTotal: number = 0;
         listaCarrito.forEach( (elem, i) => {
             precioTotal += listaCarrito[i].producto.precio * listaCarrito[i].unidades
         });
-        return precioTotal;
+        let number:string = Number(precioTotal).toFixed(2);
+        return number;
     }
 
     const saveData = () => {
@@ -91,12 +92,12 @@ const DatosPedido: React.FC<DatosPedido> = ({listaCarrito}) => {
                                 <Card.Img variant="top" src={carrito.producto.nombre+".jpg"} />
                                 <Card.Title>{carrito.producto.nombre}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">Unidades: {" " + carrito.unidades + " "}</Card.Subtitle>
-                                <Card.Subtitle className="mb-2 text-muted">Precio total: {" " + carrito.unidades*carrito.producto.precio + " "}</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted">Precio total: {" " + Number(carrito.unidades*carrito.producto.precio).toFixed(2) + " €"}</Card.Subtitle>
                             </Card.Body>
                         </Card>
                     ))}
                 </div>
-                <h4 id='titulo-resumen'>Precio del pedido: {getPrecioTotal()}</h4>
+                <h4 id='titulo-resumen'>Precio del pedido: {getPrecioTotal() + " €"}</h4>
             </div>
 
             <Footer/>

@@ -49,16 +49,16 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = ({listaCarrito}) =>{
         return "no disponible";
     }
 
-    function getPrecio(): number {
+    function getPrecio(): string {
         let precioTotal: number = 0;
         listaCarrito.forEach( (elem, i) => {
             precioTotal += listaCarrito[i].producto.precio * listaCarrito[i].unidades
         });
-        return precioTotal;
+        return precioTotal.toFixed(2);
     }
 
-    function getPrecioTotal(): number {
-        return Number(getPrecio())+ Number(getPrecioEnvio());
+    function getPrecioTotal(): string {
+        return (Number(getPrecio())+ Number(getPrecioEnvio())).toFixed(2);
     }
 
     function finalizarPedido() {
@@ -78,7 +78,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = ({listaCarrito}) =>{
                 <Card.Header>Pedido</Card.Header>
                 <ListGroup variant="flush">
                 {listaCarrito.map(carrito => (
-                        <ListGroup.Item>{carrito.producto.nombre}:     {carrito.unidades*carrito.producto.precio} €</ListGroup.Item>
+                        <ListGroup.Item>{carrito.producto.nombre}:     {Number(carrito.unidades*carrito.producto.precio).toFixed(2)} €</ListGroup.Item>
                 ))}
                 <ListGroup.Item>Precio de envio:    {getPrecioEnvio()} €</ListGroup.Item>
                 <ListGroup.Item>Total:    {getPrecioTotal()} €</ListGroup.Item> 
