@@ -3,8 +3,8 @@ import Footer from '../Footer';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import {createOrder, isLogged} from '../../api/api';
-import {isLoggedType, ListaCarrito, Order} from '../../shared/shareddtypes';
+import {createOrder, isLogged, saveOrder} from '../../api/api';
+import {isLoggedType, ListaCarrito, DataOrder, Order} from '../../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 import ErrorPage from '../ErrorPage';
 import './ConfirmacionPago.css';
@@ -19,7 +19,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = ({listaCarrito}) =>{
         listaCarrito = JSON.parse(sessionCart);
 
     const orderDataStoraged = localStorage.getItem("order");
-    let orderData: Order;
+    let orderData: DataOrder;
     if(orderDataStoraged)
         orderData = JSON.parse(orderDataStoraged);
 
@@ -61,12 +61,20 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = ({listaCarrito}) =>{
         return (Number(getPrecio())+ Number(getPrecioEnvio())).toFixed(2);
     }
 
-    function finalizarPedido() {
+    async function finalizarPedido() {
         localStorage.setItem("listaCarrito", "");
         document.getElementById('formPago')?.remove();
         let contenedor = document.getElementById('container') as Element;
         contenedor.innerHTML = "<h4>Pedido realizado con éxito</h4>";
         contenedor.innerHTML += "<a href='catalogo'>Seguir comprando</a>"
+
+        // guardar pedido
+        let precio = getPrecioTotal();
+        let order: Order = {
+            carrito: listaCarrito,
+            precio: Number(precio)
+        }
+        await saveOrder(order);
     }
     
     if(log?.logged){

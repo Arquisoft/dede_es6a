@@ -6,7 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import ConfirmacionPago from './ConfirmacionPago';
 //import {getUserData, setUserData} from '../../api/api';
-import {Order} from '../../shared/shareddtypes';
+import {DataOrder} from '../../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Input } from 'reactstrap';
@@ -47,7 +47,7 @@ const DatosPedido: React.FC<DatosPedido> = ({listaCarrito}) => {
         const city: HTMLInputElement = document.querySelector("input[name='city']") as HTMLInputElement;
         const street: HTMLInputElement = document.querySelector("input[name='street']") as HTMLInputElement;
         const zipcode: HTMLInputElement = document.querySelector("input[name='zipcode']") as HTMLInputElement;
-        let order:Order = {
+        let order:DataOrder = {
             name: nombre.value,
             lastname: apellido.value,
             email: email.value,

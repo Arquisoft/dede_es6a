@@ -1,4 +1,4 @@
-import {User, Product, isLoggedType, Order} from '../shared/shareddtypes';
+import {User, Product, isLoggedType, Order, DataOrder} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -86,20 +86,36 @@ export async function isAdmin():Promise<isLoggedType>{
   return response.json();
 }
 
-export async function createOrder(order:Order):Promise<JSON>{
+export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/createOrder',{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
-      'name': order.name,
-      'lastname': order.lastname,
-      'email': order.email,
-      'city': order.city,
-      'street': order.street,
-      'zipcode': order.zipcode
+      'name': DataOrder.name,
+      'lastname': DataOrder.lastname,
+      'email': DataOrder.email,
+      'city': DataOrder.city,
+      'street': DataOrder.street,
+      'zipcode': DataOrder.zipcode
     })
   });
   return response.json();
+}
+
+export async function saveOrder(order: Order):Promise<boolean>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/saveOrder',{
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      'carrito': order.carrito,
+      'precio': order.precio
+    })
+  });
+  if(response.status === 200)
+    return true;
+  else
+    return false;
 }
 

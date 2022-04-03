@@ -3,7 +3,8 @@ import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
-import {ProductType, UserType} from './types';
+import Order from './models/Order';
+import {ProductType, UserType, ListaCarrito, SellType} from './types';
 
 
 const api:Router = express.Router();
@@ -183,6 +184,27 @@ api.get('/isadmin', async (req, res) =>{
     return res.status(200).send({logged: true})
   else
     return res.status(200).send({logged: false})
+  });
+
+  api.post('/saveOrder', async (req, res) => {
+    
+    let username:string = session.user;
+    let products:ListaCarrito[] = req.body.carrito;
+    let prods:SellType[] = [];
+    products.forEach(element => {
+        let prod:SellType = {
+          nombre: element.producto.nombre,
+          quantity: element.unidades
+        }
+        prods.push(prod);
+    });
+    let order = new Order({
+      username: username,
+      products: prods,
+      precio: req.body.precio
+    });
+    order.save();
+    return res.status(200);
   });
 
 export default api;
