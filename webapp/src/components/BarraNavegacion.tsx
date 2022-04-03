@@ -38,6 +38,9 @@ function BarraNavegacion (): JSX.Element {
                                 <DropdownItem href="/products/add">
                                     Añadir productos
                                 </DropdownItem>
+                                <DropdownItem href="/users/list">
+                                    Lista de usuarios
+                                </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                 );

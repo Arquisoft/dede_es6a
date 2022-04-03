@@ -47,6 +47,11 @@ api.post(
   }
 );
 
+api.get('/users/list', async (req, res):Promise<Response> => {
+  var users: Array<UserType> =  await User.find();
+  return res.status(200).send(users);
+});
+
 // añadir productos a la BD
 api.post("/products/add",[
   check('nombre').isLength({min: 1}).trim().escape(),
