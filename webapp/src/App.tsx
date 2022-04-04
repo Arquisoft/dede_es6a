@@ -77,6 +77,14 @@ const App = () => {
     setListaCarrito(productosLista);
   }
 
+  const vaciarCarrito = () => {
+    localStorage.removeItem("listaCarrito");
+    setListaCarrito([]);
+    localStorage.setItem("listaCarrito", JSON.stringify(listaCarrito));
+
+    toast.error('Carrito vaciado');
+  }
+
   return(
     <>
       <BrowserRouter>
@@ -85,7 +93,7 @@ const App = () => {
         <Route path="catalogo" element={<Catalogo  addToCarrito={addToCarrito}/>} />
         <Route path="products/add" element={<AddProducts />} />
         <Route path="users/list" element={<ListUsers />} />
-        <Route path="carrito" element={<Carrito listaCarrito={listaCarrito} addToCarrito={addToCarrito} removeFromCarrito={removeFromCarrito} />} />
+        <Route path="carrito" element={<Carrito listaCarrito={listaCarrito} addToCarrito={addToCarrito} removeFromCarrito={removeFromCarrito} vaciarCarrito={vaciarCarrito}/>} />
         <Route path="pedido" element={<DatosPedido listaCarrito={listaCarrito} />} />
         <Route path="pago" element={<ConfirmacionPago listaCarrito={listaCarrito} />} />
         <Route path="aboutus" element={<AboutUs />} />

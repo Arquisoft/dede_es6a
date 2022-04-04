@@ -11,9 +11,10 @@ type Carrito = {
     listaCarrito: ListaCarrito[];
     addToCarrito: (prod: Product) => void;
     removeFromCarrito: (prod: Product) => void;
+    vaciarCarrito: () => void;
 }
 
-const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarrito}) => {
+const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarrito, vaciarCarrito}) => {
 
     const sessionCart = localStorage.getItem("listaCarrito");
     if (sessionCart)
@@ -30,11 +31,12 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
         });
         return precioTotal;
     }
- 
+
     return (
         <>
         <h1 >Carrito</h1>
         <BarraNavegacion />
+        <Button id="btVaciar" onClick={() => vaciarCarrito()}>Vaciar Carrito</Button>
         <Table striped bordered hover id='listaCarrito'>
             <thead>
                 <tr>
