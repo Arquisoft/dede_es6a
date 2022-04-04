@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: 16
     - run: npm ci
-    - run: npm test
+#    - run: npm test
     - uses: codecov/codecov-action@v2
   unit-test-restapi:
     runs-on: ubuntu-latest
