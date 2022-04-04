@@ -15,4 +15,7 @@ privacidad.
 | POD    | Los pods, personal online data stores, son como servidores web personales seguros para tus datos.
 Puedes almacenar cualquier tipo de información en un Pod de Solid, utilizando formatos y protocolos de datos estándar, abiertos e interoperables. Además, controlas el acceso a los datos de tu Pod y decides con quién quieres compartir qué datos. Puedes revocar el acceso en cualquier momento.
 | Bootstrap    | Framework muy popular que facilita el desarrollo web ofreciendo clases predefinidas en CSS y JavaScript.
+| MongoDB    | Base de datos documental.
+| Express    | Es un marco de aplicación web de back-end para Node.js diseñado para crear aplicaciones web y API.
+| Shippo    | Compañía de software estadounidense que ayuda a las empresas de comercio electrónico a integrar el envío con múltiples transportistas a través de su API y aplicación web.
 |===

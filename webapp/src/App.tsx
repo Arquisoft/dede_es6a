@@ -19,6 +19,7 @@ import DatosPedido from './components/pedido/DatosPedido';
 import ConfirmacionPago from './components/pedido/ConfirmacionPago';
 import toast, { Toaster } from 'react-hot-toast';
 
+import ListUsers from './components/listUsers/ListUsers';
 
 const App = () => {
 
@@ -83,9 +84,10 @@ const App = () => {
         <Route path="/" element={<ConfirmacionEdad />} />
         <Route path="catalogo" element={<Catalogo  addToCarrito={addToCarrito}/>} />
         <Route path="products/add" element={<AddProducts />} />
+        <Route path="users/list" element={<ListUsers />} />
         <Route path="carrito" element={<Carrito listaCarrito={listaCarrito} addToCarrito={addToCarrito} removeFromCarrito={removeFromCarrito} />} />
         <Route path="pedido" element={<DatosPedido listaCarrito={listaCarrito} />} />
-        <Route path="pago" element={<ConfirmacionPago />} />
+        <Route path="pago" element={<ConfirmacionPago listaCarrito={listaCarrito} />} />
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />

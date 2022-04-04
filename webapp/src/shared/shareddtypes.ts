@@ -30,3 +30,19 @@ export type PersonalData = {
     street: string,
     postalcode: string
 }
+
+export type DataOrder = {
+    name: string,
+    lastname: string,
+    email: string,
+    city: string,
+    street: string,
+    zipcode: string
+}
+
+export type Order = {
+    carrito: ListaCarrito[],
+    precio: number
+}
+
+

@@ -3,13 +3,19 @@ import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
-import {ProductType, UserType} from './types';
+import Order from './models/Order';
+import {ProductType, UserType, ListaCarrito, SellType} from './types';
 
 
 const api:Router = express.Router();
 const session = require('express-session');
 const crypto = require('crypto');
-const shippo = require('shippo')('shippo_test_e74418daa2156d19e72993d6cc4e4d17bb554ca6');
+const shippo = require('shippo')('shippo_test_54074f336b3c2eb6d295fe272eb3584ee6457e4a');
+const { 
+  getSessionFromStorage,
+  getSessionIdFromStorageAll,
+  Session
+} = require("@inrupt/solid-client-authn-node");
 
 // añadir usuarios a la BD
 api.post(
@@ -41,10 +47,16 @@ api.post(
         'password': hash,
       }
     );
-    await user.save();
+    if(username != "admin")
+      await user.save();
     return res.sendStatus(201);
   }
 );
+
+api.get('/users/list', async (req, res):Promise<Response> => {
+  var users: Array<UserType> =  await User.find();
+  return res.status(200).send(users);
+});
 
 // añadir productos a la BD
 api.post("/products/add",[
@@ -85,7 +97,7 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
 api.post("/login", async (req, res): Promise<Response>=> {
   var username = req.body.username;
   var password = req.body.password;
-  var usernameChecked:string;
+  var podUrl = req.body.podUrl;
 
   if(username == "")
     return res.status(401).send("Nombre de usuario no valido");
@@ -97,7 +109,19 @@ api.post("/login", async (req, res): Promise<Response>=> {
   let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
   if(user != null){
     session.user = user.username;
-    return res.status(200).send(user.username);
+    session.podUrl = podUrl;
+    const sessionSolid = new Session();
+    session.sessionId = sessionSolid.info.sessionId;
+    const redirectToSolidIdentityProvider = () => {
+      res.redirect("http://localhost:3000/catalogo");
+    };
+    await sessionSolid.login({
+      redirectUrl: `http://localhost:${3000}/redirect-from-solid-idp`,
+      oidcIssuer: "https://broker.pod.inrupt.com",
+      clientName: "novendoagua",
+      handleRedirect: redirectToSolidIdentityProvider,
+    });
+    return res.status(200);
   }else{
     session.user = null;
     return res.status(401).send("error");
@@ -114,33 +138,9 @@ api.get('/islogged', async (req, res) =>{
     return res.status(200).send({logged: true})
   else
     return res.status(200).send({logged: false})
-});
+  });
 
-api.post('/createOrder', async (req, res) =>{
-    var addressFrom  = {
-      "name": "Shawn Ippotle",
-      "street1": "215 Clayton St.",
-      "city": "San Francisco",
-      "state": "CA",
-      "zip": "94117",
-      "country": "US"
-    };
-    var addressTo = {
-        "name": "Mr Hippo",
-        "street1": "Broadway 1",
-        "city": "New York",
-        "state": "NY",
-        "zip": "10007",
-        "country": "US"
-    };
-    var parcel = {
-        "length": "5",
-        "width": "5",
-        "height": "5",
-        "distance_unit": "in",
-        "weight": "2",
-        "mass_unit": "lb"
-    };
+  api.post('/createOrder', async (req, res) =>{
     var addressFrom  = {
       "name": "Shawn Ippotle",
       "street1": "215 Clayton St.",
@@ -149,16 +149,14 @@ api.post('/createOrder', async (req, res) =>{
       "zip": "94117",
       "country": "US"
   };
-
   var addressTo = {
-      "name": "Mr Hippo",
-      "street1": "Broadway 1",
-      "city": "New York",
-      "state": "NY",
-      "zip": "10007",
-      "country": "US"
+      "name": req.body.name,
+      "street1": req.body.street,
+      "city": req.body.city,
+      "state": "ES",
+      "zip": req.body.zipcode,
+      "country": "ES"
   };
-
   var parcel = {
       "length": "5",
       "width": "5",
@@ -167,22 +165,46 @@ api.post('/createOrder', async (req, res) =>{
       "weight": "2",
       "mass_unit": "lb"
   };
-
-  var shipment = {
-    "address_from": addressFrom,
-    "address_to": addressTo,
-    "parcels": [parcel],
-  };
-  shippo.transaction.create({
-    "shipment": shipment,
-    "carrier_account": "b741b99f95e841639b54272834bc478c",
-    "servicelevel_token": "usps_priority"
-    }, function(err:any, transaction:any) {
-      if(err)
-        res.status(500).send(err);
-      else
-        res.status(200).send(transaction);
-    });
+  shippo.shipment.create({
+      "address_from": addressFrom,
+      "address_to": addressTo,
+      "parcels": [parcel],
+      "async": false
+  }, function(err:any, shipment:any){
+      if(err){
+        return res.status(400).send(err);
+      }else{
+        return res.status(200).send(shipment);  
+      }
+  });
 });
+
+api.get('/isadmin', async (req, res) =>{
+  if(session.user != null && session.user == "admin")
+    return res.status(200).send({logged: true})
+  else
+    return res.status(200).send({logged: false})
+  });
+
+  api.post('/saveOrder', async (req, res) => {
+    
+    let username:string = session.user;
+    let products:ListaCarrito[] = req.body.carrito;
+    let prods:SellType[] = [];
+    products.forEach(element => {
+        let prod:SellType = {
+          nombre: element.producto.nombre,
+          quantity: element.unidades
+        }
+        prods.push(prod);
+    });
+    let order = new Order({
+      username: username,
+      products: prods,
+      precio: req.body.precio
+    });
+    order.save();
+    return res.status(200);
+  });
 
 export default api;

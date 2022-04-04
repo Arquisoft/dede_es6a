@@ -5,6 +5,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@hookform/resolvers": "^2.8.8",
+    "@inrupt/solid-ui-react": "^2.7.0",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.5",
     "@testing-library/jest-dom": "^5.16.1",
@@ -22,6 +23,7 @@
     "react-hot-toast": "^2.2.0",
     "react-router-dom": "^6.2.2",
     "reactstrap": "^9.0.1",
+    "shippo": "^1.7.1",
     "typescript": "^4.5.4",
     "web-vitals": "^2.1.2",
     "yup": "^0.32.11"
