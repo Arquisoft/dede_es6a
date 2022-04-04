@@ -47,7 +47,7 @@ jobs:
     name: Push webapp Docker Image to GitHub Packages
     runs-on: ubuntu-latest
     env:
-      API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
+      API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
     needs: [unit-test-webapp, unit-test-restapi]
     steps:
       - uses: actions/checkout@v2
