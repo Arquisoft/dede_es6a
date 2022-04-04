@@ -17,9 +17,9 @@ de la misma.
 === Calidad y/o Características de Actuación
 
 Al tratarse de una tienda online, es nuestra prioridad producir un front-end que cuente con las
-caracteristicas de una aplicación usable.Además de un back-end que cumpla con los requisitos de calidad
+caracteristicas de una aplicación usable. Además de un back-end que cumpla con los requisitos de calidad
 propuestos, asi como un minimo de rendimiento.
-Con el objetivo de desarrollar el condigo mas limpio y eficiente posible usaremos codecov. Se trata 
+Con el objetivo de desarrollar el condigo más limpio y eficiente posible usaremos codecov. Se trata 
 de un software que permite monitorizar el codigo que esta siendo ejecutado en las pruebas y el que no.
 Asi se puede comprabar que elementos son los menos testeados para ponerle solución y mejorar la calidad
 del código.
