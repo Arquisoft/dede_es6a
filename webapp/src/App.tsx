@@ -20,6 +20,7 @@ import ConfirmacionPago from './components/pedido/ConfirmacionPago';
 import toast, { Toaster } from 'react-hot-toast';
 
 import ListUsers from './components/listUsers/ListUsers';
+import {duration} from "@mui/material";
 
 const App = () => {
 
@@ -49,7 +50,7 @@ const App = () => {
       productosLista.push(c);
     }
 
-    toast.success(product.nombre + ': Añadida una unidad al carrito');
+    toast.success(product.nombre + ': Añadida una unidad al carrito', {duration: 3500});
 
     localStorage.setItem("listaCarrito", JSON.stringify(productosLista));
     setListaCarrito(productosLista);
@@ -71,7 +72,7 @@ const App = () => {
         }
     }
 
-    toast.error(product.nombre +': Eliminada una unidad del carrito');
+    toast.error(product.nombre +': Eliminada una unidad del carrito', {duration: 3500});
 
     localStorage.setItem("listaCarrito", JSON.stringify(productosLista));
     setListaCarrito(productosLista);
@@ -82,7 +83,7 @@ const App = () => {
     setListaCarrito([]);
     localStorage.setItem("listaCarrito", JSON.stringify(listaCarrito));
 
-    toast.error('Carrito vaciado');
+    toast.error('Carrito vaciado', {duration:3500});
   }
 
   return(
