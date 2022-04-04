@@ -18,28 +18,15 @@ const {
 } = require("@inrupt/solid-client-authn-node");
 
 // añadir usuarios a la BD
-api.post(
-  "/users/add",[
-    check('username').isLength({ min: 1 }).trim().escape(),
-    check('email').isEmail().normalizeEmail(),
-    check('password','invalid pasword').isLength({ min: 6 }),
-    check('confirmPassword', 'invalid password').isLength({ min: 6 })
-    .custom((value: any,req: any) => {
-        if (value !== req.body.confirmPassword) {
-            // error si las contraseñas no coinciden
-            throw new Error("Passwords don't match");
-        } else {
-            return value;
-        }
-    }
-   )
-  ],
-  async (req: Request, res: Response): Promise<Response> => {
-    let username = req.body.username; 
+api.post("/users/add", async (req: Request, res: Response): Promise<Response> => {
+    let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
-    let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
+    if(username === null || username.trim() === '' || email == null || email.trim() === '' ){
+      return res.sendStatus(500);
+    }
 
+    let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
     const user = new User(
       {
         'username' : username,
@@ -58,6 +45,18 @@ api.get('/users/list', async (req, res):Promise<Response> => {
   return res.status(200).send(users);
 });
 
+api.get('/users/:name', async (req, res):Promise<Response> => {
+  const name:string = req.body.name; 
+  var user =  await User.findOne({username: name});
+  return res.status(200).send(user);
+});
+
+api.get('/users/delete/:name', async (req, res):Promise<Response> => {
+  const name = req.body.name;
+  await User.deleteOne({username: name});
+  return res.status(200);
+});
+
 // añadir productos a la BD
 api.post("/products/add",[
   check('nombre').isLength({min: 1}).trim().escape(),
@@ -70,13 +69,13 @@ async (req: Request, res: Response):Promise<Response> =>{
   let precio:String = req.body.precio;
   let categoria:String = req.body.categoria;
   let descripcion:String = req.body.descripcion;
-  let product = new Product(
-    {'nombre':nombre,
+  let product = new Product({
+     'nombre':nombre,
      'marca':marca, 
      'precio':precio, 
      'categoria':categoria, 
-     'descripcion':descripcion}
-  );
+     'descripcion':descripcion
+    });
   await product.save();
   return res.sendStatus(201);
 });
@@ -198,13 +197,14 @@ api.get('/isadmin', async (req, res) =>{
         }
         prods.push(prod);
     });
+    
     let order = new Order({
       username: username,
       products: prods,
       precio: req.body.precio
     });
-    order.save();
-    return res.status(200);
+    await order.save();
+    return res.sendStatus(200);
   });
 
 export default api;
