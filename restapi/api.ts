@@ -47,13 +47,13 @@ api.get('/users/list', async (req, res):Promise<Response> => {
 
 api.get('/users/:name', async (req, res):Promise<Response> => {
   const name:string = req.body.name; 
-  var user =  await User.findOne({username: name});
+  var user =  await User.findOne({username: name.toString()});
   return res.status(200).send(user);
 });
 
 api.get('/users/delete/:name', async (req, res):Promise<Response> => {
   const name = req.body.name;
-  await User.deleteOne({username: name});
+  await User.deleteOne({username: name.toString()});
   return res.status(200);
 });
 

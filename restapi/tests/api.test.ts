@@ -46,7 +46,7 @@ describe('user ', () => {
      it('can be created correctly', async () => {
         let username:string = 'test123';
         let email:string = 'test123@email.com';
-        let password:string = '123456';
+        let password:string = process.env.password_for_test!;
         const response:Response = await request(app).post('/users/add').send({username: username,email: email,password: password}).set('Accept', 'application/json');
         expect(response.statusCode).toBe(201);
 
@@ -58,14 +58,14 @@ describe('user ', () => {
 
     it('cant be created correctly due to empty email', async () => {
         let username:string = 'test123';
-        let password:string = '123456';
+        let password:string = process.env.password_for_test!;
         const response:Response = await request(app).post('/users/add').send({username: username,email: '',password: password}).set('Accept', 'application/json');
         expect(response.statusCode).toBe(500);
     });
 
     it('cant be created correctly due to empty name', async () => {
         let email:string = 'test123@email.com';
-        let password:string = '123456';
+        let password:string = process.env.password_for_test!;
         const response:Response = await request(app).post('/users/add').send({username: '',email: email,password: password}).set('Accept', 'application/json');
         expect(response.statusCode).toBe(500);
     });
@@ -74,7 +74,7 @@ describe('user ', () => {
     it('correct login', async () => {
         const response:Response = await request(app).post('/login').send({
             username:"test1",
-            password:"123456"
+            password: process.env.password_for_test!
         }).set('Accept', 'application/json');
         expect(response.statusCode).toBe(302);
     });
@@ -184,7 +184,7 @@ describe('order ', () => {
         }];
         await request(app).post('/login').send({
             username:"test1",
-            password:"123456"
+            password:process.env.password_for_test!
         }).set('Accept', 'application/json');
         const response:Response = await request(app).post('/saveOrder').send({
             carrito:carrito,
