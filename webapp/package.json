@@ -19,6 +19,8 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.0",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.29.0",
+    "react-hot-toast": "^2.2.0",
     "react-router-dom": "^6.2.2",
     "reactstrap": "^9.0.1",
     "shippo": "^1.7.1",

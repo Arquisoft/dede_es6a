@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hookform/resolvers": "^2.8.8",
     "@inrupt/solid-client": "^1.21.0",
     "@inrupt/solid-client-authn-browser": "^1.11.7",
     "@inrupt/solid-client-authn-node": "^1.11.7",
@@ -22,8 +23,10 @@
     "express-validator": "^6.14.0",
     "mongoose": "^6.2.4",
     "prom-client": "^14.0.1",
+    "react-hook-form": "^7.29.0",
     "reflect-metadata": "^0.1.13",
-    "shippo": "^1.7.1"
+    "shippo": "^1.7.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
