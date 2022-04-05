@@ -67,6 +67,7 @@ jobs:
       DB_USER: ${{ secrets.DB_USER }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_URI: ${{ secrets.DB_URI }}
+      DB_PORT: ${{ secrets.DB_PORT }}
     needs: [unit-test-webapp, unit-test-restapi]
     steps:
       - uses: actions/checkout@v2
@@ -78,6 +79,7 @@ jobs:
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: restapi
+          buildargs: DB_USER, DB_PASSWORD, DB_URI, DB_PORT
   deploy:
     name: Deploy over SSH
     runs-on: ubuntu-latest
