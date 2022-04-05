@@ -11,7 +11,10 @@ export default function LoginForm() {
         const username  = (document.querySelector("input[name='name']") as HTMLInputElement).value;
         const password = (document.querySelector("input[name='password']") as HTMLInputElement).value;
         const url = (document.querySelector("input[name='pod']") as HTMLInputElement).value;
-        let res = await login(username, password, url);
+        let res:boolean = await login(username, password, url);
+        if(res){
+            (document.getElementById("catalogo") as HTMLAnchorElement).click();
+        }
     }
 
     const changeProvider = () => {
@@ -41,7 +44,8 @@ export default function LoginForm() {
                                 placeholder="Contraseña *" name="password"/>
                         </div>
                         <div className="form-group" onClick={loginButton}>
-                            <a href="catalogo" className="btnSubmit">Iniciar sesión</a>
+                            <a className="btnSubmit">Iniciar sesión</a>
+                            <a href="catalogo" id="catalogo" hidden></a>
                         </div>
                         <div className="form-group">
                             <a href="register" className="ForgetPwd">¡Regístrate ahora!</a>
