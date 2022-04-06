@@ -1,7 +1,7 @@
 import Inicio from './components/Inicio';
 import Catalogo from './components/Catalogo';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -68,7 +68,7 @@ const App = () => {
 
   return(
     <>
-      <BrowserRouter>
+      <HashRouter>
       <Routes>
         <Route path="/" element={<ConfirmacionEdad />} />
         <Route path="catalogo" element={<Catalogo  addToCarrito={addToCarrito}/>} />
@@ -79,7 +79,7 @@ const App = () => {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };
