@@ -12,7 +12,6 @@ export default function LoginForm() {
         const password = (document.querySelector("input[name='password']") as HTMLInputElement).value;
         const url = (document.querySelector("input[name='pod']") as HTMLInputElement).value;
         let res:boolean = await login(username, password, url);
-        console.log(res)
         if(res){
              toast.success("Usuario logeado correctamente", {duration: 700}); 
              setTimeout(() => {

@@ -10,12 +10,12 @@ import ErrorPage from '../ErrorPage';
 import './ConfirmacionPago.css';
 
 type ConfirmacionPago = {
-    listaCarrito: ListaCarrito[];
   }
 
-const ConfirmacionPago: React.FC<ConfirmacionPago> = ({listaCarrito}) =>{  
-    const sessionCart = localStorage.getItem("listaCarrito");
-    if (sessionCart)
+const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{  
+    let sessionCart = localStorage.getItem("listaCarrito");
+    let listaCarrito:ListaCarrito[] = [];
+    if(sessionCart)
         listaCarrito = JSON.parse(sessionCart);
 
     const orderDataStoraged = localStorage.getItem("order");
