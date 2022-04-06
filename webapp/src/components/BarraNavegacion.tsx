@@ -108,7 +108,7 @@ class BarraNavegacion extends Component {
                         <Nav className="ms-auto" navbar>
 
                             {/* Opción de about us*/}
-                            <NavItem onClick={() => navigate("aboutus")}>
+                            <NavItem onClick={() => navigate("/aboutus")}>
                                     Sobre nosotros
                             </NavItem>
 
