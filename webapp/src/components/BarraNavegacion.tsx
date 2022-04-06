@@ -3,6 +3,13 @@ import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Un
 import logo from "../images/vino.png";
 import "./BarraNavegacion.css";
 import carrito from "../images/carrito.png";
+import { useNavigate } from 'react-router-dom';
+
+
+function navigate (s: string){
+    let navigate = useNavigate();
+    navigate(s);
+}
 
 class BarraNavegacion extends Component {
 
@@ -101,10 +108,8 @@ class BarraNavegacion extends Component {
                         <Nav className="ms-auto" navbar>
 
                             {/* Opción de about us*/}
-                            <NavItem>
-                                <NavLink href="/aboutus">
+                            <NavItem onClick={() => navigate("aboutus")}>
                                     Sobre nosotros
-                                </NavLink>
                             </NavItem>
 
                             {/* Opción para iniciar sesión */}
