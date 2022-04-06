@@ -30,7 +30,7 @@
     background-image:url("../../../public/fondo2.jpg");
   }
 
-  h3{
+  #precioTotal{
       margin: auto;
       width: 100%;
       color:rgb(0, 0, 0);

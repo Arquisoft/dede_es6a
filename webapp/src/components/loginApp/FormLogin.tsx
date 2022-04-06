@@ -2,7 +2,7 @@ import "./FormLogin.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {login} from '../../api/api';
 import {Form } from 'react-bootstrap/';
-import { useState, useEffect } from 'react';
+import toast, { Toaster } from "react-hot-toast";
 
 export default function LoginForm() {
 
@@ -13,7 +13,14 @@ export default function LoginForm() {
         const url = (document.querySelector("input[name='pod']") as HTMLInputElement).value;
         let res:boolean = await login(username, password, url);
         if(res){
-            (document.getElementById("catalogo") as HTMLAnchorElement).click();
+             toast.success("Usuario logeado correctamente", {duration: 700}); 
+             setTimeout(() => {
+                (document.getElementById("catalogo") as HTMLAnchorElement).click();
+            }, 1000);
+            
+        }
+        else{
+            toast.error('No se ha podido iniciar sesión', {duration: 3500});
         }
     }
 
@@ -64,6 +71,12 @@ export default function LoginForm() {
                     </form>
                 </div>
             </div>
+
+            <Toaster
+                position={"top-center"}
+                reverseOrder={false}
+            />
+            
         </div>
   );
 }
