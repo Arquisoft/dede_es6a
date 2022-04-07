@@ -17,7 +17,7 @@ export async function addUser(user:User):Promise<boolean>{
       return false;
 }
 
-export async function login(username:string, password:string, url:string):Promise<string>{
+export async function login(username:string, password:string, url:string):Promise<boolean>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/login', {
     method: 'POST',
@@ -30,9 +30,9 @@ export async function login(username:string, password:string, url:string):Promis
       })
   });  
   if(response.status === 200){
-    return "usuario logeado";
+    return true;
   }else{
-    return "nombre de usuario o contraseña incorrectos";
+    return false;
   }
 }
 
