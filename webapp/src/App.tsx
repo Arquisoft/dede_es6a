@@ -3,6 +3,7 @@ import {
   HashRouter,
   Routes,
   Route,
+  BrowserRouter,
 } from "react-router-dom";
 import './App.css';
 import AddProducts from './components/products/addProducts/AddProducts';
@@ -21,7 +22,7 @@ const App = () => {
 
   return(
     <>
-      <HashRouter>
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<ConfirmacionEdad />} />
         <Route path="catalogo" element={<Catalogo />} />
@@ -38,7 +39,7 @@ const App = () => {
         position={"bottom-left"}
         reverseOrder={false}
       />
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 };
