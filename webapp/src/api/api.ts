@@ -2,7 +2,7 @@ import {User, Product, isLoggedType, Order, DataOrder} from '../shared/shareddty
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/#/users/add', {
+    let response = await fetch(apiEndPoint+'/users/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(
@@ -43,7 +43,7 @@ export async function logout():Promise<void>{
 
 export async function addProduct(product: Product):Promise<boolean>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint+'/#/products/add',{
+  let response = await fetch(apiEndPoint+'/products/add',{
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(
@@ -62,7 +62,7 @@ export async function addProduct(product: Product):Promise<boolean>{
 
 export async function getUsers():Promise<User[]>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/#/users/list');
+    let response = await fetch(apiEndPoint+'/users/list');
     //The objects returned by the api are directly convertible to User objects
     return response.json();
 }
@@ -70,7 +70,7 @@ export async function getUsers():Promise<User[]>{
 
 export async function getProducts(filter:String = 'all'):Promise<Product[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/#/catalogo/'+filter);
+  let response = await fetch(apiEndPoint+'/catalogo/'+filter);
   return response.json();
 }
 
