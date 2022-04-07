@@ -6,7 +6,7 @@ require("dotenv").config({path: dotenvPath});
 import request, {Response} from 'supertest';
 import { Application } from 'express';
 import * as http from 'http';
-import {createApp, createServer, closeServer, loadDatabase} from './setUpServerForTest';
+import {createApp, createServer, closeServer, connectDatabase} from './setUpServerForTest';
 import api from '../api';
 import User from '../models/User';
 import Order from '../models/Order';
@@ -21,7 +21,7 @@ beforeAll(async () => {
     app.use(api);
 
     server = createServer(app);  
-    await loadDatabase(); 
+    await connectDatabase(); 
 });
 
 afterAll(async () => {
@@ -76,7 +76,7 @@ describe('user ', () => {
             username:"test1",
             password: process.env.password_for_test!
         }).set('Accept', 'application/json');
-        expect(response.statusCode).toBe(302);
+        expect(response.statusCode).toBe(200);
     });
 
     it('logout', async () => {
