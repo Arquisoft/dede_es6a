@@ -1,0 +1,17 @@
+@startuml
+actor Usuario
+participant DeDe
+participant API
+database MongoDB
+
+Usuario -> DeDe: Se logea, añade productos al carrito y accede a este
+Usuario -> DeDe: Click en Tramitar pedido
+DeDe <- DeDe: Muestra ventana con los datos del usuario y un resumen del carrito
+Usuario -> DeDe: Introduce los datos del usuario y hace click en Siguiente
+DeDe -> API: Calcula el coste de envío
+API -> DeDe: Devuelve cuál es el coste de envío
+DeDe <- DeDe: Muestra ventana con los datos de pago del usuario, envío y un resumen del carrito
+Usuario -> DeDe: Introduce los datos de pago y hace click en Siguiente
+DeDe -> MongoDB: Guarda el pedido en la base de datos
+DeDe -> DeDe: Muestra ventana final con un resumen del pedido y envío
+@enduml
