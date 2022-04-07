@@ -1,24 +1,17 @@
 [[section-solution-strategy]]
-== Solution Strategy
-
-
+== Solución Estratégica
 [role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
-
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
-
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
-
-.Form
-Keep the explanation of these key decisions short.
-
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
-****
+[options="header",cols="1,2"]
+|===
+|Tecnología|Descripción
+|Typescript|Es un lenguaje de programación orientado a objetos, que permite crear aplicaciones web más dinámicas y escalables. Es una restricción del proyecto
+| React| Es una librería de JavaScript que permite crear interfaces de usuario sencillas y dinámicas. Es una restricción del proyecto
+| Node.js | Es un entorno de ejecución de JavaScript en un entorno de servidor. Es una restricción del proyecto 
+| Boostrap | Es una librería de diseño de páginas web que nos permite crear interfaces de usuario sencillas y dinámicas.
+| SOLID | Es un proyecto de descentralización de datos en la web. Es una restricción del proyecto
+| Git |  Es un sistema de control de versiones de software. Es una restricción del proyecto
+| GitHub |  Es una plataforma de control de versiones Git. Es una restricción del proyecto
+| MongoDB |  Es una base de datos NoSQL orientada a documentos.
+| AWS | Es una colección de servicios de computación en la nube pública que en conjunto forman una plataforma de computación en la nube. La usamos para el despliegue de nuestra aplicación.
+| Shippo API | API que usamos para calcular el coste de los envíos. 
+|===

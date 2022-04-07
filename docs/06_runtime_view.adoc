@@ -1,5 +1,5 @@
 [[section-runtime-view]]
-== Runtime View
+== Vista en tiempo de ejecución
 
 :imagesdir: images/
 
@@ -18,3 +18,8 @@ image::diagrama-secuencia-añadir-carrito.png[]
 === Eliminar productos del carrito
 image::diagrama-secuencia-eliminar-carrito.png[]
 
+=== Tramitar pedido (Actual)
+image::diagrama-secuencia-tramitarPedido-actual.png[]
+
+=== Tramitar pedido (Final)
+image::diagrama-secuencia-tramitarPedido-final.png[]
