@@ -20,6 +20,8 @@ jobs:
       - uses: codecov/codecov-action@v2
 
   unit-test-restapi:
+    env:
+      password_for_test: ${{ secrets.PASSWORD_FOR_TEST }}
     runs-on: ubuntu-latest
     defaults:
       run:
