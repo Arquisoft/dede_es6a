@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-#      - run: npm test
+      - run: npm test
       - uses: codecov/codecov-action@v2
 
   unit-test-restapi:
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-#      - run: npm test
+      - run: npm test
       - uses: codecov/codecov-action@v2
   #  e2e-tests:
   #    needs: [unit-test-webapp, unit-test-restapi]
@@ -49,8 +49,6 @@ jobs:
     env:
       API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
     runs-on: ubuntu-latest
-    env:
-      API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
     needs: [unit-test-webapp, unit-test-restapi]
     steps:
       - uses: actions/checkout@v2
