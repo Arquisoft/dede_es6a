@@ -7,8 +7,12 @@ import Producto from './Producto';
 import BarraNavegacion from './BarraNavegacion';
 import Footer from './Footer';
 import { useSearchParams } from 'react-router-dom';
+import {addToCarrito} from './carrito/utilsCarrito';
 
-function Catalogo (): JSX.Element{
+type Catalogo = {
+}
+
+const Catalogo: React.FC<Catalogo> = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   var filter : String = 'all';
@@ -28,7 +32,7 @@ function Catalogo (): JSX.Element{
         <ListGroup id='listaProductos' className="listaProductos">
             {products.map((producto)=>{   
                 return(
-                  <Producto producto={producto} />  
+                  <Producto props={producto} addToCarrito={addToCarrito}/> 
                 );
             })}
       </ListGroup>

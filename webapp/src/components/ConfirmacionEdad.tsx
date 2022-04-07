@@ -2,6 +2,7 @@ import './ConfirmacionEdad.css';
 import { useNavigate } from 'react-router-dom';
 import pezDisimulando from '../images/pezDisimulando.png';
 import pezContento from '../images/pezContento.png';
+import pezEnfadado from '../images/pezEnfadado.png';
 
 function ConfirmacionEdad() {
 
@@ -14,11 +15,15 @@ function ConfirmacionEdad() {
         fishImage.src = pezContento;
     }
 
+    function showAngryFish(){
+        let fishImage = document.getElementById("fishImage") as HTMLImageElement;
+        fishImage.src = pezEnfadado;
+    }
+
     function showDefaultFish(){
         let fishImage = document.getElementById("fishImage") as HTMLImageElement;
         fishImage.src = pezDisimulando;
     }
-
 
     return (
         <div className="App">
@@ -31,7 +36,11 @@ function ConfirmacionEdad() {
                     onMouseEnter={showHappyFish}
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">Sí</button>
-                    <button onClick={leavePage} className="botonRespuesta">No</button>
+                    <button 
+                    onClick={leavePage} 
+                    onMouseEnter={showAngryFish}
+                    onMouseLeave={showDefaultFish}
+                    className="botonRespuesta">No</button>
                 </div>
             </header>
         </div>

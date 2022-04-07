@@ -1,0 +1,27 @@
+#campo {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+}
+ .form-control {
+    width: 100%;
+    padding: 7px;
+}
+
+.btnOjo{
+    background-color: #ffffff;
+}
+ 
+
+#campo img {
+    align-self: center;
+    margin: auto;
+    width: 80%;
+    border: none;
+}
+
+.btnLogin{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-bottom: -5%;
+}
