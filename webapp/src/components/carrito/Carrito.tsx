@@ -1,23 +1,22 @@
 import { ListaCarrito } from '../../shared/shareddtypes';
-import { Product } from '../../shared/shareddtypes';
-import ListGroup from 'react-bootstrap/ListGroup'
 import './Carrito.css';
 import BarraNavegacion from '../BarraNavegacion';
-import { Button, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
+import React, { useEffect, useState } from "react";
+import {vaciarCarrito, addToCarrito, removeFromCarrito} from './utilsCarrito';
 
 type Carrito = {
-    listaCarrito: ListaCarrito[];
-    addToCarrito: (prod: Product) => void;
-    removeFromCarrito: (prod: Product) => void;
 }
 
-const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarrito}) => {
+const Carrito: React.FC<Carrito> = () => {
 
-    const sessionCart = localStorage.getItem("listaCarrito");
-    if (sessionCart)
-        listaCarrito = JSON.parse(sessionCart);
-
+    let sessionCart = localStorage.getItem("listaCarrito");
+    let aux:ListaCarrito[] = [];
+    if(sessionCart)
+        aux = JSON.parse(sessionCart);
+    let [listaCarrito,setListaCarrito] = useState<ListaCarrito[]>(aux);
+    
     function GetPrecio(unidades:number, precio:number): number{
         return unidades*precio;
     }
@@ -29,11 +28,12 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
         });
         return precioTotal;
     }
- 
+
     return (
         <>
         <h1 >Carrito</h1>
         <BarraNavegacion />
+        <Button id="btVaciar" onClick={() => setListaCarrito( vaciarCarrito() )}>Vaciar Carrito</Button>
         <Table striped bordered hover id='listaCarrito'>
             <thead>
                 <tr>
@@ -46,16 +46,16 @@ const Carrito: React.FC<Carrito> = ({listaCarrito, addToCarrito, removeFromCarri
             {listaCarrito.map(carrito => (
                 <tr>
                     <th>{carrito.producto.nombre}</th>
-                    <th><Button id="btAñadir" variant="success" onClick={() => addToCarrito(carrito.producto)}>+</Button>
+                    <th><Button id="btAñadir" variant="success" onClick={() =>setListaCarrito(addToCarrito(carrito.producto))}>+</Button>
                     {" " + carrito.unidades + " "}
-                    <Button id="btEliminar" variant="danger" onClick={async () => await removeFromCarrito(carrito.producto)}>-</Button></th>
+                    <Button id="btEliminar" variant="danger" onClick={ () => setListaCarrito( removeFromCarrito(carrito.producto))}>-</Button></th>
                     <th>{GetPrecio(carrito.unidades, carrito.producto.precio).toFixed(2)}€</th>
                 </tr>
             ))}
             </tbody>
         </Table>
-      <h3>Precio total: {GetPrecioTotal().toFixed(2)}€</h3>
-      <Button id="btTramitarPedido">Tramitar pedido</Button>
+      <h3 id="precioTotal">Precio total: {GetPrecioTotal().toFixed(2)}€</h3>
+      <Button id="btTramitarPedido" href='http://localhost:3000/pedido'>Tramitar pedido</Button>
       </>
     );
 

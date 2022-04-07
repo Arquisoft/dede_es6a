@@ -1,0 +1,22 @@
+@startuml
+actor Usuario
+participant DeDe
+participant API
+database POD
+database MongoDB
+
+Usuario -> DeDe: Se logea y añade productos a la cesta
+Usuario -> DeDe: Tramitar pedido
+DeDe <- DeDe: Muestra ventana con los datos del usuario y un resumen del carrito
+DeDe -> POD: Pide los datos del usuario
+POD -> DeDe: Devuelve los datos del usuario
+Usuario -> DeDe: Revisa si todo esta correcto y hace click en Siguiente
+DeDe -> API: Calcula es coste de envío
+API -> DeDe: Devuelve cuánto es el coste de envío
+DeDe -> POD: Pide los datos de pago del usuario
+POD -> DeDe: Devuelve los datos de pago del usuario
+DeDe <- DeDe: Muestra ventana con los datos de pago del usuario y un resumen del carrito
+Usuario -> DeDe: Revisa si todo esta correcto y hace click en Siguiente
+DeDe -> MongoDB: Guarda el pedido en la base de datos
+DeDe -> DeDe: Muestra ventana final con un resumen del pedido y envío
+@enduml

@@ -18,6 +18,7 @@ jobs:
       - run: npm ci
 #      - run: npm test
       - uses: codecov/codecov-action@v2
+
   unit-test-restapi:
     runs-on: ubuntu-latest
     defaults:
@@ -45,6 +46,8 @@ jobs:
   #    - run: npm --prefix webapp run test:e2e
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
+    env:
+      API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
     runs-on: ubuntu-latest
     env:
       API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
@@ -97,3 +100,4 @@ jobs:
             docker-compose rm -f
             docker-compose pull   
             docker-compose up -d
+
