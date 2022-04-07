@@ -1,23 +1,20 @@
 [[section-runtime-view]]
 == Runtime View
 
-Esta versión es una primera aproximación, en el futuro se volverá más realista en cuanto avancemos en el proyecto
+:imagesdir: images/
 
-<<<<<<< HEAD
-//== Propuesta de Óscar
-
-[role="arc42help"]
-=======
+=== Regitsro de usuario
+image::diagrama-secuencia-registro.png[]
 
 === Autentificación del usuario
->>>>>>> develop
-
-:imagesdir: images/
 image::diagrama-secuencia-log-in.png[]
 
-<<<<<<< HEAD
-Esta versión es una primera aproximación, en el futuro se volverá más realista en cuanto avancemos en el proyecto.
-=======
+=== Filtrado de productos
+image::diagrama-secuencia-filtro.png[]
+
 === Añadir productos al carrito
 image::diagrama-secuencia-añadir-carrito.png[]
->>>>>>> develop
+
+=== Eliminar productos del carrito
+image::diagrama-secuencia-eliminar-carrito.png[]
+
