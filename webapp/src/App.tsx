@@ -1,6 +1,6 @@
 import Catalogo from './components/Catalogo';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -21,7 +21,7 @@ const App = () => {
 
   return(
     <>
-      <BrowserRouter>
+      <HashRouter>
       <Routes>
         <Route path="/" element={<ConfirmacionEdad />} />
         <Route path="catalogo" element={<Catalogo />} />
@@ -34,12 +34,11 @@ const App = () => {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Routes>
-      </BrowserRouter>
-
       <Toaster
         position={"bottom-left"}
         reverseOrder={false}
       />
+      </HashRouter>
     </>
   );
 };
