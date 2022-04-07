@@ -22,8 +22,8 @@ class Footer extends Component {
                     <pre className="preFooter">
                         Proyecto del grupo dede_es6a de la asignatura Arquitectura del Software.<br/>
                         Tienda de bebidas alcohólicas NoVendoAgua.<br/>
-                        2021-2022
                     </pre>
+                    <p>2021-2022</p>
                     </section>
 
                     <section className="">

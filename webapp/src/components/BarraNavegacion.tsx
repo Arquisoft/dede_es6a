@@ -34,7 +34,7 @@ function BarraNavegacion (): JSX.Element {
                             <DropdownToggle caret nav>
                                 Administración
                             </DropdownToggle>
-                            <DropdownMenu right>
+                            <DropdownMenu end>
                                 <DropdownItem href="/products/add">
                                     Añadir productos
                                 </DropdownItem>
@@ -81,7 +81,7 @@ function BarraNavegacion (): JSX.Element {
                             <DropdownToggle caret nav>
                                 Cervezas
                             </DropdownToggle>
-                            <DropdownMenu right>
+                            <DropdownMenu end>
                                 <DropdownItem href="/catalogo?filter=rubia">
                                     Rubia
                                 </DropdownItem>
@@ -102,7 +102,7 @@ function BarraNavegacion (): JSX.Element {
                             <DropdownToggle caret nav>
                                 Vinos
                             </DropdownToggle>
-                            <DropdownMenu right>
+                            <DropdownMenu end>
                                 <DropdownItem href="/catalogo?filter=tinto">
                                     Tinto
                                 </DropdownItem>
@@ -120,7 +120,7 @@ function BarraNavegacion (): JSX.Element {
                             <DropdownToggle caret nav>
                                 Bebidas destiladas
                             </DropdownToggle>
-                            <DropdownMenu right>
+                            <DropdownMenu end>
                                 <DropdownItem href="/catalogo?filter=ginebra">
                                     Ginebra
                                 </DropdownItem>
