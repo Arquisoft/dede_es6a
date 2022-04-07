@@ -100,7 +100,7 @@ export default function FormRegister() {
                     
                 />
                 <button className="btnOjo" onClick={verContrasena}>
-                    <img src={ojocerrado} id="imagenPsw"/>
+                    <img src={ojocerrado} id="imagenPsw" alt="imagenPsw"/>
                 </button>
             <div className="invalid-feedback">{errors.password?.message}</div>
             </div>
@@ -114,7 +114,7 @@ export default function FormRegister() {
                     placeholder="Confirmar Contraseña *"
                 />
                                 <button className="btnOjo" onClick={verConfirmacion}>
-                    <img src={ojocerrado} id="imagenCnf"/>
+                    <img src={ojocerrado} id="imagenCnf" alt="imagenCnf"/>
                 </button>
                 
             <div className="invalid-feedback">{errors.confirmPwd?.message}</div>
