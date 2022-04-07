@@ -70,13 +70,7 @@ export default function LoginForm() {
                         </div>
                     </form>
                 </div>
-            </div>
-
-            <Toaster
-                position={"top-center"}
-                reverseOrder={false}
-            />
-            
+            </div> 
         </div>
   );
 }
