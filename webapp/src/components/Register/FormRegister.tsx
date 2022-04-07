@@ -87,7 +87,7 @@ export default function FormRegister() {
                 </div>
                 <div className="form-group">
                     <input type="email" className="form-control" name='email'
-                     placeholder="Correo (opcional) *"/>
+                     placeholder="Correo *"/>
                 </div>
             <div id="campo" className="form-group">
             

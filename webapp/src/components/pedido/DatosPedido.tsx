@@ -1,30 +1,26 @@
 import Footer from '../Footer';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import ConfirmacionPago from './ConfirmacionPago';
-//import {getUserData, setUserData} from '../../api/api';
 import {DataOrder} from '../../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import { Input } from 'reactstrap';
-import { ListaCarrito, Product } from '../../shared/shareddtypes';
+import { ListaCarrito } from '../../shared/shareddtypes';
 import './DatosPedido.css';
 import ErrorPage from '../ErrorPage';
 import {isLoggedType} from '../../shared/shareddtypes';
 import {isLogged} from '../../api/api';
 
 type DatosPedido = {
-    listaCarrito: ListaCarrito[];
-  }
-
-const DatosPedido: React.FC<DatosPedido> = ({listaCarrito}) => {
-    const sessionCart = localStorage.getItem("listaCarrito");
-    if (sessionCart)
-        listaCarrito = JSON.parse(sessionCart);
     
+}
+
+const DatosPedido: React.FC<DatosPedido> = () => {
+
+    let sessionCart = localStorage.getItem("listaCarrito");
+    let listaCarrito:ListaCarrito[] = [];
+    if(sessionCart)
+        listaCarrito = JSON.parse(sessionCart);
+         
     const [log,setIsLogged] = useState<isLoggedType>();
     const refreshIsLogged = async () => {
         setIsLogged(await isLogged());
