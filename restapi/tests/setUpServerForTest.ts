@@ -13,13 +13,17 @@ export function createApp(): Application{
     let app : Application = express();
     
     const options: cors.CorsOptions = {
-        origin: [process.env.CORS_OPTIONS||'http://localhost:3000']
+        origin: ['http://localhost:3000']
     };
-
     app.use(cors(options));
     app.use(bp.json());
-
     return app;
+}
+
+export async function connectDatabase(){
+    const conexiondb: string = process.env.DB_URI!;
+    await mongoose.connect(conexiondb) 
+    .then(() => console.log("BD conectada"))
 }
 
 export function createServer(app : Application): http.Server{
@@ -31,18 +35,12 @@ export function createServer(app : Application): http.Server{
     });
 }
 
-export async function loadDatabase(){
-    const conexiondb: string = process.env.DB_URI!;
-    await mongoose.connect(conexiondb) 
-    .then(() => console.log("BD conectada"))
-}
-
 export async function closeServer(server: http.Server){
     server.close();
     try{
         await mongoose.disconnect();
     }catch{
-        //
+        // pass
     }
 }
 
