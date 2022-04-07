@@ -13,6 +13,8 @@
 				la lógica de negocio del sistema._
 | _React_ |  _Es la librería que sera utilizada para la construcción del front-end
 				del sistema._
+| _Node.js_ |  _Es un entorno en tiempo de ejecución multiplataforma para la capa del servidor basado en el
+ 				lenguaje de programación JavaScript_
 |===
 
 === Organización
