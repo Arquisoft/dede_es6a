@@ -96,7 +96,6 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
 api.post("/login", async (req, res): Promise<Response>=> {
   var username = req.body.username;
   var password = req.body.password;
-  var podUrl = req.body.podUrl;
 
   if(username == "")
     return res.status(401).send("Nombre de usuario no valido");
@@ -108,18 +107,6 @@ api.post("/login", async (req, res): Promise<Response>=> {
   let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
   if(user != null){
     session.user = user.username;
-  //  session.podUrl = podUrl;
-  //  const sessionSolid = new Session();
-   // session.sessionId = sessionSolid.info.sessionId;
-   // const redirectToSolidIdentityProvider = () => {
-    //  res.redirect("http://localhost:3000/catalogo");
-    //};
-   // await sessionSolid.login({
-   //   redirectUrl: `http://localhost:${3000}/redirect-from-solid-idp`,
-   //   oidcIssuer: "https://broker.pod.inrupt.com",
-   //   clientName: "novendoagua",
-   //   handleRedirect: redirectToSolidIdentityProvider,
-   // });
     return res.sendStatus(200);
   }else{
     session.user = null;

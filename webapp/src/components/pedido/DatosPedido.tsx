@@ -13,10 +13,10 @@ import toast from 'react-hot-toast';
 import {
     getSolidDataset, getStringNoLocale, getThing, Thing, getUrl,
     saveSolidDatasetAt, createSolidDataset, buildThing, createThing,
-    setThing, addStringNoLocale, addUrl, saveSolidDatasetInContainer
+    setThing, addStringNoLocale, addUrl, saveSolidDatasetInContainer, getUrlAll
 } from "@inrupt/solid-client";
 import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
-import { SCHEMA_INRUPT, RDF, AS } from "@inrupt/vocab-common-rdf";
+import { SCHEMA_INRUPT, RDF, AS, FOAF, VCARD } from "@inrupt/vocab-common-rdf";
 
 type DatosPedido = {
     
@@ -67,7 +67,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             localStorage.setItem("order",  JSON.stringify(order));
             toast.loading('procesando envio',{duration:4000});
             setTimeout(() => {
-               // (document.getElementById("pago") as HTMLAnchorElement).click();
+                (document.getElementById("pago") as HTMLAnchorElement).click();
             }, 4100);
         }else
             toast.error('calle, ciudad o código postal vacios', {duration:3500})
@@ -91,23 +91,38 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             data = addStringNoLocale(data, SCHEMA_INRUPT.addressLocality, city);
         courseSolidDataset = setThing(courseSolidDataset, data);
         let element = document.getElementById('url') as HTMLInputElement;
-        const savedSolidDataset = await saveSolidDatasetInContainer(
+        await saveSolidDatasetInContainer(
             element.value,
             courseSolidDataset, {
             fetch: fetch
         });
-        console.log(savedSolidDataset);
     }
 
-    const podurl = function(){
-        let checkbox = document.getElementById('solid') as HTMLInputElement;
-        if(checkbox && checkbox.checked){
-            let container = document.getElementById('podurl-container') as HTMLElement;
-            container.innerHTML = "<input type='url' id='url' placeholder='pod url'/>";
-        }else{
-            let container = document.getElementById('podurl-container') as HTMLElement;
-            container.innerHTML = "";
+    const getDataFromPod = async function(){
+        await handleIncomingRedirect();
+        if (!getDefaultSession().info.isLoggedIn) {
+            await login({
+              oidcIssuer: "https://broker.pod.inrupt.com",
+              redirectUrl: window.location.href,
+              clientName: "My application"
+            });
         }
+        let element = document.getElementById('url') as HTMLInputElement;
+        try{
+            let myDataset = await getSolidDataset(element.value+"a37c0a84-568d-42ff-b44d-21647322b913", { fetch: fetch });
+            const profile = getThing( myDataset, element.value+"a37c0a84-568d-42ff-b44d-21647322b913#data");
+            const email: HTMLInputElement = document.querySelector("input[name='email']") as HTMLInputElement;
+            const city: HTMLInputElement = document.querySelector("input[name='city']") as HTMLInputElement;
+            const street: HTMLInputElement = document.querySelector("input[name='street']") as HTMLInputElement;
+            const zipcode: HTMLInputElement = document.querySelector("input[name='zipcode']") as HTMLInputElement;
+            email.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.email) as string;
+            city.value =  getStringNoLocale(profile as Thing, SCHEMA_INRUPT.addressLocality) as string;
+            street.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.PostalAddress) as string;
+            zipcode.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.postalCode) as string;
+        }catch(error){
+            toast.error('url no valida', {duration: 3500});
+        }
+        
     }
 
     if(log?.logged){
@@ -134,8 +149,9 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                     <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
                 </Form.Group>
                 <Form.Group className="mb-3" id='checkbox' controlId="formBasicCheckbox">
-                    <Form.Check onChange={podurl} id='solid' type="checkbox" label="Guardar datos con solid" />
-                    <div id='podurl-container'></div>
+                    <Form.Check id='solid' type="checkbox" label="Guardar datos con solid" />
+                    <Form.Control className="inputPago" id='url' type="url" placeholder="pod url" name="podurl"/>
+                    <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>
                 <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>
                 <a href='/pago' id='pago' hidden></a>
