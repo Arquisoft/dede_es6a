@@ -9,6 +9,7 @@ import './DatosPedido.css';
 import ErrorPage from '../ErrorPage';
 import {isLoggedType} from '../../shared/shareddtypes';
 import {isLogged} from '../../api/api';
+import toast from 'react-hot-toast';
 
 type DatosPedido = {
     
@@ -52,6 +53,10 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             zipcode: zipcode.value
         }
         localStorage.setItem("order",  JSON.stringify(order));
+        toast.loading('procesando envio',{duration:4000});
+        setTimeout(() => {
+            (document.getElementById("pago") as HTMLAnchorElement).click();
+        }, 4100);
     }
 
     if(log?.logged){
@@ -77,7 +82,8 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                 <Form.Group controlId="zipcode">
                     <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
                 </Form.Group>
-                <Button id="formButton" type="button" href='/pago' onClick={saveData}>Siguiente</Button>
+                <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>
+                <a href='/pago' id='pago' hidden></a>
             </Form>
             <div id='resumen'>
                 <h3 id='titulo-resumen'>Resumen de compra</h3>
