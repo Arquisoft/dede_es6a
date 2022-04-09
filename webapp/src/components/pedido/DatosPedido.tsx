@@ -52,11 +52,14 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             street: street.value,
             zipcode: zipcode.value
         }
-        localStorage.setItem("order",  JSON.stringify(order));
-        toast.loading('procesando envio',{duration:4000});
-        setTimeout(() => {
-            (document.getElementById("pago") as HTMLAnchorElement).click();
-        }, 4100);
+        if(order.city != "" && order.street != "" && order.zipcode != ""){
+            localStorage.setItem("order",  JSON.stringify(order));
+            toast.loading('procesando envio',{duration:4000});
+            setTimeout(() => {
+                (document.getElementById("pago") as HTMLAnchorElement).click();
+            }, 4100);
+        }else
+            toast.error('calle, ciudad o código postal vacios', {duration:3500})
     }
 
     if(log?.logged){
