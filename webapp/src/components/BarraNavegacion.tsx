@@ -115,6 +115,7 @@ function BarraNavegacion (): JSX.Element {
                             </DropdownMenu>
                         </UncontrolledDropdown>
 
+
                         {/* Menú desplegable correspondiente a las bebidas destiladas*/}
                         <UncontrolledDropdown inNavbar nav>
                             <DropdownToggle caret nav>
@@ -166,7 +167,6 @@ function BarraNavegacion (): JSX.Element {
     </Navbar>
         </div>
     );
-
 }
 
 export default BarraNavegacion;
