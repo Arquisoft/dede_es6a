@@ -11,7 +11,6 @@ import ConfirmacionEdad from './components/ConfirmacionEdad';
 import Carrito from './components/carrito/Carrito';
 import AboutUs from './components/aboutUs/AboutUs';
 import Login from "./components/loginApp/FormLogin";
-import LoginSolid from "./components/loginApp/loginSolid";
 import Register from './components/Register/FormRegister';
 import DatosPedido from './components/pedido/DatosPedido';
 import ConfirmacionPago from './components/pedido/ConfirmacionPago';
@@ -35,7 +34,6 @@ const App = () => {
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path='loginsolid' element={<LoginSolid />} />
       </Routes>
       <Toaster
         position={"bottom-left"}

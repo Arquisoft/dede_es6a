@@ -10,6 +10,13 @@ import ErrorPage from '../ErrorPage';
 import {isLoggedType} from '../../shared/shareddtypes';
 import {isLogged} from '../../api/api';
 import toast from 'react-hot-toast';
+import {
+    getSolidDataset, getStringNoLocale, getThing, Thing, getUrl,
+    saveSolidDatasetAt, createSolidDataset, buildThing, createThing,
+    setThing, addStringNoLocale, addUrl, saveSolidDatasetInContainer
+} from "@inrupt/solid-client";
+import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
+import { SCHEMA_INRUPT, RDF, AS } from "@inrupt/vocab-common-rdf";
 
 type DatosPedido = {
     
@@ -52,14 +59,55 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             street: street.value,
             zipcode: zipcode.value
         }
+        let checkbox = document.getElementById('solid') as HTMLInputElement;
+        if(checkbox && checkbox.checked){
+            saveOnPod(order.email, order.city, order.street, order.zipcode);
+        }
         if(order.city != "" && order.street != "" && order.zipcode != ""){
             localStorage.setItem("order",  JSON.stringify(order));
             toast.loading('procesando envio',{duration:4000});
             setTimeout(() => {
-                (document.getElementById("pago") as HTMLAnchorElement).click();
+               // (document.getElementById("pago") as HTMLAnchorElement).click();
             }, 4100);
         }else
             toast.error('calle, ciudad o código postal vacios', {duration:3500})
+    }
+
+    const saveOnPod = async (email:string, city:string, street:string, zipcode:string) => {
+        await handleIncomingRedirect();
+        if (!getDefaultSession().info.isLoggedIn) {
+            await login({
+              oidcIssuer: "https://broker.pod.inrupt.com",
+              redirectUrl: window.location.href,
+              clientName: "My application"
+            });
+        }
+        let courseSolidDataset = createSolidDataset();
+        let data = buildThing(createThing({name: 'data'}))
+            .build();
+            data = addStringNoLocale(data, SCHEMA_INRUPT.email, email);
+            data = addStringNoLocale(data, SCHEMA_INRUPT.PostalAddress, street);
+            data = addStringNoLocale(data, SCHEMA_INRUPT.postalCode, zipcode);
+            data = addStringNoLocale(data, SCHEMA_INRUPT.addressLocality, city);
+        courseSolidDataset = setThing(courseSolidDataset, data);
+        let element = document.getElementById('url') as HTMLInputElement;
+        const savedSolidDataset = await saveSolidDatasetInContainer(
+            element.value,
+            courseSolidDataset, {
+            fetch: fetch
+        });
+        console.log(savedSolidDataset);
+    }
+
+    const podurl = function(){
+        let checkbox = document.getElementById('solid') as HTMLInputElement;
+        if(checkbox && checkbox.checked){
+            let container = document.getElementById('podurl-container') as HTMLElement;
+            container.innerHTML = "<input type='url' id='url' placeholder='pod url'/>";
+        }else{
+            let container = document.getElementById('podurl-container') as HTMLElement;
+            container.innerHTML = "";
+        }
     }
 
     if(log?.logged){
@@ -84,6 +132,10 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                 </Form.Group>
                 <Form.Group controlId="zipcode">
                     <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
+                </Form.Group>
+                <Form.Group className="mb-3" id='checkbox' controlId="formBasicCheckbox">
+                    <Form.Check onChange={podurl} id='solid' type="checkbox" label="Guardar datos con solid" />
+                    <div id='podurl-container'></div>
                 </Form.Group>
                 <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>
                 <a href='/pago' id='pago' hidden></a>
