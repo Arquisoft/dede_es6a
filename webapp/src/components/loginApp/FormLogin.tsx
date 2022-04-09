@@ -2,7 +2,9 @@ import "./FormLogin.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {login} from '../../api/api';
 import {Form } from 'react-bootstrap/';
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { LoginButton, SessionProvider } from "@inrupt/solid-ui-react";
+import { useState, useEffect } from "react";
 
 export default function LoginForm() {
 
@@ -24,14 +26,23 @@ export default function LoginForm() {
         }
     }
 
+    const [idp, setIdp] = useState("https://inrupt.net");
+    const [currentUrl, setCurrentUrl] = useState("https://localhost:3000");
+  
+    useEffect(() => {
+      setCurrentUrl(window.location.href);
+    }, [setCurrentUrl]);
+
     const changeProvider = () => {
         let link: HTMLAnchorElement = document.getElementById('link') as HTMLAnchorElement;
         let select: HTMLInputElement = document.getElementById('provider') as HTMLInputElement;
         if(select.value == '2'){
             link.href = "https://solidcommunity.net";
+            setIdp("https://solidcommunity.net");
             link.text = "SolidCommunity";
         }else{
             link.href = "https://inrupt.net";
+            setIdp("https://inrupt.net");
             link.text = "Inrupt";
         }
     }
@@ -64,8 +75,14 @@ export default function LoginForm() {
                             <option value="2">SolidCommunity</option>
                         </Form.Select>
                         <div className="form-group">
-                            <input type="url" className="form-control"
-                                placeholder="url del pod (opcional)" name="pod"/>
+                            <input type='url' placeholder="Identity Provider" value={idp} onChange={(e) => setIdp(e.target.value)}></input>
+                                <div id="botonsolid">
+                                    <SessionProvider>
+                                        <LoginButton oidcIssuer={idp} redirectUrl={currentUrl}>
+                                            Login con solid
+                                        </LoginButton>
+                                    </SessionProvider>
+                                </div>
                             <p>Si no tienes uno lo puedes crear aqui: <a id="link" href="https://inrupt.net">Inrupt</a></p>
                         </div>
                     </form>

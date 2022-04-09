@@ -6,6 +6,7 @@
     "@emotion/styled": "^11.6.0",
     "@hookform/resolvers": "^2.8.8",
     "@inrupt/solid-ui-react": "^2.7.0",
+    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.5",
     "@testing-library/jest-dom": "^5.16.1",
@@ -71,6 +72,12 @@
     "ts-node-dev": "^1.1.8"
   },
   "jest": {
-    "coveragePathIgnorePatterns": ["index.tsx", "reportWebVitals.ts", "api.ts", "utilsCarrito.ts","shareddtypes.ts"]
+    "coveragePathIgnorePatterns": [
+      "index.tsx",
+      "reportWebVitals.ts",
+      "api.ts",
+      "utilsCarrito.ts",
+      "shareddtypes.ts"
+    ]
   }
 }
