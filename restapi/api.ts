@@ -124,7 +124,7 @@ api.get('/islogged', async (req, res) =>{
     return res.status(200).send({logged: true})
   else
     return res.status(200).send({logged: false})
-  });
+});
 
   api.post('/createOrder', async (req, res) =>{
     var addressFrom  = {
@@ -198,6 +198,12 @@ api.get('/isadmin', async (req, res) =>{
     let name:string = session.user;
     let orders = await Order.find({username: name});
     return res.status(200).send(orders);
+  });
+
+  api.get('/userlogged', async (req, res):Promise<Response> => {
+    let username:string = session.user;
+    let userlogged = await User.find({username: username});
+    return res.status(200).send(userlogged);
   });
 
 export default api;

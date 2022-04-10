@@ -124,3 +124,9 @@ export async function getOrdersByClientLogged():Promise<OrderFromDB[]>{
   return response.json();
 }
 
+export async function getUserLoggeed():Promise<User>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/userlogged');
+  return response.json();
+}
+
