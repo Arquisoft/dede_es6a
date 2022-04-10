@@ -2,6 +2,7 @@ import BarraNavegacion from '../BarraNavegacion';
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
 import ListGroup from 'react-bootstrap/ListGroup';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import Button from 'react-bootstrap/Button';
 import {getOrdersByClientLogged, isLogged, getUserLoggeed, logout} from '../../api/api';
 import { useState, useEffect } from 'react';
@@ -45,6 +46,17 @@ export default function Profile() {
         }
     }
 
+    const setEstado = (estado:string) => {
+        if(estado === "enviado")
+            return(<ProgressBar now={33.33} label={'enviado'} />);
+        else if(estado === "reparto")
+            return(<ProgressBar now={66.66} label={'reparto'} />);
+        else if(estado === "entregado")
+            return(<ProgressBar now={100} label={'entregado'} />);
+        else
+            return(<p>Error</p>);
+    }
+
     if(log?.logged){
         return(
             <>
@@ -86,6 +98,8 @@ export default function Profile() {
                                         </tbody>
                                     </Table>
                                     <h5>Precio total: {order.precio} €</h5>
+                                    <h5>Estado del pedido: {order.estado} </h5>
+                                    {setEstado(order.estado)}
                                 </Accordion.Body>
                             </Accordion.Item>
                         );

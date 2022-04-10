@@ -53,7 +53,8 @@ export type ProductToOrder = {
 export type OrderFromDB = {
     username: string,
     products: ProductToOrder[],
-    precio: number
+    precio: number,
+    estado: string
 }
 
 

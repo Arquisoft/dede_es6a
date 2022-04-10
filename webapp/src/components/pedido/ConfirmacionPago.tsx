@@ -89,7 +89,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                         <ListGroup.Item>{carrito.producto.nombre}:     {Number(carrito.unidades*carrito.producto.precio).toFixed(2)} €</ListGroup.Item>
                 ))}
                 <ListGroup.Item>Precio de envio:    {getPrecioEnvio()} €</ListGroup.Item>
-                <ListGroup.Item>Total:    {getPrecioTotal()} €</ListGroup.Item> 
+                <ListGroup.Item>Total:    {getPrecioTotal()} € (IVA incluido 21%)</ListGroup.Item> 
                 <ListGroup.Item>Entrega: {getDeliveryTerm()}</ListGroup.Item>
                 </ListGroup>
             </Card>

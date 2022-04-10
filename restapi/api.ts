@@ -1,10 +1,9 @@
-import { login } from '@inrupt/solid-client-authn-browser';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
 import Order from './models/Order';
-import {ProductType, UserType, ListaCarrito, SellType, OrderType} from './types';
+import {ProductType, UserType, ListaCarrito, SellType} from './types';
 
 
 const api:Router = express.Router();
@@ -16,6 +15,7 @@ const {
   getSessionIdFromStorageAll,
   Session
 } = require("@inrupt/solid-client-authn-node");
+import { login } from '@inrupt/solid-client-authn-browser';
 
 // añadir usuarios a la BD
 api.post("/users/add", async (req: Request, res: Response): Promise<Response> => {
@@ -188,7 +188,8 @@ api.get('/isadmin', async (req, res) =>{
     let order = new Order({
       username: username,
       products: prods,
-      precio: req.body.precio
+      precio: req.body.precio,
+      estado: 'enviado' // enviado, reparto, entregado
     });
     await order.save();
     return res.sendStatus(200);
