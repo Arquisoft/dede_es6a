@@ -1,4 +1,4 @@
-import {User, Product, isLoggedType, Order, DataOrder} from '../shared/shareddtypes';
+import {User, Product, isLoggedType, Order, DataOrder, OrderFromDB} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -118,7 +118,7 @@ export async function saveOrder(order: Order):Promise<boolean>{
     return false;
 }
 
-export async function getOrdersByClientLogged():Promise<Order[]>{
+export async function getOrdersByClientLogged():Promise<OrderFromDB[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/getOrdersBy');
   return response.json();
