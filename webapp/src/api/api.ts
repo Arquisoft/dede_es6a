@@ -118,3 +118,9 @@ export async function saveOrder(order: Order):Promise<boolean>{
     return false;
 }
 
+export async function getOrdersByClientLogged():Promise<Order>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint+'/getOrdersBy');
+  return response.json();
+}
+
