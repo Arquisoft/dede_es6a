@@ -21,11 +21,18 @@ function BarraNavegacion (): JSX.Element {
 
     const check = () => {
         if(log != undefined)
-            if(log.logged)
-                return(<NavLink href="/catalogo" onClick={logout}>Cerrar Sesión</NavLink>);
-            else
+            if(log.logged){
+                return(
+                    <>
+                        <NavLink href="/catalogo" onClick={logout}>Cerrar Sesión</NavLink>
+                        <NavLink href="/perfil">Perfil</NavLink>
+                    </>
+                );
+                
+            }else{
                 return(<NavLink href="/login">Inicia sesión</NavLink>);          
-    }
+            }
+        }
     const adminOptions = () => {
         if(admin != undefined)
             if(admin.logged){

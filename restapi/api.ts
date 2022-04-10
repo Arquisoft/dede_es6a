@@ -4,7 +4,7 @@ import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
 import Order from './models/Order';
-import {ProductType, UserType, ListaCarrito, SellType} from './types';
+import {ProductType, UserType, ListaCarrito, SellType, OrderType} from './types';
 
 
 const api:Router = express.Router();
@@ -192,6 +192,12 @@ api.get('/isadmin', async (req, res) =>{
     });
     await order.save();
     return res.sendStatus(200);
+  });
+
+  api.get('/getOrdersBy', async (req, res):Promise<Response> => {
+    let name:string = session.user;
+    let orders = await Order.find({username: name});
+    return res.status(200).send(orders);
   });
 
 export default api;

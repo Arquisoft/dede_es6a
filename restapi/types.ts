@@ -28,7 +28,7 @@ export type SellType = {
 }
 
 export type OrderType = {
-    userEmail: string,
+    username: string,
     idProducts: string[],
     precio: number
 }
