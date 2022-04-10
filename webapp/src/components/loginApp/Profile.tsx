@@ -1,56 +1,67 @@
 import BarraNavegacion from '../BarraNavegacion';
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
-import {getOrdersByClientLogged} from '../../api/api';
+import {getOrdersByClientLogged, isLogged} from '../../api/api';
 import { useState, useEffect } from 'react';
 import {isLoggedType, OrderFromDB} from '../../shared/shareddtypes';
+import ErrorPage from '../ErrorPage';
 
 export default function Profile() {
 
+    const [log,setIsLogged] = useState<isLoggedType>();
     const [orders,setOrders] = useState<OrderFromDB[]>([]);
     const refreshOrders = async () => {
         setOrders(await getOrdersByClientLogged());
     }
-    useEffect(()=>{ refreshOrders(); }, []);
+    const refreshIsLogged = async () => {
+        setIsLogged(await isLogged());
+    }
+    useEffect(()=>{ refreshOrders(); refreshIsLogged(); }, []);
 
-    return(
-        <>
-            <BarraNavegacion />
-            <h3>Pedidos realizados</h3>
-            <Accordion defaultActiveKey="0" flush>
-                
+    if(log?.logged){
+        return(
+            <>
+                <BarraNavegacion />
+                <h3>Pedidos realizados</h3>
+                <Accordion defaultActiveKey="0" flush>
+                    
 
-                {orders.map((order)=>{   
-                    return(
-                        <Accordion.Item eventKey={orders.indexOf(order)+""}>
-                            <Accordion.Header>pedido {orders.indexOf(order)+1}</Accordion.Header>
-                            <Accordion.Body>
-                                <Table striped bordered hover>
-                                    <thead>
-                                        <tr>
-                                        <th>#</th>
-                                        <th>nombre</th>
-                                        <th>cantidad</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {order.products.map((prod)=>{ 
-                                        return(
+                    {orders.map((order)=>{   
+                        return(
+                            <Accordion.Item eventKey={orders.indexOf(order)+""}>
+                                <Accordion.Header>pedido {orders.indexOf(order)+1}</Accordion.Header>
+                                <Accordion.Body>
+                                    <Table striped bordered hover>
+                                        <thead>
                                             <tr>
-                                                <td>{order.products.indexOf(prod)}</td>
-                                                <td>{prod.nombre}</td>
-                                                <td>{prod.quantity}</td>
+                                            <th>#</th>
+                                            <th>nombre</th>
+                                            <th>cantidad</th>
                                             </tr>
-                                        );
-                                    })}
-                                    </tbody>
-                                </Table>
-                                <h5>Precio total: {order.precio} €</h5>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    );
-                })}
-            </Accordion>
-        </>
-    );
+                                        </thead>
+                                        <tbody>
+                                        {order.products.map((prod)=>{ 
+                                            return(
+                                                <tr>
+                                                    <td>{order.products.indexOf(prod)}</td>
+                                                    <td>{prod.nombre}</td>
+                                                    <td>{prod.quantity}</td>
+                                                </tr>
+                                            );
+                                        })}
+                                        </tbody>
+                                    </Table>
+                                    <h5>Precio total: {order.precio} €</h5>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        );
+                    })}
+                </Accordion>
+            </>
+        );
+    }else{
+        return( 
+            <ErrorPage msg="Debes iniciar sesión para poder acceder"/>
+        );
+    }
 }
