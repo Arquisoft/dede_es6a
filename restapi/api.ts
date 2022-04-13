@@ -10,12 +10,7 @@ const api:Router = express.Router();
 const session = require('express-session');
 const crypto = require('crypto');
 const shippo = require('shippo')('shippo_test_54074f336b3c2eb6d295fe272eb3584ee6457e4a');
-const { 
-  getSessionFromStorage,
-  getSessionIdFromStorageAll,
-  Session
-} = require("@inrupt/solid-client-authn-node");
-import { login } from '@inrupt/solid-client-authn-browser';
+
 
 // añadir usuarios a la BD
 api.post("/users/add", async (req: Request, res: Response): Promise<Response> => {
@@ -59,9 +54,7 @@ api.get('/users/delete/:name', async (req, res):Promise<Response> => {
 
 // añadir productos a la BD
 api.post("/products/add",[
-  check('nombre').isLength({min: 1}).trim().escape(),
-  //check('precio').exists().bail().if((value:number) => {value >= 0.0}),
-  //check('categoria').exists().bail().isIn(['vozka','ginebra','ron']),
+  check('nombre').isLength({min: 1}).trim().escape()
 ],
 async (req: Request, res: Response):Promise<Response> =>{
   let nombre:String = req.body.nombre;

@@ -11,7 +11,7 @@ dotenv.config('.env');
 
 
 const app: Application = express();
-app.set('port', process.env.DB_PORT || 5000);
+app.set('port', process.env.PORT || process.env.DB_PORT || 5000 );
 const databse = require('./database');
 
 const options: cors.CorsOptions = {
