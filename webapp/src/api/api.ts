@@ -1,7 +1,9 @@
 import {User, Product, isLoggedType, Order, DataOrder} from '../shared/shareddtypes';
 
+let uri = 'https://dd6a-restapi.herokuapp.com/api';
+
 export async function addUser(user:User):Promise<boolean>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    const apiEndPoint= uri || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/users/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -18,7 +20,7 @@ export async function addUser(user:User):Promise<boolean>{
 }
 
 export async function login(username:string, password:string, url:string):Promise<boolean>{
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  const apiEndPoint= uri || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/login', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -37,12 +39,12 @@ export async function login(username:string, password:string, url:string):Promis
 }
 
 export async function logout():Promise<void>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    const apiEndPoint= uri || 'http://localhost:5000/api'
     await fetch(apiEndPoint+'/logout');
 }
 
 export async function addProduct(product: Product):Promise<boolean>{
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  const apiEndPoint= uri || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/products/add',{
       method: 'POST',
       headers: {'Content-Type':'application/json'},
@@ -61,7 +63,7 @@ export async function addProduct(product: Product):Promise<boolean>{
 }
 
 export async function getUsers():Promise<User[]>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    const apiEndPoint= uri || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/users/list');
     //The objects returned by the api are directly convertible to User objects
     return response.json();
@@ -69,25 +71,25 @@ export async function getUsers():Promise<User[]>{
 
 
 export async function getProducts(filter:String = 'all'):Promise<Product[]>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  const apiEndPoint = uri || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/catalogo/'+filter);
   return response.json();
 }
 
 export async function isLogged():Promise<isLoggedType>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  const apiEndPoint = uri || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/islogged');
   return response.json();
 }
 
 export async function isAdmin():Promise<isLoggedType>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  const apiEndPoint = uri || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/isadmin');
   return response.json();
 }
 
 export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  const apiEndPoint = uri || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/createOrder',{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -104,7 +106,7 @@ export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
 }
 
 export async function saveOrder(order: Order):Promise<boolean>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  const apiEndPoint = uri || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/saveOrder',{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
