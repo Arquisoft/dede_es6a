@@ -73,3 +73,10 @@
     background-color: #fff;
     width: 100%;
 }
+#botonsolid{
+    border-radius: 0.7em;
+    border: 0.1em black solid;
+    margin: 0.5em;
+    color: white;
+    background-color: rgb(59, 59, 255);
+}

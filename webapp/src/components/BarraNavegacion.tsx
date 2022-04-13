@@ -1,8 +1,6 @@
-import React, { Component } from "react";
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import logo from "../images/vino.png";
 import "./BarraNavegacion.css";
-import carrito from "../images/carrito.png";
 import {isLogged, logout, isAdmin} from '../api/api';
 import {isLoggedType} from '../shared/shareddtypes';
 import { useState, useEffect } from 'react';
@@ -21,11 +19,22 @@ function BarraNavegacion (): JSX.Element {
 
     const check = () => {
         if(log != undefined)
-            if(log.logged)
-                return(<NavLink href="/catalogo" onClick={logout}>Cerrar Sesión</NavLink>);
-            else
+            if(log.logged){
+                return(
+                    <>
+                        <NavItem>
+                            <NavLink href="/catalogo" onClick={logout}>Cerrar Sesión</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/perfil">Perfil</NavLink>
+                        </NavItem>
+                    </>
+                );
+                
+            }else{
                 return(<NavLink href="/login">Inicia sesión</NavLink>);          
-    }
+            }
+        }
     const adminOptions = () => {
         if(admin != undefined)
             if(admin.logged){
@@ -151,9 +160,9 @@ function BarraNavegacion (): JSX.Element {
                         </NavItem>
 
                         {/* Opción para iniciar sesión */}
-                        <NavItem>
-                            {check()}
-                        </NavItem>
+                    
+                        {check()}
+                        
                         <NavItem>
                             <NavLink href="/carrito">
                                 <svg xmlns="./cart.svg " width="50" height="20" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
