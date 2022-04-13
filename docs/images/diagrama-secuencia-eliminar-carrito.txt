@@ -1,0 +1,12 @@
+@startuml
+actor Usuario
+Usuario -> DeDe: verCarrito()
+database MongoDB
+DeDe -> MongoDB: solicitarCarrito()
+DeDe <- MongoDB: devolverCarrito()
+Usuario <- DeDe: mostrarCarrito()
+loop
+Usuario -> DeDe: eliminarDelCarrito()
+DeDe -> DeDe: eliminarDelCarrito()
+end
+@enduml

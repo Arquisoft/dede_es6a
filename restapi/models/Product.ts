@@ -4,7 +4,7 @@ import {ProductType} from './../types';
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
-    nombre: {type: String, required: true},
+    nombre: {type: String, required: true, unique: true},
     marca: String,
     precio: {type: Number, require:true},
     categoria: {type: String, required: true},

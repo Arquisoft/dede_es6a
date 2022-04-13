@@ -19,6 +19,8 @@
 	- El sistema mostrará los costes finales y permitirá al usuario finalizar su compra
 	- El usuario podrá visualizar sus pedidos.
 	- El usuario podrá visualizar un catálogo de bebidas clasificadas en categorias.
+	- El administrador podrá añadir nuevos productos.
+	- El administrador podrá visualizar los pedidos realizados.
 
 === Atributos de calidad
 

@@ -7,12 +7,12 @@ import Producto from './Producto';
 import BarraNavegacion from './BarraNavegacion';
 import Footer from './Footer';
 import { useSearchParams } from 'react-router-dom';
+import {addToCarrito} from './carrito/utilsCarrito';
 
 type Catalogo = {
-  addToCarrito: (prod: Product) => void;
 }
 
-const Catalogo: React.FC<Catalogo> = ({addToCarrito}) => {
+const Catalogo: React.FC<Catalogo> = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   var filter : String = 'all';
