@@ -77,7 +77,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                 <Form.Group controlId="zipcode">
                     <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
                 </Form.Group>
-                <Button id="formButton" type="button" href='/pago' onClick={saveData}>Siguiente</Button>
+                <Button id="formButton" type="button" href='/#/pago' onClick={saveData}>Siguiente</Button>
             </Form>
             <div id='resumen'>
                 <h3 id='titulo-resumen'>Resumen de compra</h3>

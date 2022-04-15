@@ -22,7 +22,7 @@ function BarraNavegacion (): JSX.Element {
     const check = () => {
         if(log != undefined)
             if(log.logged)
-                return(<NavLink href="/#/catalogo" onClick={logout}>Cerrar Sesión</NavLink>);
+                return(<NavLink href="/15#/catalogo" onClick={logout}>Cerrar Sesión</NavLink>);
             else
                 return(<NavLink href="/#/login">Inicia sesión</NavLink>);          
     }
@@ -82,16 +82,16 @@ function BarraNavegacion (): JSX.Element {
                                 Cervezas
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem href="/#/catalogo?filter=rubia">
+                                <DropdownItem href="/11#/catalogo?filter=rubia">
                                     Rubia
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=roja">
+                                <DropdownItem href="/10#/catalogo?filter=roja">
                                     Roja
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=tostada">
+                                <DropdownItem href="/9#/catalogo?filter=tostada">
                                     Tostada
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=negra">
+                                <DropdownItem href="/8#/catalogo?filter=negra">
                                     Negra
                                 </DropdownItem>
                             </DropdownMenu>
@@ -103,13 +103,13 @@ function BarraNavegacion (): JSX.Element {
                                 Vinos
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem href="/#/catalogo?filter=tinto">
+                                <DropdownItem href="/7#/catalogo?filter=tinto">
                                     Tinto
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=blanco">
+                                <DropdownItem href="/6#/catalogo?filter=blanco">
                                     Blanco
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=rosado">
+                                <DropdownItem href="/5#/catalogo?filter=rosado">
                                     Rosado
                                 </DropdownItem>
                             </DropdownMenu>
@@ -122,16 +122,16 @@ function BarraNavegacion (): JSX.Element {
                                 Bebidas destiladas
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem href="/#/catalogo?filter=ginebra">
+                                <DropdownItem href="/4#/catalogo?filter=ginebra">
                                     Ginebra
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=ron">
+                                <DropdownItem href="/3#/catalogo?filter=ron">
                                     Ron
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=whisky">
+                                <DropdownItem href="/2#/catalogo?filter=whisky">
                                     Whisky
                                 </DropdownItem>
-                                <DropdownItem href="/#/catalogo?filter=vodka">
+                                <DropdownItem href="/1#/catalogo?filter=vodka">
                                     Vodka
                                 </DropdownItem>
                             </DropdownMenu>
