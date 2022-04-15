@@ -1,8 +1,6 @@
-import React, { Component } from "react";
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import logo from "../images/vino.png";
 import "./BarraNavegacion.css";
-import carrito from "../images/carrito.png";
 import {isLogged, logout, isAdmin} from '../api/api';
 import {isLoggedType} from '../shared/shareddtypes';
 import { useState, useEffect } from 'react';
@@ -22,7 +20,12 @@ function BarraNavegacion (): JSX.Element {
     const check = () => {
         if(log != undefined)
             if(log.logged)
-                return(<NavLink href="/15#/catalogo" onClick={logout}>Cerrar Sesión</NavLink>);
+                return(<NavLink href="/#/catalogo" onClick={() => {
+                    logout();
+                    window.location.assign('/#/catalogo');
+                    window.location.reload();
+            }}>
+                    Cerrar Sesión</NavLink>);
             else
                 return(<NavLink href="/#/login">Inicia sesión</NavLink>);          
     }
@@ -52,7 +55,10 @@ function BarraNavegacion (): JSX.Element {
             <Navbar color="dark" dark expand="md" light>
 
                 {/* Nombre de la empresa y logo */}
-                <NavbarBrand href="/#/catalogo">
+                <NavbarBrand onClick={() => {
+                                window.location.assign('/#/catalogo');
+                                window.location.reload();
+                                }}>
                     No Vendo Agua
                     <img
                         alt=""
@@ -71,7 +77,10 @@ function BarraNavegacion (): JSX.Element {
 
                         {/* Opción de caja sorpresa*/}
                         <NavItem>
-                            <NavLink href="/#/products">
+                            <NavLink onClick={() => {
+                                        window.location.assign('/#/catalogo');
+                                        window.location.reload();
+                                }}>
                                 Caja sorpresa
                             </NavLink>
                         </NavItem>
@@ -82,16 +91,28 @@ function BarraNavegacion (): JSX.Element {
                                 Cervezas
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem href="/11#/catalogo?filter=rubia">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=rubia');
+                                        window.location.reload();
+                                }}>
                                     Rubia
                                 </DropdownItem>
-                                <DropdownItem href="/10#/catalogo?filter=roja">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=roja');
+                                        window.location.reload();
+                                }}>
                                     Roja
                                 </DropdownItem>
-                                <DropdownItem href="/9#/catalogo?filter=tostada">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=tostada');
+                                        window.location.reload();
+                                }}>
                                     Tostada
                                 </DropdownItem>
-                                <DropdownItem href="/8#/catalogo?filter=negra">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=negra');
+                                        window.location.reload();
+                                }}>
                                     Negra
                                 </DropdownItem>
                             </DropdownMenu>
@@ -103,13 +124,22 @@ function BarraNavegacion (): JSX.Element {
                                 Vinos
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem href="/7#/catalogo?filter=tinto">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=tinto');
+                                        window.location.reload();
+                                }}>
                                     Tinto
                                 </DropdownItem>
-                                <DropdownItem href="/6#/catalogo?filter=blanco">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=blanco');
+                                        window.location.reload();
+                                }}>
                                     Blanco
                                 </DropdownItem>
-                                <DropdownItem href="/5#/catalogo?filter=rosado">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=rosado');
+                                        window.location.reload();
+                                }}>
                                     Rosado
                                 </DropdownItem>
                             </DropdownMenu>
@@ -122,16 +152,28 @@ function BarraNavegacion (): JSX.Element {
                                 Bebidas destiladas
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem href="/4#/catalogo?filter=ginebra">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=ginebra');
+                                        window.location.reload();
+                                }}>
                                     Ginebra
                                 </DropdownItem>
-                                <DropdownItem href="/3#/catalogo?filter=ron">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=ron');
+                                        window.location.reload();
+                                }}>
                                     Ron
                                 </DropdownItem>
-                                <DropdownItem href="/2#/catalogo?filter=whisky">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=whisky');
+                                        window.location.reload();
+                                }}>
                                     Whisky
                                 </DropdownItem>
-                                <DropdownItem href="/1#/catalogo?filter=vodka">
+                                <DropdownItem onClick={() => {
+                                        window.location.assign('/#/catalogo?filter=vodka');
+                                        window.location.reload();
+                                }}>
                                     Vodka
                                 </DropdownItem>
                             </DropdownMenu>
