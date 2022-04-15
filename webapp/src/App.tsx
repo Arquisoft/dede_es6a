@@ -22,7 +22,7 @@ const App = () => {
 
   return(
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<ConfirmacionEdad />} />
           <Route path="/catalogo" element={<Catalogo />} />
@@ -35,7 +35,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <Toaster
         position={"bottom-left"}
         reverseOrder={false}
