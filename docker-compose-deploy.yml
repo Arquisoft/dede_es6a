@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 services:
   restapi:
     image: ghcr.io/arquisoft/dede_es6a/restapi:latest

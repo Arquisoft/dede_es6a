@@ -45,4 +45,16 @@ export type Order = {
     precio: number
 }
 
+export type ProductToOrder = {
+    nombre: string,
+    quantity: number
+}
+
+export type OrderFromDB = {
+    username: string,
+    products: ProductToOrder[],
+    precio: number,
+    estado: string
+}
+
 

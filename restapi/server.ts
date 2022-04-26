@@ -11,7 +11,7 @@ dotenv.config('.env');
 
 
 const app: Application = express();
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.DB_PORT || 5000);
 const databse = require('./database');
 
 const options: cors.CorsOptions = {
@@ -30,8 +30,8 @@ app.use(expressSession({
 const metricsMiddleware:RequestHandler = promBundle({includeMethod: true});
 app.use(metricsMiddleware);
 
-//app.use(cors(options));
-app.use(cors())
+app.use(cors());
+
 app.use(bp.json());
 
 app.use("/api", api);

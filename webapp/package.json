@@ -6,6 +6,8 @@
     "@emotion/styled": "^11.6.0",
     "@hookform/resolvers": "^2.8.8",
     "@inrupt/solid-ui-react": "^2.7.0",
+    "@inrupt/vocab-common-rdf": "^1.0.3",
+    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.5",
     "@testing-library/jest-dom": "^5.16.1",
@@ -24,6 +26,7 @@
     "react-hot-toast": "^2.2.0",
     "react-router-dom": "^6.2.2",
     "reactstrap": "^9.0.1",
+    "save": "^2.4.0",
     "shippo": "^1.7.1",
     "typescript": "^4.5.4",
     "web-vitals": "^2.1.2",
@@ -71,6 +74,12 @@
     "ts-node-dev": "^1.1.8"
   },
   "jest": {
-    "coveragePathIgnorePatterns": ["index.tsx", "reportWebVitals.ts", "api.ts", "utilsCarrito.ts","shareddtypes.ts"]
+    "coveragePathIgnorePatterns": [
+      "index.tsx",
+      "reportWebVitals.ts",
+      "api.ts",
+      "utilsCarrito.ts",
+      "shareddtypes.ts"
+    ]
   }
 }

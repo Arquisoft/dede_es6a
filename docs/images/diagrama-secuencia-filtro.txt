@@ -1,0 +1,8 @@
+@startuml
+actor Usuario
+Usuario -> DeDe: Selecciona una opción de filtrado de la barra de navegación
+database MongoDB
+DeDe -> MongoDB: Pide la lista de la opción seleccionada
+DeDe <- MongoDB: Devuelve la lista de la opción seleccionada
+DeDe<- DeDe: Muestra solo la lista de productos filtrados
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+actor Usuario
+Usuario -> DeDe: Accede a ventana de Registro de usuario
+DeDe<- DeDe: Muestra la ventana
+Usuario -> DeDe: Introduce los datos del usuario
+database MongoDB
+DeDe -> MongoDB: Procesa los datos
+alt Datos correctos
+ MongoDB -> DeDe: Registro aceptado
+ DeDe --> Usuario: Mensaje confirmación registro correcto
+else Datos incorrectos
+ MongoDB -> DeDe: Registro denegado
+ DeDe --> Usuario: Mensaje confirmación registro incorrecto
+end
+@enduml

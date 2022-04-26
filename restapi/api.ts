@@ -1,4 +1,3 @@
-import { login } from '@inrupt/solid-client-authn-browser';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
@@ -16,6 +15,7 @@ const {
   getSessionIdFromStorageAll,
   Session
 } = require("@inrupt/solid-client-authn-node");
+import { login } from '@inrupt/solid-client-authn-browser';
 
 // añadir usuarios a la BD
 api.post("/users/add", async (req: Request, res: Response): Promise<Response> => {
@@ -96,7 +96,6 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
 api.post("/login", async (req, res): Promise<Response>=> {
   var username = req.body.username;
   var password = req.body.password;
-  var podUrl = req.body.podUrl;
 
   if(username == "")
     return res.status(401).send("Nombre de usuario no valido");
@@ -108,18 +107,6 @@ api.post("/login", async (req, res): Promise<Response>=> {
   let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
   if(user != null){
     session.user = user.username;
-  //  session.podUrl = podUrl;
-  //  const sessionSolid = new Session();
-   // session.sessionId = sessionSolid.info.sessionId;
-   // const redirectToSolidIdentityProvider = () => {
-    //  res.redirect("http://localhost:3000/catalogo");
-    //};
-   // await sessionSolid.login({
-   //   redirectUrl: `http://localhost:${3000}/redirect-from-solid-idp`,
-   //   oidcIssuer: "https://broker.pod.inrupt.com",
-   //   clientName: "novendoagua",
-   //   handleRedirect: redirectToSolidIdentityProvider,
-   // });
     return res.sendStatus(200);
   }else{
     session.user = null;
@@ -137,7 +124,7 @@ api.get('/islogged', async (req, res) =>{
     return res.status(200).send({logged: true})
   else
     return res.status(200).send({logged: false})
-  });
+});
 
   api.post('/createOrder', async (req, res) =>{
     var addressFrom  = {
@@ -201,10 +188,23 @@ api.get('/isadmin', async (req, res) =>{
     let order = new Order({
       username: username,
       products: prods,
-      precio: req.body.precio
+      precio: req.body.precio,
+      estado: 'enviado' // enviado, reparto, entregado
     });
     await order.save();
     return res.sendStatus(200);
+  });
+
+  api.get('/getOrdersBy', async (req, res):Promise<Response> => {
+    let name:string = session.user;
+    let orders = await Order.find({username: name});
+    return res.status(200).send(orders);
+  });
+
+  api.get('/userlogged', async (req, res):Promise<Response> => {
+    let username:string = session.user;
+    let userlogged = await User.find({username: username});
+    return res.status(200).send(userlogged);
   });
 
 export default api;

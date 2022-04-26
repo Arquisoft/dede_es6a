@@ -1,8 +1,9 @@
 import Catalogo from './components/Catalogo';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
+  BrowserRouter,
 } from "react-router-dom";
 import './App.css';
 import AddProducts from './components/products/addProducts/AddProducts';
@@ -10,6 +11,7 @@ import ConfirmacionEdad from './components/ConfirmacionEdad';
 import Carrito from './components/carrito/Carrito';
 import AboutUs from './components/aboutUs/AboutUs';
 import Login from "./components/loginApp/FormLogin";
+import Profile from "./components/loginApp/Profile";
 import Register from './components/Register/FormRegister';
 import DatosPedido from './components/pedido/DatosPedido';
 import ConfirmacionPago from './components/pedido/ConfirmacionPago';
@@ -33,13 +35,13 @@ const App = () => {
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="perfil" element={<Profile />} />
       </Routes>
-      </BrowserRouter>
-
       <Toaster
         position={"bottom-left"}
         reverseOrder={false}
       />
+      </BrowserRouter>
     </>
   );
 };
