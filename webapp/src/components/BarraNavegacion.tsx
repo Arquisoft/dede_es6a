@@ -80,7 +80,7 @@ function BarraNavegacion (): JSX.Element {
                         {/* Opción de caja sorpresa*/}
                         <NavItem>
                             <NavLink onClick={() => {
-                                        window.location.assign('/#/catalogo');
+                                        window.location.assign('/#/catalogo?filter=sorpresa');
                                         window.location.reload();
                                 }}>
                                 Caja sorpresa
