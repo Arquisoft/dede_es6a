@@ -88,7 +88,7 @@ class Footer extends Component {
                 </div>
 
                 <div className="text-center p-3" >
-                    © 2021 Copyright:
+                    © 2022 Copyright:
                     <a className="enlaceGitHub" href="https://github.com/Arquisoft/dede_es6a">dede_es6a</a>
                 </div>
             </footer>
