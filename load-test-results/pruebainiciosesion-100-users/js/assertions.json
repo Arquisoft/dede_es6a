@@ -1,0 +1,10 @@
+{
+  "simulation": "pruebasDeCarga.pruebaInicioSesion",
+  "simulationId": "pruebainiciosesion",
+  "start": 1651157338138,
+  "description": "",
+  "scenarios": ["pruebaInicioSesion"],
+  "assertions": [
+
+  ]
+}

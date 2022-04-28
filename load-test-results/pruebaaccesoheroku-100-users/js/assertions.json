@@ -1,0 +1,10 @@
+{
+  "simulation": "pruebasDeCarga.pruebaAccesoHeroku",
+  "simulationId": "pruebaaccesoheroku",
+  "start": 1651156711373,
+  "description": "",
+  "scenarios": ["pruebaAccesoHeroku"],
+  "assertions": [
+
+  ]
+}

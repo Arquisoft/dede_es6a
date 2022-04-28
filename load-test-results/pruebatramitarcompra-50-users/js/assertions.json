@@ -1,0 +1,10 @@
+{
+  "simulation": "pruebasDeCarga.pruebaTramitarCompra",
+  "simulationId": "pruebatramitarcompra",
+  "start": 1651158295288,
+  "description": "",
+  "scenarios": ["pruebaTramitarCompra"],
+  "assertions": [
+
+  ]
+}

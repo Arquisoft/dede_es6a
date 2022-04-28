@@ -37,10 +37,10 @@ export default function(){
                     descr='texto ejemplo'
                     />    
                 <Developer 
-                    name='Oscar' 
-                    email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
-                    descr='texto ejemplo'
+                    name='Óscar López González' 
+                    email='uo269489@uniovi.es' 
+                    img='../oscar.png' 
+                    descr=''
                     />  
             </div>
 
