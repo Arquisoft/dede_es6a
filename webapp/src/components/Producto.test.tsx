@@ -9,7 +9,7 @@ import Producto from './Producto';
 test('Test renderizado producto', () => {
 
 
-  const productoParaTest: Product={id:"1", nombre:"ProductoPrueba", marca:"Nike", precio:10.0, categoria:"Testing", descripcion:"Producto de test para verificar el correcto funcionamiento de la app."};
+  const productoParaTest: Product={id:"1", nombre:"ProductoPrueba", marca:"Nike", precio:10.0, categoria:"Testing", descripcion:"Producto de test para verificar el correcto funcionamiento de la app.", rating: 2.5};
   render(<Producto props={productoParaTest} addToCarrito={()=>null}/> );
 
   const nombre = screen.getByText("ProductoPrueba");

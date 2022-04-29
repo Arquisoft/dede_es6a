@@ -1,3 +1,4 @@
+import { number } from "yup";
 
 export type ProductType = {
     nombre:string;
@@ -5,6 +6,7 @@ export type ProductType = {
     precio: number;
     categoria: string;
     descripcion: string;
+    rating: number;
 }
 
 export type UserType = {

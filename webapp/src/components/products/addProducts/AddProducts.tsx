@@ -36,7 +36,7 @@ export default function(){
             c = cat.value as string;
         if(descr)
             d = descr.value as string;
-        const product:Product = {'id':i, 'nombre':n,'marca':m,'precio':p,'categoria':c,'descripcion':d};
+        const product:Product = {'id':i, 'nombre':n,'marca':m,'precio':p,'categoria':c,'descripcion':d, 'rating': 2.5};
         addProduct(product);
     }
 

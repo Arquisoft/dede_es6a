@@ -11,6 +11,7 @@ export type Product = {
     precio: number;
     categoria: string;
     descripcion: string;
+    rating:number;
 }
 
 export type ListaCarrito = {

@@ -67,7 +67,8 @@ async (req: Request, res: Response):Promise<Response> =>{
      'marca':marca, 
      'precio':precio, 
      'categoria':categoria, 
-     'descripcion':descripcion
+     'descripcion':descripcion,
+     'rating': 2.5,
     });
   await product.save();
   return res.sendStatus(201);
