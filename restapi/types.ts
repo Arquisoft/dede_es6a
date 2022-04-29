@@ -7,6 +7,7 @@ export type ProductType = {
     categoria: string;
     descripcion: string;
     rating: number;
+    imagen: string;
 }
 
 export type UserType = {

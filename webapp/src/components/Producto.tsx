@@ -24,7 +24,7 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
     return (
         <>
         <Card id='producto' as="div">
-            <Card.Img variant="top" src={url} id='img-top'/>
+            <Card.Img variant="top" src={props.imagen} id='img-top'/>
             <Card.Body>
                 <Card.Title as="h2">{props.nombre}</Card.Title>
                 <hr></hr>
