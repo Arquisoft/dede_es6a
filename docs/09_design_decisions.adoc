@@ -20,4 +20,8 @@ motivo de esta decisión es la sinergia con la que cuenta esta base de datos con
 
 * La delegación del cálculo de costes de envío según las caracteristicas concretas de cada compra será delegada a Shippo. Mediante su API obtenemos
 datos del envio tales como los costes y la duración del mismo. Elegimos su API ya que solo nos pide dirección de origen, dirección de destino y 
-poco más para proporcionarnos los datos de distintas compañias de reparto. 
+poco más para proporcionarnos los datos de distintas compañias de reparto.
+
+* Uso de la plataforma Heroku para el despliegue de la aplicación. Elegida por tener un uso mas simple que sus alternativas y ser mas practico
+al darnos una ip estatica en contraposición con AWS. Tambien por la existencia de más ejemplos de despliegues de aplicaciones similares a la nuestra
+en esta plataforma.

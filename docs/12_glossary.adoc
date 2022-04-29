@@ -18,4 +18,5 @@ Puedes almacenar cualquier tipo de información en un Pod de Solid, utilizando f
 | MongoDB    | Base de datos documental.
 | Express    | Es un marco de aplicación web de back-end para Node.js diseñado para crear aplicaciones web y API.
 | Shippo    | Compañía de software estadounidense que ayuda a las empresas de comercio electrónico a integrar el envío con múltiples transportistas a través de su API y aplicación web.
+| Heroku    | Heroku es una plataforma como servicio de computación en la Nube que soporta distintos lenguajes de programación.
 |===
