@@ -8,6 +8,8 @@ import {isLoggedType, ListaCarrito, DataOrder, Order} from '../../shared/sharedd
 import { useState, useEffect } from 'react';
 import ErrorPage from '../ErrorPage';
 import './ConfirmacionPago.css';
+import {useHref} from "react-router-dom";
+import {red} from "@mui/material/colors";
 
 type ConfirmacionPago = {
 }
@@ -66,17 +68,25 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         var tipoPago = tipo.options[tipo.selectedIndex].value;
         document.getElementById('formPago')?.remove();
         let contenedor = document.getElementById('container') as Element;
+        contenedor.innerHTML = ``;
+
+        let buttonVolver = document.createElement('button');
+        buttonVolver.className = 'btn btn-primary';
+        buttonVolver.onclick = () => { redirect(); }
+        buttonVolver.innerHTML = 'Volver';
+        contenedor.appendChild(buttonVolver);
 
         switch (tipoPago){
             case("tarjeta"):
-                contenedor.innerHTML = ``;
                 let formTarjeta = document.createElement('form');
                 formTarjeta.id = 'formPago';
                 formTarjeta.className = 'form-group';
                 formTarjeta.innerHTML = ` <label for="numeroTarjeta">Numero de tarjeta</label>
                                     <input type="text" class="form-control" id="numeroTarjeta" placeholder="Numero de tarjeta">
+                                    <br>
                                     <label for="fechaCaducidad">Fecha de caducidad</label>
                                     <input type="text" class="form-control" id="fechaCaducidad" placeholder="Fecha de caducidad">
+                                    <br>
                                     <label for="codigoSeguridad">Codigo de seguridad</label>
                                     <input type="text" class="form-control" id="codigoSeguridad" placeholder="Codigo de seguridad">
                                     <br>`;
@@ -87,8 +97,8 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                 buttonTarjeta.innerHTML = 'Confirmar pago';
                 contenedor.appendChild(buttonTarjeta);
                 break;
+
             case("paypal"):
-                contenedor.innerHTML = ``;
                 let formPaypal = document.createElement('form');
                 formPaypal.id = 'formPago';
                 formPaypal.className = 'form-group';
@@ -96,8 +106,10 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                         <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo electrónico con nadie más.</small>
+                                        <br>
                                         <label for="exampleInputPassword1">Password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <br>
                                         </div>`;
                 contenedor.appendChild(formPaypal);
                 let buttonPaypal = document.createElement('button');
@@ -105,14 +117,16 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                 buttonPaypal.onclick = () => { finalizarPedido(); }
                 buttonPaypal.innerHTML = 'Confirmar pago';
                 contenedor.appendChild(buttonPaypal);
+
                 break;
+
             case("transferencia"):
-                contenedor.innerHTML = ``;
                 let formTransferencia = document.createElement('form');
                 formTransferencia.id = 'formPago';
                 formTransferencia.className = 'form-group';
                 formTransferencia.innerHTML = ` <label for="numeroCuenta">Numero de cuenta</label>
-                                    <input type="text" class="form-control" id="numeroCuenta" placeholder="Numero de cuenta">`;
+                                    <input type="text" class="form-control" id="numeroCuenta" placeholder="Numero de cuenta">
+                                    <br/>`;
                 contenedor.appendChild(formTransferencia);
                 let buttonTransferencia = document.createElement('button');
                 buttonTransferencia.className = 'btn btn-primary';
@@ -121,6 +135,10 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                 contenedor.appendChild(buttonTransferencia);
                 break;
         }
+    }
+
+    function redirect(){
+        window.location.href = '/pago';
     }
 
     async function finalizarPedido() {
@@ -155,18 +173,18 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                         <ListGroup.Item>Entrega: {getDeliveryTerm()}</ListGroup.Item>
                     </ListGroup>
                 </Card>
-                <div id='container'>
 
+                <div id='container'>
                     <Form id="tipoPago">
                         <Form.Label className="labelTipoPago">Elige el tipo de pago:</Form.Label>
                         <Form.Select  id="selectTipo" aria-label="Elige el tipo de pago">
                             <option value="tarjeta">Tarjeta</option>
                             <option value="paypal">PayPal</option>
-                            <option value="transferencia">transferencia</option>
+                            <option value="transferencia">Transferencia bancaria</option>
                         </Form.Select>
+                        <br/>
                         <Button id="formButton" type="button" onClick={mostarDatosPago}>Siguiente</Button>
                     </Form>
-
                     <hr></hr>
                     <Footer/>
                 </div>
