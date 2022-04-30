@@ -152,7 +152,7 @@ api.post("/login", async (req, res) : Promise<Response<login>> => {
 
   api.post('/saveOrder', async (req, res) => {
     
-    let username:string = session.user;
+    let username:string = req.query.username as string;
     let products:ListaCarrito[] = req.body.carrito;
     let prods:SellType[] = [];
     products.forEach(element => {

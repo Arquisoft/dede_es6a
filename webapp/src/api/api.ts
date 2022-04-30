@@ -112,7 +112,7 @@ export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
 
 export async function saveOrder(order: Order):Promise<boolean>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/saveOrder',{
+  let response = await fetch(apiEndPoint+'/saveOrder?username='+localStorage.getItem('user'),{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
