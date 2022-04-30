@@ -15,31 +15,31 @@ export default function(){
                 <Developer 
                     name='Juan Mera Menéndez' 
                     email='Uo277406@uniovi.es' 
-                    img='../juan.png' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255946/juan_vxrndv.png' 
                     descr='texto ejemplo :D'
                     />
                 <Developer 
-                    name='Diego García Quirós' 
+                    name='Diego García Quirós'
                     email='UO276688@uniovi.es' 
-                    img='../diego.png' 
-                    descr='texto ejemplo'
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png' 
+                    descr=''
                     />
                 <Developer 
                     name='Daniel Machado Sánchez' 
                     email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
                     descr='texto ejemplo'
                     />
                 <Developer 
                     name='David Maldonado Álvarez' 
                     email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
                     descr='texto ejemplo'
                     />    
                 <Developer 
                     name='Oscar López González' 
                     email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
                     descr='texto ejemplo'
                     />  
             </div>

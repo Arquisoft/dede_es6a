@@ -29,9 +29,9 @@ const DatosPedido: React.FC<DatosPedido> = () => {
     if(sessionCart)
         listaCarrito = JSON.parse(sessionCart);
          
-    const [log,setIsLogged] = useState<isLoggedType>();
-    const refreshIsLogged = async () => {
-        setIsLogged(await isLogged());
+    const [log,setIsLogged] = useState<boolean>();
+    const refreshIsLogged =  () => {
+        setIsLogged( isLogged());
     }
     useEffect(()=>{ refreshIsLogged(); }, []);
 
@@ -125,7 +125,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
         
     }
 
-    if(log?.logged){
+    if(log){
         return (
             <>
             <h2 id="tituloPago">Trámite de pedido</h2>
@@ -162,7 +162,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                     {listaCarrito.map(carrito => (
                         <Card style={{ width: '18rem' }}>
                             <Card.Body>
-                                <Card.Img variant="top" src={carrito.producto.nombre+".jpg"} />
+                                <Card.Img variant="top" src={carrito.producto.imagen} />
                                 <Card.Title>{carrito.producto.nombre}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">Unidades: {" " + carrito.unidades + " "}</Card.Subtitle>
                                 <Card.Subtitle className="mb-2 text-muted">Precio total: {" " + Number(carrito.unidades*carrito.producto.precio).toFixed(2) + " €"}</Card.Subtitle>

@@ -11,11 +11,11 @@ dotenv.config('.env');
 
 
 const app: Application = express();
-app.set('port', process.env.DB_PORT || 5000);
+app.set('port', process.env.PORT || 5000 );
 const databse = require('./database');
 
 const options: cors.CorsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:5000'],
+  origin: ['http://localhost:3000', 'http://localhost:5000','https://dede-es6a.herokuapp.com'],
   optionsSuccessStatus: 200
 };
 

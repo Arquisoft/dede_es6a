@@ -1,9 +1,8 @@
 
 import {Product} from '../shared/shareddtypes';
-
+import ReactStars from 'react-stars';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Carrito from './carrito/Carrito';
 import './catalogo.css';
 
 type Producto = {
@@ -21,15 +20,16 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
         precio = props.precio + "0 €";
     } else {
         precio = props.precio + " €";
-    }    
+    }
 
     return (
         <>
         <Card id='producto' as="div">
-            <Card.Img variant="top" src={url} id='img-top'/>
+            <Card.Img variant="top" src={props.imagen} id='img-top'/>
             <Card.Body>
                 <Card.Title as="h2">{props.nombre}</Card.Title>
                 <hr></hr>
+                <ReactStars count={5} value={props.rating} onChange={() => {}} size={24} color2={'#ffd700'} />
                 <Card.Text>
                 {props.descripcion}
                 </Card.Text>
