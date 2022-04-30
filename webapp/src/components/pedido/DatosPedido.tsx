@@ -29,9 +29,9 @@ const DatosPedido: React.FC<DatosPedido> = () => {
     if(sessionCart)
         listaCarrito = JSON.parse(sessionCart);
          
-    const [log,setIsLogged] = useState<isLoggedType>();
-    const refreshIsLogged = async () => {
-        setIsLogged(await isLogged());
+    const [log,setIsLogged] = useState<boolean>();
+    const refreshIsLogged =  () => {
+        setIsLogged( isLogged());
     }
     useEffect(()=>{ refreshIsLogged(); }, []);
 
@@ -125,7 +125,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
         
     }
 
-    if(log?.logged){
+    if(log){
         return (
             <>
             <h2 id="tituloPago">Trámite de pedido</h2>

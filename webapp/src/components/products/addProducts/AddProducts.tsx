@@ -10,9 +10,9 @@ import { useState, useEffect } from 'react';
 
 export default function(){
 
-    const [admin,setIsAdmin] = useState<isLoggedType>();
-    const refreshIsLogged = async () => {
-        setIsAdmin(await isAdmin());
+    const [admin,setIsAdmin] = useState<boolean>();
+    const refreshIsLogged =  () => {
+        setIsAdmin( isAdmin());
     }
     useEffect(()=>{ refreshIsLogged(); }, []);
 
@@ -40,7 +40,7 @@ export default function(){
         addProduct(product);
     }
 
-    if(admin?.logged){
+    if(admin){
         return(
             <>
             <BarraNavegacion />

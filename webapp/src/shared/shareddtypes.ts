@@ -21,7 +21,7 @@ export type ListaCarrito = {
 }
 
 export type isLoggedType = {
-    logged: boolean;
+    user: string;
 }
 
 export type PersonalData = {

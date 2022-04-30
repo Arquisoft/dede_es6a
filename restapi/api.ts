@@ -87,9 +87,10 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
   return res.status(200).send(products);
 });
 
-api.post("/login", async (req, res): Promise<Response>=> {
+api.post("/login", async (req, res) => {
   var username = req.body.username;
   var password = req.body.password;
+  var podUrl = req.body.podUrl;
 
   if(username == "")
     return res.status(401).send("Nombre de usuario no valido");
@@ -100,24 +101,13 @@ api.post("/login", async (req, res): Promise<Response>=> {
   let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
   let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
   if(user != null){
-    session.user = user.username;
-    return res.sendStatus(200);
+    if(user.username == 'admin')
+      return res.sendStatus(201);
+    else
+      return res.sendStatus(200);
   }else{
-    session.user = null;
     return res.status(401).send("error");
   }
-});
-
-api.get('/logout', async (req, res) => {
-  session.user = null;
-  res.status(200).send("Usuario desconectado");
-});
-
-api.get('/islogged', async (req, res) =>{
-  if(session.user != null && session.user != "undefined")
-    return res.status(200).send({logged: true})
-  else
-    return res.status(200).send({logged: false})
 });
 
   api.post('/createOrder', async (req, res) =>{
@@ -159,12 +149,6 @@ api.get('/islogged', async (req, res) =>{
   });
 });
 
-api.get('/isadmin', async (req, res) =>{
-  if(session.user != null && session.user == "admin")
-    return res.status(200).send({logged: true})
-  else
-    return res.status(200).send({logged: false})
-  });
 
   api.post('/saveOrder', async (req, res) => {
     

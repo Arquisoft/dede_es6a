@@ -24,13 +24,13 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         orderData = JSON.parse(orderDataStoraged);
 
     const [order,setOrder] = useState<any>();
-    const [log,setIsLogged] = useState<isLoggedType>();
+    const [log,setIsLogged] = useState<boolean>();
 
     const refreshOrder = async () => {
         setOrder(await createOrder(orderData));
     }
-    const refreshIsLogged = async () => {
-        setIsLogged(await isLogged());
+    const refreshIsLogged =  () => {
+        setIsLogged(isLogged());
     }
 
     useEffect(()=>{ refreshIsLogged(); refreshOrder(); }, []);
@@ -77,7 +77,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         await saveOrder(order);
     }
     
-    if(log?.logged){
+    if(log){
         return (
             <>
             <h2 id="tituloPago">Trámite del pago</h2>
