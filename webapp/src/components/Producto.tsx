@@ -15,7 +15,8 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
 
     const url = "./"+props.nombre+".jpg";
     let precio = "";
-    if(props.precio.toString().length == 4){
+    var arrayCadenas = props.precio.toString().split('.');
+    if(arrayCadenas[1].length == 1){
         precio = props.precio + "0 €";
     } else {
         precio = props.precio + " €";
@@ -35,7 +36,7 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
                 <hr></hr>
             </Card.Body>
             
-            <Card.Footer as="h2">
+            <Card.Footer as="h2" className="precioProducto">
                 {precio}
             </Card.Footer>
             <Button className="bt-Añadir" id='boton-añadir' onClick={() => addToCarrito(props)}>

@@ -2,19 +2,24 @@
   .App {
     text-align: center;
   }
+  .divConfirmacionEdad{
+    display: grid;
+    grid-template-columns:100%;
+    grid-template-rows: 70% 30%;
+  }
   
   img {
-    width: 100%;
+    width: 80%;
     height: auto;
-    display: flex;
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
   }
   
   .App-header {
   /*  background-color: #282c34; */
     background-color: #f0f5d8;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    height: 70%;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);

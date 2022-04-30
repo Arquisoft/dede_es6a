@@ -10,22 +10,22 @@ export default function(){
     return (
         <>
             <BarraNavegacion />
-            <h1>About us</h1>
+            <h1>Sobre nosotros</h1>
             <div id='cards'>
                 <Developer 
-                    name='Juan Mera Menendez' 
+                    name='Juan Mera Menéndez' 
                     email='Uo277406@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255946/juan_vxrndv.png' 
                     descr='texto ejemplo :D'
                     />
                 <Developer 
-                    name='Diego Garcia Quiros' 
-                    email='uo@uniovi.es' 
+                    name='Diego García Quirós'
+                    email='UO276688@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png' 
-                    descr='texto ejemplo'
+                    descr=''
                     />
                 <Developer 
-                    name='Daniel Machado Sanchez' 
+                    name='Daniel Machado Sánchez' 
                     email='uo@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
                     descr='texto ejemplo'
@@ -37,14 +37,12 @@ export default function(){
                     descr='texto ejemplo'
                     />    
                 <Developer 
-                    name='Oscar' 
+                    name='Oscar López González' 
                     email='uo@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
                     descr='texto ejemplo'
                     />  
             </div>
-
       </>
     );
-
 }
