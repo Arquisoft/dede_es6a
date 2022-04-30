@@ -25,3 +25,7 @@ poco más para proporcionarnos los datos de distintas compañias de reparto.
 * Uso de la plataforma Heroku para el despliegue de la aplicación. Elegida por tener un uso mas simple que sus alternativas y ser mas practico
 al darnos una ip estatica en contraposición con AWS. Tambien por la existencia de más ejemplos de despliegues de aplicaciones similares a la nuestra
 en esta plataforma.
+
+* Emplear los servicios de gestión de contenidos multimedia que proporciona la herramienta cloudinary. Esta decisión está motivada sobretodo  por 
+la mala experiencia subiendo las imagenes a Heroku. Por ello, y en adición a ahorranos la memoria que pueda ocupar el contenido multimedia de la aplicación,
+decidimos subir nuestras imagenes a la nube de cloudinary y accederlas mediante una URI.
