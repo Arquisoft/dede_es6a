@@ -26,9 +26,9 @@ export default function(){
                     />
                 <Developer 
                     name='Daniel Machado Sanchez' 
-                    email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
-                    descr='texto ejemplo'
+                    email='UO2762576@uniovi.es'
+                    img='../dani.png'
+                    descr=''
                     />
                 <Developer 
                     name='David Maldonado Álvarez' 
