@@ -10,9 +10,9 @@ import ErrorPage from '../ErrorPage';
 import './ConfirmacionPago.css';
 
 type ConfirmacionPago = {
-  }
+}
 
-const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{  
+const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
     let sessionCart = localStorage.getItem("listaCarrito");
     let listaCarrito:ListaCarrito[] = [];
     if(sessionCart)
@@ -61,6 +61,68 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         return (Number(getPrecio())+ Number(getPrecioEnvio())).toFixed(2);
     }
 
+    function mostarDatosPago() {
+        var tipo = document.getElementById("selectTipo") as HTMLSelectElement;
+        var tipoPago = tipo.options[tipo.selectedIndex].value;
+        document.getElementById('formPago')?.remove();
+        let contenedor = document.getElementById('container') as Element;
+
+        switch (tipoPago){
+            case("tarjeta"):
+                contenedor.innerHTML = ``;
+                let formTarjeta = document.createElement('form');
+                formTarjeta.id = 'formPago';
+                formTarjeta.className = 'form-group';
+                formTarjeta.innerHTML = ` <label for="numeroTarjeta">Numero de tarjeta</label>
+                                    <input type="text" class="form-control" id="numeroTarjeta" placeholder="Numero de tarjeta">
+                                    <label for="fechaCaducidad">Fecha de caducidad</label>
+                                    <input type="text" class="form-control" id="fechaCaducidad" placeholder="Fecha de caducidad">
+                                    <label for="codigoSeguridad">Codigo de seguridad</label>
+                                    <input type="text" class="form-control" id="codigoSeguridad" placeholder="Codigo de seguridad">
+                                    <br>`;
+                contenedor.appendChild(formTarjeta);
+                let buttonTarjeta = document.createElement('button');
+                buttonTarjeta.className = 'btn btn-primary';
+                buttonTarjeta.onclick = () => { finalizarPedido(); }
+                buttonTarjeta.innerHTML = 'Confirmar pago';
+                contenedor.appendChild(buttonTarjeta);
+                break;
+            case("paypal"):
+                contenedor.innerHTML = ``;
+                let formPaypal = document.createElement('form');
+                formPaypal.id = 'formPago';
+                formPaypal.className = 'form-group';
+                formPaypal.innerHTML = `<div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo electrónico con nadie más.</small>
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>`;
+                contenedor.appendChild(formPaypal);
+                let buttonPaypal = document.createElement('button');
+                buttonPaypal.className = 'btn btn-primary';
+                buttonPaypal.onclick = () => { finalizarPedido(); }
+                buttonPaypal.innerHTML = 'Confirmar pago';
+                contenedor.appendChild(buttonPaypal);
+                break;
+            case("transferencia"):
+                contenedor.innerHTML = ``;
+                let formTransferencia = document.createElement('form');
+                formTransferencia.id = 'formPago';
+                formTransferencia.className = 'form-group';
+                formTransferencia.innerHTML = ` <label for="numeroCuenta">Numero de cuenta</label>
+                                    <input type="text" class="form-control" id="numeroCuenta" placeholder="Numero de cuenta">`;
+                contenedor.appendChild(formTransferencia);
+                let buttonTransferencia = document.createElement('button');
+                buttonTransferencia.className = 'btn btn-primary';
+                buttonTransferencia.onclick = () => { finalizarPedido(); }
+                buttonTransferencia.innerHTML = 'Confirmar pago';
+                contenedor.appendChild(buttonTransferencia);
+                break;
+        }
+    }
+
     async function finalizarPedido() {
         localStorage.setItem("listaCarrito", "");
         document.getElementById('formPago')?.remove();
@@ -76,48 +138,42 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         }
         await saveOrder(order);
     }
-    
+
     if(log?.logged){
         return (
             <>
-            <h2 id="tituloPago">Trámite del pago</h2>
+                <h2 id="tituloPago">Trámite del pago</h2>
 
-            <Card style={{ width: '18rem' }} id="detalles">
-                <Card.Header>Pedido</Card.Header>
-                <ListGroup variant="flush">
-                {listaCarrito.map(carrito => (
-                        <ListGroup.Item>{carrito.producto.nombre}:     {Number(carrito.unidades*carrito.producto.precio).toFixed(2)} €</ListGroup.Item>
-                ))}
-                <ListGroup.Item>Precio de envio:    {getPrecioEnvio()} €</ListGroup.Item>
-                <ListGroup.Item>Total:    {getPrecioTotal()} €</ListGroup.Item> 
-                <ListGroup.Item>Entrega: {getDeliveryTerm()}</ListGroup.Item>
-                </ListGroup>
-            </Card>
-            <div id='container'>
-                <Form id="formPago">
-                    <Form.Group  controlId="formNumeroTarjeta">
-                        <Form.Label className="labelPago">Número de Tarjeta:</Form.Label>
-                        <Form.Control className="inputPago" type="text" placeholder="1111-1111-1111-1111" name="formNumeroTarjeta"/>
-                    </Form.Group>
-                    <Form.Group controlId="formFechaCaducidad">
-                        <Form.Label className="labelPago">Fecha de Caducidad:</Form.Label>
-                        <Form.Control className="inputPago" type="text" placeholder="01/01" name="formFechaCaducidad"/>
-                    </Form.Group>
-                    <Form.Group controlId="formCodigoSeguridad">
-                        <Form.Label className="labelPago">Código de Seguridad:</Form.Label>
-                        <Form.Control className="inputPago" type="number" placeholder="111" name="formCodigoSeguridad"/>
-                    </Form.Group>
-                    
-                    <Button id="formButton" type="button" onClick={finalizarPedido}>PAGAR</Button>
-                </Form>
+                <Card style={{ width: '18rem' }} id="detalles">
+                    <Card.Header>Pedido</Card.Header>
+                    <ListGroup variant="flush">
+                        {listaCarrito.map(carrito => (
+                            <ListGroup.Item>{carrito.producto.nombre}:     {Number(carrito.unidades*carrito.producto.precio).toFixed(2)} €</ListGroup.Item>
+                        ))}
+                        <ListGroup.Item>Precio de envio:    {getPrecioEnvio()} €</ListGroup.Item>
+                        <ListGroup.Item>Total:    {getPrecioTotal()} €</ListGroup.Item>
+                        <ListGroup.Item>Entrega: {getDeliveryTerm()}</ListGroup.Item>
+                    </ListGroup>
+                </Card>
+                <div id='container'>
 
-                <hr></hr>
-                <Footer/>
-            </div>
-        </>
+                    <Form id="tipoPago">
+                        <Form.Label className="labelTipoPago">Elige el tipo de pago:</Form.Label>
+                        <Form.Select  id="selectTipo" aria-label="Elige el tipo de pago">
+                            <option value="tarjeta">Tarjeta</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="transferencia">transferencia</option>
+                        </Form.Select>
+                        <Button id="formButton" type="button" onClick={mostarDatosPago}>Siguiente</Button>
+                    </Form>
+
+                    <hr></hr>
+                    <Footer/>
+                </div>
+            </>
         );
     }else{
-        return( 
+        return(
             <ErrorPage msg="Debes iniciar sesión para poder acceder"/>
         );
     }
