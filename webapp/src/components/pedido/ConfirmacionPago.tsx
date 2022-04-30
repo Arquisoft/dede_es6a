@@ -72,16 +72,23 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
 
         let buttonVolver = document.createElement('button');
         buttonVolver.className = 'btn btn-primary';
+        buttonVolver.id = 'buttonVolver';
         buttonVolver.onclick = () => { redirect(); }
         buttonVolver.innerHTML = 'Volver';
         contenedor.appendChild(buttonVolver);
 
+        let buttonFinalizar = document.createElement('button');
+        buttonFinalizar.className = 'btn btn-primary';
+        buttonFinalizar.id = 'buttonFinalizar';
+        buttonFinalizar.onclick = () => { finalizarPedido(); }
+        buttonFinalizar.innerHTML = 'Confirmar pago';
+        let form = document.createElement('form');
+        form.id = 'formPago';
+        form.className = 'form-group';
+
         switch (tipoPago){
             case("tarjeta"):
-                let formTarjeta = document.createElement('form');
-                formTarjeta.id = 'formPago';
-                formTarjeta.className = 'form-group';
-                formTarjeta.innerHTML = ` <label for="numeroTarjeta">Numero de tarjeta</label>
+                form.innerHTML = ` <label for="numeroTarjeta">Numero de tarjeta</label>
                                     <input type="text" class="form-control" id="numeroTarjeta" placeholder="Numero de tarjeta">
                                     <br>
                                     <label for="fechaCaducidad">Fecha de caducidad</label>
@@ -90,51 +97,28 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                                     <label for="codigoSeguridad">Codigo de seguridad</label>
                                     <input type="text" class="form-control" id="codigoSeguridad" placeholder="Codigo de seguridad">
                                     <br>`;
-                contenedor.appendChild(formTarjeta);
-                let buttonTarjeta = document.createElement('button');
-                buttonTarjeta.className = 'btn btn-primary';
-                buttonTarjeta.onclick = () => { finalizarPedido(); }
-                buttonTarjeta.innerHTML = 'Confirmar pago';
-                contenedor.appendChild(buttonTarjeta);
                 break;
 
             case("paypal"):
-                let formPaypal = document.createElement('form');
-                formPaypal.id = 'formPago';
-                formPaypal.className = 'form-group';
-                formPaypal.innerHTML = `<div class="form-group">
+                form.innerHTML = `<div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                         <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo electrónico con nadie más.</small>
-                                        <br>
+                                        <br><br>
                                         <label for="exampleInputPassword1">Password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                        <br>
                                         </div>`;
-                contenedor.appendChild(formPaypal);
-                let buttonPaypal = document.createElement('button');
-                buttonPaypal.className = 'btn btn-primary';
-                buttonPaypal.onclick = () => { finalizarPedido(); }
-                buttonPaypal.innerHTML = 'Confirmar pago';
-                contenedor.appendChild(buttonPaypal);
-
                 break;
 
             case("transferencia"):
-                let formTransferencia = document.createElement('form');
-                formTransferencia.id = 'formPago';
-                formTransferencia.className = 'form-group';
-                formTransferencia.innerHTML = ` <label for="numeroCuenta">Numero de cuenta</label>
+                form.innerHTML = ` <label for="numeroCuenta">Numero de cuenta</label>
                                     <input type="text" class="form-control" id="numeroCuenta" placeholder="Numero de cuenta">
                                     <br/>`;
-                contenedor.appendChild(formTransferencia);
-                let buttonTransferencia = document.createElement('button');
-                buttonTransferencia.className = 'btn btn-primary';
-                buttonTransferencia.onclick = () => { finalizarPedido(); }
-                buttonTransferencia.innerHTML = 'Confirmar pago';
-                contenedor.appendChild(buttonTransferencia);
+
                 break;
         }
+        contenedor.appendChild(form);
+        contenedor.appendChild(buttonFinalizar);
     }
 
     function redirect(){
@@ -185,9 +169,10 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                         <br/>
                         <Button id="formButton" type="button" onClick={mostarDatosPago}>Siguiente</Button>
                     </Form>
-                    <hr></hr>
-                    <Footer/>
+
                 </div>
+                <hr></hr>
+                <Footer/>
             </>
         );
     }else{

@@ -1,7 +1,39 @@
+
 #detalles{
     margin: 2em auto;
-
 }
 #container{
     text-align: center;
+}
+
+#buttonVolver{
+    margin: 2em auto;
+    background: #dc3545;
+    width: 200px;
+}
+
+#buttonFinalizar{
+    margin: 2em auto;
+    background: #13aa52;
+    width: 200px;
+}
+
+#tipoPago{
+    color: black;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 75%;
+    margin-left: 13%;
+    margin-top: 1%;
+}
+
+#formPago{
+    color: black;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 75%;
+    margin-left: 13%;
+    margin-top: 1%;
 }
