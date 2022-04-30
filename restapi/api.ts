@@ -3,7 +3,7 @@ import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
 import Order from './models/Order';
-import {ProductType, UserType, ListaCarrito, SellType} from './types';
+import {ProductType, UserType, ListaCarrito, SellType, login} from './types';
 
 
 const api:Router = express.Router();
@@ -87,7 +87,7 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
   return res.status(200).send(products);
 });
 
-api.post("/login", async (req, res) => {
+api.post("/login", async (req, res) : Promise<Response<login>> => {
   var username = req.body.username;
   var password = req.body.password;
   var podUrl = req.body.podUrl;
@@ -102,11 +102,11 @@ api.post("/login", async (req, res) => {
   let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
   if(user != null){
     if(user.username == 'admin')
-      return res.sendStatus(201);
+      return res.status(201).send({"user": "admin"});
     else
-      return res.sendStatus(200);
+      return res.status(200).send({"user": user.username});
   }else{
-    return res.status(401).send("error");
+    return res.status(401).send({"user": "error"});
   }
 });
 
@@ -174,13 +174,13 @@ api.post("/login", async (req, res) => {
   });
 
   api.get('/getOrdersBy', async (req, res):Promise<Response> => {
-    let name:string = session.user;
+    let name:string = req.query.username as string;
     let orders = await Order.find({username: name});
     return res.status(200).send(orders);
   });
 
   api.get('/userlogged', async (req, res):Promise<Response> => {
-    let username:string = session.user;
+    var username:string = req.query.username as string;
     let userlogged = await User.find({username: username});
     return res.status(200).send(userlogged);
   });

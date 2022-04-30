@@ -17,6 +17,7 @@ export async function addUser(user:User):Promise<boolean>{
       return false;
 }
 
+
 export async function login(username:string, password:string):Promise<boolean>{
   const apiEndPoint=  'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/login', {
@@ -30,7 +31,8 @@ export async function login(username:string, password:string):Promise<boolean>{
       })
   });  
   if(response.status === 200){
-    localStorage.setItem('user','logged');
+    let r:Promise<isLoggedType> = response.json()
+    localStorage.setItem('user',(await r).user);
     return true;
   }else if(response.status === 201){
     localStorage.setItem('user','admin');
@@ -126,13 +128,13 @@ export async function saveOrder(order: Order):Promise<boolean>{
 
 export async function getOrdersByClientLogged():Promise<OrderFromDB[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/getOrdersBy');
+  let response = await fetch(apiEndPoint+'/getOrdersBy?username='+localStorage.getItem('user'));
   return response.json();
 }
 
 export async function getUserLoggeed():Promise<User[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/userlogged');
+  let response = await fetch(apiEndPoint+'/userlogged?username='+localStorage.getItem('user'));
   return response.json();
 }
 

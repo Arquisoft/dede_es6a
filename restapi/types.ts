@@ -25,6 +25,10 @@ export type PersonalData = {
   postalcode: string
 }
 
+export type login = {
+  user : string;
+}
+
 export type SellType = {
     nombre: string,
     quantity: number
