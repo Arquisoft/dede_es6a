@@ -19,12 +19,20 @@ function BarraNavegacion (): JSX.Element {
 
     const check = () => {
             if(log){
-                return(<NavLink href="/#/catalogo" onClick={() => {
-                    logout();
-                    window.location.assign('/#/catalogo');
-                    window.location.reload();
-            }}>
-                    Cerrar Sesión</NavLink>);
+                return(
+                    <>
+                    <NavItem>
+                    <NavLink href="/#/perfil"> Perfil </NavLink>   
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/#/catalogo" onClick={() => {
+                            logout();
+                            window.location.assign('/#/catalogo');
+                            window.location.reload();
+                        }}> Cerrar Sesión</NavLink>
+                    </NavItem>
+                    </>
+                    );
             }else{
                 return(<NavLink href="/#/login">Inicia sesión</NavLink>);       
             }
@@ -205,9 +213,7 @@ function BarraNavegacion (): JSX.Element {
                         </NavItem>
 
                         {/* Opción para iniciar sesión */}
-                        <NavItem>
-                            {check()}
-                        </NavItem>
+                        {check()}
                         <NavItem>
                             <NavLink href="/#/carrito">
                                 <svg xmlns="./cart.svg " width="50" height="20" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">

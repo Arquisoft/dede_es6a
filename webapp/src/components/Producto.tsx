@@ -16,7 +16,7 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
     const url = "./"+props.nombre+".jpg";
     let precio = "";
     var arrayCadenas = props.precio.toString().split('.');
-    if(arrayCadenas[1].length == 1){
+    if(arrayCadenas.length > 1 && arrayCadenas[1].length == 1){
         precio = props.precio + "0 €";
     } else {
         precio = props.precio + " €";
