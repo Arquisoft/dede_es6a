@@ -11,3 +11,7 @@
     display: flex;
     margin: 1em;
 }
+#checkbox{
+    max-width: 15em;
+    margin: auto;
+}

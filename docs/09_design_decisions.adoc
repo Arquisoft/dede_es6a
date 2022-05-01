@@ -8,10 +8,24 @@ resultará más claro y comprensible en este idioma.
 * Uso de la bilbioteca Boostrap para la elaboración de las hojas de estilo de tal forma que nuestra aplicación resulte 
 más atractiva visualmente para los usuarios.
 
+* Uso de la bilbioteca React Hot Toast con el objetivo de que el usuario sea máx consciente de las acciones que realiza
+a lo largo del tiempo que permanezca en la página mediante notificaciones.
+
+* Uso de la bilbioteca Yup para informar al usuario en el momento del login y registro la longitud y características 
+mínimas que han de cumplir su nombre de usuario y contraseña.
+
 * Dado que nuestro proyecto será creado junto al proyecto Solid, algunos de nuestros datos serán almacenados en los 
 Solid Pods. Junto a esto, la base de datos que utilizaremos será no relacional (documental), concretamente MongoDB en la nube. El principal
 motivo de esta decisión es la sinergia con la que cuenta esta base de datos con el lenguaje de desarrollo del proyecto.
 
-* La delegación del calculo de costes de envio segun las caracteristicas concretas de cada compra será delegada a Shippo. Mediante su API obtenemos
+* La delegación del cálculo de costes de envío según las caracteristicas concretas de cada compra será delegada a Shippo. Mediante su API obtenemos
 datos del envio tales como los costes y la duración del mismo. Elegimos su API ya que solo nos pide dirección de origen, dirección de destino y 
-poco más para proporcionarnos los datos de distintas compañias de reparto. 
+poco más para proporcionarnos los datos de distintas compañias de reparto.
+
+* Uso de la plataforma Heroku para el despliegue de la aplicación. Elegida por tener un uso mas simple que sus alternativas y ser mas practico
+al darnos una ip estatica en contraposición con AWS. Tambien por la existencia de más ejemplos de despliegues de aplicaciones similares a la nuestra
+en esta plataforma.
+
+* Emplear los servicios de gestión de contenidos multimedia que proporciona la herramienta cloudinary. Esta decisión está motivada sobretodo  por 
+la mala experiencia subiendo las imagenes a Heroku. Por ello, y en adición a ahorranos la memoria que pueda ocupar el contenido multimedia de la aplicación,
+decidimos subir nuestras imagenes a la nube de cloudinary y accederlas mediante una URI.

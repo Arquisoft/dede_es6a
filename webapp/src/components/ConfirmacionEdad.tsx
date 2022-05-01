@@ -27,7 +27,7 @@ function ConfirmacionEdad() {
 
     return (
         <div className="App">
-            <header className="App-header">
+            <header className="App-header divConfirmacionEdad">
                 <img id="fishImage" src={pezDisimulando} alt="logo" />
                 <div>
                     <button 

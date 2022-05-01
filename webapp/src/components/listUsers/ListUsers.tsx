@@ -10,17 +10,17 @@ import Table from 'react-bootstrap/Table';
 
 export default function(){
 
-    const [admin,setIsAdmin] = useState<isLoggedType>();
+    const [admin,setIsAdmin] = useState<boolean>();
     const [users,setUsers] = useState<User[]>([]);
-    const refreshIsLogged = async () => {
-        setIsAdmin(await isAdmin());
+    const refreshIsLogged =  () => {
+        setIsAdmin( isAdmin());
     }
     const refreshUsers = async () => {
         setUsers(await getUsers());
       }
     useEffect(()=>{ refreshIsLogged(); refreshUsers(); }, []);
     
-    if(admin?.logged){
+    if(admin){
         return(
             <>
                 <BarraNavegacion />

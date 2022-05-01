@@ -7,6 +7,7 @@ import { addUser } from "./../../api/api";
 import { User } from './../../shared/shareddtypes';
 import ojoabierto from "./../../assets/ojo_abierto.png"
 import ojocerrado from "./../../assets/ojo_cerrado.png"
+import toast from "react-hot-toast";
 import "./FormRegister.css"
 
 const verContrasena = () => {
@@ -53,7 +54,12 @@ const enviar = () => {
     if(cp == p && p.length >= 6){
     const user:User = {'username':n,'email':e, 'password':p};
     addUser(user);
-    window.location.href = 'login'
+    toast.success("Usuario creado correctamente", {duration: 700}); 
+    setTimeout(() => 1000);
+    window.location.href = '/#/login'
+    }
+    else{
+      toast.error("No se ha podido crear el usuario", {duration: 1000}); 
     }
   }
 
@@ -70,7 +76,7 @@ export default function FormRegister() {
   const { register, handleSubmit, formState } = useForm(formOptions)
   const { errors } = formState
 
-  function onSubmit(data: any) {
+  function onSubmit() {
     return false
   }
   
@@ -100,7 +106,7 @@ export default function FormRegister() {
                     
                 />
                 <button className="btnOjo" onClick={verContrasena}>
-                    <img src={ojocerrado} id="imagenPsw"/>
+                    <img src={ojocerrado} id="imagenPsw" alt="imagenPsw"/>
                 </button>
             <div className="invalid-feedback">{errors.password?.message}</div>
             </div>
@@ -114,7 +120,7 @@ export default function FormRegister() {
                     placeholder="Confirmar Contraseña *"
                 />
                                 <button className="btnOjo" onClick={verConfirmacion}>
-                    <img src={ojocerrado} id="imagenCnf"/>
+                    <img src={ojocerrado} id="imagenCnf" alt="imagenCnf"/>
                 </button>
                 
             <div className="invalid-feedback">{errors.confirmPwd?.message}</div>

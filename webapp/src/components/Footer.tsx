@@ -22,8 +22,8 @@ class Footer extends Component {
                     <pre className="preFooter">
                         Proyecto del grupo dede_es6a de la asignatura Arquitectura del Software.<br/>
                         Tienda de bebidas alcohólicas NoVendoAgua.<br/>
-                        2021-2022
                     </pre>
+                    <p>2021-2022</p>
                     </section>
 
                     <section className="">
@@ -88,7 +88,7 @@ class Footer extends Component {
                 </div>
 
                 <div className="text-center p-3" >
-                    © 2021 Copyright:
+                    © 2022 Copyright:
                     <a className="enlaceGitHub" href="https://github.com/Arquisoft/dede_es6a">dede_es6a</a>
                 </div>
             </footer>

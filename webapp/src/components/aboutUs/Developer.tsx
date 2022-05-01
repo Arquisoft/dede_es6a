@@ -23,5 +23,4 @@ export default function(props:any){
                     </Card.Body>
                 </Card>
     );
-
 }

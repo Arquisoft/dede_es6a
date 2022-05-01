@@ -6,7 +6,7 @@ require("dotenv").config({path: dotenvPath});
 import request, {Response} from 'supertest';
 import { Application } from 'express';
 import * as http from 'http';
-import {createApp, createServer, closeServer, loadDatabase} from './setUpServerForTest';
+import {createApp, createServer, closeServer, connectDatabase} from './setUpServerForTest';
 import api from '../api';
 import User from '../models/User';
 import Order from '../models/Order';
@@ -21,7 +21,7 @@ beforeAll(async () => {
     app.use(api);
 
     server = createServer(app);  
-    await loadDatabase(); 
+    await connectDatabase(); 
 });
 
 afterAll(async () => {
@@ -76,14 +76,8 @@ describe('user ', () => {
             username:"test1",
             password: process.env.password_for_test!
         }).set('Accept', 'application/json');
-        expect(response.statusCode).toBe(302);
-    });
-
-    it('logout', async () => {
-        const response:Response = await request(app).get("/logout");
         expect(response.statusCode).toBe(200);
     });
-
     
 });
 
@@ -139,6 +133,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 3
         },{
@@ -148,6 +144,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 2
         }];
@@ -170,6 +168,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 3
         },{
@@ -179,6 +179,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 2
         }];
@@ -186,7 +188,7 @@ describe('order ', () => {
             username:"test1",
             password:process.env.password_for_test!
         }).set('Accept', 'application/json');
-        const response:Response = await request(app).post('/saveOrder').send({
+        const response:Response = await request(app).post('/saveOrder?username=test1').send({
             carrito:carrito,
             precio: 50.0
         }).set('Accept', 'application/json');

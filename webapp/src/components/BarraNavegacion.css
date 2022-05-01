@@ -3,3 +3,11 @@
     width: 5%;
     height: auto;
 }
+
+.logoBarraNavegacion{
+    display:flex;
+    flex-direction:row;
+    vertical-align: center;
+
+
+}

@@ -1,21 +1,16 @@
-import { login } from '@inrupt/solid-client-authn-browser';
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import Product from './models/Product';
 import User from './models/User';
 import Order from './models/Order';
-import {ProductType, UserType, ListaCarrito, SellType} from './types';
+import {ProductType, UserType, ListaCarrito, SellType, login} from './types';
 
 
 const api:Router = express.Router();
 const session = require('express-session');
 const crypto = require('crypto');
 const shippo = require('shippo')('shippo_test_54074f336b3c2eb6d295fe272eb3584ee6457e4a');
-const { 
-  getSessionFromStorage,
-  getSessionIdFromStorageAll,
-  Session
-} = require("@inrupt/solid-client-authn-node");
+
 
 // añadir usuarios a la BD
 api.post("/users/add", async (req: Request, res: Response): Promise<Response> => {
@@ -59,9 +54,7 @@ api.get('/users/delete/:name', async (req, res):Promise<Response> => {
 
 // añadir productos a la BD
 api.post("/products/add",[
-  check('nombre').isLength({min: 1}).trim().escape(),
-  //check('precio').exists().bail().if((value:number) => {value >= 0.0}),
-  //check('categoria').exists().bail().isIn(['vozka','ginebra','ron']),
+  check('nombre').isLength({min: 1}).trim().escape()
 ],
 async (req: Request, res: Response):Promise<Response> =>{
   let nombre:String = req.body.nombre;
@@ -74,7 +67,8 @@ async (req: Request, res: Response):Promise<Response> =>{
      'marca':marca, 
      'precio':precio, 
      'categoria':categoria, 
-     'descripcion':descripcion
+     'descripcion':descripcion,
+     'rating': 2.5,
     });
   await product.save();
   return res.sendStatus(201);
@@ -93,7 +87,7 @@ api.get("/catalogo/:filter", async (req: Request, res: Response): Promise<Respon
   return res.status(200).send(products);
 });
 
-api.post("/login", async (req, res): Promise<Response>=> {
+api.post("/login", async (req, res) : Promise<Response<login>> => {
   var username = req.body.username;
   var password = req.body.password;
   var podUrl = req.body.podUrl;
@@ -107,37 +101,14 @@ api.post("/login", async (req, res): Promise<Response>=> {
   let hash = crypto.createHmac('sha256','abcdefg').update(password).digest('hex');
   let user:UserType = await User.findOne({"username": username.toString(),'password': hash}) as UserType;
   if(user != null){
-    session.user = user.username;
-  //  session.podUrl = podUrl;
-  //  const sessionSolid = new Session();
-   // session.sessionId = sessionSolid.info.sessionId;
-   // const redirectToSolidIdentityProvider = () => {
-    //  res.redirect("http://localhost:3000/catalogo");
-    //};
-   // await sessionSolid.login({
-   //   redirectUrl: `http://localhost:${3000}/redirect-from-solid-idp`,
-   //   oidcIssuer: "https://broker.pod.inrupt.com",
-   //   clientName: "novendoagua",
-   //   handleRedirect: redirectToSolidIdentityProvider,
-   // });
-    return res.sendStatus(200);
+    if(user.username == 'admin')
+      return res.status(201).send({"user": "admin"});
+    else
+      return res.status(200).send({"user": user.username});
   }else{
-    session.user = null;
-    return res.status(401).send("error");
+    return res.status(401).send({"user": "error"});
   }
 });
-
-api.get('/logout', async (req, res) => {
-  session.user = null;
-  res.status(200).send("Usuario desconectado");
-});
-
-api.get('/islogged', async (req, res) =>{
-  if(session.user != null && session.user != "undefined")
-    return res.status(200).send({logged: true})
-  else
-    return res.status(200).send({logged: false})
-  });
 
   api.post('/createOrder', async (req, res) =>{
     var addressFrom  = {
@@ -178,16 +149,10 @@ api.get('/islogged', async (req, res) =>{
   });
 });
 
-api.get('/isadmin', async (req, res) =>{
-  if(session.user != null && session.user == "admin")
-    return res.status(200).send({logged: true})
-  else
-    return res.status(200).send({logged: false})
-  });
 
   api.post('/saveOrder', async (req, res) => {
     
-    let username:string = session.user;
+    let username:string = req.query.username as string;
     let products:ListaCarrito[] = req.body.carrito;
     let prods:SellType[] = [];
     products.forEach(element => {
@@ -201,10 +166,28 @@ api.get('/isadmin', async (req, res) =>{
     let order = new Order({
       username: username,
       products: prods,
-      precio: req.body.precio
+      precio: req.body.precio,
+      estado: 'enviado' // enviado, reparto, entregado
     });
     await order.save();
     return res.sendStatus(200);
+  });
+
+  api.get('/getOrdersBy', async (req, res):Promise<Response> => {
+    let name:string = req.query.username as string;
+    let orders;
+    if(name == 'admin'){
+      orders = await Order.find();
+    }else {
+      orders = await Order.find({username: name});
+    }
+    return res.status(200).send(orders);
+  });
+
+  api.get('/userlogged', async (req, res):Promise<Response> => {
+    var username:string = req.query.username as string;
+    let userlogged = await User.find({username: username});
+    return res.status(200).send(userlogged);
   });
 
 export default api;
