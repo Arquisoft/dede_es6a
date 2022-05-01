@@ -122,7 +122,8 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
     }
 
     function redirect(){
-        window.location.href = '/pago';
+        //window.location.href = '/#/pago';
+        window.location.reload();
     }
 
     async function finalizarPedido() {

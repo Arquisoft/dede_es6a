@@ -65,12 +65,12 @@ const DatosPedido: React.FC<DatosPedido> = () => {
         }
         if(order.city != "" && order.street != "" && order.zipcode != ""){
             localStorage.setItem("order",  JSON.stringify(order));
-            toast.loading('procesando envio',{duration:4000});
+            toast.loading('Procesando envío',{duration:4000});
             setTimeout(() => {
                 (document.getElementById("pago") as HTMLAnchorElement).click();
             }, 4100);
         }else
-            toast.error('calle, ciudad o código postal vacios', {duration:3500})
+            toast.error('Calle, ciudad o código postal vacíos', {duration:3500})
     }
 
     const saveOnPod = async (email:string, city:string, street:string, zipcode:string) => {
@@ -120,7 +120,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             street.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.PostalAddress) as string;
             zipcode.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.postalCode) as string;
         }catch(error){
-            toast.error('url no valida', {duration: 3500});
+            toast.error('URL no valida', {duration: 3500});
         }
         
     }
