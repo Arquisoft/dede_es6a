@@ -69,9 +69,9 @@ label{
 
 #numeroTarjeta, #fechaCaducidad, #codigoSeguridad, #exampleInputEmail1, #exampleInputPassword1, #numeroCuenta{
     width: 50%;
+    margin: 1em auto;
     margin-left: 25%;
     text-align: center;
-    margin: 1em auto;
 }
 
 button{
