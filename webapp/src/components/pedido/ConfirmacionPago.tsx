@@ -8,8 +8,7 @@ import {isLoggedType, ListaCarrito, DataOrder, Order} from '../../shared/sharedd
 import { useState, useEffect } from 'react';
 import ErrorPage from '../ErrorPage';
 import './ConfirmacionPago.css';
-import {useHref} from "react-router-dom";
-import {red} from "@mui/material/colors";
+import toast from 'react-hot-toast';
 
 type ConfirmacionPago = {
 }
@@ -63,6 +62,8 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         return (Number(getPrecio())+ Number(getPrecioEnvio())).toFixed(2);
     }
 
+    let pago: string = "error";
+
     function mostarDatosPago() {
         var tipo = document.getElementById("selectTipo") as HTMLSelectElement;
         var tipoPago = tipo.options[tipo.selectedIndex].value;
@@ -80,7 +81,6 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         let buttonFinalizar = document.createElement('button');
         buttonFinalizar.className = 'btn btn-primary';
         buttonFinalizar.id = 'buttonFinalizar';
-        buttonFinalizar.onclick = () => { finalizarPedido(); }
         buttonFinalizar.innerHTML = 'Confirmar pago';
         let form = document.createElement('form');
         form.id = 'formPago';
@@ -89,32 +89,35 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         switch (tipoPago){
             case("tarjeta"):
                 form.innerHTML = ` <label for="numeroTarjeta">Numero de tarjeta</label>
-                                    <input type="text" class="form-control" id="numeroTarjeta" placeholder="Numero de tarjeta">
+                                    <input type="text" class="form-control" id="numeroTarjeta" maxlength="16" placeholder="Introduce el número de tarjeta (16 caracteres)" name="numeroTarjeta">
                                     <br>
                                     <label for="fechaCaducidad">Fecha de caducidad</label>
-                                    <input type="text" class="form-control" id="fechaCaducidad" placeholder="Fecha de caducidad">
+                                    <input type="date" class="form-control" id="fechaCaducidad" placeholder="Introduce la fecha de caducidad" name="fecha">
                                     <br>
                                     <label for="codigoSeguridad">Codigo de seguridad</label>
-                                    <input type="text" class="form-control" id="codigoSeguridad" placeholder="Codigo de seguridad">
+                                    <input type="text" class="form-control" id="codigoSeguridad" maxlength="3" placeholder="Introduce el codigo de seguridad" name="code">
                                     <br>`;
+                buttonFinalizar.onclick = () => { comprobaciones("tarjeta"); }
                 break;
 
             case("paypal"):
                 form.innerHTML = `<div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <label for="exampleInputEmail1">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduce el correo" name="email">
                                         <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo electrónico con nadie más.</small>
                                         <br><br>
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <label for="exampleInputPassword1">Contraseña</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduce tu contraseña (mínimo 5 caracteres)" name="password">
                                         </div>`;
+                buttonFinalizar.onclick = () => { comprobaciones("paypal"); }
                 break;
 
             case("transferencia"):
                 form.innerHTML = ` <label for="numeroCuenta">Numero de cuenta</label>
-                                    <input type="text" class="form-control" id="numeroCuenta" placeholder="Numero de cuenta">
+                                    <input type="text" class="form-control" id="numeroCuenta" maxlength="20" placeholder="Introduce el número de cuenta (20 caracteres)" name="numeroCuenta">
                                     <br/>`;
 
+                buttonFinalizar.onclick = () => { comprobaciones("transferencia"); }
                 break;
         }
         contenedor.appendChild(form);
@@ -122,8 +125,55 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
     }
 
     function redirect(){
-        //window.location.href = '/#/pago';
         window.location.reload();
+    }
+
+    function comprobaciones(str:string){
+        if(str == "tarjeta"){
+            const numeroTarjetaElemento :HTMLInputElement  = document.querySelector("input[name='numeroTarjeta']") as HTMLInputElement;
+            let numeroTarjeta = numeroTarjetaElemento.value;
+            const fechaElemento :HTMLInputElement  = document.querySelector("input[name='fecha']") as HTMLInputElement;
+            let fecha = fechaElemento.value;
+            const codigoSeguridadElemento :HTMLInputElement  = document.querySelector("input[name='code']") as HTMLInputElement;
+            let codigoSeguridad = codigoSeguridadElemento.value;
+
+            if(codigoSeguridad == ""  && numeroTarjeta == "" && fecha == "")
+                toast.error("Todos los campos estan vacíos", {duration:3500});
+            else if(numeroTarjeta == "" || numeroTarjeta == null || numeroTarjeta == undefined || numeroTarjeta.length != 16 || isNaN(Number(numeroTarjeta)))
+                toast.error('Número de la tarjeta inválido', {duration:3500})
+            else if(fecha == "" || fecha == null || fecha == undefined || fecha.length != 10)
+                toast.error('Fecha inválida', {duration:3500})
+            else if(codigoSeguridad == "" || codigoSeguridad == null || codigoSeguridad == undefined || codigoSeguridad.length != 3 || isNaN(Number(codigoSeguridad)))
+                toast.error('Código de seguridad inválido', {duration:3500})
+            else
+                finalizarPedido();
+        } else if(str == "paypal"){
+            const emailElemento :HTMLInputElement  = document.querySelector("input[name='email']") as HTMLInputElement;
+            let email = emailElemento.value;
+            const passwordElemento :HTMLInputElement  = document.querySelector("input[name='password']") as HTMLInputElement;
+            let password = passwordElemento.value;
+
+            if(email == "" && password == "")
+                toast.error("Ambos campos vacíos", {duration:3500})
+            else if(email == "" || email == null || email == undefined || email.length < 5 || !validarEmail(email))
+                toast.error('Email inválido', {duration:3500})
+            else if(password == "" || password == null || password == undefined || password.length < 5)
+                toast.error('Contraseña inválida', {duration:3500})
+            else
+                finalizarPedido();
+        } else if(str == "transferencia"){
+            const numeroCuentaElemento :HTMLInputElement  = document.querySelector("input[name='numeroCuenta']") as HTMLInputElement;
+            let numeroCuenta = numeroCuentaElemento.value;
+            if(numeroCuenta == "" || numeroCuenta == null || numeroCuenta == undefined || numeroCuenta.length != 20 || isNaN(Number(numeroCuenta)))
+                toast.error('Número de la cuenta inválido', {duration:3500})
+            else
+                finalizarPedido();
+        }
+    }
+
+    function validarEmail(email:string){
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
     async function finalizarPedido() {
@@ -183,3 +233,11 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
 
 }
 export default ConfirmacionPago;
+
+function Character(Character: any, isDigit: any) {
+    throw new Error('Function not implemented.');
+}
+function isDigit(Character: (Character: any, isDigit: any) => void, isDigit: any) {
+    throw new Error('Function not implemented.');
+}
+
