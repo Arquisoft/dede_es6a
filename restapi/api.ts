@@ -175,7 +175,12 @@ api.post("/login", async (req, res) : Promise<Response<login>> => {
 
   api.get('/getOrdersBy', async (req, res):Promise<Response> => {
     let name:string = req.query.username as string;
-    let orders = await Order.find({username: name});
+    let orders;
+    if(name == 'admin'){
+      orders = await Order.find();
+    }else {
+      orders = await Order.find({username: name});
+    }
     return res.status(200).send(orders);
   });
 

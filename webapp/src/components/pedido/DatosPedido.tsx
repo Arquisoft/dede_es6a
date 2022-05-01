@@ -154,7 +154,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                     <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>
                 <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>
-                <a href='/pago' id='pago' hidden></a>
+                <a href='/#/pago' id='pago' hidden></a>
             </Form>
             <div id='resumen'>
                 <h3 id='titulo-resumen'>Resumen de compra</h3>
