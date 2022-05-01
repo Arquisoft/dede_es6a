@@ -113,7 +113,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
                 break;
 
             case("transferencia"):
-                form.innerHTML = ` <label for="numeroCuenta">Numero de cuenta</label>
+                form.innerHTML = ` <label for="numeroCuenta">Número de cuenta</label>
                                     <input type="text" class="form-control" id="numeroCuenta" maxlength="20" placeholder="Introduce el número de cuenta (20 caracteres)" name="numeroCuenta">
                                     <br/>`;
 
@@ -210,7 +210,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
 
                 <div id='container'>
                     <Form id="tipoPago">
-                        <Form.Label className="labelTipoPago">Elige el tipo de pago:</Form.Label>
+                        <Form.Label id="labelSelectTipo" className="labelTipoPago">Elige el tipo de pago:</Form.Label>
                         <Form.Select  id="selectTipo" aria-label="Elige el tipo de pago">
                             <option value="tarjeta">Tarjeta</option>
                             <option value="paypal">PayPal</option>
