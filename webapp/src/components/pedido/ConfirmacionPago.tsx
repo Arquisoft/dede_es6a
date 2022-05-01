@@ -66,7 +66,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         document.getElementById('formPago')?.remove();
         let contenedor = document.getElementById('container') as Element;
         contenedor.innerHTML = "<h4>Pedido realizado con éxito</h4>";
-        contenedor.innerHTML += "<a href='catalogo'>Seguir comprando</a>"
+        contenedor.innerHTML += "<a href='/#/catalogo'>Seguir comprando</a>"
 
         // guardar pedido
         let precio = getPrecioTotal();

@@ -67,7 +67,7 @@ export default function Profile() {
                         {setUserData()}
                     </ListGroup>
                     <Button id='logout' variant="primary" onClick={logoutButton}>Cerrar sesión</Button>{' '}
-                    <a href='/catalogo' id='navigate' hidden></a>
+                    <a href='/#/catalogo' id='navigate' hidden></a>
                 </div>
                 <h3>Pedidos realizados</h3>
                 <Accordion defaultActiveKey="0" flush>
