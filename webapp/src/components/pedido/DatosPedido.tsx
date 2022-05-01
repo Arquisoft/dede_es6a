@@ -11,9 +11,9 @@ import {isLoggedType} from '../../shared/shareddtypes';
 import {isLogged} from '../../api/api';
 import toast from 'react-hot-toast';
 import {
-    getSolidDataset, getStringNoLocale, getThing, Thing, getUrl,
+    getSolidDataset, getStringNoLocale, getThing, Thing,
     saveSolidDatasetAt, createSolidDataset, buildThing, createThing,
-    setThing, addStringNoLocale, addUrl, saveSolidDatasetInContainer, getUrlAll
+    setThing, addStringNoLocale, saveSolidDatasetInContainer
 } from "@inrupt/solid-client";
 import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 import { SCHEMA_INRUPT, RDF, AS, FOAF, VCARD } from "@inrupt/vocab-common-rdf";
@@ -79,7 +79,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             await login({
               oidcIssuer: "https://broker.pod.inrupt.com",
               redirectUrl: window.location.href,
-              clientName: "My application"
+              clientName: "dede-es6a"
             });
         }
         let courseSolidDataset = createSolidDataset();
@@ -104,7 +104,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             await login({
               oidcIssuer: "https://broker.pod.inrupt.com",
               redirectUrl: window.location.href,
-              clientName: "My application"
+              clientName: "dede-es6a"
             });
         }
         let element = document.getElementById('url') as HTMLInputElement;
@@ -154,7 +154,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                     <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>
                 <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>
-                <a href='/#/pago' id='pago' hidden></a>
+                <a href='/pago' id='pago' hidden></a>
             </Form>
             <div id='resumen'>
                 <h3 id='titulo-resumen'>Resumen de compra</h3>

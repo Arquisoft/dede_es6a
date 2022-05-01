@@ -13,7 +13,6 @@ type Catalogo = {
 }
 
 const Catalogo: React.FC<Catalogo> = () => {
-
   const [searchParams, setSearchParams] = useSearchParams();
   var filter : String = 'all';
   if(searchParams.get('filter')){

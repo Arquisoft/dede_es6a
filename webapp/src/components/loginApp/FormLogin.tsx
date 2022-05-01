@@ -62,10 +62,10 @@ export default function LoginForm() {
                         </div>
                         <div className="form-group" onClick={loginButton}>
                             <a className="btnSubmit">Iniciar sesión</a>
-                            <a href="/#/catalogo" id="catalogo" hidden></a>
+                            <a href="/catalogo" id="catalogo" hidden></a>
                         </div>
                         <div className="form-group">
-                            <a href="/#/register" className="ForgetPwd">¡Regístrate ahora!</a>
+                            <a href="/register" className="ForgetPwd">¡Regístrate ahora!</a>
                         </div>
                         <br/>
                         <Form.Select id="provider" onChange={changeProvider} aria-label="Default select example">
