@@ -1,8 +1,33 @@
 # DeDe_es6a
+
 [![pages-build-deployment](https://github.com/Arquisoft/dede_es6a/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Arquisoft/dede_es6a/actions/workflows/pages/pages-build-deployment)
 [![CI for ASW2122](https://github.com/Arquisoft/dede_es6a/actions/workflows/asw2122.yml/badge.svg)](https://github.com/Arquisoft/dede_es6a/actions/workflows/asw2122.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_dede_es6a&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_dede_es6a)
 [![codecov](https://codecov.io/gh/Arquisoft/dede_es6a/branch/main/graph/badge.svg?token=M51xGm4zyA)](https://codecov.io/gh/Arquisoft/dede_es6a)
+
+Bienvenido a tu nuevo lugar favorito de compra de bebidas alcohólicas. En nuestra tienda encontrarás las mejores selecciones y marcas al mejor precio. Tanto si quieres disfrutar de la degustación de una copa con la mayor calidad como si quieres pasar un rato agradable en compañia de sus seres queridos y una buena cerveza.
+🥂🍻<br>
+[Tienda](https://dede-es6a.herokuapp.com/)<br>
+Ten cuidado con el Larios que lo carga el diablo. ⚠️<br>
+No nos hacemos responsables de posibles resacas mareos y/o nauseas. <br>
+
+<img src="https://res.cloudinary.com/dnuyp5afa/image/upload/v1651504291/logo-original_hxlcwx.png" height="100">
+
+Aqui puedes ver un resumen de nuestro trabajo:<br>
+[Decisiones arquitectónicas](./decisiones%20arquitectonicas.pdf)<br>
+[Demo](https://dede-es6a.herokuapp.com/)<br>
+[issues](https://github.com/Arquisoft/dede_es6a/issues)<br>
+[wiki](https://github.com/Arquisoft/dede_es6a/wiki)<br>
+[kanban](https://github.com/Arquisoft/dede_es6a/projects/1)<br>
+
+## Miembros del equipo 
+<ul>
+ <li>Diego García Quirós - UO276688 </li>
+ <li>Óscar López González - UO269489 </li>
+ <li>Daniel Machado Sánchez - UO276257 </li>
+ <li>Juan Mera Menéndez - UO277406 </li>
+ <li>David Maldonado Álvarez - UO259893 </li>
+</ul>
 
 <p float="left">
 <img src="https://blog.wildix.com/wp-content/uploads/2020/06/react-logo.jpg" height="100">
@@ -51,11 +76,4 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Webapp: https://github.com/Arquisoft/dede_es6a/tree/master/webapp
 - Restapi: https://github.com/Arquisoft/dede_es6a/tree/master/restapi
 
-## Miembros del equipo 
-<ul>
- <li>Diego García Quirós - UO276688 </li>
- <li>Óscar López González - UO269489 </li>
- <li>Daniel Machado Sánchez - UO276257 </li>
- <li>Juan Mera Menéndez - UO277406 </li>
- <li>David Maldonado Álvarez - UO259893 </li>
-</ul>
+
