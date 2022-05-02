@@ -14,9 +14,9 @@ export default function(){
             <div id='cards'>
                 <Developer 
                     name='Juan Mera Menéndez' 
-                    email='Uo277406@uniovi.es' 
+                    email='UO277406@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255946/juan_vxrndv.png' 
-                    descr='texto ejemplo :D'
+                    descr=''
                     />
                 <Developer 
                     name='Diego García Quirós'
@@ -26,21 +26,21 @@ export default function(){
                     />
                 <Developer 
                     name='Daniel Machado Sánchez' 
-                    email='uo@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
-                    descr='texto ejemplo'
+                    email='UO276257@uniovi.es' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484429/dani_zgiji9.jpg' 
+                    descr=''
                     />
                 <Developer 
                     name='David Maldonado Álvarez' 
-                    email='uo@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
-                    descr='texto ejemplo'
+                    email='UO259893@uniovi.es' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484549/90855360_lxlbn2.jpg' 
+                    descr=''
                     />    
                 <Developer 
                     name='Oscar López González' 
-                    email='uo@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
-                    descr='texto ejemplo'
+                    email='UO269489@uniovi.es' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484550/foto-dni_upx8go.png' 
+                    descr=''
                     />  
             </div>
       </>

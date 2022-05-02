@@ -117,22 +117,22 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             <h2 id="tituloPago">Trámite de pedido</h2>
             <Form id="formPago">
                 <Form.Group  controlId="nombre">
-                    <Form.Control className="inputPago" type="text" placeholder="name" name="name"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Nombre" name="name"/>
                 </Form.Group>
                 <Form.Group controlId="apellidos">
-                    <Form.Control className="inputPago" type="text" placeholder="lastname" name="lastname"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Apellidos" name="lastname"/>
                 </Form.Group>
                 <Form.Group controlId="email">
-                    <Form.Control className="inputPago" type="text" placeholder="email" name="email"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Email" name="email"/>
                 </Form.Group>
                 <Form.Group  controlId="city">
-                    <Form.Control className="inputPago" type="text" placeholder="city" name="city"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Ciudad" name="city"/>
                 </Form.Group>
                 <Form.Group controlId="street">
-                    <Form.Control className="inputPago" type="text" placeholder="street" name="street"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Calle" name="street"/>
                 </Form.Group>
                 <Form.Group controlId="zipcode">
-                    <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Código postal" name="zipcode"/>
                 </Form.Group>
                 <Form.Group className="mb-3" id='checkbox' controlId="formBasicCheckbox">
                     
@@ -144,7 +144,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                      
                     
                     
-                    <Form.Control className="inputPago" id='url' type="url" placeholder="pod url" name="podurl"/>
+                    <Form.Control className="inputPago" id='url' type="url" placeholder="POD URL" name="podurl"/>
                     <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>
                 <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>

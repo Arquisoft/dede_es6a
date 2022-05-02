@@ -6,7 +6,7 @@ export default function(props:any){
 
     return (
         <Card id='participante' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={props.img} />
+                    <Card.Img variant="top" src={props.img} id='img'/>
                     <Card.Body>
                         <Card.Title>{props.name}</Card.Title>
                         <Card.Text>
@@ -17,10 +17,6 @@ export default function(props:any){
                         <ListGroupItem>{props.email}</ListGroupItem>
                         <ListGroupItem>Universidad de Oviedo</ListGroupItem>
                     </ListGroup>
-                    <Card.Body>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
                 </Card>
     );
 }

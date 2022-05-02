@@ -29,9 +29,9 @@ const Catalogo: React.FC<Catalogo> = () => {
         <h1 >Catálogo de productos</h1>
         <BarraNavegacion />
         <ListGroup id='listaProductos' className="listaProductos">
-            {products.map((producto)=>{
+            {products.map((producto,productoId)=>{
                 return(
-                  <Producto props={producto} addToCarrito={addToCarrito}/> 
+                  <Producto props={producto} key={productoId} addToCarrito={addToCarrito}/> 
                 );
             })}
       </ListGroup>

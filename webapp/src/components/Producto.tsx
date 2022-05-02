@@ -4,6 +4,7 @@ import ReactStars from 'react-stars';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import './catalogo.css';
+import toast from 'react-hot-toast';
 
 type Producto = {
     props: Product;
@@ -29,7 +30,9 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
             <Card.Body>
                 <Card.Title as="h2">{props.nombre}</Card.Title>
                 <hr></hr>
-                <ReactStars count={5} value={props.rating} onChange={() => {}} size={24} color2={'#ffd700'} />
+                <ReactStars count={5} value={props.rating} onChange={() => {
+                    toast.success('Gracias por su valoración', {duration: 3500});
+                }} size={24} color2={'#ffd700'} />
                 <Card.Text>
                 {props.descripcion}
                 </Card.Text>
