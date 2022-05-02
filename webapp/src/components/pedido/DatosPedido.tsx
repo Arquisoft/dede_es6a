@@ -65,12 +65,12 @@ const DatosPedido: React.FC<DatosPedido> = () => {
         }
         if(order.city != "" && order.street != "" && order.zipcode != ""){
             localStorage.setItem("order",  JSON.stringify(order));
-            toast.loading('procesando envio',{duration:4000});
+            toast.loading('Procesando envío',{duration:4000});
             setTimeout(() => {
                 (document.getElementById("pago") as HTMLAnchorElement).click();
             }, 4100);
         }else
-            toast.error('calle, ciudad o código postal vacios', {duration:3500})
+            toast.error('Calle, ciudad o código postal vacíos', {duration:3500})
     }
 
     const saveOnPod = async (email:string, city:string, street:string, zipcode:string) => {
@@ -120,7 +120,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             street.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.PostalAddress) as string;
             zipcode.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.postalCode) as string;
         }catch(error){
-            toast.error('url no valida', {duration: 3500});
+            toast.error('URL no valida', {duration: 3500});
         }
         
     }
@@ -131,26 +131,26 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             <h2 id="tituloPago">Trámite de pedido</h2>
             <Form id="formPago">
                 <Form.Group  controlId="nombre">
-                    <Form.Control className="inputPago" type="text" placeholder="name" name="name"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Nombre" name="name"/>
                 </Form.Group>
                 <Form.Group controlId="apellidos">
-                    <Form.Control className="inputPago" type="text" placeholder="lastname" name="lastname"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Apellidos" name="lastname"/>
                 </Form.Group>
                 <Form.Group controlId="email">
-                    <Form.Control className="inputPago" type="text" placeholder="email" name="email"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Correo electrónico" name="email"/>
                 </Form.Group>
                 <Form.Group  controlId="city">
-                    <Form.Control className="inputPago" type="text" placeholder="city" name="city"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Ciudad" name="city"/>
                 </Form.Group>
                 <Form.Group controlId="street">
-                    <Form.Control className="inputPago" type="text" placeholder="street" name="street"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Calle" name="street"/>
                 </Form.Group>
                 <Form.Group controlId="zipcode">
-                    <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Codigo postal" name="zipcode"/>
                 </Form.Group>
                 <Form.Group className="mb-3" id='checkbox' controlId="formBasicCheckbox">
                     <Form.Check id='solid' type="checkbox" label="Guardar datos con solid" />
-                    <Form.Control className="inputPago" id='url' type="url" placeholder="pod url" name="podurl"/>
+                    <Form.Control className="inputPago" id='url' type="url" placeholder="POD URL" name="podurl"/>
                     <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>
                 <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>

@@ -13,36 +13,38 @@ export default function(){
             <h1>Sobre nosotros</h1>
             <div id='cards'>
                 <Developer 
-                    name='Juan Mera Menéndez' 
+                    name='Juan Mera Menéndez'
                     email='Uo277406@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255946/juan_vxrndv.png' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255946/juan_vxrndv.png'
                     descr='texto ejemplo :D'
                     />
                 <Developer 
                     name='Diego García Quirós'
-                    email='UO276688@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png' 
+                    email='UO276688@uniovi.es'
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png'
                     descr=''
                     />
                 <Developer 
-                    name='Daniel Machado Sánchez' 
-                    email='uo@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
-                    descr='texto ejemplo'
+                    name='Daniel Machado Sanchez' 
+                    email='UO276257@uniovi.es'
+                    img='../dani.png'
+                    descr=''
                     />
                 <Developer 
                     name='David Maldonado Álvarez' 
                     email='uo@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg'
                     descr='texto ejemplo'
                     />    
                 <Developer 
-                    name='Oscar López González' 
+                    name='Oscar López González'
                     email='uo@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255944/perfil-default_xegqfy.jpg'
                     descr='texto ejemplo'
                     />  
             </div>
+
       </>
     );
+
 }
