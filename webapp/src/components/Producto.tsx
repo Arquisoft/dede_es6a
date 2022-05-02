@@ -6,18 +6,17 @@ import Button from 'react-bootstrap/Button'
 import './catalogo.css';
 import toast from 'react-hot-toast';
 
-type Producto = {
+type ProductoType = {
     props: Product;
     addToCarrito: (prod: Product) => void;
   }
 
 //function Producto (props: Producto, addToCarrito: void): JSX.Element{
-const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
+const Producto: React.FC<ProductoType> = ({props, addToCarrito}) => {
 
-    const url = "./"+props.nombre+".jpg";
     let precio = "";
     var arrayCadenas = props.precio.toString().split('.');
-    if(arrayCadenas.length > 1 && arrayCadenas[1].length == 1){
+    if(arrayCadenas.length > 1 && arrayCadenas[1].length === 1){
         precio = props.precio + "0 €";
     } else {
         precio = props.precio + " €";

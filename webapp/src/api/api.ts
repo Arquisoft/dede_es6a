@@ -87,7 +87,7 @@ export function isLogged():boolean{
 }
 
 export function isAdmin():boolean{
-  if(localStorage.getItem('user') == 'admin')
+  if(localStorage.getItem('user') === 'admin')
     return true;
   else
     return false;

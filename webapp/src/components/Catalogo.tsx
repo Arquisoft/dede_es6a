@@ -9,11 +9,11 @@ import Footer from './Footer';
 import { useSearchParams } from 'react-router-dom';
 import {addToCarrito} from './carrito/utilsCarrito';
 
-type Catalogo = {
+type CatalogoType = {
 }
 
-const Catalogo: React.FC<Catalogo> = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+const Catalogo: React.FC<CatalogoType> = () => {
+  const [searchParams] = useSearchParams();
   var filter : String = 'all';
   if(searchParams.get('filter')){
     filter = searchParams.get('filter') as String;
@@ -22,7 +22,9 @@ const Catalogo: React.FC<Catalogo> = () => {
   const refreshProducts = async () => {
     setProducts(await getProducts(filter));
   }
-  useEffect(()=>{ refreshProducts(); }, []);
+  useEffect(()=>{  
+    refreshProducts();// eslint-disable-next-line react-hooks/exhaustive-deps 
+  }, []);
 
     return (
         <>

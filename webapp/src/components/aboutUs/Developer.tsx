@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-export default function(props:any){
+export default function Developer(props:any){
 
     return (
         <Card id='participante' style={{ width: '18rem' }}>

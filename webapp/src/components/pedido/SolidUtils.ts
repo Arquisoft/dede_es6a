@@ -1,11 +1,6 @@
-import { LoginButton, useSession } from "@inrupt/solid-ui-react";
-import {
-    getSolidDataset, getStringNoLocale, getThing, Thing, getUrlAll,
-    saveSolidDatasetAt, createSolidDataset, buildThing, createThing,
-    setThing, addStringNoLocale, saveSolidDatasetInContainer
-} from "@inrupt/solid-client";
-import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
-import { SCHEMA_INRUPT, RDF, AS, FOAF, VCARD } from "@inrupt/vocab-common-rdf";
+
+import { getSolidDataset, getStringNoLocale, getThing, Thing, getUrlAll } from "@inrupt/solid-client";
+import { FOAF, VCARD } from "@inrupt/vocab-common-rdf";
 
 
 

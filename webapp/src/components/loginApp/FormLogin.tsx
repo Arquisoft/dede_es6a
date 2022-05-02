@@ -5,7 +5,7 @@ import {Form, Button } from 'react-bootstrap/';
 import toast from "react-hot-toast";
 import { LoginButton, SessionProvider } from "@inrupt/solid-ui-react";
 import { useState, useEffect } from "react";
-import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
+import { handleIncomingRedirect, login, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 import {getAddressesFromPod} from '../pedido/SolidUtils';
 
 export default function LoginForm() {
@@ -37,7 +37,7 @@ export default function LoginForm() {
     const changeProvider = () => {
         let link: HTMLAnchorElement = document.getElementById('link') as HTMLAnchorElement;
         let select: HTMLInputElement = document.getElementById('provider') as HTMLInputElement;
-        if(select.value == '2'){
+        if(select.value === '2'){
             link.href = "https://solidcommunity.net";
             setIdp("https://solidcommunity.net");
             link.text = "SolidCommunity";
@@ -82,8 +82,8 @@ export default function LoginForm() {
                                 placeholder="Contraseña *" name="password"/>
                         </div>
                         <div className="form-group" onClick={loginButton}>
-                            <a className="btnSubmit">Iniciar sesión</a>
-                            <a href="/catalogo" id="catalogo" hidden></a>
+                            <Button  className="btnSubmit">Iniciar sesión</Button>
+                            <a href="/catalogo" id="catalogo" hidden>Content</a>
                         </div>
                         <div className="form-group">
                             <a href="/register" className="ForgetPwd">¡Regístrate ahora!</a>
