@@ -4,19 +4,16 @@ import Card from 'react-bootstrap/Card';
 import {DataOrder} from '../../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { ListaCarrito } from '../../shared/shareddtypes';
 import './DatosPedido.css';
 import ErrorPage from '../ErrorPage';
 import {isLoggedType} from '../../shared/shareddtypes';
 import {isLogged} from '../../api/api';
 import toast from 'react-hot-toast';
-import {
-    getSolidDataset, getStringNoLocale, getThing, Thing,
-    saveSolidDatasetAt, createSolidDataset, buildThing, createThing,
-    setThing, addStringNoLocale, saveSolidDatasetInContainer
-} from "@inrupt/solid-client";
 import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 import { SCHEMA_INRUPT, RDF, AS, FOAF, VCARD } from "@inrupt/vocab-common-rdf";
+import {getAddressesFromPod} from './SolidUtils';
 
 type DatosPedido = {
     
@@ -24,16 +21,17 @@ type DatosPedido = {
 
 const DatosPedido: React.FC<DatosPedido> = () => {
 
+    const [direcciones,setDirecciones] = useState<String[]>([]);
+
     let sessionCart = localStorage.getItem("listaCarrito");
     let listaCarrito:ListaCarrito[] = [];
     if(sessionCart)
         listaCarrito = JSON.parse(sessionCart);
-         
     const [log,setIsLogged] = useState<boolean>();
     const refreshIsLogged =  () => {
         setIsLogged( isLogged());
     }
-    useEffect(()=>{ refreshIsLogged(); }, []);
+    useEffect(()=>{ refreshIsLogged(); loadStreets();}, []);
 
     function getPrecioTotal(): string {
         let precioTotal: number = 0;
@@ -59,9 +57,19 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             street: street.value,
             zipcode: zipcode.value
         }
-        let checkbox = document.getElementById('solid') as HTMLInputElement;
-        if(checkbox && checkbox.checked){
-            saveOnPod(order.email, order.city, order.street, order.zipcode);
+
+        let radio = document.querySelector('*[name=dir]:checked');
+        if(radio){
+           let label = document.querySelector("label[for='"+ radio.id +"']");
+           if(label){
+                let value = label.textContent;
+                if(value){
+                    let v = value.split(',');
+                    order.city = v[1];
+                    order.street = v[0];
+                    order.zipcode = v[3];
+                }
+           }
         }
         if(order.city != "" && order.street != "" && order.zipcode != ""){
             localStorage.setItem("order",  JSON.stringify(order));
@@ -71,58 +79,36 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             }, 4100);
         }else
             toast.error('calle, ciudad o código postal vacios', {duration:3500})
+        
     }
 
-    const saveOnPod = async (email:string, city:string, street:string, zipcode:string) => {
-        await handleIncomingRedirect();
-        if (!getDefaultSession().info.isLoggedIn) {
-            await login({
-              oidcIssuer: "https://broker.pod.inrupt.com",
-              redirectUrl: window.location.href,
-              clientName: "dede-es6a"
-            });
+    const loadStreets = () => {
+        let direcciones = localStorage.getItem('direcciones');
+        if ( direcciones != null ){
+            let dirArray = direcciones.split('$');
+            dirArray.pop();
+            setDirecciones(dirArray);
         }
-        let courseSolidDataset = createSolidDataset();
-        let data = buildThing(createThing({name: 'data'}))
-            .build();
-            data = addStringNoLocale(data, SCHEMA_INRUPT.email, email);
-            data = addStringNoLocale(data, SCHEMA_INRUPT.PostalAddress, street);
-            data = addStringNoLocale(data, SCHEMA_INRUPT.postalCode, zipcode);
-            data = addStringNoLocale(data, SCHEMA_INRUPT.addressLocality, city);
-        courseSolidDataset = setThing(courseSolidDataset, data);
-        let element = document.getElementById('url') as HTMLInputElement;
-        await saveSolidDatasetInContainer(
-            element.value,
-            courseSolidDataset, {
-            fetch: fetch
-        });
     }
 
     const getDataFromPod = async function(){
         await handleIncomingRedirect();
         if (!getDefaultSession().info.isLoggedIn) {
             await login({
-              oidcIssuer: "https://broker.pod.inrupt.com",
+              oidcIssuer: "https://inrupt.net/",
               redirectUrl: window.location.href,
               clientName: "dede-es6a"
             });
         }
         let element = document.getElementById('url') as HTMLInputElement;
         try{
-            let myDataset = await getSolidDataset(element.value+"a37c0a84-568d-42ff-b44d-21647322b913", { fetch: fetch });
-            const profile = getThing( myDataset, element.value+"a37c0a84-568d-42ff-b44d-21647322b913#data");
-            const email: HTMLInputElement = document.querySelector("input[name='email']") as HTMLInputElement;
-            const city: HTMLInputElement = document.querySelector("input[name='city']") as HTMLInputElement;
-            const street: HTMLInputElement = document.querySelector("input[name='street']") as HTMLInputElement;
-            const zipcode: HTMLInputElement = document.querySelector("input[name='zipcode']") as HTMLInputElement;
-            email.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.email) as string;
-            city.value =  getStringNoLocale(profile as Thing, SCHEMA_INRUPT.addressLocality) as string;
-            street.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.PostalAddress) as string;
-            zipcode.value = getStringNoLocale(profile as Thing, SCHEMA_INRUPT.postalCode) as string;
+            let dir:String = await getAddressesFromPod(element.value);
+            let dirArray = dir.split('$');
+            dirArray.pop();
+            setDirecciones( dirArray );
         }catch(error){
             toast.error('url no valida', {duration: 3500});
         }
-        
     }
 
     if(log){
@@ -149,7 +135,15 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                     <Form.Control className="inputPago" type="text" placeholder="zipcode" name="zipcode"/>
                 </Form.Group>
                 <Form.Group className="mb-3" id='checkbox' controlId="formBasicCheckbox">
-                    <Form.Check id='solid' type="checkbox" label="Guardar datos con solid" />
+                    
+                <ButtonGroup>
+                    {direcciones.map(d => (
+                        <Form.Check type="radio" label={d} id={"default-radio-"+direcciones.indexOf(d)} name='dir'/>
+                    ))}
+                </ButtonGroup>
+                     
+                    
+                    
                     <Form.Control className="inputPago" id='url' type="url" placeholder="pod url" name="podurl"/>
                     <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>

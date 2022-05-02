@@ -1,10 +1,12 @@
 import "./FormLogin.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {login} from '../../api/api';
-import {Form } from 'react-bootstrap/';
+import {loginApp} from '../../api/api';
+import {Form, Button } from 'react-bootstrap/';
 import toast from "react-hot-toast";
 import { LoginButton, SessionProvider } from "@inrupt/solid-ui-react";
 import { useState, useEffect } from "react";
+import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
+import {getAddressesFromPod} from '../pedido/SolidUtils';
 
 export default function LoginForm() {
 
@@ -12,7 +14,7 @@ export default function LoginForm() {
         
         const username  = (document.querySelector("input[name='name']") as HTMLInputElement).value;
         const password = (document.querySelector("input[name='password']") as HTMLInputElement).value;
-        let res:boolean = await login(username, password);
+        let res:boolean = await loginApp(username, password);
         if(res){
              toast.success("Usuario logeado correctamente", {duration: 700}); 
              setTimeout(() => {
@@ -43,6 +45,25 @@ export default function LoginForm() {
             link.href = "https://inrupt.net";
             setIdp("https://inrupt.net");
             link.text = "Inrupt";
+        }
+    }
+
+    const getDataFromPod = async function(){
+        await handleIncomingRedirect();
+        if (!getDefaultSession().info.isLoggedIn) {
+            await login({
+              oidcIssuer: "https://inrupt.net/",
+              redirectUrl: window.location.href,
+              clientName: "dede-es6a"
+            });
+        }
+        let element = document.getElementById('url') as HTMLInputElement;
+        try{
+            let dir:string = await getAddressesFromPod(element.value);
+            console.log(dir)
+            localStorage.setItem('direcciones',dir);
+        }catch(error){
+            toast.error('url no valida', {duration: 3500});
         }
     }
 
@@ -84,6 +105,10 @@ export default function LoginForm() {
                                 </div>
                             <p>Si no tienes uno lo puedes crear aqui: <a id="link" href="https://inrupt.net">Inrupt</a></p>
                         </div>
+                        <Form.Group className="mb-3" id='checkbox' controlId="formBasicCheckbox">
+                            <Form.Control className="inputPago" id='url' type="url" placeholder="pod url" name="podurl"/>
+                            <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
+                        </Form.Group>
                     </form>
                 </div>
             </div> 
