@@ -1,6 +1,5 @@
 import Catalogo from './components/Catalogo';
 import {
-  HashRouter,
   Routes,
   Route,
   BrowserRouter,

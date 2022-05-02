@@ -7,7 +7,6 @@ import {ProductType, UserType, ListaCarrito, SellType, login} from './types';
 
 
 const api:Router = express.Router();
-const session = require('express-session');
 const crypto = require('crypto');
 const shippo = require('shippo')('shippo_test_54074f336b3c2eb6d295fe272eb3584ee6457e4a');
 

@@ -8,18 +8,16 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { ListaCarrito } from '../../shared/shareddtypes';
 import './DatosPedido.css';
 import ErrorPage from '../ErrorPage';
-import {isLoggedType} from '../../shared/shareddtypes';
 import {isLogged} from '../../api/api';
 import toast from 'react-hot-toast';
-import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
-import { SCHEMA_INRUPT, RDF, AS, FOAF, VCARD } from "@inrupt/vocab-common-rdf";
+import { handleIncomingRedirect, login, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 import {getAddressesFromPod} from './SolidUtils';
 
-type DatosPedido = {
+type DatosPedidoType = {
     
 }
 
-const DatosPedido: React.FC<DatosPedido> = () => {
+const DatosPedido: React.FC<DatosPedidoType> = () => {
 
     const [direcciones,setDirecciones] = useState<String[]>([]);
 
@@ -71,7 +69,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                 }
            }
         }
-        if(order.city != "" && order.street != "" && order.zipcode != ""){
+        if(order.city !== "" && order.street !== "" && order.zipcode !== ""){
             localStorage.setItem("order",  JSON.stringify(order));
             toast.loading('Procesando envío',{duration:4000});
             setTimeout(() => {
@@ -144,7 +142,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                     <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>
                 <Button id="formButton" type="button" onClick={saveData}>Siguiente</Button>
-                <a href='/pago' id='pago' hidden></a>
+                <a href='/pago' id='pago' hidden>Content</a>
             </Form>
             <div id='resumen'>
                 <h3 id='titulo-resumen'>Resumen de compra</h3>

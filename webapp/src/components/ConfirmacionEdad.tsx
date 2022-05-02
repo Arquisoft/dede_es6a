@@ -1,12 +1,10 @@
 import './ConfirmacionEdad.css';
-import { useNavigate } from 'react-router-dom';
 import pezDisimulando from '../images/pezDisimulando.png';
 import pezContento from '../images/pezContento.png';
 import pezEnfadado from '../images/pezEnfadado.png';
 
 function ConfirmacionEdad() {
 
-    let navigate = useNavigate();
     const goToProducts = () => {
         document.getElementById('catalogo')?.click();
     };
@@ -44,7 +42,7 @@ function ConfirmacionEdad() {
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">No</button>
                 </div>
-                <a href='/catalogo' id='catalogo' hidden></a>
+                <a href='/catalogo' id='catalogo' hidden>content</a>
             </header>
         </div>
     );

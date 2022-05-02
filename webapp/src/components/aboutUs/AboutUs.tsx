@@ -1,11 +1,8 @@
 import BarraNavegacion from '../BarraNavegacion';
-import Card from 'react-bootstrap/Card';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import ListGroup from 'react-bootstrap/ListGroup';
 import './aboutUs.css';
 import Developer from './Developer';
 
-export default function(){
+export  default  function AboutUs() {
 
     return (
         <>
@@ -46,5 +43,4 @@ export default function(){
 
       </>
     );
-
 }

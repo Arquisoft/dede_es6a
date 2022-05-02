@@ -4,16 +4,16 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {createOrder, isLogged, saveOrder} from '../../api/api';
-import {isLoggedType, ListaCarrito, DataOrder, Order} from '../../shared/shareddtypes';
+import {ListaCarrito, DataOrder, Order} from '../../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 import ErrorPage from '../ErrorPage';
 import './ConfirmacionPago.css';
 import toast from 'react-hot-toast';
 
-type ConfirmacionPago = {
+type ConfirmacionPagoType = {
 }
 
-const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
+const ConfirmacionPago: React.FC<ConfirmacionPagoType> = () =>{
     let sessionCart = localStorage.getItem("listaCarrito");
     let listaCarrito:ListaCarrito[] = [];
     if(sessionCart)
@@ -34,17 +34,20 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
         setIsLogged(isLogged());
     }
 
-    useEffect(()=>{ refreshIsLogged(); refreshOrder(); }, []);
+    useEffect(()=>{ 
+        refreshIsLogged(); refreshOrder(); 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function getPrecioEnvio():number {
-        if(order != undefined){
+        if(order !== undefined){
             return order["rates"][0]["amount"];
         }
         return 0;
     }
 
     function getDeliveryTerm(): string {
-        if(order != undefined){
+        if(order !== undefined){
             return order["rates"][0]["duration_terms"]
         }
         return "no disponible";
@@ -60,22 +63,6 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
 
     function getPrecioTotal(): string {
         return (Number(getPrecio())+ Number(getPrecioEnvio())).toFixed(2);
-    }
-    
-    async function finalizarPedido() {
-        localStorage.setItem("listaCarrito", "");
-        document.getElementById('formPago')?.remove();
-        let contenedor = document.getElementById('container') as Element;
-        contenedor.innerHTML = "<h4>Pedido realizado con éxito</h4>";
-        contenedor.innerHTML += "<a href='/catalogo'>Seguir comprando</a>"
-
-        // guardar pedido
-        let precio = getPrecioTotal();
-        let order: Order = {
-            carrito: listaCarrito,
-            precio: Number(precio)
-        }
-        await saveOrder(order);
     }
 
     function mostarDatosPago() {
@@ -143,7 +130,7 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
     }
 
     function comprobaciones(str:string){
-        if(str == "tarjeta"){
+        if(str === "tarjeta"){
             const numeroTarjetaElemento :HTMLInputElement  = document.querySelector("input[name='numeroTarjeta']") as HTMLInputElement;
             let numeroTarjeta = numeroTarjetaElemento.value;
             const fechaElemento :HTMLInputElement  = document.querySelector("input[name='fecha']") as HTMLInputElement;
@@ -151,34 +138,34 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
             const codigoSeguridadElemento :HTMLInputElement  = document.querySelector("input[name='code']") as HTMLInputElement;
             let codigoSeguridad = codigoSeguridadElemento.value;
 
-            if(codigoSeguridad == ""  && numeroTarjeta == "" && fecha == "")
+            if(codigoSeguridad === ""  && numeroTarjeta === "" && fecha === "")
                 toast.error("Todos los campos estan vacíos", {duration:3500});
-            else if(numeroTarjeta == "" || numeroTarjeta == null || numeroTarjeta == undefined || numeroTarjeta.length != 16 || isNaN(Number(numeroTarjeta)))
+            else if(numeroTarjeta === "" || numeroTarjeta === null || numeroTarjeta === undefined || numeroTarjeta.length !== 16 || isNaN(Number(numeroTarjeta)))
                 toast.error('Número de la tarjeta inválido', {duration:3500})
-            else if(fecha == "" || fecha == null || fecha == undefined || fecha.length != 10)
+            else if(fecha === "" || fecha === null || fecha === undefined || fecha.length !== 10)
                 toast.error('Fecha inválida', {duration:3500})
-            else if(codigoSeguridad == "" || codigoSeguridad == null || codigoSeguridad == undefined || codigoSeguridad.length != 3 || isNaN(Number(codigoSeguridad)))
+            else if(codigoSeguridad === "" || codigoSeguridad === null || codigoSeguridad === undefined || codigoSeguridad.length !== 3 || isNaN(Number(codigoSeguridad)))
                 toast.error('Código de seguridad inválido', {duration:3500})
             else
                 finalizarPedido();
-        } else if(str == "paypal"){
+        } else if(str === "paypal"){
             const emailElemento :HTMLInputElement  = document.querySelector("input[name='email']") as HTMLInputElement;
             let email = emailElemento.value;
             const passwordElemento :HTMLInputElement  = document.querySelector("input[name='password']") as HTMLInputElement;
             let password = passwordElemento.value;
 
-            if(email == "" && password == "")
+            if(email === "" && password === "")
                 toast.error("Ambos campos vacíos", {duration:3500})
-            else if(email == "" || email == null || email == undefined || email.length < 5 || !validarEmail(email))
+            else if(email === "" || email === null || email === undefined || email.length < 5 || !validarEmail(email))
                 toast.error('Email inválido', {duration:3500})
-            else if(password == "" || password == null || password == undefined || password.length < 5)
+            else if(password === "" || password === null || password === undefined || password.length < 5)
                 toast.error('Contraseña inválida', {duration:3500})
             else
                 finalizarPedido();
-        } else if(str == "transferencia"){
+        } else if(str === "transferencia"){
             const numeroCuentaElemento :HTMLInputElement  = document.querySelector("input[name='numeroCuenta']") as HTMLInputElement;
             let numeroCuenta = numeroCuentaElemento.value;
-            if(numeroCuenta == "" || numeroCuenta == null || numeroCuenta == undefined || numeroCuenta.length != 20 || isNaN(Number(numeroCuenta)))
+            if(numeroCuenta === "" || numeroCuenta === null || numeroCuenta === undefined || numeroCuenta.length !== 20 || isNaN(Number(numeroCuenta)))
                 toast.error('Número de la cuenta inválido', {duration:3500})
             else
                 finalizarPedido();
@@ -186,8 +173,24 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
     }
 
     function validarEmail(email:string){
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
+    }
+
+    async function finalizarPedido() {
+        localStorage.setItem("listaCarrito", "");
+        document.getElementById('formPago')?.remove();
+        let contenedor = document.getElementById('container') as Element;
+        contenedor.innerHTML = "<h4>Pedido realizado con éxito</h4>";
+        contenedor.innerHTML += "<a href='/catalogo'>Seguir comprando</a>"
+
+        // guardar pedido
+        let precio = getPrecioTotal();
+        let order: Order = {
+            carrito: listaCarrito,
+            precio: Number(precio)
+        }
+        await saveOrder(order);
     }
     
     if(log){
@@ -233,10 +236,4 @@ const ConfirmacionPago: React.FC<ConfirmacionPago> = () =>{
 }
 export default ConfirmacionPago;
 
-function Character(Character: any, isDigit: any) {
-    throw new Error('Function not implemented.');
-}
-function isDigit(Character: (Character: any, isDigit: any) => void, isDigit: any) {
-    throw new Error('Function not implemented.');
-}
 

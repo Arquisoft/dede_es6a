@@ -4,11 +4,11 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
 
-type ErrorPage = {
+type ErrorPageType = {
     msg: string;
 }
 
-const ErrorPage: React.FC<ErrorPage> = ({msg}) => {
+const ErrorPage: React.FC<ErrorPageType> = ({msg}) => {
     
     return(
         <>

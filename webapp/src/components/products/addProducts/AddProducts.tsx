@@ -3,12 +3,12 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AddProducts.css';
 import {addProduct, isAdmin} from '../../../api/api';
-import {Product, isLoggedType} from '../../../shared/shareddtypes';
+import {Product} from '../../../shared/shareddtypes';
 import BarraNavegacion from '../../BarraNavegacion';
 import Errorpage from '../../ErrorPage';
 import { useState, useEffect } from 'react';
 
-export default function(){
+export default function AddProducts(){
 
     const [admin,setIsAdmin] = useState<boolean>();
     const refreshIsLogged =  () => {

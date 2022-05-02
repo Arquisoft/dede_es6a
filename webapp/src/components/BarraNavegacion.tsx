@@ -2,7 +2,6 @@ import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Un
 import logo from "../images/vino.png";
 import "./BarraNavegacion.css";
 import {isLogged, logout, isAdmin} from '../api/api';
-import {isLoggedType} from '../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 
 function BarraNavegacion (): JSX.Element {
@@ -38,7 +37,7 @@ function BarraNavegacion (): JSX.Element {
             }
         }
     const adminOptions = () => {
-        if(admin != undefined)
+        if(admin !== undefined)
             if(admin){
                 return(
                     <UncontrolledDropdown inNavbar nav>
