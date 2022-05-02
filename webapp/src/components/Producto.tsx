@@ -29,7 +29,9 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
             <Card.Body>
                 <Card.Title as="h2">{props.nombre}</Card.Title>
                 <hr></hr>
-                <ReactStars count={5} value={props.rating} onChange={() => {}} size={24} color2={'#ffd700'} />
+                <div id="rating">
+                    <ReactStars count={5} value={props.rating} onChange={() => {}} size={24} color2={'#ffd700'}/>
+                </div>
                 <Card.Text>
                 {props.descripcion}
                 </Card.Text>

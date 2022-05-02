@@ -29,8 +29,11 @@ body{
     max-height: 100%;
   }
   
-  
-  
+  #rating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
   
   #boton-añadir {
     background-color: #13aa52;
