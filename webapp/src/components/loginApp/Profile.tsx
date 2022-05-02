@@ -13,7 +13,7 @@ import './profile.css';
 
 export default function Profile() {
 
-    const [log,setIsLogged] = useState<isLoggedType>();
+    const [log,setIsLogged] = useState<boolean>();
     const [orders,setOrders] = useState<OrderFromDB[]>([]);
     const [user,setUser] = useState<User[]>([]);
     const refreshUser = async () => {
@@ -22,8 +22,8 @@ export default function Profile() {
     const refreshOrders = async () => {
         setOrders(await getOrdersByClientLogged());
     }
-    const refreshIsLogged = async () => {
-        setIsLogged(await isLogged());
+    const refreshIsLogged =  () => {
+        setIsLogged( isLogged());
     }
     useEffect(()=>{ refreshOrders(); refreshIsLogged(); refreshUser(); }, []);
 
@@ -57,7 +57,7 @@ export default function Profile() {
             return(<p>Error</p>);
     }
 
-    if(log?.logged){
+    if(log){
         return(
             <>
                 <div id='userdata'>
@@ -67,7 +67,7 @@ export default function Profile() {
                         {setUserData()}
                     </ListGroup>
                     <Button id='logout' variant="primary" onClick={logoutButton}>Cerrar sesión</Button>{' '}
-                    <a href='/catalogo' id='navigate' hidden></a>
+                    <a href='/#/catalogo' id='navigate' hidden></a>
                 </div>
                 <h3>Pedidos realizados</h3>
                 <Accordion defaultActiveKey="0" flush>

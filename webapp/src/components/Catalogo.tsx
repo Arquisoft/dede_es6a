@@ -30,7 +30,7 @@ const Catalogo: React.FC<Catalogo> = () => {
         <h1 >Catálogo de productos</h1>
         <BarraNavegacion />
         <ListGroup id='listaProductos' className="listaProductos">
-            {products.map((producto)=>{   
+            {products.map((producto)=>{
                 return(
                   <Producto props={producto} addToCarrito={addToCarrito}/> 
                 );

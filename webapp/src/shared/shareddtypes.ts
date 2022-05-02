@@ -11,6 +11,8 @@ export type Product = {
     precio: number;
     categoria: string;
     descripcion: string;
+    rating:number;
+    imagen:string;
 }
 
 export type ListaCarrito = {
@@ -19,7 +21,7 @@ export type ListaCarrito = {
 }
 
 export type isLoggedType = {
-    logged: boolean;
+    user: string;
 }
 
 export type PersonalData = {

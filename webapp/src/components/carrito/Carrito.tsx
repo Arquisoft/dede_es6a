@@ -66,7 +66,7 @@ const Carrito: React.FC<Carrito> = () => {
         </Table>
       <h3 id="precioTotal">Precio total: {GetPrecioTotal().toFixed(2)}€</h3>
       <Button id="btTramitarPedido" onClick={checkCarrito}>Tramitar pedido</Button>
-      <a href='/pedido' id='navigate' hidden></a>
+      <a href='/#/pedido' id='navigate' hidden></a>
       </>
     );
 

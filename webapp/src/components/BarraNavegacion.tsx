@@ -7,31 +7,39 @@ import { useState, useEffect } from 'react';
 
 function BarraNavegacion (): JSX.Element {
 
-    const [log,setIsLogged] = useState<isLoggedType>();
-    const [admin,setIsAdmin] = useState<isLoggedType>();
-    const refreshIsLogged = async () => {
-        setIsLogged(await isLogged());
+    const [log,setIsLogged] = useState<boolean>();
+    const [admin,setIsAdmin] = useState<boolean>();
+    const refreshIsLogged =  () => {
+        setIsLogged(isLogged());
     }
-    const refreshIsAdmin = async () => {
-        setIsAdmin(await isAdmin());
+    const refreshIsAdmin =  () => {
+        setIsAdmin( isAdmin());
     }
     useEffect(()=>{ refreshIsLogged(); refreshIsAdmin(); }, []);
 
     const check = () => {
-        if(log != undefined)
-            if(log.logged)
-                return(<NavLink href="/#/catalogo" onClick={() => {
-                    logout();
-                    window.location.assign('/#/catalogo');
-                    window.location.reload();
-            }}>
-                    Cerrar Sesión</NavLink>);
-            else
-                return(<NavLink href="/#/login">Inicia sesión</NavLink>);          
-    }
+            if(log){
+                return(
+                    <>
+                    <NavItem>
+                    <NavLink href="/#/perfil"> Perfil </NavLink>   
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/#/catalogo" onClick={() => {
+                            logout();
+                            window.location.assign('/#/catalogo');
+                            window.location.reload();
+                        }}> Cerrar Sesión</NavLink>
+                    </NavItem>
+                    </>
+                    );
+            }else{
+                return(<NavLink href="/#/login">Inicia sesión</NavLink>);       
+            }
+        }
     const adminOptions = () => {
         if(admin != undefined)
-            if(admin.logged){
+            if(admin){
                 return(
                     <UncontrolledDropdown inNavbar nav>
                             <DropdownToggle caret nav>
@@ -205,9 +213,7 @@ function BarraNavegacion (): JSX.Element {
                         </NavItem>
 
                         {/* Opción para iniciar sesión */}
-                        <NavItem>
-                            {check()}
-                        </NavItem>
+                        {check()}
                         <NavItem>
                             <NavLink href="/#/carrito">
                                 <svg xmlns="./cart.svg " width="50" height="20" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
