@@ -7,7 +7,9 @@ import pezEnfadado from '../images/pezEnfadado.png';
 function ConfirmacionEdad() {
 
     let navigate = useNavigate();
-    const goToProducts = () => navigate("/catalogo");
+    const goToProducts = () => {
+        document.getElementById('catalogo')?.click();
+    };
     const leavePage = () => window.open("https://www.toysrus.es/", "_self");
 
     function showHappyFish(){
@@ -42,6 +44,7 @@ function ConfirmacionEdad() {
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">No</button>
                 </div>
+                <a href='/catalogo' id='catalogo' hidden></a>
             </header>
         </div>
     );

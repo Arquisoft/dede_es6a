@@ -56,7 +56,7 @@ const enviar = () => {
     addUser(user);
     toast.success("Usuario creado correctamente", {duration: 700}); 
     setTimeout(() => 1000);
-    window.location.href = '/#/login'
+    window.location.href = '/login'
     }
     else{
       toast.error("No se ha podido crear el usuario", {duration: 1000}); 

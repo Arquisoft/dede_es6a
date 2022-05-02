@@ -18,8 +18,8 @@ export async function addUser(user:User):Promise<boolean>{
 }
 
 
-export async function login(username:string, password:string):Promise<boolean>{
-  const apiEndPoint=  'http://localhost:5000/api'
+export async function loginApp(username:string, password:string):Promise<boolean>{
+  const apiEndPoint=  process.env.REACT_APP_API_URI ||'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/login', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},

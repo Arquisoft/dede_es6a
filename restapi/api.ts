@@ -165,12 +165,12 @@ api.post("/login", async (req, res) : Promise<Response<login>> => {
     
     let order = new Order({
       username: username,
-      products: prods,
+      products: prods,  
       precio: req.body.precio,
       estado: 'enviado' // enviado, reparto, entregado
     });
     await order.save();
-    return res.sendStatus(200);
+    return res.sendStatus(200);   
   });
 
   api.get('/getOrdersBy', async (req, res):Promise<Response> => {
