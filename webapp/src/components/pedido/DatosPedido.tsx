@@ -73,13 +73,12 @@ const DatosPedido: React.FC<DatosPedido> = () => {
         }
         if(order.city != "" && order.street != "" && order.zipcode != ""){
             localStorage.setItem("order",  JSON.stringify(order));
-            toast.loading('procesando envio',{duration:4000});
+            toast.loading('Procesando envío',{duration:4000});
             setTimeout(() => {
                 (document.getElementById("pago") as HTMLAnchorElement).click();
             }, 4100);
         }else
-            toast.error('calle, ciudad o código postal vacios', {duration:3500})
-        
+           toast.error('Calle, ciudad o código postal vacíos', {duration:3500})
     }
 
     const loadStreets = () => {
@@ -107,7 +106,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
             dirArray.pop();
             setDirecciones( dirArray );
         }catch(error){
-            toast.error('url no valida', {duration: 3500});
+            toast.error('URL no valida', {duration: 3500});
         }
     }
 
@@ -123,7 +122,7 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                     <Form.Control className="inputPago" type="text" placeholder="Apellidos" name="lastname"/>
                 </Form.Group>
                 <Form.Group controlId="email">
-                    <Form.Control className="inputPago" type="text" placeholder="Email" name="email"/>
+                    <Form.Control className="inputPago" type="text" placeholder="Correo electrónico" name="email"/>
                 </Form.Group>
                 <Form.Group  controlId="city">
                     <Form.Control className="inputPago" type="text" placeholder="Ciudad" name="city"/>
@@ -141,9 +140,6 @@ const DatosPedido: React.FC<DatosPedido> = () => {
                         <Form.Check type="radio" label={d} id={"default-radio-"+direcciones.indexOf(d)} name='dir'/>
                     ))}
                 </ButtonGroup>
-                     
-                    
-                    
                     <Form.Control className="inputPago" id='url' type="url" placeholder="POD URL" name="podurl"/>
                     <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
                 </Form.Group>

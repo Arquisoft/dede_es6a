@@ -20,8 +20,8 @@ export default function(){
                     />
                 <Developer 
                     name='Diego García Quirós'
-                    email='UO276688@uniovi.es' 
-                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png' 
+                    email='UO276688@uniovi.es'
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png'
                     descr=''
                     />
                 <Developer 
@@ -43,6 +43,8 @@ export default function(){
                     descr=''
                     />  
             </div>
+
       </>
     );
+
 }
