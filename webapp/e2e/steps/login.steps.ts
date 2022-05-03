@@ -1,3 +1,8 @@
+import path, { normalize } from 'path';
+
+var dotenvPath = path.resolve('../.env');
+require("dotenv").config({path: dotenvPath});
+
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
@@ -29,7 +34,7 @@ defineFeature(feature, test => {
 
     given("Página sin usuario logueado", () => {
       username = "test"
-      password = "123456"
+      password = process.env.password_for_test!;
     });
 
     when("Proceso de login", async () => {
