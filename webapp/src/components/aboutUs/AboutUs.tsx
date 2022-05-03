@@ -13,30 +13,35 @@ export  default  function AboutUs() {
                     name='Juan Mera Menéndez' 
                     email='UO277406@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255946/juan_vxrndv.png' 
+                    alt='Imagen Juan'
                     descr=''
                     />
                 <Developer 
                     name='Diego García Quirós'
                     email='UO276688@uniovi.es'
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png'
+                    alt='Imagen Diego'
                     descr=''
                     />
                 <Developer 
                     name='Daniel Machado Sánchez' 
                     email='UO276257@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484429/dani_zgiji9.jpg' 
+                    alt='Imagen Daniel'
                     descr=''
                     />
                 <Developer 
                     name='David Maldonado Álvarez' 
                     email='UO259893@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484549/90855360_lxlbn2.jpg' 
+                    alt='Imagen David'
                     descr=''
                     />    
                 <Developer 
                     name='Oscar López González' 
                     email='UO269489@uniovi.es' 
                     img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484550/foto-dni_upx8go.png' 
+                    alt='Imagen Oscar'
                     descr=''
                     />  
             </div>
