@@ -46,8 +46,8 @@ jobs:
   #    - run: npm --prefix webapp run test:e2e
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
-    env:
-      API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
+    # env:
+    #  API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
     runs-on: ubuntu-latest
     env:
       API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
