@@ -1,5 +1,7 @@
 import {User, Product, isLoggedType, Order, DataOrder, OrderFromDB} from '../shared/shareddtypes';
 
+let uri = 'https://dd6a-restapi.herokuapp.com/api';
+
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/users/add', {
@@ -94,7 +96,7 @@ export function isAdmin():boolean{
 }
 
 export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  const apiEndPoint = uri || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint+'/createOrder',{
     method: 'POST',
     headers: {'Content-Type':'application/json'},

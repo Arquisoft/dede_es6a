@@ -39,7 +39,6 @@ const ConfirmacionPago: React.FC<ConfirmacionPagoType> = () =>{
         refreshIsLogged(); refreshOrder(); 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-  
     
     if(log){
         return (

@@ -22,7 +22,7 @@ const options: cors.CorsOptions = {
 var expressSession = require('express-session');
 app.use(expressSession({
   secret: 'abcdefg',
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }));
 
