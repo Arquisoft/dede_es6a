@@ -86,7 +86,12 @@
       "ConfirmacionPagoUtils.ts",
       "ConfirmacionPago.tsx",
       "AddProductsUtils.ts",
-      "Catalogo.tsx"
+      "Catalogo.tsx",
+      "DatosPedidoUtils.ts",
+      "ConfirmacionEdadUtils.ts",
+      "Profile.tsx",
+      "DatosPedidoLogged.tsx",
+      "DatosPedido.tsx"
     ]
   }
 }

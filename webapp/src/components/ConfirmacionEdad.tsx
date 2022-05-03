@@ -1,29 +1,8 @@
 import './ConfirmacionEdad.css';
+import {goToProducts, leavePage, showAngryFish, showDefaultFish, showHappyFish} from './ConfirmacionEdadUtils';
 import pezDisimulando from '../images/pezDisimulando.png';
-import pezContento from '../images/pezContento.png';
-import pezEnfadado from '../images/pezEnfadado.png';
 
 function ConfirmacionEdad() {
-
-    const goToProducts = () => {
-        document.getElementById('catalogo')?.click();
-    };
-    const leavePage = () => window.open("https://www.toysrus.es/", "_self");
-
-    function showHappyFish(){
-        let fishImage = document.getElementById("fishImage") as HTMLImageElement;
-        fishImage.src = pezContento;
-    }
-
-    function showAngryFish(){
-        let fishImage = document.getElementById("fishImage") as HTMLImageElement;
-        fishImage.src = pezEnfadado;
-    }
-
-    function showDefaultFish(){
-        let fishImage = document.getElementById("fishImage") as HTMLImageElement;
-        fishImage.src = pezDisimulando;
-    }
 
     return (
         <div className="App">
@@ -32,12 +11,14 @@ function ConfirmacionEdad() {
                 <div>
                     <button 
                     id = "botonSi"
+                    data-testid='boton-si'
                     onClick={goToProducts} 
                     onMouseEnter={showHappyFish}
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">Sí</button>
                     <button 
                     onClick={leavePage} 
+                    data-testid='boton-no'
                     onMouseEnter={showAngryFish}
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">No</button>
