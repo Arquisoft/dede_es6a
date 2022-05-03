@@ -34,7 +34,7 @@ defineFeature(feature, test => {
 
     given("Página con usuario logueado", () => {
       username = "test"
-      password = "123456"
+      password = process.env.password_for_test!;
     });
 
     when("Proceso de logout", async () => {
