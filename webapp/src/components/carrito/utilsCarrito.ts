@@ -63,3 +63,5 @@ export function addToCarrito (product: Product):ListaCarrito[] {
   function guardarCarrito(carrito:ListaCarrito[]){
       localStorage.setItem("listaCarrito", JSON.stringify(carrito));
   }
+
+  
