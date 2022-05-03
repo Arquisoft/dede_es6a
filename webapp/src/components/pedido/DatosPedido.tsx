@@ -108,6 +108,7 @@ const DatosPedido: React.FC<DatosPedidoType> = () => {
         }
     }
 
+    
     if(log){
         return (
             <>
