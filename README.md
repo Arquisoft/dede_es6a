@@ -15,7 +15,8 @@ No nos hacemos responsables de posibles resacas mareos y/o nauseas. <br>
 
 Aqui puedes ver un resumen de nuestro trabajo:<br>
 [Decisiones arquitectónicas](./decisiones%20arquitectonicas.pdf)<br>
-[Demo](https://dede-es6a.herokuapp.com/)<br>
+[Tienda](https://dede-es6a.herokuapp.com/)<br>
+[Demo - video](https://www.youtube.com/watch?v=Csi_1IMIfXs)<br>
 [issues](https://github.com/Arquisoft/dede_es6a/issues)<br>
 [wiki](https://github.com/Arquisoft/dede_es6a/wiki)<br>
 [kanban](https://github.com/Arquisoft/dede_es6a/projects/1)<br>
