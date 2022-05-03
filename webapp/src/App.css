@@ -35,6 +35,11 @@ main {
   border-radius: 10px;
 }
 
+.estrellas{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
 #imgProducto{
   display: block;
   margin-left: auto;
@@ -66,10 +71,17 @@ main {
  
 }
 
-#precio{
-  background-color:white;
-  border: 1px solid;
+.precioProducto{
+
+  margin:20px !important;
+  width: 100%;
+  border-radius: 20px ;
+  border: 2px solid black;
+  border-top: 2px solid black !important;
+  background-color:rgb(255, 255, 255) !important;
 }
+
+
 
 
 h1{
@@ -106,10 +118,13 @@ h1{
 
 .contenedorNombreAutores{
   width:100%;
-  display:grid;
   padding: 0%;
   margin: 0%;
-  grid-template-columns:20% 20% 20% 20% 20%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 
@@ -143,3 +158,4 @@ h1{
 #formButton{
   margin-bottom: 2em;
 }
+

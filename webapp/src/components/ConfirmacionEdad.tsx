@@ -1,13 +1,13 @@
 import './ConfirmacionEdad.css';
-import { useNavigate } from 'react-router-dom';
 import pezDisimulando from '../images/pezDisimulando.png';
 import pezContento from '../images/pezContento.png';
 import pezEnfadado from '../images/pezEnfadado.png';
 
 function ConfirmacionEdad() {
 
-    let navigate = useNavigate();
-    const goToProducts = () => navigate("/catalogo");
+    const goToProducts = () => {
+        document.getElementById('catalogo')?.click();
+    };
     const leavePage = () => window.open("https://www.toysrus.es/", "_self");
 
     function showHappyFish(){
@@ -27,7 +27,7 @@ function ConfirmacionEdad() {
 
     return (
         <div className="App">
-            <header className="App-header">
+            <header className="App-header divConfirmacionEdad">
                 <img id="fishImage" src={pezDisimulando} alt="logo" />
                 <div>
                     <button 
@@ -42,6 +42,7 @@ function ConfirmacionEdad() {
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">No</button>
                 </div>
+                <a href='/catalogo' id='catalogo' hidden>content</a>
             </header>
         </div>
     );

@@ -1,6 +1,5 @@
 import Catalogo from './components/Catalogo';
 import {
-  HashRouter,
   Routes,
   Route,
   BrowserRouter,
@@ -11,6 +10,7 @@ import ConfirmacionEdad from './components/ConfirmacionEdad';
 import Carrito from './components/carrito/Carrito';
 import AboutUs from './components/aboutUs/AboutUs';
 import Login from "./components/loginApp/FormLogin";
+import Profile from "./components/loginApp/Profile";
 import Register from './components/Register/FormRegister';
 import DatosPedido from './components/pedido/DatosPedido';
 import ConfirmacionPago from './components/pedido/ConfirmacionPago';
@@ -22,24 +22,25 @@ const App = () => {
 
   return(
     <>
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<ConfirmacionEdad />} />
-          <Route path="/catalogo" element={<Catalogo />} />
-          <Route path="/products/add" element={<AddProducts />} />
-          <Route path="/users/list" element={<ListUsers />} />
-          <Route path="/carrito" element={<Carrito />} />
-          <Route path="/pedido" element={<DatosPedido />} />
-          <Route path="/pago" element={<ConfirmacionPago />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </HashRouter>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ConfirmacionEdad />} />
+        <Route path="catalogo" element={<Catalogo />} />
+        <Route path="products/add" element={<AddProducts />} />
+        <Route path="users/list" element={<ListUsers />} />
+        <Route path="carrito" element={<Carrito />} />
+        <Route path="pedido" element={<DatosPedido />} />
+        <Route path="pago" element={<ConfirmacionPago />} />
+        <Route path="aboutus" element={<AboutUs />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="perfil" element={<Profile />} />
+      </Routes>
       <Toaster
         position={"bottom-left"}
         reverseOrder={false}
       />
+      </BrowserRouter>
     </>
   );
 };

@@ -1,50 +1,51 @@
 import BarraNavegacion from '../BarraNavegacion';
-import Card from 'react-bootstrap/Card';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import ListGroup from 'react-bootstrap/ListGroup';
 import './aboutUs.css';
 import Developer from './Developer';
 
-export default function(){
+export  default  function AboutUs() {
 
     return (
         <>
             <BarraNavegacion />
-            <h1>About us</h1>
+            <h1>Sobre nosotros</h1>
             <div id='cards'>
                 <Developer 
-                    name='Juan Mera Menendez' 
-                    email='Uo277406@uniovi.es' 
-                    img='../juan.png' 
-                    descr='texto ejemplo :D'
+                    name='Juan Mera Menéndez' 
+                    email='UO277406@uniovi.es' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255946/juan_vxrndv.png' 
+                    alt='Imagen Juan'
+                    descr=''
                     />
                 <Developer 
-                    name='Diego Garcia Quiros' 
-                    email='uo@uniovi.es' 
-                    img='../diego.png' 
-                    descr='texto ejemplo'
+                    name='Diego García Quirós'
+                    email='UO276688@uniovi.es'
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651255945/diego_rukkyl.png'
+                    alt='Imagen Diego'
+                    descr=''
                     />
                 <Developer 
-                    name='Daniel Machado Sanchez' 
-                    email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
-                    descr='texto ejemplo'
+                    name='Daniel Machado Sánchez' 
+                    email='UO276257@uniovi.es' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484429/dani_zgiji9.jpg' 
+                    alt='Imagen Daniel'
+                    descr=''
                     />
                 <Developer 
                     name='David Maldonado Álvarez' 
-                    email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
-                    descr='texto ejemplo'
+                    email='UO259893@uniovi.es' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484549/90855360_lxlbn2.jpg' 
+                    alt='Imagen David'
+                    descr=''
                     />    
                 <Developer 
-                    name='Oscar' 
-                    email='uo@uniovi.es' 
-                    img='../perfil-default.jpg' 
-                    descr='texto ejemplo'
+                    name='Oscar López González' 
+                    email='UO269489@uniovi.es' 
+                    img='https://res.cloudinary.com/dnuyp5afa/image/upload/v1651484550/foto-dni_upx8go.png' 
+                    alt='Imagen Oscar'
+                    descr=''
                     />  
             </div>
 
       </>
     );
-
 }

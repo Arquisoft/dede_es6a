@@ -11,3 +11,13 @@
     display: flex;
     margin: 1em;
 }
+#checkbox{
+    max-width: 15em;
+    margin: auto;
+}
+.btn-group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin: 0.5em;
+}
