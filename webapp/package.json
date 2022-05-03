@@ -81,7 +81,11 @@
       "reportWebVitals.ts",
       "api.ts",
       "utilsCarrito.ts",
-      "shareddtypes.ts"
+      "shareddtypes.ts",
+      "SolidUtils.ts",
+      "ConfirmacionPagoUtils.ts",
+      "ConfirmacionPago.tsx",
+      "AddProductsUtils.ts"
     ]
   }
 }
