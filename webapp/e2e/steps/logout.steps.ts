@@ -1,3 +1,8 @@
+import path, { normalize } from 'path';
+
+var dotenvPath = path.resolve('../.env');
+require("dotenv").config({path: dotenvPath});
+
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
