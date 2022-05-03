@@ -25,5 +25,3 @@ test('Acceso a la pantalla de registro', () => {
   const imgOjoCerradoConfirmacionPassword = screen.getByAltText("imagenCnf")
   expect(imgOjoCerradoConfirmacionPassword).toBeInTheDocument();
 });
-
-

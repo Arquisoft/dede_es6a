@@ -32,12 +32,14 @@ function ConfirmacionEdad() {
                 <div>
                     <button 
                     id = "botonSi"
+                    data-testid='boton-si'
                     onClick={goToProducts} 
                     onMouseEnter={showHappyFish}
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">Sí</button>
                     <button 
                     onClick={leavePage} 
+                    data-testid='boton-no'
                     onMouseEnter={showAngryFish}
                     onMouseLeave={showDefaultFish}
                     className="botonRespuesta">No</button>

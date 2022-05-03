@@ -1,18 +1,16 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Catalogo from './Catalogo';
-import { ListaCarrito, Product } from '../shared/shareddtypes';
 import App from '../App';
-
+import { BrowserRouter as Router } from "react-router-dom";
+import Catalogo from './Catalogo';
 
 test('Acceso a la pantalla de catálogo', () => {
-  render(<App />);
-  const linkElement = screen.getByText("Sí");
-  expect(linkElement).toBeInTheDocument();
-  linkElement.click();
-  const catalogoTitulo = screen.getByText("Catálogo de productos");
-  expect(catalogoTitulo).toBeInTheDocument();
-  
+
+  const { getByText} = render(
+    <Router>
+      <Catalogo></Catalogo>
+    </Router>
+  );
+  expect(getByText("Catálogo de productos")).toBeInTheDocument();
 });
 
 
