@@ -1,7 +1,82 @@
+
 #detalles{
     margin: 2em auto;
-
 }
 #container{
     text-align: center;
+}
+
+#buttonVolver{
+    background: #dc3545;
+    width: 200px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#buttonFinalizar{
+    background: #13aa52;
+    width: 200px;
+    margin: 1em auto;
+}
+
+#tipoPago{
+    color: black;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 75%;
+    margin-left: 13%;
+    margin-top: 1%;
+}
+
+#formPago{
+    color: black;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 75%;
+    margin-left: 13%;
+    margin-top: 1%;
+}
+
+#labelSelectTipo{
+    color: black;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#selectTipo{
+    width: 50%;
+    margin-top: 1%;
+    margin-left: 25%;
+    text-align: center;
+}
+
+label{
+    color: black;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1%;
+}
+
+#exampleInputPassword1{
+    margin-bottom: 2em;
+}
+
+#numeroTarjeta, #fechaCaducidad, #codigoSeguridad, #exampleInputEmail1, #exampleInputPassword1, #numeroCuenta{
+    width: 50%;
+    margin: 1em auto;
+    margin-left: 25%;
+    text-align: center;
+}
+
+button{
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
 }

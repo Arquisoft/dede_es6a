@@ -6,14 +6,14 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import Button from 'react-bootstrap/Button';
 import {getOrdersByClientLogged, isLogged, getUserLoggeed, logout} from '../../api/api';
 import { useState, useEffect } from 'react';
-import {isLoggedType, OrderFromDB, User} from '../../shared/shareddtypes';
+import { OrderFromDB, User} from '../../shared/shareddtypes';
 import ErrorPage from '../ErrorPage';
 import toast from 'react-hot-toast';
 import './profile.css';
 
 export default function Profile() {
 
-    const [log,setIsLogged] = useState<isLoggedType>();
+    const [log,setIsLogged] = useState<boolean>();
     const [orders,setOrders] = useState<OrderFromDB[]>([]);
     const [user,setUser] = useState<User[]>([]);
     const refreshUser = async () => {
@@ -22,8 +22,8 @@ export default function Profile() {
     const refreshOrders = async () => {
         setOrders(await getOrdersByClientLogged());
     }
-    const refreshIsLogged = async () => {
-        setIsLogged(await isLogged());
+    const refreshIsLogged =  () => {
+        setIsLogged( isLogged());
     }
     useEffect(()=>{ refreshOrders(); refreshIsLogged(); refreshUser(); }, []);
 
@@ -57,7 +57,7 @@ export default function Profile() {
             return(<p>Error</p>);
     }
 
-    if(log?.logged){
+    if(log){
         return(
             <>
                 <div id='userdata'>
@@ -67,7 +67,7 @@ export default function Profile() {
                         {setUserData()}
                     </ListGroup>
                     <Button id='logout' variant="primary" onClick={logoutButton}>Cerrar sesión</Button>{' '}
-                    <a href='/catalogo' id='navigate' hidden></a>
+                    <a href='/catalogo' id='navigate' hidden>Content</a>
                 </div>
                 <h3>Pedidos realizados</h3>
                 <Accordion defaultActiveKey="0" flush>

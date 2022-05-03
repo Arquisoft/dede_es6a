@@ -1,10 +1,12 @@
 import "./FormLogin.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {login} from '../../api/api';
-import {Form } from 'react-bootstrap/';
+import {loginApp} from '../../api/api';
+import {Form, Button } from 'react-bootstrap/';
 import toast from "react-hot-toast";
 import { LoginButton, SessionProvider } from "@inrupt/solid-ui-react";
 import { useState, useEffect } from "react";
+import { handleIncomingRedirect, login, getDefaultSession } from '@inrupt/solid-client-authn-browser'
+import {getAddressesFromPod} from '../pedido/SolidUtils';
 
 export default function LoginForm() {
 
@@ -12,7 +14,7 @@ export default function LoginForm() {
         
         const username  = (document.querySelector("input[name='name']") as HTMLInputElement).value;
         const password = (document.querySelector("input[name='password']") as HTMLInputElement).value;
-        let res:boolean = await login(username, password);
+        let res:boolean = await loginApp(username, password);
         if(res){
              toast.success("Usuario logeado correctamente", {duration: 700}); 
              setTimeout(() => {
@@ -35,7 +37,7 @@ export default function LoginForm() {
     const changeProvider = () => {
         let link: HTMLAnchorElement = document.getElementById('link') as HTMLAnchorElement;
         let select: HTMLInputElement = document.getElementById('provider') as HTMLInputElement;
-        if(select.value == '2'){
+        if(select.value === '2'){
             link.href = "https://solidcommunity.net";
             setIdp("https://solidcommunity.net");
             link.text = "SolidCommunity";
@@ -43,6 +45,25 @@ export default function LoginForm() {
             link.href = "https://inrupt.net";
             setIdp("https://inrupt.net");
             link.text = "Inrupt";
+        }
+    }
+
+    const getDataFromPod = async function(){
+        await handleIncomingRedirect();
+        if (!getDefaultSession().info.isLoggedIn) {
+            await login({
+              oidcIssuer: "https://inrupt.net/",
+              redirectUrl: window.location.href,
+              clientName: "dede-es6a"
+            });
+        }
+        let element = document.getElementById('url') as HTMLInputElement;
+        try{
+            let dir:string = await getAddressesFromPod(element.value);
+            console.log(dir)
+            localStorage.setItem('direcciones',dir);
+        }catch(error){
+            toast.error('url no valida', {duration: 3500});
         }
     }
 
@@ -61,11 +82,11 @@ export default function LoginForm() {
                                 placeholder="Contraseña *" name="password"/>
                         </div>
                         <div className="form-group" onClick={loginButton}>
-                            <a className="btnSubmit">Iniciar sesión</a>
-                            <a href="catalogo" id="catalogo" hidden></a>
+                            <Button  className="btnSubmit">Iniciar sesión</Button>
+                            <a href="/catalogo" id="catalogo" hidden>Content</a>
                         </div>
                         <div className="form-group">
-                            <a href="register" className="ForgetPwd">¡Regístrate ahora!</a>
+                            <a href="/register" className="ForgetPwd">¡Regístrate ahora!</a>
                         </div>
                         <br/>
                         <Form.Select id="provider" onChange={changeProvider} aria-label="Default select example">
@@ -84,6 +105,10 @@ export default function LoginForm() {
                                 </div>
                             <p>Si no tienes uno lo puedes crear aqui: <a id="link" href="https://inrupt.net">Inrupt</a></p>
                         </div>
+                        <Form.Group className="mb-3" id='checkbox' controlId="formBasicCheckbox">
+                            <Form.Control className="inputPago" id='url' type="url" placeholder="pod url" name="podurl"/>
+                            <Button id="formButton" type="button" onClick={getDataFromPod}>Cargar</Button>
+                        </Form.Group>
                     </form>
                 </div>
             </div> 

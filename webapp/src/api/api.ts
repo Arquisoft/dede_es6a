@@ -17,18 +17,25 @@ export async function addUser(user:User):Promise<boolean>{
       return false;
 }
 
-export async function login(username:string, password:string):Promise<boolean>{
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+
+export async function loginApp(username:string, password:string):Promise<boolean>{
+  const apiEndPoint=  process.env.REACT_APP_API_URI ||'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/login', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(
       {
        'username':username,
-       'password':password
+       'password':password,
+       'podUrl': ""
       })
   });  
   if(response.status === 200){
+    let r:Promise<isLoggedType> = response.json()
+    localStorage.setItem('user',(await r).user);
+    return true;
+  }else if(response.status === 201){
+    localStorage.setItem('user','admin');
     return true;
   }else{
     return false;
@@ -36,8 +43,7 @@ export async function login(username:string, password:string):Promise<boolean>{
 }
 
 export async function logout():Promise<void>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    await fetch(apiEndPoint+'/logout');
+  localStorage.removeItem('user');
 }
 
 export async function addProduct(product: Product):Promise<boolean>{
@@ -73,16 +79,18 @@ export async function getProducts(filter:String = 'all'):Promise<Product[]>{
   return response.json();
 }
 
-export async function isLogged():Promise<isLoggedType>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/islogged');
-  return response.json();
+export function isLogged():boolean{
+  if(localStorage.getItem('user') != null)
+    return true;
+  else
+    return false;
 }
 
-export async function isAdmin():Promise<isLoggedType>{
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/isadmin');
-  return response.json();
+export function isAdmin():boolean{
+  if(localStorage.getItem('user') === 'admin')
+    return true;
+  else
+    return false;
 }
 
 export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
@@ -104,7 +112,7 @@ export async function createOrder(DataOrder:DataOrder):Promise<JSON>{
 
 export async function saveOrder(order: Order):Promise<boolean>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/saveOrder',{
+  let response = await fetch(apiEndPoint+'/saveOrder?username='+localStorage.getItem('user'),{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
@@ -120,13 +128,13 @@ export async function saveOrder(order: Order):Promise<boolean>{
 
 export async function getOrdersByClientLogged():Promise<OrderFromDB[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/getOrdersBy');
+  let response = await fetch(apiEndPoint+'/getOrdersBy?username='+localStorage.getItem('user'));
   return response.json();
 }
 
 export async function getUserLoggeed():Promise<User[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
-  let response = await fetch(apiEndPoint+'/userlogged');
+  let response = await fetch(apiEndPoint+'/userlogged?username='+localStorage.getItem('user'));
   return response.json();
 }
 

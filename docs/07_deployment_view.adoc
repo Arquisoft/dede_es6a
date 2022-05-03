@@ -5,8 +5,10 @@
 
 === Infrastructura Level 1
 
+
+
 :imagesdir: images/
-image::diagrama de despliegue.png[]
+image::diagrama de despliegue 2.png[]
 
 === Objetivo
 

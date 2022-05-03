@@ -11,5 +11,9 @@ body{
 #participante{
     padding: 1em;
     margin: 1em;
-
 }
+#img{
+    max-width: 250px;
+    max-height: 250px;
+}
+

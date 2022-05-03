@@ -78,12 +78,6 @@ describe('user ', () => {
         }).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
     });
-
-    it('logout', async () => {
-        const response:Response = await request(app).get("/logout");
-        expect(response.statusCode).toBe(200);
-    });
-
     
 });
 
@@ -139,6 +133,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 3
         },{
@@ -148,6 +144,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 2
         }];
@@ -170,6 +168,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 3
         },{
@@ -179,6 +179,8 @@ describe('order ', () => {
                 precio: 10.0,
                 categoria: "ginebra",
                 descripcion: "",
+                rating: 1.0,
+                imagen: ""
             },
             unidades: 2
         }];
@@ -186,7 +188,7 @@ describe('order ', () => {
             username:"test1",
             password:process.env.password_for_test!
         }).set('Accept', 'application/json');
-        const response:Response = await request(app).post('/saveOrder').send({
+        const response:Response = await request(app).post('/saveOrder?username=test1').send({
             carrito:carrito,
             precio: 50.0
         }).set('Accept', 'application/json');

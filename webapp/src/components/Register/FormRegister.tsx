@@ -2,17 +2,17 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Button from 'react-bootstrap/Button';
 import { addUser } from "./../../api/api";
 import { User } from './../../shared/shareddtypes';
 import ojoabierto from "./../../assets/ojo_abierto.png"
 import ojocerrado from "./../../assets/ojo_cerrado.png"
+import toast from "react-hot-toast";
 import "./FormRegister.css"
 
 const verContrasena = () => {
   const element = document.querySelector<HTMLInputElement>("input[name='password']")!    //input
   const elementImg = document.querySelector<HTMLInputElement>("img[id='imagenPsw']")!
-  if (element.type == 'password'){
+  if (element.type === 'password'){
     element.type = 'text';
     elementImg.src = ojoabierto
   }
@@ -25,7 +25,7 @@ const verContrasena = () => {
 const verConfirmacion = () => {
   const element = document.querySelector<HTMLInputElement>("input[name='confirmPwd']")!    //input
   const elementImg = document.querySelector<HTMLInputElement>("img[id='imagenCnf']")!
-  if (element.type == 'password'){
+  if (element.type === 'password'){
     element.type = 'text';
     elementImg.src = ojoabierto
   }
@@ -50,10 +50,15 @@ const enviar = () => {
         cp = confirmPassword.value as string;
     if(email)
         e = email.value as string;
-    if(cp == p && p.length >= 6){
+    if(cp === p && p.length >= 6){
     const user:User = {'username':n,'email':e, 'password':p};
     addUser(user);
-    window.location.href = 'login'
+    toast.success("Usuario creado correctamente", {duration: 700}); 
+    setTimeout(() => 1000);
+    window.location.href = '/login'
+    }
+    else{
+      toast.error("No se ha podido crear el usuario", {duration: 1000}); 
     }
   }
 
@@ -70,7 +75,7 @@ export default function FormRegister() {
   const { register, handleSubmit, formState } = useForm(formOptions)
   const { errors } = formState
 
-  function onSubmit(data: any) {
+  function onSubmit() {
     return false
   }
   

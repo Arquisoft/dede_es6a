@@ -3,16 +3,16 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AddProducts.css';
 import {addProduct, isAdmin} from '../../../api/api';
-import {Product, isLoggedType} from '../../../shared/shareddtypes';
+import {Product} from '../../../shared/shareddtypes';
 import BarraNavegacion from '../../BarraNavegacion';
 import Errorpage from '../../ErrorPage';
 import { useState, useEffect } from 'react';
 
-export default function(){
+export default function AddProducts(){
 
-    const [admin,setIsAdmin] = useState<isLoggedType>();
-    const refreshIsLogged = async () => {
-        setIsAdmin(await isAdmin());
+    const [admin,setIsAdmin] = useState<boolean>();
+    const refreshIsLogged =  () => {
+        setIsAdmin( isAdmin());
     }
     useEffect(()=>{ refreshIsLogged(); }, []);
 
@@ -36,11 +36,11 @@ export default function(){
             c = cat.value as string;
         if(descr)
             d = descr.value as string;
-        const product:Product = {'id':i, 'nombre':n,'marca':m,'precio':p,'categoria':c,'descripcion':d};
+        const product:Product = {'id':i, 'nombre':n,'marca':m,'precio':p,'categoria':c,'descripcion':d, 'rating': 2.5, 'imagen':''};
         addProduct(product);
     }
 
-    if(admin?.logged){
+    if(admin){
         return(
             <>
             <BarraNavegacion />
