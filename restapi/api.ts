@@ -185,7 +185,7 @@ api.post("/login", async (req, res) : Promise<Response<login>> => {
 
   api.get('/userlogged', async (req, res):Promise<Response> => {
     var username:string = req.query.username as string;
-    let userlogged = await User.find({username: username});
+    let userlogged = await User.find({username: username.toString()});
     return res.status(200).send(userlogged);
   });
 
