@@ -85,7 +85,8 @@
       "SolidUtils.ts",
       "ConfirmacionPagoUtils.ts",
       "ConfirmacionPago.tsx",
-      "AddProductsUtils.ts"
+      "AddProductsUtils.ts",
+      "Catalogo.tsx"
     ]
   }
 }
