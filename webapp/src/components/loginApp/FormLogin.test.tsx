@@ -24,7 +24,7 @@ test('Acceso a la pantalla de login', () => {
   expect(enlaceRegistro).toBeInTheDocument();
 
 
-  const urlPod = screen.getByPlaceholderText("url del pod (opcional)")
+  const urlPod = screen.getByPlaceholderText("Identity Provider")
   expect(urlPod).toBeInTheDocument();
 
   fireEvent.change(campoUsername, { target: { value: "admin" } });
@@ -33,7 +33,7 @@ test('Acceso a la pantalla de login', () => {
 
 
 
-  expect(screen.getByText("¡Regístrate ahora!").closest('a')).toHaveAttribute('href', 'register');
+  expect(screen.getByText("¡Regístrate ahora!").closest('a')).toHaveAttribute('href', '/register');
 
 });
 
