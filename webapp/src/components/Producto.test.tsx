@@ -14,7 +14,7 @@ test('Test renderizado producto', () => {
 
   const nombre = screen.getByText("ProductoPrueba");
   expect(nombre).toBeInTheDocument();
-  const precio = screen.getByText("10 €");
+  const precio = screen.getByText("10.00 €");
   expect(precio).toBeInTheDocument();
   const descripción = screen.getByText("Producto de test para verificar el correcto funcionamiento de la app.");
   expect(descripción).toBeInTheDocument();

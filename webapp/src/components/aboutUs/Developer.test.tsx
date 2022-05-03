@@ -18,16 +18,6 @@ test('test Developer', () => {
   expect(descripcion).toBeInTheDocument();
   const universidad = screen.getByText("Universidad de Oviedo");
   expect(universidad).toBeInTheDocument();
-  const cardLink = screen.getByText("Card Link");
-  expect(cardLink).toBeInTheDocument();
-  const anotherLink = screen.getByText("Another Link");
-  expect(anotherLink).toBeInTheDocument();
-
-
-
-
-  
-
 });
 
 

@@ -4,20 +4,22 @@ import ReactStars from 'react-stars';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import './catalogo.css';
+import toast from 'react-hot-toast';
 
-type Producto = {
+type ProductoType = {
     props: Product;
     addToCarrito: (prod: Product) => void;
   }
 
 //function Producto (props: Producto, addToCarrito: void): JSX.Element{
-const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
+const Producto: React.FC<ProductoType> = ({props, addToCarrito}) => {
 
-    const url = "./"+props.nombre+".jpg";
     let precio = "";
     var arrayCadenas = props.precio.toString().split('.');
-    if(arrayCadenas.length > 1 && arrayCadenas[1].length == 1){
+    if(arrayCadenas.length > 1 && arrayCadenas[1].length === 1){
         precio = props.precio + "0 €";
+    } else if(arrayCadenas.length === 1){
+        precio = props.precio + ".00 €";
     } else {
         precio = props.precio + " €";
     }
@@ -29,9 +31,9 @@ const Producto: React.FC<Producto> = ({props, addToCarrito}) => {
             <Card.Body>
                 <Card.Title as="h2">{props.nombre}</Card.Title>
                 <hr></hr>
-                <div id="rating">
-                    <ReactStars count={5} value={props.rating} onChange={() => {}} size={24} color2={'#ffd700'}/>
-                </div>
+                <ReactStars className='estrellas' count={5} value={props.rating} onChange={() => {
+                    toast.success('Gracias por su valoración', {duration: 3500});
+                }} size={24} color2={'#ffd700'} />
                 <Card.Text>
                 {props.descripcion}
                 </Card.Text>

@@ -1,6 +1,5 @@
 import Catalogo from './components/Catalogo';
 import {
-  HashRouter,
   Routes,
   Route,
   BrowserRouter,
@@ -23,7 +22,7 @@ const App = () => {
 
   return(
     <>
-      <HashRouter>
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<ConfirmacionEdad />} />
         <Route path="catalogo" element={<Catalogo />} />
@@ -41,7 +40,7 @@ const App = () => {
         position={"bottom-left"}
         reverseOrder={false}
       />
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 };

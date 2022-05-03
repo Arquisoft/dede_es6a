@@ -20,9 +20,15 @@ test('Acceso a la pantalla del carrito', () => {
   expect(lbPrecio).toBeInTheDocument();
 
 
+  const precioTotal = screen.getByText("Precio total: 0.00€");
+  expect(precioTotal).toBeInTheDocument();
+
+
   const btTramitarPedido = screen.getByText("Tramitar pedido");
   expect(btTramitarPedido).toBeInTheDocument();
   
+  const enlaceContent = screen.getByText("Content");
+  expect(enlaceContent).toBeInTheDocument();
 });
 
 

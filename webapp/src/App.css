@@ -35,6 +35,11 @@ main {
   border-radius: 10px;
 }
 
+.estrellas{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
 #imgProducto{
   display: block;
   margin-left: auto;

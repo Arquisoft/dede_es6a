@@ -7,7 +7,6 @@ import {ProductType, UserType, ListaCarrito, SellType, login} from './types';
 
 
 const api:Router = express.Router();
-const session = require('express-session');
 const crypto = require('crypto');
 const shippo = require('shippo')('shippo_test_54074f336b3c2eb6d295fe272eb3584ee6457e4a');
 
@@ -165,12 +164,12 @@ api.post("/login", async (req, res) : Promise<Response<login>> => {
     
     let order = new Order({
       username: username,
-      products: prods,
+      products: prods,  
       precio: req.body.precio,
       estado: 'enviado' // enviado, reparto, entregado
     });
     await order.save();
-    return res.sendStatus(200);
+    return res.sendStatus(200);   
   });
 
   api.get('/getOrdersBy', async (req, res):Promise<Response> => {

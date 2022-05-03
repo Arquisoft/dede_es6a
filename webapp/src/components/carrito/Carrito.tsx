@@ -3,15 +3,14 @@ import './Carrito.css';
 import BarraNavegacion from '../BarraNavegacion';
 import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {vaciarCarrito, addToCarrito, removeFromCarrito} from './utilsCarrito';
 import toast from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
 
-type Carrito = {
+type CarritoType = {
 }
 
-const Carrito: React.FC<Carrito> = () => {
+const Carrito: React.FC<CarritoType> = () => {
 
     let sessionCart = localStorage.getItem("listaCarrito");
     let aux:ListaCarrito[] = [];
@@ -32,7 +31,7 @@ const Carrito: React.FC<Carrito> = () => {
     }
 
     function checkCarrito(){
-        if(listaCarrito.length == 0)
+        if(listaCarrito.length === 0)
             toast.error('Carrito vacio', {duration:3500});
         else{
             document.getElementById('navigate')?.click();
@@ -66,7 +65,7 @@ const Carrito: React.FC<Carrito> = () => {
         </Table>
       <h3 id="precioTotal">Precio total: {GetPrecioTotal().toFixed(2)}€</h3>
       <Button id="btTramitarPedido" onClick={checkCarrito}>Tramitar pedido</Button>
-      <a href='/#/pedido' id='navigate' hidden></a>
+      <a href='/pedido' id='navigate' hidden>Content</a>
       </>
     );
 
