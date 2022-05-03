@@ -18,6 +18,8 @@ const Producto: React.FC<ProductoType> = ({props, addToCarrito}) => {
     var arrayCadenas = props.precio.toString().split('.');
     if(arrayCadenas.length > 1 && arrayCadenas[1].length === 1){
         precio = props.precio + "0 €";
+    } else if(arrayCadenas.length === 1){
+        precio = props.precio + ".00 €";
     } else {
         precio = props.precio + " €";
     }
@@ -29,7 +31,7 @@ const Producto: React.FC<ProductoType> = ({props, addToCarrito}) => {
             <Card.Body>
                 <Card.Title as="h2">{props.nombre}</Card.Title>
                 <hr></hr>
-                <ReactStars count={5} value={props.rating} onChange={() => {
+                <ReactStars className='estrellas' count={5} value={props.rating} onChange={() => {
                     toast.success('Gracias por su valoración', {duration: 3500});
                 }} size={24} color2={'#ffd700'} />
                 <Card.Text>
