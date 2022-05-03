@@ -7,7 +7,7 @@ import { User} from '../../shared/shareddtypes';
 test('Acceso a la lista de usuarios admin', () => {
 
     let users:User[]=[];
-    const user1:User ={ username:"Pepe", email:"pepe@gmail.com", password:"contraseñaDePepe"};
+    const user1:User ={ username:"Pepe", email:"pepe@gmail.com", password:""};
     users.push(user1);
     render(<ListUsersAdmin users={users}/>);
   
