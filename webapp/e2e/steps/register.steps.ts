@@ -32,13 +32,13 @@ defineFeature(feature, test => {
   
   test("Usuario inicia sesión", ({given,when,then}) => {
     let username:string
-    let password:string
+    let ps:string
     let email:string
 
     given("Página sin usuario logueado", () => {
       username = crypto.randomUUID().toString();
       email = crypto.randomUUID().toString() + "@email.com";
-      password = process.env.PASSWORD_TEST!;
+      ps = "123456";
     });
 
     when("Proceso de login", async () => {
@@ -52,8 +52,8 @@ defineFeature(feature, test => {
       await page.waitForNavigation()
       await expect(page).toFill("input[name='username']", username);
       await expect(page).toFill("input[name='email']", email);
-      await expect(page).toFill("input[name='password']", password);
-      await expect(page).toFill("input[name='confirmPwd']", password);
+      await expect(page).toFill("input[name='password']", ps);
+      await expect(page).toFill("input[name='confirmPwd']", ps);
       await expect(page).toClick("button[id='btnSubmit']");
       await page.waitForNavigation()
       // Inicia sesión con el nuevo usuario
