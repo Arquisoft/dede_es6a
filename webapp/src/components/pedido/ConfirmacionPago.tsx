@@ -1,14 +1,8 @@
-import Form from 'react-bootstrap/Form'
-import Footer from '../Footer';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import {createOrder, isLogged, saveOrder} from '../../api/api';
-import {ListaCarrito, DataOrder, Order} from '../../shared/shareddtypes';
+import {createOrder, isLogged} from '../../api/api';
+import {ListaCarrito, DataOrder} from '../../shared/shareddtypes';
 import { useState, useEffect } from 'react';
 import ErrorPage from '../ErrorPage';
 import './ConfirmacionPago.css';
-import {getPrecioEnvio, getPrecioTotal, getDeliveryTerm, finalizarPedido, mostarDatosPago } from './ConfirmacionPagoUtils';
 import ConfirmacionPagoAdmin from './ConfirmacionPagoAdmin';
 
 type ConfirmacionPagoType = {

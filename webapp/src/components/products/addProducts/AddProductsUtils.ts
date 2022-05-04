@@ -1,4 +1,4 @@
-import {addProduct, isAdmin} from '../../../api/api';
+import {addProduct} from '../../../api/api';
 import {Product} from '../../../shared/shareddtypes';
 
 export  function getPrecioEnvio(order:any):number {
