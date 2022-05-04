@@ -3,6 +3,8 @@ import path, { normalize } from 'path';
 var dotenvPath = path.resolve('../.env');
 require("dotenv").config({path: dotenvPath});
 
+const crypto = require('crypto');
+
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
@@ -34,8 +36,8 @@ defineFeature(feature, test => {
     let email:string
 
     given("Página sin usuario logueado", () => {
-      username = (Math.random() + 1).toString(36).substring(2);
-      email = (Math.random() + 1).toString(36).substring(2) + "@email.com";
+      username = crypto.randomUUID().toString();
+      email = crypto.randomUUID().toString() + "@email.com";
       password = process.env.PASSWORD_TEST!;
     });
 
