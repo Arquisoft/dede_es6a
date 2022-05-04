@@ -59,7 +59,7 @@ defineFeature(feature, test => {
       // Inicia sesión con el nuevo usuario
       await expect(page).toMatch("Login");
       await expect(page).toFill("input[name='name']", username);
-      await expect(page).toFill("input[name='password']", password);
+      await expect(page).toFill("input[name='password']", ps);
     });
 
     then("Se muestra su perfil", async () => {
