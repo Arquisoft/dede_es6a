@@ -1,10 +1,8 @@
 
 import {isAdmin, getUsers} from '../../api/api';
 import { User} from '../../shared/shareddtypes';
-import BarraNavegacion from '../BarraNavegacion';
 import Errorpage from '../ErrorPage';
 import { useState, useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
 import ListUsersAdmin from './ListUsersAdmin';
 
 
