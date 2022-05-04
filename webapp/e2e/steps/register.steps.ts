@@ -71,5 +71,8 @@ defineFeature(feature, test => {
         await expect(page).toMatch("Cerrar Sesión");
         await expect(page).toMatch("Perfil");
     });
+    afterAll(async ()=>{
+      browser.close()
+    });
   });
 });
