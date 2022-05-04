@@ -1,6 +1,6 @@
 import path, { normalize } from 'path';
 
-var dotenvPath = path.resolve('../.env');
+var dotenvPath = path.resolve('../../.env');
 
 require("dotenv").config({path: dotenvPath});
 
