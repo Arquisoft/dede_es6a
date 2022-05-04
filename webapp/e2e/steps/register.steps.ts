@@ -8,7 +8,7 @@ const crypto = require('crypto');
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/login.feature');
+const feature = loadFeature('./e2e/features/register.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -30,18 +30,18 @@ defineFeature(feature, test => {
       .catch(() => {});
   });
   
-  test("Usuario inicia sesión", ({given,when,then}) => {
+  test("intento registro", ({given,when,then}) => {
     let username:string
     let password:string
     let email:string
 
-    given("Página sin usuario logueado", () => {
+    given("página sin iniciar sesión", () => {
       username = crypto.randomUUID().toString();
       email = crypto.randomUUID().toString() + "@email.com";
-      password = process.env.PASSWORD_TEST!;
+      password = "123456"
     });
 
-    when("Proceso de login", async () => {
+    when("Creo un usuario", async () => {
       // Proceso de logueo
       await page.setViewport({ width: 1200, height: 1300 });
       //await expect(page).toMatch("Catálogo de productos");
@@ -62,7 +62,7 @@ defineFeature(feature, test => {
       await expect(page).toFill("input[name='password']", password);
     });
 
-    then("Se muestra su perfil", async () => {
+    then("Me puedo loggear", async () => {
         await expect(page).toClick("button[id='inicio-sesion']");
         await page.waitForNavigation()
         //Redirige a /catalogo
