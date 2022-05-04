@@ -31,9 +31,11 @@ defineFeature(feature, test => {
   test("Usuario inicia sesión", ({given,when,then}) => {
     let username:string
     let password:string
+    let email:string
 
     given("Página sin usuario logueado", () => {
-      username = "test"
+      username = (Math.random() + 1).toString(36).substring(2);
+      email = (Math.random() + 1).toString(36).substring(2) + "@email.com";
       password = "123456";
     });
 
@@ -44,23 +46,28 @@ defineFeature(feature, test => {
       await expect(page).toClick("a[href='/login']");
       await page.waitForNavigation()
       await expect(page).toMatch("Login");
+      await expect(page).toClick('a', { text: '¡Regístrate ahora!' });
+      await page.waitForNavigation()
+      await expect(page).toFill("input[name='username']", username);
+      await expect(page).toFill("input[name='email']", email);
+      await expect(page).toFill("input[name='password']", password);
+      await expect(page).toFill("input[name='confirmPwd']", password);
+      await expect(page).toClick("button[id='btnSubmit']");
+      await page.waitForNavigation()
+      // Inicia sesión con el nuevo usuario
+      await expect(page).toMatch("Login");
       await expect(page).toFill("input[name='name']", username);
       await expect(page).toFill("input[name='password']", password);
-      await expect(page).toClick("button[id='inicio-sesion']");
-      await page.waitForNavigation()
-      //Redirige a /catalogo
-      await expect(page).toMatch("Catálogo de productos");
-      //Añado producto
-      await expect(page).toMatch("Cerrar Sesión");
-      await expect(page).toMatch("Perfil");
     });
 
     then("Se muestra su perfil", async () => {
-      await expect(page).toClick('a[href="/perfil"]');
-      await page.waitForNavigation();
-      await expect(page).toMatch("test");
-      await expect(page).toMatch("test@email.com");
-      await expect(page).toMatch("Cerrar Sesión");
+        await expect(page).toClick("button[id='inicio-sesion']");
+        await page.waitForNavigation()
+        //Redirige a /catalogo
+        await expect(page).toMatch("Catálogo de productos");
+        //Añado producto
+        await expect(page).toMatch("Cerrar Sesión");
+        await expect(page).toMatch("Perfil");
     });
   });
 });

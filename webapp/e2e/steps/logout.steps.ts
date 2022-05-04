@@ -1,6 +1,6 @@
 import path, { normalize } from 'path';
 
-var dotenvPath = path.resolve('../.env');
+var dotenvPath = path.resolve('../../env');
 require("dotenv").config({path: dotenvPath});
 
 import { defineFeature, loadFeature } from 'jest-cucumber';
@@ -22,7 +22,7 @@ defineFeature(feature, test => {
   page = await browser.newPage();
 
     await page
-      .goto("https://dede-es6a.herokuapp.com/catalogo", {
+      .goto("http://localhost:3000/catalogo", {
         waitUntil: "networkidle0",
       })
       .catch(() => {});
@@ -34,7 +34,7 @@ defineFeature(feature, test => {
 
     given("Página con usuario logueado", () => {
       username = "test"
-      password = process.env.password_for_test!;
+      password = "123456";
     });
 
     when("Proceso de logout", async () => {
@@ -46,7 +46,7 @@ defineFeature(feature, test => {
       await expect(page).toMatch("Login");
       await expect(page).toFill("input[name='name']", username);
       await expect(page).toFill("input[name='password']", password);
-      await expect(page).toClick('a', { text: 'Iniciar sesión' });
+      await expect(page).toClick("button[id='inicio-sesion']");
       await page.waitForNavigation()
       //Login realizado el usuario se desloguea
       await expect(page).toMatch("Catálogo de productos");
