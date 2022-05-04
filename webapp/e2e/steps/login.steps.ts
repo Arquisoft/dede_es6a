@@ -31,10 +31,11 @@ defineFeature(feature, test => {
   test("Usuario inicia sesión", ({given,when,then}) => {
     let username:string
     let password:string
+    console.log(process.env.PASSWORD_TEST!)
 
     given("Página sin usuario logueado", () => {
       username = "test"
-      password = process.env.PASSWORD_TEST!
+      password = "123456"
     });
 
     when("Proceso de login", async () => {
