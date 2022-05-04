@@ -1,12 +1,13 @@
 import path, { normalize } from 'path';
 
 var dotenvPath = path.resolve('../.env');
+
 require("dotenv").config({path: dotenvPath});
 
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/logout.feature');
+const feature = loadFeature('./e2e/features/logout.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -34,7 +35,7 @@ defineFeature(feature, test => {
 
     given("Página con usuario logueado", () => {
       username = "test"
-      password = process.env.PASSWORD_TEST!;
+      password = "123456"
     });
 
     when("Proceso de logout", async () => {
