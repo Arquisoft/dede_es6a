@@ -45,7 +45,7 @@ jobs:
     - run: npm --prefix webapp run build
     - run: npm --prefix webapp run test:e2e
     env:
-      PASSWORD_TEST:${{ secrets.PASSWORD_TEST}}
+      PASSWORD_TEST: ${{ secrets.PASSWORD_TEST}}
       SECRET: ${{ secrets.SECRET_PASSWORD_TEST}}
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
