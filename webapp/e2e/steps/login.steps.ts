@@ -62,5 +62,8 @@ defineFeature(feature, test => {
       await expect(page).toMatch("test@email.com");
       await expect(page).toMatch("Cerrar Sesión");
     });
+    afterAll(async ()=>{
+      browser.close()
+    });
   });
 });
