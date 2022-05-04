@@ -62,5 +62,8 @@ defineFeature(feature, test => {
       //await expect(page).toMatch("Catálogo de productos");
       await expect(page).toMatch("Inicia sesión");
     });
+    afterAll(async ()=>{
+      browser.close()
+    });
   });
 });
