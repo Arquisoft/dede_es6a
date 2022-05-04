@@ -32,13 +32,13 @@ defineFeature(feature, test => {
   
   test("intento registro", ({given,when,then}) => {
     let username:string
-    let password:string
+    let ps:string
     let email:string
 
     given("página sin iniciar sesión", () => {
       username = crypto.randomUUID().toString();
       email = crypto.randomUUID().toString() + "@email.com";
-      password = "123456"
+      ps = "123456";
     });
 
     when("Creo un usuario", async () => {
@@ -52,14 +52,14 @@ defineFeature(feature, test => {
       await page.waitForNavigation()
       await expect(page).toFill("input[name='username']", username);
       await expect(page).toFill("input[name='email']", email);
-      await expect(page).toFill("input[name='password']", password);
-      await expect(page).toFill("input[name='confirmPwd']", password);
+      await expect(page).toFill("input[name='password']", ps);
+      await expect(page).toFill("input[name='confirmPwd']", ps);
       await expect(page).toClick("button[id='btnSubmit']");
       await page.waitForNavigation()
       // Inicia sesión con el nuevo usuario
       await expect(page).toMatch("Login");
       await expect(page).toFill("input[name='name']", username);
-      await expect(page).toFill("input[name='password']", password);
+      await expect(page).toFill("input[name='password']", ps);
     });
 
     then("Me puedo loggear", async () => {

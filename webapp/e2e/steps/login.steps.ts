@@ -30,12 +30,11 @@ defineFeature(feature, test => {
   
   test("Usuario inicia sesión", ({given,when,then}) => {
     let username:string
-    let password:string
-    console.log(process.env.PASSWORD_TEST!)
+    let ps:string
 
     given("Página sin usuario logueado", () => {
       username = "test"
-      password = "123456"
+      ps = "123456";
     });
 
     when("Proceso de login", async () => {
@@ -46,7 +45,7 @@ defineFeature(feature, test => {
       await page.waitForNavigation()
       await expect(page).toMatch("Login");
       await expect(page).toFill("input[name='name']", username);
-      await expect(page).toFill("input[name='password']", password);
+      await expect(page).toFill("input[name='password']", ps);
       await expect(page).toClick("button[id='inicio-sesion']");
       await page.waitForNavigation()
       //Redirige a /catalogo

@@ -31,11 +31,11 @@ defineFeature(feature, test => {
   
   test("Usuario se desloguea de la aplicación", ({given,when,then}) => {
     let username:string
-    let password:string
+    let ps:string
 
     given("Página con usuario logueado", () => {
       username = "test"
-      password = "123456";
+      ps = "123456";
     });
 
     when("Proceso de logout", async () => {
@@ -46,7 +46,7 @@ defineFeature(feature, test => {
       await page.waitForNavigation()
       await expect(page).toMatch("Login");
       await expect(page).toFill("input[name='name']", username);
-      await expect(page).toFill("input[name='password']", password);
+      await expect(page).toFill("input[name='password']", ps);
       await expect(page).toClick("button[id='inicio-sesion']");
       await page.waitForNavigation()
       //Login realizado el usuario se desloguea
