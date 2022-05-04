@@ -38,7 +38,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
-    "test:e2e": "start-server-and-test 'npm --prefix ../restapi start' http://localhost:5000/catalogo prod 3000 'jest --rootDir=e2e --config=./e2e/jest.config.ts'",
+    "test:e2e": "start-server-and-test 'npm --prefix ../restapi start' http://localhost:5000/api/users/list prod 3000 'jest --rootDir=e2e --config=./e2e/jest.config.ts'",
     "eject": "react-scripts eject",
     "prod": "ts-node-dev ./server.ts"
   },
