@@ -4,13 +4,13 @@ import Table from 'react-bootstrap/Table';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Button from 'react-bootstrap/Button';
-import {getOrdersByClientLogged, isLogged, getUserLoggeed, logout} from '../../api/api';
+import {getOrdersByClientLogged, getUserLoggeed, logout} from '../../api/api';
 import { useState, useEffect } from 'react';
 import { OrderFromDB, User} from '../../shared/shareddtypes';
-import ErrorPage from '../ErrorPage';
+
 import toast from 'react-hot-toast';
 import './profile.css';
-import ProfileLogged from './ProfileLogged';
+
 
 
 export default function Profile() {

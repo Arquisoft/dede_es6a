@@ -1,7 +1,7 @@
-import {ListaCarrito, DataOrder, Order} from '../../shared/shareddtypes';
+import { Order} from '../../shared/shareddtypes';
 import toast from 'react-hot-toast';
 
-import {createOrder, isLogged, saveOrder} from '../../api/api';
+import { saveOrder} from '../../api/api';
 export  function getPrecioEnvio(order:any):number {
     if(order !== undefined){
         return order["rates"][0]["amount"];
