@@ -38,7 +38,7 @@ defineFeature(feature, test => {
     given("página sin iniciar sesión", () => {
       username = crypto.randomUUID().toString();
       email = crypto.randomUUID().toString() + "@email.com";
-      password = "123456"
+      password = process.env.PASSWORD_TEST!
     });
 
     when("Creo un usuario", async () => {
