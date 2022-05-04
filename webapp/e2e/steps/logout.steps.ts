@@ -1,6 +1,6 @@
 import path, { normalize } from 'path';
 
-var dotenvPath = path.resolve('../../env');
+var dotenvPath = path.resolve('../.env');
 require("dotenv").config({path: dotenvPath});
 
 import { defineFeature, loadFeature } from 'jest-cucumber';
@@ -34,7 +34,7 @@ defineFeature(feature, test => {
 
     given("Página con usuario logueado", () => {
       username = "test"
-      password = "123456";
+      password = process.env.PASSWORD_TEST!;
     });
 
     when("Proceso de logout", async () => {
