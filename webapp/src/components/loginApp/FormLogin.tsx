@@ -82,7 +82,7 @@ export default function LoginForm() {
                                 placeholder="Contraseña *" name="password"/>
                         </div>
                         <div className="form-group" onClick={loginButton}>
-                            <Button  className="btnSubmit">Iniciar sesión</Button>
+                            <Button id="inicio-sesion" className="btnSubmit">Iniciar sesión</Button>
                             <a href="/catalogo" id="catalogo" hidden>Content</a>
                         </div>
                         <div className="form-group">
