@@ -18,8 +18,5 @@ image::diagrama-secuencia-añadir-carrito.png[]
 === Eliminar productos del carrito
 image::diagrama-secuencia-eliminar-carrito.png[]
 
-=== Tramitar pedido (Actual)
-image::diagrama-secuencia-tramitarPedido-actual.png[]
-
-=== Tramitar pedido (Final)
+=== Tramitar pedido
 image::diagrama-secuencia-tramitarPedido-final.png[]
