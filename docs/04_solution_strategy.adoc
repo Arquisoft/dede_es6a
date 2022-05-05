@@ -11,6 +11,6 @@
 | Git |  Es un sistema de control de versiones de software. Es una restricción del proyecto
 | GitHub |  Es una plataforma de control de versiones Git. Es una restricción del proyecto
 | MongoDB |  Es una base de datos NoSQL orientada a documentos.
-| AWS | Es una colección de servicios de computación en la nube pública que en conjunto forman una plataforma de computación en la nube. La usamos para el despliegue de nuestra aplicación.
+| Heroku | Es una colección de servicios de computación en la nube pública que en conjunto forman una plataforma de computación en la nube. La usamos para el despliegue de nuestra aplicación.
 | Shippo API | API que usamos para calcular el coste de los envíos. 
 |===
